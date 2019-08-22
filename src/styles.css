@@ -1,0 +1,291 @@
+.rightPane {
+  padding-bottom: 50px;
+}
+
+/* Gutter size */ 
+.as-split-gutter {
+  flex-basis: 7px !important;
+}
+
+/* active tab */
+.mat-tab-label-active {
+  background-color: #dddcdc;
+}
+
+/* impex file code output #212529 */
+pre {
+  display: inline-block;
+  font-size: 100%;
+  color: #08a4ec;
+  word-break: break-word;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+}
+/* plain/impex/silverpop title */
+h4 {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+textarea {
+  resize: none;
+}
+
+/* You can add global styles to this file, and also import other style files */
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+label.radio-inline {
+  margin-right: 10px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+/* Style each field */
+.form-control {
+  white-space: pre-line
+}
+.ad-field {
+  max-width: 470px;
+}
+/* Style for logo field */
+.logo-form .ad-field {
+  max-width: 220px;
+}
+#logo-width-label {
+  margin-right: 20px;
+}
+
+/* Checbox bg-white-transparent */
+.checkbox-bg-white {
+  position: none;
+  margin-left: -8px;
+}
+
+/* Plue-Minus width Logo */
+.input-logo-width {
+  width: 65px;
+  height: 35px;
+  text-align: center;
+  font-size: small;
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+/* Hide input number's spin box */
+/* input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+} */
+
+/* space between icons */
+li#nav-icon {
+  margin-right: 5px;
+  color: rgb(149, 155, 161);
+}
+
+/* Code box  #73AD21*/
+.codeBox {
+  margin: 20px;
+  width: auto;
+  height: 150px;
+  border: 2px solid grey;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+/* breakpoint button styles */
+.iframe-widescreen {
+  width: 1350px;
+  height: 400px;
+}
+.iframe-desktop {
+  width: 1150px;
+  height: 400px;
+}
+.iframe-tablet {
+  width: 700px;
+  height: 1150px;
+}
+.iframe-mobile {
+  width: 500px;
+  height: 1150px;
+}
+iframe {
+  border: none;
+  align-items: left;
+}
+
+/* Device icon buttons */
+#icon-button {
+  cursor:pointer;
+  margin-right: 10px;
+}
+#icon-button:hover {
+  box-shadow: 0 0 0 4px #ffffff;
+  transition: background 0.2s, color 0.2s;
+  opacity: .5;
+} 
+li#nav-icon .current {
+  color: #ff4081;
+}
+
+/* Space between radio */
+.mat-radio-button {
+  margin-right: 10px;
+}
+
+/* Copy button */
+.copy-button1 {
+  background-color: hotpink;
+  color: white;
+  border: .5px solid hotpink !important;
+  margin-left: 20px !important;
+} 
+.copy-button1:hover {
+  background-color: #c04f88;
+  color: white;
+  border: .5px solid #c04f88 !important;
+}
+.copy-button2 {
+  background-color: white ;
+  color: hotpink;
+  border: .5px solid hotpink !important;
+  margin-left: 10px !important;
+} 
+.copy-button2:hover {
+  background-color: hotpink;
+  color: white ;
+  border: .5px solid hotpink !important;
+}
+
+/* Impex button */
+.impex-button1 {
+  background-color: #08a4ec;
+  color: white;
+  border: .5px solid #08a4ec !important;
+  margin-left: 20px !important;
+}
+.impex-button1:hover {
+  background-color: #037db6;
+  color: white;
+  border: .5px solid #037db6 !important;
+}
+.impex-button2 {
+  background-color: white;
+  color: #08a4ec;
+  border: .5px solid #08a4ec !important;
+  margin-left: 10px !important;
+}
+.impex-button2:hover {
+  background-color: #08a4ec;
+  color: white;
+  border: .5px solid #08a4ec !important;
+}
+
+/* Silverpop button */
+.silverpop-button1 {
+  background-color: #08a4ec;
+  color: white;
+  border: .5px solid #08a4ec !important;
+  margin-left: 20px !important;
+}
+.silverpop-button1:hover {
+  background-color: #037db6;
+  color: white;
+  border: .5px solid #037db6 !important;
+}
+.silverpop-button2 {
+  background-color: white;
+  color: #08a4ec;
+  border: .5px solid #08a4ec !important;
+  margin-left: 10px !important;
+}
+.silverpop-button2:hover {
+  background-color: #08a4ec;
+  color: white;
+  border: .5px solid #08a4ec !important;
+}
+.silverpop {
+  margin-bottom: 50px;
+}
+
+/* Show/Hide toggle switch */
+#show-hide-toggle {
+  font-size: 10px;
+  margin-left: 5px;
+}
+.mat-toggle {
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+/* Checkbox no button */
+.mat-checkbox {
+  margin-left: 10px;
+}
+
+/* Sample bg and Logo URL*/
+h6 {
+  color:#46aa54;
+  cursor: pointer;
+}
+
+/* White transparent bg to a logo */
+/* img.bg-white-transparent {
+  background-color: rgba(255,255,255,0.9);
+  padding: 10px;
+} */
+
+
+/* element queries (Sample) */
+/* .rightPane[min-width="500px"] {
+  background-color: lightgreen;
+}
+
+.rightPane[min-width~="750px"] {
+  background-color: lightpink;
+}
+
+.rightPane[min-width~="992px"] {
+  background-color: lightblue;
+}
+
+.rightPane[min-width~="1200px"] {
+  background-color: lightsalmon;
+} */
+
+/* -------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
