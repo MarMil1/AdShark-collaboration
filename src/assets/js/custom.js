@@ -32,6 +32,13 @@ function insertA1(code) {
   // console.log(A1iframe.contents().find('#A1HTML').html());
 }
 
+/* Seasonal iframe insert Output */
+function insertSeasonal(code) {
+  var Seasonaliframe = $('.Seasonal-iframe');
+  Seasonaliframe.contents().find('#SeasonalHTML').html(code);
+
+}
+
 /* Email iframe insert Output */
 function insertEmail(code) {
   var emailiframe = $('.email-iframe');

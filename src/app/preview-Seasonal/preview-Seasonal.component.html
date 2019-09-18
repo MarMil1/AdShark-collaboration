@@ -1,0 +1,180 @@
+
+<div class="Seasonal-template" hidden>
+   <style type="text/css">  
+      .seasonalComponent-block {
+          display: flex;
+          flex-wrap: nowrap;
+          margin: 20px auto;
+      }
+      .seasonalComponent-block a.seasonalComponent-item {
+          background: #fff;
+          border: 2px solid transparent;
+          border-radius: 4px;
+          display: block;
+          min-height: 250px;
+          padding: 21px;
+          text-align: center;
+          text-decoration: none;
+          max-width: 198px;
+          margin: 12px auto;
+          color: #005da4;
+          font-weight: 600;
+          line-height: 1.2;
+      }
+      .seasonalComponent-block a.seasonalComponent-item:hover {
+          border-color: #005da3;
+          box-shadow: 0 0 7px rgba(0, 0, 0, 0.15);
+      }
+      .seasonalComponent-callout-inner p {
+          font-size: 16px;
+          line-height: 1.4;
+      }
+      .seasonalComponent-callout-inner img {
+          width: 100px;
+      }
+      .seasonalComponent-block div.seasonalComponent-callout {
+          background-color: #004c86;
+          background-image: -webkit-linear-gradient(-35deg, #013A6B 50%, #005da3 50%);
+          background-image: linear-gradient(-60deg, #013A6B 50%, #005da3 50%);
+          width: 330px;
+          height: 275px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .seasonalComponent-block a.seasonalComponent-item span {
+          width: 100%;
+          text-align: center;
+          margin: 0 0 15px 0;
+      }
+      .seasonalComponent-callout-inner {
+          max-width: 90%;
+      }
+      .seasonalComponent-callout-inner img {
+          max-width: 180px;
+          display: block;
+      } 
+      a.seasonalComponent-item img {
+          padding-bottom: 15px;
+      }          
+      /* Media Queries */ /* desktop breakpoint */
+      
+      @media (max-width: 1200px) {
+      .seasonalComponent-block {
+          flex-wrap: wrap;
+      }
+      .seasonalComponent-block div.seasonalComponent-callout {
+          width: 100%;
+      }
+      .seasonalComponent-block a.seasonalComponent-item {
+          width: 165px;
+      }
+      } /* tablet breakpoint */
+      
+      @media (max-width: 992px) {
+      }       /* mobile breakpoint */
+      
+      @media (max-width: 768px) {
+      .seasonalComponent-block a.seasonalComponent-item {
+          width: 198px;
+      }
+      } /* xs mobile breakpoint */
+      
+      @media (max-width: 576px) {
+      } /* // Media Queries */
+      
+      </style>
+      
+     
+    <div class="container mt-5">
+       
+  <h4>{{data.headline}}</h4>
+  <div class="seasonalComponent-block">
+    <div class="seasonalComponent-callout text-center">
+      <div class="seasonalComponent-callout-inner">
+        <img class="mx-auto mb-2" src="{{data.logoURL}}"
+          alt="{{altLogo}}">
+          <h5 class="text-center">{{data.subline}}</h5>
+        <p class="text-white">{{data.para}}</p>
+        <a href="{{data.buttonLink}}" class="btn btn--secondary">{{data.buttonTxt}}</a>
+      </div>
+    </div>
+    <a href="{{data.prod1Link}}" class="seasonalComponent-item">
+      <img alt="{{data.prod1Name}}"
+        src="{{data.prod1Img}}?width=140&amp;height=140" width="140"
+        height="140"><span>{{data.prod1Name}}</span></a> 
+        <a href="{{data.prod2Link}}"
+      class="seasonalComponent-item"><img alt="{{data.prod2Name}}"
+        src="{{data.prod2Img}}?width=140&amp;height=140" width="140"
+        height="140"><span>{{data.prod2Name}}</span></a> 
+        <a href="{{data.prod3Link}}"
+      class="seasonalComponent-item"><img alt="{{data.prod3Name}}"
+        src="{{data.prod3Img}}?width=140&amp;height=140" width="140"
+        height="140"><span>{{data.prod3Name}}</span></a> 
+        <a href="{{data.prod4Link}}" class="seasonalComponent-item"><img
+        alt="{{data.prod4Name}}"
+        src="{{data.prod4Img}}?width=140&amp;height=140" width="140"
+        height="140"><span>{{data.prod4Name}}</span></a>
+  </div>
+  </div>
+</div>
+
+
+<iframe class="Seasonal-iframe iframe-widescreen" src="assets/html/Seasonal.html"></iframe>
+
+<div class="plain-text">
+  <h4 class="mt-4 ml-4">Plain Text</h4>
+  <div class="codeBox card card-body">
+    <code>{{outputCode}}</code>
+  </div>
+  <button mat-flat-button class="copy-button1" (click)="onCopy('plain')"
+    (click)="openSnackBar('Copied code!', '', 2000)" tooltip="Copy to clipboard" placement="bottom" hide-delay="0">
+    <span><i class="fas fa-code"></i></span>
+    <span class="copy-btn-txt"> Copy Code</span>
+  </button>
+  <button mat-flat-button class="copy-button2" (click)="onDownload('Seasonal.html', 'html')" tooltip="Download html file"
+    placement="bottom" hide-delay="0">
+    <span><i class="fas fa-download"></i></span>
+    <span class="copy-btn-txt"> Download Code</span>
+  </button>
+</div>
+
+<div class="impex-file">
+  <h4 class="mt-4 ml-4">Impex File</h4>
+  <div class="codeBox card card-body">
+    <code id="impex-code">
+      <pre>
+$contentCatalog = americanhotelContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Staged])[default = $contentCatalog:Staged]
+$mediaContainer = media(qualifier, $contentCV);
+$medias = medias(code, $contentCV);
+$media = media(code, $contentCV);
+$productCatalog = americanhotelProductCatalog
+$productCV = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$siteResource = jar:com.americanhotel.hybris.initialdata.constants.AmericanhotelInitialDataConstants&/americanhotelinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$lang = en
+          
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+$jarResourceCms = $config-jarResourceCmsValue
+          
+          
+          
+          
+          
+INSERT_UPDATE CMSParagraphComponent ; $contentCV[unique = true] ; uid[unique = true] ; onlyOneRestrictionMustApply[default='false'] ; name                          ; &componentRef    ; content[lang = $lang]
+
+                              ;                           ; componentid   ;                                              ; component name ; componentid ; "
+                              {{impexCode}}
+          
+"</pre>
+    </code>
+  </div>
+  <button mat-flat-button class="impex-button1" (click)="onCopy('impex')" (click)="openSnackBar('Copied impex!', '', 2000)" tooltip="Copy to clipboard" placement="bottom" hide-delay="0">
+    <span class="fas fa-code"></span>
+    <span class="impex-btn-txt"> Copy Impex</span>
+  </button>
+  <button mat-flat-button class="impex-button2" (click)="onDownload('Seasonal.impex', 'impex')" tooltip="Download impex file" placement="bottom" hide-delay="0">
+    <span class="fas fa-download"></span>
+    <span class="impex-btn-txt"> Download Impex</span>
+  </button>
+</div>

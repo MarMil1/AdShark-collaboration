@@ -13,13 +13,15 @@ import { AppComponent } from './app.component';
 import { PreviewA1Component } from './preview-A1/preview-A1.component';
 import { PreviewD1Component } from './preview-D1/preview-D1.component';
 import { PreviewEmailComponent } from './preview-email/preview-email.component';
+import { PreviewSeasonalComponent } from './preview-Seasonal/preview-Seasonal.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       PreviewA1Component,
       PreviewD1Component,
-      PreviewEmailComponent
+      PreviewEmailComponent,
+      PreviewSeasonalComponent
    ],
    imports: [
       BrowserModule,

@@ -175,6 +175,34 @@
           <input [disabled]="disabledButton" class="form-control" style="width:300px" type="text" [(ngModel)]="data.buttonTxt" placeholder="Text" /> 
         </div>
 
+        <!-- Product info for Seasonal Component  -->
+          <div class="seasonal-products-form">
+            <div class="seasonal-product-links-form">
+                <label><h5 class="text-primary">Product Links</h5></label> 
+                <input [disabled]="disabledButton" class="form-control ad-field" type="text" [(ngModel)]="data.prod1Link" placeholder="Product 1 URL" />
+                <input [disabled]="disabledButton" class="form-control ad-field" type="text" [(ngModel)]="data.prod2Link" placeholder="Product 2 URL" />
+                <input [disabled]="disabledButton" class="form-control ad-field" type="text" [(ngModel)]="data.prod3Link" placeholder="Product 3 URL" />
+                <input [disabled]="disabledButton" class="form-control ad-field" type="text" [(ngModel)]="data.prod4Link" placeholder="Product 4 URL" />
+            </div>
+            <div class="seasonal-product-names-form">
+                <label><h5 class="text-primary">Product Names</h5></label> 
+                <input [disabled]="disabledButton" class="form-control" style="width:300px" type="text" [(ngModel)]="data.prod1Name" placeholder="Product 1 Text" /> 
+                <input [disabled]="disabledButton" class="form-control" style="width:300px" type="text" [(ngModel)]="data.prod2Name" placeholder="Product 2 Text" /> 
+                <input [disabled]="disabledButton" class="form-control" style="width:300px" type="text" [(ngModel)]="data.prod3Name" placeholder="Product 3 Text" /> 
+                <input [disabled]="disabledButton" class="form-control" style="width:300px" type="text" [(ngModel)]="data.prod4Name" placeholder="Product 4 Text" /> 
+            </div>
+            <div class="seasonal-product-images-form">
+                <label><h5 class="text-primary">Product Images</h5></label> 
+                <input class="form-control ad-field mb-2" type="text" [(ngModel)]="data.prod1Img" (ngModelChange)="getAlterLogo(data)" placeholder="Product 1 Image" />
+                <input class="form-control ad-field mb-2" type="text" [(ngModel)]="data.prod2Img" (ngModelChange)="getAlterLogo(data)" placeholder="Product 2 Image" />
+                <input class="form-control ad-field mb-2" type="text" [(ngModel)]="data.prod3Img" (ngModelChange)="getAlterLogo(data)" placeholder="Product 3 Image" />
+                <input class="form-control ad-field mb-2" type="text" [(ngModel)]="data.prod4Img" (ngModelChange)="getAlterLogo(data)" placeholder="Product 4 Image" />
+            </div>
+
+            
+          </div>
+        <!-- // Product info for Seasonal Component  -->
+
       </div>
     </as-split-area>
     <!-- </div> -->
@@ -200,6 +228,9 @@
           </mat-tab>
           <mat-tab label="Hero Banner">
             <app-preview-A1 [data]="data" [altLogo]="altLogo" [button]="button" [txtColor]="txtColor" [logoSize]="logoSize" [whiteBGLogo]="whiteBGLogo" [textAlign]="textAlign" [logoAlign]="logoAlign"></app-preview-A1>
+          </mat-tab>
+          <mat-tab label="Seasonal Component">
+            <app-preview-Seasonal [data]="data" [altLogo]="altLogo" [button]="button" [txtColor]="txtColor" [logoSize]="logoSize" [whiteBGLogo]="whiteBGLogo" [textAlign]="textAlign" [logoAlign]="logoAlign"></app-preview-Seasonal>
           </mat-tab>
           <mat-tab label="Email"> 
             <app-preview-email [data]="data" [altLogo]="altLogo" [button]="button" [txtColor]="txtColor" [calloutBar]="calloutBar"></app-preview-email>
