@@ -60,6 +60,7 @@ export class AppComponent implements OnInit {
     $('.logo-size').hide();
     $('.silverpop').hide();
     $('.callout-bar').hide();
+    $('.seasonal-products-form').hide();
   }
 
     /* -------- Show and Hide Sample bg and logo -----*/
@@ -205,6 +206,7 @@ export class AppComponent implements OnInit {
   onTabClick(e: MatTabChangeEvent) {
     switch (e.index) {
       case 0:
+        //d1 
         $('.sample-logo').css('margin-top', '22px'); // sample logo
         this.listofColor[2] = 'white';
         // this.outputCode = this.previewCode.D1;
@@ -229,6 +231,7 @@ export class AppComponent implements OnInit {
         break;
 
       case 1:
+        // A1
         $('.sample-logo').css('margin-top', '22px'); // sample logo
         $('.background-label').html('Background');
         $('.A1-iframe').css('height', 410);
@@ -254,35 +257,49 @@ export class AppComponent implements OnInit {
 
         break;
 
-      case 2:
+        case 2:
+          //seasonal 
         $('.sample-logo').css('margin-top', '46px'); // sample logo
         $('.background-label').html('Hero Image');
-        $('email-iframe').css('height', 530);
-        this.listofColor[2] = 'red';
-        // this.outputCode = this.previewCode.email;
+        $('seasonal-iframe').css('height', 530);
+        // this.outputCode = this.previewCode.seasonal;
         this.tabClick = e.index;
         console.log(e.index);
-        $('.callout-bar').show();
-        $('.text-alignment').hide();
-        $('.logo-alignment').hide();
-        $('.subheadline-form').hide();
+        $('.seasonal-products-form').show();
         $('.paragraph-form').show();
-        $('.foreground-form').hide();
-        $('.logo-size').hide();
-        $('.checkbox-bg-white').hide();
-        $('.plus-minus-logoWidth').hide();
-        $('.button-link-form').hide();
-
-        if (this.txtColor[0].color === 'white') {
-          this.txtColor[0].color = 'red';
-          console.log('if wht, change to red');
-        } else if (this.txtColor[2].color === 'white') {
-          this.txtColor[2].color = 'red';
-        } else if (this.button === 'primary') {
-          this.button = '';
-        }
 
         break;
+
+        case 3:
+          //email 
+          $('.sample-logo').css('margin-top', '46px'); // sample logo
+          $('.background-label').html('Hero Image');
+          $('email-iframe').css('height', 530);
+          this.listofColor[2] = 'red';
+          // this.outputCode = this.previewCode.email;
+          this.tabClick = e.index;
+          console.log(e.index);
+          $('.callout-bar').show();
+          $('.text-alignment').hide();
+          $('.logo-alignment').hide();
+          $('.subheadline-form').hide();
+          $('.paragraph-form').show();
+          $('.foreground-form').hide();
+          $('.logo-size').hide();
+          $('.checkbox-bg-white').hide();
+          $('.plus-minus-logoWidth').hide();
+          $('.button-link-form').hide();
+  
+          if (this.txtColor[0].color === 'white') {
+            this.txtColor[0].color = 'red';
+            console.log('if wht, change to red');
+          } else if (this.txtColor[2].color === 'white') {
+            this.txtColor[2].color = 'red';
+          } else if (this.button === 'primary') {
+            this.button = '';
+          }
+  
+          break;
 
       default:
           this.outputCode = '';
