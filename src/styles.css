@@ -63,10 +63,7 @@ input[type="radio"] {
 .ad-field {
   max-width: 470px;
 }
-/* Style for logo field */
-.logo-form .ad-field {
-  max-width: 220px;
-}
+
 #logo-width-label {
   margin-right: 20px;
 }

@@ -11,25 +11,18 @@ function insertD1(code) {
   D1iframe.contents().find('#D1HTML').html(code);  
 }
 
-/* Download files */
-function download(filename, text) {
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
-
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
-}
-
 /* A1 iframe insert Output */
 function insertA1(code) {
   var A1iframe = $('.A1-iframe');
   A1iframe.contents().find('#A1HTML').html(code);
   // console.log(A1iframe.contents().find('#A1HTML').html());
+}
+
+/* Seasonal iframe insert Output */
+function insertSeasonal(code) {
+  var Seasonaliframe = $('.Seasonal-iframe');
+  Seasonaliframe.contents().find('#SeasonalHTML').html(code);
+
 }
 
 /* Email iframe insert Output */
@@ -97,8 +90,23 @@ function insertWidth(width) {
   // console.log($('.A1-iframe').contents().find('#A1logo').parent().html());
 }
 
+/* Insert collout bar into iframe */
 function insertCalloutBar(bar) {
   $('.email-iframe').contents().find('#calloutHTML').html(bar);
+}
+
+/* Download files */
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }
 
 $(document).ready(function () {

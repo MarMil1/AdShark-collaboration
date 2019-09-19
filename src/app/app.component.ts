@@ -60,6 +60,7 @@ export class AppComponent implements OnInit {
     $('.logo-size').hide();
     $('.silverpop').hide();
     $('.callout-bar').hide();
+    $('.seasonal-products-form').hide();
   }
 
     /* -------- Show and Hide Sample bg and logo -----*/
@@ -67,29 +68,29 @@ export class AppComponent implements OnInit {
       if (field === 'bg') {
         if (ad === 'D1') {
           this.data.bgURL = 'https://images.americanhotel.com/images/banners/8754_1888Mills_AD_D1_061719_bg.jpg';
-        
+
         } else if (ad === 'A1Left') {
           this.data.bgURL = 'https://images.americanhotel.com/images/banners/8713_hunter_A1_widescreen_overlay.jpg';
-        
+
         }  else if (ad === 'A1Right') {
           this.data.bgURL = 'https://images.americanhotel.com/images/banners/8865_1888Mills_080619_widescreen.jpg?q=123';
-        
-        }else { this.data.bgURL = 'https://images.americanhotel.com/images/emails/8743K_Inteplast_EML_061919_03.jpg'; }
-      
+
+        } else { this.data.bgURL = 'https://images.americanhotel.com/images/emails/8743K_Inteplast_EML_061919_03.jpg'; }
+
       } else if (field === 'logo') {
-        
+
         if (ad === 1) {
           this.data.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo-white.svg';
-        
+
         } else if (ad === 2) {
           this.data.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/hunter-logo.svg';
-        
+
         } else if (ad === 3) {
           this.data.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo.png';
-        
-        } else if (ad === 4) { 
+
+        } else if (ad === 4) {
           this.data.logoURL = 'https://images.americanhotel.com/images/emails/logos/RegistryNoTag.png'; 
-        
+
         } else if (ad === 5) {
           this.data.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/GE bw.svg';
 
@@ -204,6 +205,8 @@ export class AppComponent implements OnInit {
   /* Check what tab is on */
   onTabClick(e: MatTabChangeEvent) {
     switch (e.index) {
+
+      // D1 tab
       case 0:
         $('.sample-logo').css('margin-top', '22px'); // sample logo
         this.listofColor[2] = 'white';
@@ -215,11 +218,13 @@ export class AppComponent implements OnInit {
         $('.logo-alignment').hide();
         $('.subheadline-form').show();
         $('.paragraph-form').hide();
+        $('.background-form').show();
         $('.foreground-form').hide();
         $('.logo-size').hide();
         $('.checkbox-bg-white').show();
         $('.plus-minus-logoWidth').show();
         $('.button-link-form').show();
+        $('.seasonal-products-form').hide();
 
         if (this.txtColor[0].color === 'red') {
           this.txtColor[0].color = 'white';
@@ -228,6 +233,7 @@ export class AppComponent implements OnInit {
 
         break;
 
+      // A1 tab
       case 1:
         $('.sample-logo').css('margin-top', '22px'); // sample logo
         $('.background-label').html('Background');
@@ -241,11 +247,13 @@ export class AppComponent implements OnInit {
         $('.logo-alignment').show();
         $('.subheadline-form').show();
         $('.paragraph-form').hide();
+        $('.background-form').show();
         $('.foreground-form').hide();
         $('.logo-size').show();
         $('.checkbox-bg-white').show();
         $('.plus-minus-logoWidth').hide();
         $('.button-link-form').show();
+        $('.seasonal-products-form').hide();
 
         if (this.txtColor[0].color === 'red') {
           this.txtColor[0].color = 'white';
@@ -254,35 +262,61 @@ export class AppComponent implements OnInit {
 
         break;
 
-      case 2:
-        $('.sample-logo').css('margin-top', '46px'); // sample logo
-        $('.background-label').html('Hero Image');
-        $('email-iframe').css('height', 530);
-        this.listofColor[2] = 'red';
-        // this.outputCode = this.previewCode.email;
-        this.tabClick = e.index;
-        console.log(e.index);
-        $('.callout-bar').show();
-        $('.text-alignment').hide();
-        $('.logo-alignment').hide();
-        $('.subheadline-form').hide();
-        $('.paragraph-form').show();
-        $('.foreground-form').hide();
-        $('.logo-size').hide();
-        $('.checkbox-bg-white').hide();
-        $('.plus-minus-logoWidth').hide();
-        $('.button-link-form').hide();
+        // Seasonal tab
+        case 2:
+          $('.sample-logo').css('margin-top', '46px'); // sample logo
+          $('.background-label').html('Hero Image');
+          $('seasonal-iframe').css('height', 410);
+          // this.outputCode = this.previewCode.seasonal;
+          this.tabClick = e.index;
+          console.log(e.index);
+          $('.callout-bar').hide();
+          $('.text-alignment').hide();
+          $('.logo-alignment').hide();
+          $('.subheadline-form').show();
+          $('.paragraph-form').show();
+          $('.background-form').hide();
+          $('.foreground-form').hide();
+          $('.logo-size').hide();
+          $('.checkbox-bg-white').hide();
+          $('.plus-minus-logoWidth').show();
+          $('.button-link-form').show();
+          $('.seasonal-products-form').show();
 
-        if (this.txtColor[0].color === 'white') {
-          this.txtColor[0].color = 'red';
-          console.log('if wht, change to red');
-        } else if (this.txtColor[2].color === 'white') {
-          this.txtColor[2].color = 'red';
-        } else if (this.button === 'primary') {
-          this.button = '';
-        }
+          break;
 
-        break;
+        // Email tab
+        case 3:
+          $('.sample-logo').css('margin-top', '46px'); // sample logo
+          $('.background-label').html('Hero Image');
+          $('email-iframe').css('height', 530);
+          this.listofColor[2] = 'red';
+          // this.outputCode = this.previewCode.email;
+          this.tabClick = e.index;
+          console.log(e.index);
+          $('.callout-bar').show();
+          $('.text-alignment').hide();
+          $('.logo-alignment').hide();
+          $('.subheadline-form').hide();
+          $('.paragraph-form').show();
+          $('.background-form').show();
+          $('.foreground-form').hide();
+          $('.logo-size').hide();
+          $('.checkbox-bg-white').hide();
+          $('.plus-minus-logoWidth').hide();
+          $('.button-link-form').hide();
+          $('.seasonal-products-form').hide();
+
+          if (this.txtColor[0].color === 'white') {
+            this.txtColor[0].color = 'red';
+            console.log('if wht, change to red');
+          } else if (this.txtColor[2].color === 'white') {
+            this.txtColor[2].color = 'red';
+          } else if (this.button === 'primary') {
+            this.button = '';
+          }
+
+          break;
 
       default:
           this.outputCode = '';
@@ -302,8 +336,8 @@ export class AppComponent implements OnInit {
 
       if (this.tabClick === 1) {
         $('iframe').css('height', 410);
-      } else if (this.tabClick === 2) {
-        $('iframe').css('height', 530);
+      } else if (this.tabClick === 3) {
+        $('iframe').css('height', 600);
       }
 
     } else if (this.rightWidth <= 1024) {
@@ -314,8 +348,8 @@ export class AppComponent implements OnInit {
 
       if (this.tabClick === 1) {
         $('iframe').css('height', 410);
-      } else if (this.tabClick === 2) {
-        $('iframe').css('height', 530);
+      } else if (this.tabClick === 3) {
+        $('iframe').css('height', 600);
       }
 
     } else if (this.rightWidth <= 1280) {
@@ -324,8 +358,8 @@ export class AppComponent implements OnInit {
       $('.btn-tablet,.btn-mobile,.btn-widescreen').removeClass('current');
       $('iframe').css('height', 410);
 
-      if (this.tabClick === 2) {
-        $('iframe').css('height', 530);
+      if (this.tabClick === 3) {
+        $('iframe').css('height', 600);
       }
 
     } else {
@@ -335,9 +369,17 @@ export class AppComponent implements OnInit {
 
       if (this.tabClick === 1) {
         $('iframe').css('height', 410);
-      } else if (this.tabClick === 2) {
-        $('iframe').css('height', 530);
+      } else if (this.tabClick === 3) {
+        $('iframe').css('height', 600);
       }
+    }
+
+    // seasonal iframe size
+    if (this.tabClick === 2 && this.rightWidth <= 1200) {
+      $('iframe').css('height', 600);
+    }
+    if (this.tabClick === 2 && this.rightWidth <= 768) {
+      $('iframe').css('height', 800);
     }
 
   }

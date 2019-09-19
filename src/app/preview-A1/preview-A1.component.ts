@@ -75,7 +75,7 @@ export class PreviewA1Component implements DoCheck {
 
   getHTML() {
     let tmp: string;
-    tmp = $('.A1-template').children().html();
+    tmp = $('.A1-template').html();
     let tmpButtonTxt = this.data.buttonTxt;
 
     try {
@@ -85,8 +85,8 @@ export class PreviewA1Component implements DoCheck {
         const len = this.prevTextAlign.length;
         const str = tmp.substring( tmp.search('c-hero__copy--align-') + 20, tmp.search('c-hero__copy--align-') + 20 + len);
         const res = tmp.replace(str, this.textAlign);
-        tmp = res;
         this.prevTextAlign = this.textAlign;
+        tmp = res;
       }
 
       /* Logo alignment */
@@ -94,7 +94,7 @@ export class PreviewA1Component implements DoCheck {
         // $('.A1-iframe ').contents().find('#A1logo').removeClass(this.prevLogoAlign).addClass(this.logoAlign);
         const str = $('.a1-supplier-logo').html();
         const str1 = $('.a1-supplier-logo').html().replace(this.prevLogoAlign, this.logoAlign);
-        const res = $('.A1-template').children().html().replace(str, str1);
+        const res = $('.A1-template').html().replace(str, str1);
         this.prevLogoAlign = this.logoAlign;
         tmp = res;
       }
@@ -103,7 +103,7 @@ export class PreviewA1Component implements DoCheck {
       if (this.logoSize !== this.prevLogoSize) {
         const str = $('.a1-supplier-logo').html();
         const str1 = $('.a1-supplier-logo').html().replace(this.prevLogoSize, this.logoSize);
-        const res = $('.A1-template').children().html().replace(str, str1);
+        const res = $('.A1-template').html().replace(str, str1);
         this.prevLogoSize = this.logoSize;
         tmp = res;
       }
@@ -165,7 +165,7 @@ export class PreviewA1Component implements DoCheck {
         tmp = res;
       }
 
-      this.outputCode = tmp;
+      this.outputCode = this.css.getA1CSS() + ' <!-- Homepage A1 Ad -->' + tmp + ' <!-- Homepage A1 Ad -->';
       // this.A1Code.emit(tmp);
 
       this.impexCode = tmp.replace(/"/g, '""');
