@@ -1,9 +1,9 @@
 export class AppCss {
   public css: string;
-  
+
   getGlobalCSS() {
     this.css = 
-    '      <style >' + 
+    '      <style >' +
     '.body .c-search__suggestions.ui-menu-item {display:none!important;}' +
     '.searchSpellingSuggestionPrompt {display:none;}' +
     '.c-hero.c-hero--one_third.onethirdcol img { height: auto;}' +
@@ -31,10 +31,60 @@ export class AppCss {
      'img.bg-white-transparent {' +
         'background-color: rgba(255,255,255,0.9);' +
         'padding: 10px;' +
-    '}' 
+    '}' +
 
     '</style>';
-    return this.css; 
+    return this.css;
+  }
+
+  getA1CSS() {
+    this.css =
+    '<style type="text/css">' +
+          ' div.home-a1-ad .c-hero--full .c-hero__image-wrap .c-hero__image {height: 410px !important;}' +
+          ' div.home-a1-ad .c-hero__copy.c-hero__copy--align-right {text-align: right;max-width: 55%;}' +
+          ' div.home-a1-ad .c-hero__copy.c-hero__copy--align-left {text-align: left;max-width: 55%;}' +
+          ' div.home-a1-ad .c-hero__copy.c-hero__copy--align-center {text-align: center;max-width: 70%;}' +
+          ' div.home-a1-ad .c-hero__action {margin-top: 18px;}' +
+          ' .a1-supplier-logo {position: relative;width: 100%;height: 100%;}' +
+          ' .a1-supplier-logo img {position: absolute;bottom: 10px;max-width:110px;}' +
+               ' .a1-supplier-logo img.left {left: 1px;}' +
+               ' .a1-supplier-logo img.right {right: 1px;}' +
+               ' .a1-supplier-logo img.small {width: 50px;}' +
+               ' .a1-supplier-logo img.medium {width: 100px;}' +
+               ' .a1-supplier-logo img.large {width: 150px;}' +
+
+          ' div.home-a1-ad div.c-hero__copy h2, div.home-a1-ad div.c-hero__copy p {line-height: 1;}' +
+
+          ' div.home-a1-ad h2.c-hero__title--size-large {font-size: 56px;}' +
+          ' div.home-a1-ad h2.c-hero__title--blue {color: #005da3;text-shadow: none;}' +
+          ' div.home-a1-ad .c-hero__sub-title--blue {color: #005ad3;}' +
+          ' div.home-a1-ad a.c-hero__action.btn--primary {border-color: #005da3;background-color: #fff;}' +
+
+          ' div.home-a1-ad .btn--primary {color: #005da3 !important;}' +
+          ' div.home-a1-ad a.btn--primary:hover {border: 2px solid #005da3;background-color: transparent;}' +
+          ' div.home-a1-ad .c-hero__sub-title--size-normal {font-size: 18px;line-height: 25px;}' +
+
+          ' /********* QUERIES ********/' +
+          ' @media (max-width: 1370px) {}' +
+          ' @media (max-width: 1090px) {div.home-a1-ad .c-hero__copy {padding-left: 4%;padding-right: 4%;}}' +
+          ' @media (max-width: 1024.98px) {' +
+          ' div.home-a1-ad h2.c-hero__title--size-large {font-size: 40px;}' +
+                ' .a1-supplier-logo img {max-width:80px;}' +
+          ' div.home-a1-ad .c-hero__copy.c-hero__copy--align-right {text-align: right;max-width: 55%;}}' +
+          ' @media only screen and (max-width: 768px) {div.home-a1-ad div.c-hero__copy h2 {font-size: 42px !important;}' +
+          ' div.home-a1-ad .c-hero__sub-title--size-normal {font-size: 17px;line-height: 25px;}' +
+              ' div.home-a1-ad .c-hero__copy.c-hero__copy--align-right {text-align: right;max-width: 50%;}}' +
+          ' @media only screen and (max-width: 600px) {div.home-a1-ad div.c-hero__copy.c-hero__copy--align-left, div.home-a1-ad div.c-hero__copy.c-hero__copy--align-right {max-width: 90%;top: 7%;transform: translate(-3%, 0%);}' +
+          ' div.home-a1-ad div.c-hero__copy.c-hero__copy--align-center {max-width: 90%;top: 7%;transform: translate(-50%, 0%)}' +
+          ' div.home-a1-ad div.c-hero__copy p {line-height: 1.4;}' +
+          ' div.home-a1-ad .c-hero__sub-title--size-normal {font-size: 17px;line-height: 25px;}' +
+          ' div.home-a1-ad div.c-hero__copy h2 {font-size: 37px !important;}' +
+
+          ' div.home-a1-ad .padding{padding-bottom: 40px;}' +
+          ' div.home-a1-ad div.c-hero__copy {padding-left: 30px;}' +
+              ' .a1-supplier-logo img {max-width:80px;}}' +
+          ' </style> ';
+    return this.css;
   }
 
 }
