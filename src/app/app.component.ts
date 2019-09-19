@@ -4,7 +4,6 @@ import { AppData } from './AppData';
 import { ResizedEvent } from 'angular-resize-event';
 import { MatTabChangeEvent } from '@angular/material';
 
-
 // import jquery = require('jquery');
 // const $: JQueryStatic = jquery;
 declare var $: any;
@@ -20,7 +19,7 @@ export class AppComponent implements OnInit {
   title = 'AdShark';
   data = new AppData('', '', '', '', '', '', '', '', ''); // object to store inputs and pass around inside ads
   altLogo = ''; altImg = '';
-  button = ''; device = ''; 
+  button = ''; device = '';
   paneSize: number; rightWidth: number; leftWidth: number;
   outputCode: string; textAlign = 'left'; logoAlign = 'left'; calloutBar = 'none'
   showCode = true;
@@ -49,6 +48,13 @@ export class AppComponent implements OnInit {
 
   logoSizeOptions: any = ['small', 'medium', 'large' ];
 
+  seasonalData = {
+    prod1Link: '', prod1Name: '', prod1Img: '',
+    prod2Link: '', prod2Name: '', prod2Img: '' ,
+    prod3Link: '', prod3Name: '', prod3Img: '' ,
+    prod4Link: '', prod4Name: '', prod4Img: ''
+  };
+
   showSampleBg = false;
   showSampleLogo = false;
 
@@ -63,7 +69,7 @@ export class AppComponent implements OnInit {
     $('.seasonal-products-form').hide();
   }
 
-    /* -------- Show and Hide Sample bg and logo -----*/
+    /* -------- Show and Hide Sample bg / logo / products  -----*/
     onClickSample(field, ad) {
       if (field === 'bg') {
         if (ad === 'D1') {
@@ -97,57 +103,100 @@ export class AppComponent implements OnInit {
         } else if (ad === 6) {
           this.data.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/ForbesLogo.svg';
 
+        } else if (ad === 7) {
+          this.data.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-aura-logo-white.svg';
         }
       }
     }
 
+    onClickProductSample() {
+      this.seasonalData = {
+        // tslint:disable-next-line: max-line-length
+        prod1Link: '/1888-mills-aura-spa-collection-spa-towel-40x70-27lb-dz-white-herringbone/p/1078073?icid=1888-mills-c1-c5_hp_car_3_20190913_2_1078073',
+        prod1Name: 'Aura Spa Towel, 40″ x 70″, White Herringbone',
+        prod1Img: 'https://images.americanhotel.com/images/products/1078073_1.jpg',
+        // tslint:disable-next-line: max-line-length
+        prod2Link: '/1888-mills-aura-spa-collection-spa-towel-40x70-27lb-dz-white-diamond-velour/p/1078060?icid=1888-mills-c1-c5_hp_car_3_20190913_3_1078060',
+        prod2Name: 'Aura Spa Towel, 40″ x 70″, White Diamond Velour',
+        prod2Img: 'https://images.americanhotel.com/images/products/1078060_1.jpg',
+        // tslint:disable-next-line: max-line-length
+        prod3Link: '/1888-mills-aura-spa-collection-spa-towel-40x70-27lb-dz-solid-white-velour/p/1078059?icid=1888-mills-c1-c5_hp_car_3_20190913_4_1078059',
+        prod3Name: 'Aura Spa Towel, 40″ x 70″, Solid White Velour',
+        prod3Img: 'https://images.americanhotel.com/images/products/1078059_1.jpg',
+        // tslint:disable-next-line: max-line-length
+        prod4Link: '/1888-mills-aura-spa-towel-40-x-70-white--blue/p/1078065?icid=1888-mills-c1-c5_hp_car_3_20190913_5_1078065',
+        prod4Name: 'Aura Spa Towel, 40″ x 70″, White & Blue',
+        prod4Img: 'https://images.americanhotel.com/images/products/1078065_1.jpg'
+      };
+    }
+
+    onClearProductSample() {
+      this.seasonalData = {
+        prod1Link: '', prod1Name: '', prod1Img: '',
+        prod2Link: '', prod2Name: '', prod2Img: '' ,
+        prod3Link: '', prod3Name: '', prod3Img: '' ,
+        prod4Link: '', prod4Name: '', prod4Img: ''
+      };
+    }
+
     bgBorder(ad) {
       if (ad === 'D1') {
-        $('.sample-bg-D1').css('border', 'groove');
-        $('.sample-bg-A1Left').css('border', 'none');
-        $('.sample-bg-A1Right').css('border', 'none');
-        $('.sample-bg-email').css('border', 'none');
+        $('.sample-bg-D1').css('background-color', 'lightgray');
+        $('.sample-bg-A1Left').css('background-color', 'transparent');
+        $('.sample-bg-A1Right').css('background-color', 'transparent');
+        $('.sample-bg-email').css('background-color', 'transparent');
       } else if (ad === 'A1Left') {
-        $('.sample-bg-D1').css('border', 'none');
-        $('.sample-bg-A1Left').css('border', 'groove');
-        $('.sample-bg-A1Right').css('border', 'none');
-        $('.sample-bg-email').css('border', 'none');
+        $('.sample-bg-D1').css('background-color', 'transparent');
+        $('.sample-bg-A1Left').css('background-color', 'lightgray');
+        $('.sample-bg-A1Right').css('background-color', 'transparent');
+        $('.sample-bg-email').css('background-color', 'transparent');
       } else if (ad === 'A1Right') {
-        $('.sample-bg-D1').css('border', 'none');
-        $('.sample-bg-A1Left').css('border', 'none');
-        $('.sample-bg-A1Right').css('border', 'groove');
-        $('.sample-bg-email').css('border', 'none');
+        $('.sample-bg-D1').css('background-color', 'transparent');
+        $('.sample-bg-A1Left').css('background-color', 'transparent');
+        $('.sample-bg-A1Right').css('background-color', 'lightgray');
+        $('.sample-bg-email').css('background-color', 'transparent');
       } else if (ad === 'email') {
-        $('.sample-bg-D1').css('border', 'none');
-        $('.sample-bg-A1Left').css('border', 'none');
-        $('.sample-bg-A1Right').css('border', 'none');
-        $('.sample-bg-email').css('border', 'groove');
+        $('.sample-bg-D1').css('background-color', 'transparent');
+        $('.sample-bg-A1Left').css('background-color', 'transparent');
+        $('.sample-bg-A1Right').css('background-color', 'transparent');
+        $('.sample-bg-email').css('background-color', 'lightgray');
       }
     }
 
     logoBorder(ad) {
       if (ad === 1) {
-        $('.sample-logo-1').css('border', 'groove');
-        $('.sample-logo-2, .sample-logo-3, .sample-logo-4, .sample-logo-5, .sample-logo-6').css('border', 'none');
+        $('.sample-logo-1').css('background-color', 'lightgray');
+        // tslint:disable-next-line: max-line-length
+        $('.sample-logo-2, .sample-logo-3, .sample-logo-4, .sample-logo-5, .sample-logo-6, .sample-logo-7').css('background-color', 'transparent');
       } else if (ad === 2) {
-        $('.sample-logo-2').css('border', 'groove');
-        $('.sample-logo-1, .sample-logo-3, .sample-logo-4, .sample-logo-5, .sample-logo-6').css('border', 'none');
+        $('.sample-logo-2').css('background-color', 'lightgray');
+        // tslint:disable-next-line: max-line-length
+        $('.sample-logo-1, .sample-logo-3, .sample-logo-4, .sample-logo-5, .sample-logo-6, .sample-logo-7').css('background-color', 'transparent');
 
       } else if (ad === 3) {
-        $('.sample-logo-3').css('border', 'groove');
-        $('.sample-logo-1, .sample-logo-2, .sample-logo-4, .sample-logo-5, .sample-logo-6').css('border', 'none');
+        $('.sample-logo-3').css('background-color', 'lightgray');
+        // tslint:disable-next-line: max-line-length
+        $('.sample-logo-1, .sample-logo-2, .sample-logo-4, .sample-logo-5, .sample-logo-6, .sample-logo-7').css('background-color', 'transparent');
 
       } else if (ad === 4) {
-        $('.sample-logo-4').css('border', 'groove');
-        $('.sample-logo-1, .sample-logo-2, .sample-logo-3, .sample-logo-5, .sample-logo-6').css('border', 'none');
+        $('.sample-logo-4').css('background-color', 'lightgray');
+        // tslint:disable-next-line: max-line-length
+        $('.sample-logo-1, .sample-logo-2, .sample-logo-3, .sample-logo-5, .sample-logo-6, .sample-logo-7').css('background-color', 'transparent');
 
       } else if (ad === 5) {
-        $('.sample-logo-5').css('border', 'groove');
-        $('.sample-logo-1, .sample-logo-2, .sample-logo-3, .sample-logo-4, .sample-logo-6').css('border', 'none');
+        $('.sample-logo-5').css('background-color', 'lightgray');
+        // tslint:disable-next-line: max-line-length
+        $('.sample-logo-1, .sample-logo-2, .sample-logo-3, .sample-logo-4, .sample-logo-6, .sample-logo-7').css('background-color', 'transparent');
 
       } else if (ad === 6) {
-        $('.sample-logo-6').css('border', 'groove');
-        $('.sample-logo-1, .sample-logo-2, .sample-logo-3, .sample-logo-4, .sample-logo-5').css('border', 'none');
+        $('.sample-logo-6').css('background-color', 'lightgray');
+        // tslint:disable-next-line: max-line-length
+        $('.sample-logo-1, .sample-logo-2, .sample-logo-3, .sample-logo-4, .sample-logo-5, .sample-logo-7').css('background-color', 'transparent');
+
+      } else if (ad === 7) {
+        $('.sample-logo-7').css('background-color', 'lightgray');
+        // tslint:disable-next-line: max-line-length
+        $('.sample-logo-1, .sample-logo-2, .sample-logo-3, .sample-logo-4, .sample-logo-5, .sample-logo-6').css('background-color', 'transparent');
 
       }
     }
@@ -376,10 +425,10 @@ export class AppComponent implements OnInit {
 
     // seasonal iframe size
     if (this.tabClick === 2 && this.rightWidth <= 1200) {
-      $('iframe').css('height', 600);
+      $('iframe').css('height', 700);
     }
     if (this.tabClick === 2 && this.rightWidth <= 768) {
-      $('iframe').css('height', 800);
+      $('iframe').css('height', 950);
     }
 
   }

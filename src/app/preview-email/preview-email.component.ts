@@ -68,7 +68,7 @@ export class PreviewEmailComponent implements DoCheck {
     // tmp = $('div.preheader').parent().html();
     // tmp = $('div.preheader').parents('div#email').html();
     tmp = $('.email-template').find('tr').html();
-
+    
     this.setHeadcolor(this.txtColor[0].color);
     this.setParacolor(this.txtColor[2].color);
 
