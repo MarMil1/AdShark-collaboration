@@ -257,7 +257,7 @@ export class AppComponent implements OnInit {
 
       // D1 tab
       case 0:
-        $('.sample-logo').css('margin-top', '22px'); // sample logo
+        $('background-label').html('Background');
         this.listofColor[2] = 'white';
         // this.outputCode = this.previewCode.D1;
         this.tabClick = e.index;
@@ -265,14 +265,18 @@ export class AppComponent implements OnInit {
         $('.callout-bar').hide();
         $('.text-alignment').hide();
         $('.logo-alignment').hide();
+        $('.headline-color').show();
         $('.subheadline-form').show();
+        $('.subheadline-color').show();
         $('.paragraph-form').hide();
+        $('.paragraph-color').show();
         $('.background-form').show();
         $('.foreground-form').hide();
         $('.logo-size').hide();
         $('.checkbox-bg-white').show();
         $('.plus-minus-logoWidth').show();
         $('.button-link-form').show();
+        $('.button-options-form').show();
         $('.seasonal-products-form').hide();
 
         if (this.txtColor[0].color === 'red') {
@@ -284,7 +288,6 @@ export class AppComponent implements OnInit {
 
       // A1 tab
       case 1:
-        $('.sample-logo').css('margin-top', '22px'); // sample logo
         $('.background-label').html('Background');
         $('.A1-iframe').css('height', 410);
         this.listofColor[2] = 'white';
@@ -294,14 +297,18 @@ export class AppComponent implements OnInit {
         $('.callout-bar').hide();
         $('.text-alignment').show();
         $('.logo-alignment').show();
+        $('.headline-color').show();
         $('.subheadline-form').show();
+        $('.subheadline-color').show();
         $('.paragraph-form').hide();
+        $('.paragraph-color').show();
         $('.background-form').show();
         $('.foreground-form').hide();
         $('.logo-size').show();
         $('.checkbox-bg-white').show();
         $('.plus-minus-logoWidth').hide();
         $('.button-link-form').show();
+        $('.button-options-form').show();
         $('.seasonal-products-form').hide();
 
         if (this.txtColor[0].color === 'red') {
@@ -313,8 +320,6 @@ export class AppComponent implements OnInit {
 
         // Seasonal tab
         case 2:
-          $('.sample-logo').css('margin-top', '46px'); // sample logo
-          $('.background-label').html('Hero Image');
           $('seasonal-iframe').css('height', 410);
           // this.outputCode = this.previewCode.seasonal;
           this.tabClick = e.index;
@@ -322,21 +327,29 @@ export class AppComponent implements OnInit {
           $('.callout-bar').hide();
           $('.text-alignment').hide();
           $('.logo-alignment').hide();
+          $('.headline-color').hide();
           $('.subheadline-form').show();
+          $('.subheadline-color').hide();
           $('.paragraph-form').show();
+          $('.paragraph-color').hide();
           $('.background-form').hide();
           $('.foreground-form').hide();
           $('.logo-size').hide();
           $('.checkbox-bg-white').hide();
           $('.plus-minus-logoWidth').show();
           $('.button-link-form').show();
+          $('.button-options-form').hide();
           $('.seasonal-products-form').show();
+
+          if (this.button === 'none') {
+            this.button = '';
+            this.disabledButton = false;
+          }
 
           break;
 
         // Email tab
         case 3:
-          $('.sample-logo').css('margin-top', '46px'); // sample logo
           $('.background-label').html('Hero Image');
           $('email-iframe').css('height', 530);
           this.listofColor[2] = 'red';
@@ -346,14 +359,18 @@ export class AppComponent implements OnInit {
           $('.callout-bar').show();
           $('.text-alignment').hide();
           $('.logo-alignment').hide();
+          $('.headline-color').show();
           $('.subheadline-form').hide();
+          $('.subheadline-color').show();
           $('.paragraph-form').show();
+          $('.paragraph-color').show();
           $('.background-form').show();
           $('.foreground-form').hide();
           $('.logo-size').hide();
           $('.checkbox-bg-white').hide();
           $('.plus-minus-logoWidth').hide();
           $('.button-link-form').hide();
+          $('.button-options-form').show();
           $('.seasonal-products-form').hide();
 
           if (this.txtColor[0].color === 'white') {
