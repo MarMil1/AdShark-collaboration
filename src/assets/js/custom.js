@@ -69,6 +69,11 @@ function insertLogo(logo, ad) {
     case 'A1':
       $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
       break;
+
+    case 'Seasonal':
+      $('.Seasonal-iframe').contents().find('#Seasonallogo').attr('src', logo);
+      break;
+
     case 'email':
         $('.email-iframe').contents().find('#emaillogo').attr('src', logo);
         $('.email-iframe').contents().find('#emaillogo').attr('height', 51);
@@ -94,6 +99,27 @@ function insertWidth(width) {
 function insertCalloutBar(bar) {
   $('.email-iframe').contents().find('#calloutHTML').html(bar);
 }
+
+/* Inset headline into seasoncal iframe */
+function insertHeadline(headline) {
+  $('.Seasonal-iframe').contents().find('.container').find('h4').text(headline);
+}
+/* Insert products img for seasonal preventing flicker */
+function insertProductImages(products) {
+  $('.Seasonal-iframe').contents().find('#Seasonal-prod1').find('img').attr('src', products.prod1Img);
+  $('.Seasonal-iframe').contents().find('#Seasonal-prod2').find('img').attr('src', products.prod2Img);
+  $('.Seasonal-iframe').contents().find('#Seasonal-prod3').find('img').attr('src', products.prod3Img);
+  $('.Seasonal-iframe').contents().find('#Seasonal-prod4').find('img').attr('src', products.prod4Img);
+}
+
+function insertProductNames(products) {
+  $('.Seasonal-iframe').contents().find('#Seasonal-prod1').find('span').text(products.prod1Name);
+  $('.Seasonal-iframe').contents().find('#Seasonal-prod2').find('span').text(products.prod2Name);
+  $('.Seasonal-iframe').contents().find('#Seasonal-prod3').find('span').text(products.prod3Name);
+  $('.Seasonal-iframe').contents().find('#Seasonal-prod4').find('span').text(products.prod4Name);
+}
+
+/* ----- SEASONAL COMPONENT ------ */
 
 /* Download files */
 function download(filename, text) {

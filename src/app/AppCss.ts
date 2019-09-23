@@ -2,7 +2,7 @@ export class AppCss {
   public css: string;
 
   getGlobalCSS() {
-    this.css = 
+    this.css =
     '      <style >' +
     '.body .c-search__suggestions.ui-menu-item {display:none!important;}' +
     '.searchSpellingSuggestionPrompt {display:none;}' +
@@ -84,6 +84,34 @@ export class AppCss {
           ' div.home-a1-ad div.c-hero__copy {padding-left: 30px;}' +
               ' .a1-supplier-logo img {max-width:80px;}}' +
           ' </style> ';
+    return this.css;
+  }
+
+  getSeasonalCSS() {
+    this.css =
+    '<style type="text/css">' +
+    ' .seasonalComponent-block {display: flex;flex-wrap: nowrap;margin: 20px auto;}' +
+    ' .seasonalComponent-block a.seasonalComponent-item {background: #fff;border: 2px solid transparent;border-radius: 4px;display: block;min-height: 250px;padding: 21px;text-align: center;text-decoration: none;max-width: 198px;margin: 12px auto;color: #005da4;font-weight: 600;line-height: 1.2;}' +
+    ' .seasonalComponent-block a.seasonalComponent-item:hover {border-color: #005da3;box-shadow: 0 0 7px rgba(0, 0, 0, 0.15);}' +
+    ' .seasonalComponent-callout-inner p {font-size: 16px;line-height: 1.4;}' +
+    ' .seasonalComponent-callout-inner img {width: 100px;}' +
+    ' .seasonalComponent-block div.seasonalComponent-callout {background-color: #004c86;background-image: -webkit-linear-gradient(-35deg, #013A6B 50%, #005da3 50%);background-image: linear-gradient(-60deg, #013A6B 50%, #005da3 50%);width: 330px;height: 275px;display: flex;align-items: center;justify-content: center;}' +
+    ' .seasonalComponent-block a.seasonalComponent-item span {width: 100%;text-align: center;margin: 0 0 15px 0;}' +
+    ' .seasonalComponent-callout-inner {max-width: 90%;}' +
+    ' .seasonalComponent-callout-inner img {max-width: 180px;display: block;}' +
+    ' a.seasonalComponent-item img {padding-bottom: 15px;}' +
+    ' /* Media Queries */ /* desktop breakpoint */' +
+    ' @media (max-width: 1200px) {.seasonalComponent-block {flex-wrap: wrap;}' +
+    ' .seasonalComponent-block div.seasonalComponent-callout {width: 100%;}' +
+    ' .seasonalComponent-block a.seasonalComponent-item {width: 165px;}}' +
+    ' /* tablet breakpoint */' +
+    ' @media (max-width: 992px) {}' +
+    ' /* mobile breakpoint */' +
+    ' @media (max-width: 768px) {.seasonalComponent-block a.seasonalComponent-item {width: 198px;}}' +
+    ' /* xs mobile breakpoint */' +
+    ' @media (max-width: 576px) {}' +
+    ' /* // Media Queries */' +
+    ' </style> ';
     return this.css;
   }
 
