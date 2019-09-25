@@ -5,7 +5,9 @@ import { MatSnackBar } from '@angular/material';
 
 declare const insertGlobalcss: any;
 declare const insertLogo: any;
-declare const insertHeadline: any;
+declare const insertWidth: any;
+declare const insertWhiteBGLogo: any;
+declare const insertSeasonalHeadline: any;
 declare const insertProductNames: any;
 declare const insertProductImages: any;
 declare const insertSeasonal: any;
@@ -26,11 +28,9 @@ export class PreviewSeasonalComponent implements DoCheck {
   @Input() altLogo: string;
   @Input() button: string;
   @Input() device: string;
-  @Input() logoSize: string;
+  @Input() logoWidth: number;
   @Input() txtColor: any = [];
   @Input() whiteBGLogo: boolean;
-  @Input() textAlign: string;
-  @Input() logoAlign: string;
   // @Output() SeasonalCode = new EventEmitter();
   buttonLink: string;
   SeasonaliframeCode: string;
@@ -43,8 +43,10 @@ export class PreviewSeasonalComponent implements DoCheck {
   ngDoCheck() {
     insertGlobalcss(this.css.getGlobalCSS);
     insertLogo(this.data.logoURL, 'Seasonal');
+    insertWidth(this.logoWidth);
+    insertWhiteBGLogo(this.whiteBGLogo, 'Seasonal');
     insertProductImages(this.seasonalData);
-    insertHeadline(this.data.headline);
+    insertSeasonalHeadline(this.data.headline);
     insertProductNames(this.seasonalData);
 
     this.getHTML();

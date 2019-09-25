@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material';
 declare const insertA1: any;
 declare const insertbg: any;
 declare const insertLogo: any;
+declare const insertWhiteBGLogo: any;
 declare const insertGlobalcss: any;
 declare const download: any;
 declare var $: any;
@@ -29,6 +30,7 @@ export class PreviewA1Component implements DoCheck {
   @Input() textAlign: string;
   @Input() logoAlign: string;
   // @Output() A1Code = new EventEmitter();
+  defaultBg = 'https://images.americanhotel.com/images/banners/A1-placeholder-widescreen.jpg';
   buttonLink: string;
   A1iframeCode: string;
   outputCode: string;
@@ -40,26 +42,14 @@ export class PreviewA1Component implements DoCheck {
 
   ngDoCheck() {
     insertGlobalcss(this.css.getGlobalCSS);
-
-    if (this.data.bgURL === '') {
-      const tmpBg = 'https://images.americanhotel.com/images/banners/A1-placeholder-widescreen.jpg';
-      insertbg(tmpBg, 'A1');
-    } else {
-      insertbg(this.data.bgURL, 'A1');
-    }
+    // this.data.bgURL === '' ? insertbg(this.defaultBg, 'A1') : insertbg(this.data.bgURL, 'A1');
+    insertbg(this.data.bgURL, 'A1')
 
     insertLogo(this.data.logoURL, 'A1');
+    insertWhiteBGLogo(this.whiteBGLogo, 'A1');
 
     $('.A1-iframe ').contents().find('#A1logo').removeClass(this.prevLogoAlign).addClass(this.logoAlign);
     $('.A1-iframe ').contents().find('#A1logo').removeClass(this.prevLogoSize).addClass(this.logoSize);
-
-    if (this.whiteBGLogo === true) {
-      $('.A1-iframe').contents().find('#A1logo').addClass('bg-white-transparent');
-      $('.A1-template').find('.a1-supplier-logo').find('img').addClass('bg-white-transparent');
-    } else {
-      $('.A1-iframe').contents().find('#A1logo').removeClass('bg-white-transparent');
-      $('.A1-template').find('div.a1-supplier-logo').find('img').removeClass('bg-white-transparent');
-    }
 
     this.getHTML();
   }
