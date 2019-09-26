@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, ViewEncapsulation, DoCheck } fr
 import { AppData } from '../AppData';
 import { MatSnackBar } from '@angular/material';
 
-declare const insertEmail: any;
+declare const insertCodeBlock: any;
 declare const insertbg: any;
 declare const insertLogo: any;
 declare const insertCalloutBar: any;
@@ -68,7 +68,7 @@ export class PreviewEmailComponent implements DoCheck {
     // tmp = $('div.preheader').parent().html();
     // tmp = $('div.preheader').parents('div#email').html();
     tmp = $('.email-template').find('tr').html();
-    
+
     this.setHeadcolor(this.txtColor[0].color);
     this.setParacolor(this.txtColor[2].color);
 
@@ -124,7 +124,7 @@ export class PreviewEmailComponent implements DoCheck {
 
       this.emailiframeCode = this.emailiframeCode.substring(this.emailiframeCode.search('<tr class="start-headline"'), this.emailiframeCode.search('<tr class="logo"'));
 
-      insertEmail(this.emailiframeCode);
+      insertCodeBlock(this.emailiframeCode, 'email');
 
     } catch (err) { }
 
