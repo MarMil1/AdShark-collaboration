@@ -4,13 +4,13 @@ import { AppCss } from '../AppCss';
 import { MatSnackBar } from '@angular/material';
 
 declare const insertGlobalcss: any;
+declare const insertCodeBlock: any;
 declare const insertLogo: any;
 declare const insertWidth: any;
 declare const insertWhiteBGLogo: any;
 declare const insertSeasonalHeadline: any;
 declare const insertProductNames: any;
 declare const insertProductImages: any;
-declare const insertSeasonal: any;
 declare const download: any;
 declare var $: any;
 
@@ -62,14 +62,22 @@ export class PreviewSeasonalComponent implements DoCheck {
   }
 
   getHTML() {
-    let tmp: string;
-    tmp = $('.Seasonal-template').html();
 
     try {
+      let tmp: string;
 
-      this.outputCode = tmp;
+      /* If headline color is black */
+      if (this.txtColor[0].color === 'black') {
+        $('h4').removeClass('c-carousel__headline c-carousel__headline--red');
+        $('.Seasonal-iframe').contents().find('h4').removeClass('c-carousel__headline c-carousel__headline--red');
+      } else if (this.txtColor[0].color === 'red') {
+        $('h4').addClass('c-carousel__headline c-carousel__headline--red');
+        $('.Seasonal-iframe').contents().find('h4').addClass('c-carousel__headline c-carousel__headline--red');
+      }
 
-      // this.SeasonaliframeCode = this.outputCode;
+      tmp = $('.Seasonal-template').html();
+
+      this.outputCode = this.outputCode = this.css.getSeasonalCSS() + tmp;
 
       this.impexCode = tmp.replace(/"/g, '""');
 
@@ -79,7 +87,7 @@ export class PreviewSeasonalComponent implements DoCheck {
       '<a href="' + this.data.buttonURL + '" class="btn btn--secondary">' + this.data.buttonTxt + '</a>';
 
       this.SeasonaliframeCode = this.getScript(this.SeasonaliframeCode);
-      insertSeasonal(this.SeasonaliframeCode);
+      insertCodeBlock(this.SeasonaliframeCode, 'Seasonal');
 
     } catch (err) { }
 

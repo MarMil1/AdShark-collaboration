@@ -3,12 +3,12 @@ import { AppData } from '../AppData';
 import { AppCss } from '../AppCss';
 import { MatSnackBar } from '@angular/material';
 
-declare const insertD1: any;
+declare const insertGlobalcss: any;
+declare const insertCodeBlock: any;
 declare const insertbg: any;
 declare const insertLogo: any;
 declare const insertWidth: any;
-declare const  insertWhiteBGLogo: any;
-declare const insertGlobalcss: any;
+declare const insertWhiteBGLogo: any;
 declare const download: any;
 declare var $: any;
 
@@ -41,8 +41,8 @@ export class PreviewD1Component implements DoCheck {
   ngDoCheck() {
     insertGlobalcss(this.css.getGlobalCSS());
     insertbg(this.data.bgURL, 'D1');
-    insertWidth(this.logoWidth);
     insertLogo(this.data.logoURL, 'D1');
+    insertWidth(this.logoWidth);
     insertWhiteBGLogo(this.whiteBGLogo, 'D1');
 
     this.getHTML();
@@ -128,12 +128,12 @@ export class PreviewD1Component implements DoCheck {
       this.impexCode = tmp.replace(/"/g, '""');
 
       this.D1iframeCode =
-      '<h2 class="c-hero__title c-hero__title--' + this.txtColor[0].color + ' c-hero__title--weight-extrabold c-hero__title--size-normal">' + this.data.headline + '</h2>' +
+      '<h2 class="c-hero__title c-hero__title--' + this.txtColor[0].color + ' c-hero__title--weight-extrabold c-hero__title--size-normal pt-3">' + this.data.headline + '</h2>' +
       '<h3 class="c-hero__sub-title c-hero__sub-title--' + this.txtColor[1].color + ' c-hero__sub-title--weight-regular c-hero__sub-title--size-normal">' + this.data.subline + '</h3>' +
       '<a class="btn btn--' + this.button + ' c-hero__action" href="' + this.data.buttonURL + '" title="' + tmpButtonTxt + '">' + tmpButtonTxt + '</a>';
 
       this.D1iframeCode = this.getScript(this.D1iframeCode);
-      insertD1(this.D1iframeCode);
+      insertCodeBlock(this.D1iframeCode, 'D1');
 
     } catch (err) { }
 
