@@ -32,6 +32,9 @@ export class PreviewEmailComponent implements DoCheck {
   constructor(private snackBar: MatSnackBar) {}
 
   ngDoCheck() {
+
+    console.log();
+
     insertbg(this.data.bgURL, 'email');
     insertLogo(this.data.logoURL, 'email');
 
