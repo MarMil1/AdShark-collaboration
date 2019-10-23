@@ -5,60 +5,18 @@
 //   iframe.src = 'data:text/html,' + encodeURIComponent(html);
 // }
 
-var bgImage;
-
-/* Insert global css in iframe */
-function insertGlobalcss(css) {
-  $('.D1-iframe').contents().find('#globalcss').html(css);
-  $('.A1-iframe').contents().find('#globalcss').html(css);
-  $('.Seasonal-iframe').contents().find('#globalcss').html(css);
-}
-
 /* Insert block of code in iframe */
 function insertCodeBlock(code, ad) {
-  switch (ad) {
-    case 'D1':
-      $('.D1-iframe').contents().find('#D1HTML').html(code);
-      break;
-
-    case 'A1':
-        $('.A1-iframe').contents().find('#A1HTML').html(code);
-      break; 
-    
-    case 'Seasonal':
-        $('.Seasonal-iframe').contents().find('#SeasonalHTML').html(code);
-      break;
-      
+  switch (ad) {     
     case 'email':
         $('.email-iframe').contents().find('#emailHTML').html(code);
       break;
   }
-
 }
 
 /* Insert background in iframe */
 function insertbg(img, ad) {
-  switch (ad) {
-    case 'D1':
-      var defaultbg = 'https://images.americanhotel.com/images/banners/D1-placeholder.jpg';
-      img == '' ? bgImage = defaultbg : bgImage = img;
-      $('.D1-iframe').contents().find('#D1bg').attr('src', bgImage);
-      break;
-
-    case 'A1':
-      var A1bg = $('.A1-iframe');
-      var defaultbg = 'https://images.americanhotel.com/images/banners/A1-placeholder-widescreen.jpg';
-      img == '' ? bgImage = defaultbg : bgImage = img;
-      A1bg.contents().find('#A1bg').attr('src', bgImage);
-
-      var img1 = bgImage;
-      var str = img1.substring(img1.search('widescreen'), img1.search('widescreen') + 10);
-      A1bg.contents().find('#A1Mobile').attr('srcset', img1.replace(str, 'mobile'));
-      A1bg.contents().find('#A1Tablet').attr('srcset', img1.replace(str, 'tablet'));
-      A1bg.contents().find('#A1Desktop').attr('srcset', img1.replace(str, 'desktop'));   
-      A1bg.contents().find('#A1Wide').attr('srcset', img);  
-      break; 
-      
+  switch (ad) {     
     case 'email':
       $('.email-iframe').contents().find('#emailbg').attr('src', img);
   }
@@ -68,13 +26,6 @@ function insertbg(img, ad) {
 /* Insert logo in iframe */
 function insertLogo(logo, ad) {
   switch (ad) {
-    case 'D1':
-      $('.D1-iframe').contents().find('#D1logo').attr('src', logo);
-      break;
-    case 'A1':
-      $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
-      break;
-
     case 'Seasonal':
       $('.Seasonal-iframe').contents().find('#Seasonallogo').attr('src', logo);
       break;
@@ -94,74 +45,11 @@ function insertLogo(logo, ad) {
 
 }
 
-/* Insert logo width in iframe */
-function insertWidth(width) {
-  $('.D1-iframe').contents().find('#D1logo').attr('width', width);
-  $('.Seasonal-iframe').contents().find('#Seasonallogo').attr('width', width);
-  // console.log($('.A1-iframe').contents().find('#A1logo').parent().html());
-}
-
 /* Insert collout bar in iframe */
 function insertCalloutBar(bar) {
   $('.email-iframe').contents().find('#calloutHTML').html(bar);
 }
 
-/* Insert white backgrounf under logo */
-function insertWhiteBGLogo(white, ad) {
-  switch (ad) {
-    case 'D1':
-      if (white) {
-        $('.D1-template').find('img.pb-2').addClass('bg-white-transparent');        
-        $('.D1-iframe').contents().find('#D1logo').addClass('bg-white-transparent');
-      } else {
-        $('.D1-template').find('img.pb-2').removeClass('bg-white-transparent');
-        $('.D1-iframe').contents().find('#D1logo').removeClass('bg-white-transparent');
-      }
-      break;
-    
-    case 'A1':
-      if (white) {
-        $('.A1-iframe').contents().find('#A1logo').addClass('bg-white-transparent');
-        $('.A1-template').find('.a1-supplier-logo').find('img').addClass('bg-white-transparent');
-      } else {
-        $('.A1-iframe').contents().find('#A1logo').removeClass('bg-white-transparent');
-        $('.A1-template').find('div.a1-supplier-logo').find('img').removeClass('bg-white-transparent');
-      }
-      break;
-    
-    case 'Seasonal':
-      if (white) {
-        $('.Seasonal-iframe').contents().find('#Seasonallogo').addClass('bg-white-transparent');
-        $('.Seasonal-template').find('.mx-auto').addClass('bg-white-transparent');
-      } else {
-        $('.Seasonal-iframe').contents().find('#Seasonallogo').removeClass('bg-white-transparent');
-        $('.Seasonal-template').find('.mx-auto').removeClass('bg-white-transparent');
-      }
-      break;
-  }
-
-}
-
-/* Inset headline in seasonal iframe */
-function insertSeasonalHeadline(headline) {
-  $('.Seasonal-iframe').contents().find('.container').find('h4').text(headline);
-}
-/* Insert products img for seasonal preventing flicker */
-function insertProductImages(products) {
-  $('.Seasonal-iframe').contents().find('#Seasonal-prod1').find('img').attr('src', products.prod1Img);
-  $('.Seasonal-iframe').contents().find('#Seasonal-prod2').find('img').attr('src', products.prod2Img);
-  $('.Seasonal-iframe').contents().find('#Seasonal-prod3').find('img').attr('src', products.prod3Img);
-  $('.Seasonal-iframe').contents().find('#Seasonal-prod4').find('img').attr('src', products.prod4Img);
-}
-
-function insertProductNames(products) {
-  $('.Seasonal-iframe').contents().find('#Seasonal-prod1').find('span').text(products.prod1Name);
-  $('.Seasonal-iframe').contents().find('#Seasonal-prod2').find('span').text(products.prod2Name);
-  $('.Seasonal-iframe').contents().find('#Seasonal-prod3').find('span').text(products.prod3Name);
-  $('.Seasonal-iframe').contents().find('#Seasonal-prod4').find('span').text(products.prod4Name);
-}
-
-/* ----- SEASONAL COMPONENT ------ */
 
 /* Download files */
 function download(filename, text) {

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PreviewSeasonalComponent } from './preview-Seasonal.component';
+import { FormEmailComponent } from './form-email.component';
 
-describe('PreviewSeasonalComponent', () => {
-  let component: PreviewSeasonalComponent;
-  let fixture: ComponentFixture<PreviewSeasonalComponent>;
+describe('FormEmailComponent', () => {
+  let component: FormEmailComponent;
+  let fixture: ComponentFixture<FormEmailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PreviewSeasonalComponent ]
+      declarations: [ FormEmailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PreviewSeasonalComponent);
+    fixture = TestBed.createComponent(FormEmailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
