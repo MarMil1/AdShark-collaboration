@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     a1Data: A1Data;
     seasonalData: SeasonalData;
     device = ''; tabClick = 0;
-    a1LogoSize = 'small'; altLogo = ''; altImg = '';
+    a1LogoSize = 'large'; altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
   constructor(private workfrontService: WorkfrontService, private route: ActivatedRoute) {}

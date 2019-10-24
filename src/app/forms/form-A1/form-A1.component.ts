@@ -16,7 +16,7 @@ export class FormA1Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.logoSize = 'small';
+    this.logoSize = 'large';
   }
 
   onChangeLogoSize() {
