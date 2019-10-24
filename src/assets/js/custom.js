@@ -20,7 +20,6 @@ function insertbg(img, ad) {
     case 'email':
       $('.email-iframe').contents().find('#emailbg').attr('src', img);
   }
-
 }
 
 /* Insert logo in iframe */
@@ -42,14 +41,12 @@ function insertLogo(logo, ad) {
         $('.email-iframe').contents().find('.border-top').css('border-top', 'transparent');
       } 
   }
-
 }
 
 /* Insert collout bar in iframe */
 function insertCalloutBar(bar) {
   $('.email-iframe').contents().find('#calloutHTML').html(bar);
 }
-
 
 /* Download files */
 function download(filename, text) {

@@ -40,8 +40,9 @@
       </div>
     </div>
 
+    <!-- Logo size -->
     <div class="logo-size">
-      <mat-radio-group [(ngModel)]="logoSize" >
+      <mat-radio-group [(ngModel)]="logoSize" (change)="onChangeLogoSize()">
         <mat-radio-button *ngFor="let size of listofLogoSize" [value]="size">{{size | titlecase}}</mat-radio-button>
       </mat-radio-group>
     </div>
@@ -61,7 +62,7 @@
   <!-- Callout sale -->
   <div *ngIf="a1Data.data.parameterValues['DE:Sale Call-Out']=='Yes'" class="callout-text">
     <label for="Sale"><h5 class="text-primary mr-3">Callout Text</h5></label>
-    <input class="form-control" style="width: 350px" type="text" [(ngModel)]="a1Data.data.parameterValues['DE:Text for Sale Call-Out']" placeholder="Text" />
+    <input class="form-control" style="width: 350px" type="text" [(ngModel)]="a1Data.data.parameterValues['DE:Text for Sale Call-Out']" placeholder="Ex. sale 99%!" />
   </div>
 </div>
 
@@ -90,16 +91,16 @@
   <textarea class="form-control ad-field" type="text" [(ngModel)]="a1Data.data.parameterValues['DE:Sub-Headline']" rows="2" placeholder="Text"></textarea>
 </div>
 
-<!-- Button -->
-<div class="button-form mb-3">
-  <!-- Button Link -->
-  <div class="button-link-form mb-3">
-    <label for="ButtonLink"><h5 class="text-primary">CTA Link</h5></label> 
+<!-- CTA -->
+<div class="CTA-form mb-3">
+  <!-- CTA Link -->
+  <div class="CTA-link-form mb-3">
+    <label for="CTALink"><h5 class="text-primary">CTA Link</h5></label> 
     <input class="form-control ad-field" type="text" [(ngModel)]="a1Data.data.parameterValues['DE:CTA URL']" placeholder="URL" />
   </div>
   <!-- Button Text -->
   <div>
-    <label for="ButtonText"><h5 class="text-primary">CTA Text</h5></label> 
+    <label for="CTAText"><h5 class="text-primary">CTA Text</h5></label> 
       <input class="form-control" style="width:300px" type="text" [(ngModel)]="a1Data.data.parameterValues['DE:CTA text']" placeholder="Text" /> 
   </div>
 </div>

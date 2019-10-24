@@ -18,7 +18,7 @@
           <!--(d1Data)="getDataFields($event, 'D1')"-->
         </div>
         <div *ngIf="tabClick==1">
-          <app-form-A1 [a1Data]="a1Data"></app-form-A1>
+          <app-form-A1 [a1Data]="a1Data" (a1LogoSize)="receiveA1Logosize($event)"></app-form-A1>
         </div>
         <div *ngIf="tabClick==2">
           <app-form-seasonal [seasonalData]="seasonalData" [altLogo]="altLogo" [altImg]="altImg"></app-form-seasonal>
@@ -260,7 +260,7 @@
             <app-preview-D1 [d1Data]="d1Data" [altLogo]="altLogo" [altImg]="altImg"></app-preview-D1>
           </mat-tab>
           <mat-tab label="Hero Banner">
-            <app-preview-A1 [a1Data]="a1Data"></app-preview-A1>
+            <app-preview-A1 [a1Data]="a1Data" [a1LogoSize]="a1LogoSize"></app-preview-A1>
           </mat-tab>
           <mat-tab label="Seasonal Component">
             <app-preview-seasonal [seasonalData]="seasonalData" [altLogo]="altLogo"></app-preview-seasonal>

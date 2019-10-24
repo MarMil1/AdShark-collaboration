@@ -14,42 +14,37 @@ import { WorkfrontService } from '../services/workfront.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    // data = new AppData(); // object to store inputs and pass around inside ads
-    altLogo = ''; altImg = '';
-    button = ''; device = '';
-    paneSize: number; rightWidth: number; leftWidth: number;
-    showCode = true;
-    tabClick = 0;
-    logoWidth: number;
-    logoSize = 'small';
-    previewCode: any = [];
-    listofAlignment = ['left', 'center', 'right'];
-    listofCalloutBar = ['none', 'sale', 'no sale'];
-    logoSizeOptions: any = ['small', 'medium', 'large' ];
-
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
+    device = ''; tabClick = 0;
+    a1LogoSize = 'small'; altLogo = ''; altImg = '';
+    paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
   constructor(private workfrontService: WorkfrontService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.paramMap
     .subscribe(param => this.workfrontService.projID = param.get('id'));
-    console.log(this.workfrontService.projID);
+    // console.log(this.workfrontService.projID);
 
     this.d1Data = new D1Data();
     this.seasonalData = new SeasonalData();
     this.a1Data = new A1Data();
+
+    this.workfrontService.getData().subscribe((res) => {
+      if (res.data.name.includes('Ad Builder')) {
+        this.a1Data = res;
+      }
+    });
   }
 
   onClickGenerate() {
-    this.workfrontService.getData()
-    .subscribe((res) => {
-        if (res.data.name.includes('Ad Builder')) {
-          this.a1Data = res;
-        }
-    }, error => throwError);
+    this.workfrontService.getData().subscribe((res) => {
+      if (res.data.name.includes('Ad Builder')) {
+        this.a1Data = res;
+      }
+    });
   }
 
   onSubmit() {
@@ -63,8 +58,13 @@ export class HomeComponent implements OnInit {
     this.a1Data = new A1Data();
   }
 
+  /* Listen when when typing */
   @HostListener('document:keyup', ['$event'])
   keyEvent(event) {}
+
+  receiveA1Logosize(size) {
+    this.a1LogoSize = size;
+  }
 
   /* Check what tab is on */
   onTabClick(e: MatTabChangeEvent) {

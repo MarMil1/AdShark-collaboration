@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { A1Data } from 'src/app/models/A1Data';
 
 @Component({
@@ -9,6 +9,7 @@ import { A1Data } from 'src/app/models/A1Data';
 })
 export class FormA1Component implements OnInit {
   @Input() a1Data: A1Data;
+  @Output() a1LogoSize = new EventEmitter();
   logoSize: string;
   listofLogoSize = ['small', 'medium', 'large'];
 
@@ -16,6 +17,10 @@ export class FormA1Component implements OnInit {
 
   ngOnInit(): void {
     this.logoSize = 'small';
+  }
+
+  onChangeLogoSize() {
+    this.a1LogoSize.emit(this.logoSize);
   }
 
   onChangeLogo() {
@@ -27,15 +32,18 @@ export class FormA1Component implements OnInit {
   onChangeCallout() {
     if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'Yes') {
       this.a1Data.data.parameterValues['DE:Background color behind text'] = 'White';
-      this.a1Data.data.parameterValues['DE:Hex #'] = '';
-    } else {
+      this.a1Data.data.parameterValues['DE:Hex #'] = '#FFFFFF';
+      this.a1Data.data.parameterValues['DE:Text for Sale Call-Out'] = 'call out goes here!';
+    } else if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'No') {
       this.a1Data.data.parameterValues['DE:Text for Sale Call-Out'] = '';
     }
   }
 
   getBackgroundColor() {
     if (this.a1Data.data.parameterValues['DE:Background color behind text'] === 'White') {
-      this.a1Data.data.parameterValues['DE:Hex #'] = '';
+      this.a1Data.data.parameterValues['DE:Hex #'] = '#FFFFFF';
+    } else {
+      this.a1Data.data.parameterValues['DE:Hex #'] = '#9e876b';
     }
   }
 

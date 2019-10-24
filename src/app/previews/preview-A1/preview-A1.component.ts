@@ -1,4 +1,3 @@
-import { D1Data } from 'src/app/models/D1Data';
 import { Component, Input, ViewEncapsulation, DoCheck } from '@angular/core';
 import { AppCss } from 'src/app/AppCss';
 import { MatSnackBar } from '@angular/material';
@@ -18,7 +17,7 @@ declare var $: any;
 
 export class PreviewA1Component implements IA1Iframe, DoCheck {
   @Input() a1Data: A1Data;
-  // @Input() logoSize: string;
+  @Input() a1LogoSize: string;
 
   A1iframeCode: string;
   outputCode: string;
@@ -29,10 +28,10 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
 
   ngDoCheck() {
     this.insertGlobalcss(this.css.getGlobalCSS());
+    // tslint:disable-next-line: max-line-length
     this.insertbg(this.a1Data.data.parameterValues['DE:Image for desktop - 960px x 410px'], this.a1Data.data.parameterValues['DE:Image for mobile - 480px x 205px']);
     this.insertLogo(this.a1Data.data.parameterValues['DE:Image path for logo']);
-    // $('.A1-iframe ').contents().find('#A1logo').removeClass(this.prevLogoSize).addClass(this.logoSize);
-
+    this.insertLogoSize(this.a1LogoSize);
     this.generateCode();
   }
 
@@ -49,33 +48,29 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
     let tmp: string;
 
     try {
-
-  //     /* Logo size class  */
-  //     if (this.logoSize !== this.prevLogoSize) {
-  //       const str = $('.a1-supplier-logo').html();
-  //       const str1 = $('.a1-supplier-logo').html().replace(this.prevLogoSize, this.logoSize);
-  //       const res = $('.A1-template').html().replace(str, str1);
-  //       this.prevLogoSize = this.logoSize;
-  //       tmp = res;
-  //     }
-
-      $('.a1-hero_text-wrap').attr('style', "background-color:" + this.a1Data.data.parameterValues['DE:Hex #']);
-      $('.A1-iframe').contents().find('.a1-hero_text-wrap').attr('style', "background-color:" + this.a1Data.data.parameterValues['DE:Hex #']);
-
-      if (this.a1Data.data.parameterValues['DE:Background color behind text'] !== 'White') {
-      $('.A1-template').removeClass('a1-hero_primary').addClass('a1-hero_secondary');
-      $('.A1-iframe').contents().find('.a1-hero').removeClass('a1-hero_primary').addClass('a1-hero_secondary');
-    } else {
-      $('.A1-template').removeClass('a1-hero_secondary').addClass('a1-hero_primary');
-      $('.A1-iframe').contents().find('.a1-hero').removeClass('a1-hero_secondary').addClass('a1-hero_primary');
-    }
-
+      /* Give condition for changing background color and changing between primary and secondary */
+      if (this.a1Data.data.parameterValues['DE:Background color behind text'] !== 'White'
+          && this.a1Data.data.parameterValues['DE:Hex #'].length === 7) {
+        this.insertHexColor(this.a1Data.data.parameterValues['DE:Hex #']);
+        this.insertTextColor('a1-hero_secondary');
+        $('.A1-template').find('.a1-hero').removeClass('a1-hero_primary').addClass('a1-hero_secondary');
+        $('.a1-hero_text-wrap').attr('style', 'background-color:' + this.a1Data.data.parameterValues['DE:Hex #']);
+      } else if (this.a1Data.data.parameterValues['DE:Hex #'] === '') {
+          this.insertHexColor('#FFFFFF');
+          this.insertTextColor('a1-hero_primary');
+          $('.A1-template').find('.a1-hero').removeClass('a1-hero_secondary').addClass('a1-hero_primary');
+          $('.a1-hero_text-wrap').attr('style', 'background-color:' + '#FFFFFF');
+      } else {
+        this.insertHexColor('#FFFFFF');
+        this.insertTextColor('a1-hero_primary');
+        $('.A1-template').find('.a1-hero').removeClass('a1-hero_secondary').addClass('a1-hero_primary');
+        $('.a1-hero_text-wrap').attr('style', 'background-color:' + '#FFFFFF');
+      }
 
       tmp = $('.A1-template').html();
-      this.outputCode = tmp; // this.css.getA1CSS() 
-      // this.A1Code.emit(tmp);
+      this.outputCode = this.css.getA1CSS() + tmp;
 
-      this.impexCode = tmp.replace(/"/g, '""'); 
+      this.impexCode = tmp.replace(/"/g, '""');
 
       this.A1iframeCode = $('div.a1-hero_text-wrap').html();
       this.A1iframeCode = this.getScript(this.A1iframeCode);
@@ -109,14 +104,58 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
   }
 
   insertLogo(logo: string): void {
-    $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
+    if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'No') {
+      $('.A1-iframe').contents().find('#A1logo').hide();
+      this.comment($('.A1-template').find('.a1-supplier-logo'));
+
+    } else if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
+      $('.A1-iframe').contents().find('#A1logo').show();
+      $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
+
+      if (this.isCommented($('.A1-template').find('.order-first'))) {
+        this.uncomment($('.A1-template').find('.order-first'));
+        $('.A1-template').find('.order-first').find('.bg-white').attr('src', this.a1Data.data.parameterValues['DE:Image path for logo']);
+      }
+    }
   }
+
+  insertLogoSize(size: string): void {
+    $('.A1-iframe').contents().find('#A1logo').removeClass('small medium large').addClass(size);
+    $('.A1-template').find('.bg-white').removeClass('small medium large').addClass(this.a1LogoSize);
+  }
+
+  insertHexColor(color: string): void {
+    $('.A1-iframe').contents().find('.a1-hero_text-wrap').attr('style', 'background-color:' + color);
+  }
+
+  insertTextColor(classname: string): void {
+    $('.A1-iframe').contents().find('.a1-hero').removeClass('a1-hero_primary a1-hero_secondary').addClass(classname);
+  }
+
+  /* comment logo element */
+  comment(element) {
+    element.wrap(() => {
+      return '<!--<div alt="" class="a1-supplier-logo">' + element.html() + '</div>-->';
+    });
+  }
+
+  uncomment(element) {
+    element.html(element.html().replace('<!--', ''));
+    element.html(element.html().replace('--&gt;', ''));
+  }
+
+  isCommented(element): boolean {
+    if (element.html() !== undefined) {
+      return element.html().includes('<!--');
+    }
+
+    return false;
+}
 
   /* Prevent default from clicking iframe button */
   getScript(html) {
     return '<script>$( document ).ready(function() { $(\'a\').click(function(e) { e.preventDefault(); }); }); </script>' + html;
   }
-
 
   /* Copy code */
   onCopy(codeType) {
