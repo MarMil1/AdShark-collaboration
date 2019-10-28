@@ -1,34 +1,4 @@
-<!-- Image provided? -->
-<div class="text-alignment mt-1 mb-3">
-  <label for="text-align"><h5 class="text-primary mr-3">Image provided?</h5></label>
-  <mat-radio-group [(ngModel)]="imageProvided">
-    <mat-radio-button value="no">No</mat-radio-button>
-    <mat-radio-button value="yes">Yes</mat-radio-button>
-  </mat-radio-group>
 
-  <!-- If no, image needed -->
-  <div *ngIf="imageProvided=='no'">
-    <label for="text-align">
-      <h5 class="text-primary mr-3">Image needed</h5>
-    </label>
-    <select class="custom-select mb-1" style="width:300px">
-      <option value="" disabled selected>Select needed</option>
-      <option value="needed1">Needed 1</option>
-      <option value="needed2">Needed 2</option>
-    </select>
-  </div>
-  
-  <!-- If yes, image type -->
-  <div *ngIf="imageProvided=='yes'">
-    <label for="text-align"><h5 class="text-primary mr-3">Image type</h5></label>
-      <select class="custom-select mb-1" style="width:300px">
-        <option value="" disabled selected>Select type</option>
-        <option value="type1">Type 1</option>
-        <option value="Lifestyle provided from server">Lifestyle provided from server</option>
-    </select>
-  </div>
-</div>
-  
 <!-- Backgroung Image for D1 -->
 <div class="background-form mb-3">
   <label for="Background"><h5 class="text-primary background-label1">Background Image</h5></label> 

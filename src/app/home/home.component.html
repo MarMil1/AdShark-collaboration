@@ -5,9 +5,7 @@
     <as-split-area class="leftPane" (resized)="onResizedLeft($event)" size="500">
       <div class="container-fluid navbar-default mt-3 mb-3">
         <nav class="">
-          <button class="btn btn-primary mr-2" (click)="onClickGenerate()">Generate data</button>
-          <button class="btn btn-success mr-2" (click)="onSubmit()">Update</button>
-          <button class="btn btn-danger mr-2" (click)="onClickClear()">Clear</button>
+          <button class="btn btn-primary mr-2" (click)="onClickGenerate()">Pull Data from Workfront</button>
         </nav>
       </div>
       <!-- <div>{{workfrontData?.data.parameterValues['DE:Image provided?']}}</div> -->
@@ -226,6 +224,13 @@
         <!-- </div> -->
         <!-- // Product info for Seasonal Component  -->
 
+
+        <nav class="">
+          <button class="btn btn-warning mr-2 mb-2" (click)="onClickClear()">Clear Form</button>
+          <button class="btn btn-secondary mr-2 mb-2" (click)="onSubmit()">Restore Previous Data</button>
+          <button class="btn btn-primary mr-2 mb-2" (click)="onSubmit()">Push Data to Workfront</button>
+          
+        </nav>
       </div>
     </as-split-area>
     <!-- </div> -->
