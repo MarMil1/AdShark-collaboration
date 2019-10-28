@@ -33,15 +33,7 @@ export class HomeComponent implements OnInit {
     this.a1Data = new A1Data();
 
     this.workfrontService.getData().subscribe((res) => {
-      if (res.data.name.includes('Ad Builder')) {
-        this.a1Data = res;
-      }
-    });
-  }
-
-  onClickGenerate() {
-    this.workfrontService.getData().subscribe((res) => {
-      if (res.data.name.includes('Ad Builder')) {
+      if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
         this.a1Data = res;
       }
     });

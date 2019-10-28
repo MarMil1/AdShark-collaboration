@@ -4,6 +4,7 @@ export class A1Data {
     name: string;
     objCode: string;
     parameterValues: {
+      ['DE:Select Ad Type']: string;
       ['DE:Image provided?']: string;
       ['DE:Image needed']: string;
       ['DE:Image type']: string;
@@ -30,6 +31,7 @@ export class A1Data {
       name: '',
       objCode: '',
       parameterValues: {
+        ['DE:Select Ad Type']: 'A1 Hero Banner',
         ['DE:Image provided?']: 'No',
         ['DE:Image needed']: '',
         ['DE:Image type']: '',
