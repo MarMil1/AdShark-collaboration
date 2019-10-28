@@ -33,10 +33,10 @@ export class WorkfrontService {
 
     this.http.put(this.cors + this.url + this.projID, null, { params })
     .subscribe(val => {
-      console.log('PUT call successful value returned in body', val)
+      console.log('PUT call successful value returned in body', val);
       alert('sucess');
     }, response => {
-      console.log('PUT call in error', response)
+      console.log('PUT call in error', response);
       alert('fail');
     }, () => {
       console.log('The PUT observable is now completed.');
