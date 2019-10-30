@@ -48,6 +48,22 @@ function insertCalloutBar(bar) {
   $('.email-iframe').contents().find('#calloutHTML').html(bar);
 }
 
+/* Copy html */
+function copy(code) {
+  let txtarea;
+  txtarea = document.createElement('textarea');
+  txtarea.style.position = 'fixed';
+  txtarea.style.left = '0';
+  txtarea.style.top = '0';
+  txtarea.style.opacity = '0';
+  txtarea.value = code;
+  document.body.appendChild(txtarea);
+  txtarea.focus();
+  txtarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(txtarea);
+}
+
 /* Download files */
 function download(filename, text) {
   var element = document.createElement('a');

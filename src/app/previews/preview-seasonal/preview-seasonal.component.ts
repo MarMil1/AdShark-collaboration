@@ -5,6 +5,7 @@ import { AppCss } from 'src/app/AppCss';
 import { ISeasonalIframe } from 'src/app/interfaces/ISeasonalIframe';
 
 declare const download: any;
+declare const copy: any;
 declare var $: any;
 
 @Component({
@@ -130,25 +131,13 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
 
   /* Copy code */
   onCopy(codeType) {
-    let copyCode = '';
+    let code = '';
     if (codeType === 'plain') {
-      copyCode = this.outputCode;
+      code = this.outputCode;
     } else if (codeType === 'impex') {
-      copyCode = $('code#impex-code').text();
+      code = $('code#impex-code').text();
     }
-
-    let txtarea: any;
-    txtarea = document.createElement('textarea');
-    txtarea.style.position = 'fixed';
-    txtarea.style.left = '0';
-    txtarea.style.top = '0';
-    txtarea.style.opacity = '0';
-    txtarea.value = copyCode;
-    document.body.appendChild(txtarea);
-    txtarea.focus();
-    txtarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(txtarea);
+    copy(code);
   }
 
   onDownload(filename, type) {

@@ -5,6 +5,7 @@ import { A1Data } from 'src/app/models/A1Data';
 import { IA1Iframe } from 'src/app/interfaces/IA1Iframe';
 
 declare const download: any;
+declare const copy: any;
 declare var $: any;
 
 @Component({
@@ -159,25 +160,13 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
 
   /* Copy code */
   onCopy(codeType) {
-    let copyCode = '';
+    let code = '';
     if (codeType === 'plain') {
-      copyCode = this.outputCode;
+      code = this.outputCode;
     } else if (codeType === 'impex') {
-      copyCode = $('code#impex-code').text();
+      code = $('code#impex-code').text();
     }
-
-    let txtarea: any;
-    txtarea = document.createElement('textarea');
-    txtarea.style.position = 'fixed';
-    txtarea.style.left = '0';
-    txtarea.style.top = '0';
-    txtarea.style.opacity = '0';
-    txtarea.value = copyCode;
-    document.body.appendChild(txtarea);
-    txtarea.focus();
-    txtarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(txtarea);
+    copy(code);
   }
 
   onDownload(filename, type) {
