@@ -10,7 +10,9 @@
       </div>
 
       <div class="container col-xs-6">
-
+        <div *ngIf="tabClick==0">
+          <app-form-D1 [d1Data]="d1Data"></app-form-D1>
+        </div>
         <div *ngIf="tabClick==1">
           <app-form-A1 [a1Data]="a1Data" (a1LogoSize)="receiveA1Logosize($event)"></app-form-A1>
         </div>
@@ -59,7 +61,9 @@
 
       <div class="mat-app-background basic-container">
         <mat-tab-group class="" (selectedTabChange)="onTabClick($event)" (click)="onTabClick($event)">
-
+          <mat-tab label="One-Third Banner">
+            <app-preview-D1 [d1Data]="d1Data"></app-preview-D1>
+          </mat-tab>
           <mat-tab label="Hero Banner">
             <app-preview-A1 [a1Data]="a1Data" [a1LogoSize]="a1LogoSize"></app-preview-A1>
           </mat-tab>

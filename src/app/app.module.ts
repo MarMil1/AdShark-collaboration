@@ -21,15 +21,19 @@ import { FormSeasonalComponent } from './forms/form-seasonal/form-seasonal.compo
 import { FormEmailComponent } from './forms/form-email/form-email.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WorkfrontService } from './services/workfront.service';
+import { FormD1Component } from './forms/form-D1/form-D1.component';
+import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       HomeComponent,
       PreviewA1Component,
+      PreviewD1Component,
       PreviewEmailComponent,
       PreviewSeasonalComponent,
       FormA1Component,
+      FormD1Component,
       FormSeasonalComponent,
       FormEmailComponent
 

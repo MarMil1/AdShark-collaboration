@@ -3,6 +3,7 @@ import { ResizedEvent } from 'angular-resize-event';
 import { MatTabChangeEvent } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { A1Data } from '../models/A1Data';
+import { D1Data } from '../models/D1Data';
 import { SeasonalData } from '../models/SeasonalData';
 import { WorkfrontService } from '../services/workfront.service';
 
@@ -12,9 +13,10 @@ import { WorkfrontService } from '../services/workfront.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+    d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
-    device = ''; tabClick = 1;
+    device = ''; tabClick = 0;
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
@@ -27,18 +29,23 @@ export class HomeComponent implements OnInit {
 
     this.seasonalData = new SeasonalData();
     this.a1Data = new A1Data();
+    this.d1Data = new D1Data();
 
     this.workfrontService.getData().subscribe((res) => {
       if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
         this.a1Data = res;
+      } else if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
+        this.d1Data = res;
       }
     });
   }
 
   onSubmit() {
-    const res = confirm('Are you sure you want to update project: "' + this.a1Data.data.name + '"?');
-    if (res === true) {
+    const res = confirm('Are you sure you want to update project?');
+    if (res === true && this.a1Data.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
       this.workfrontService.updateData(this.a1Data.data);
+    } else if (res === true && this.d1Data.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
+      this.workfrontService.updateData(this.d1Data.data);
     }
   }
 
@@ -159,7 +166,7 @@ export class HomeComponent implements OnInit {
 
   setIframeHeight() {
     if (this.rightWidth <= 500) {
-      $('.D1-iframe').css('height', 1150);
+      $('.D1-iframe').css('height', 500);
       $('.A1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
 
@@ -167,18 +174,18 @@ export class HomeComponent implements OnInit {
       $('.A1-iframe').css('height', 435);
 
     } else if (this.rightWidth <= 1024) {
-      $('.D1-iframe').css('height', 1150);
+      $('.D1-iframe').css('height', 500);
       $('.A1-iframe').css('height', 610);
       $('.email-iframe').css('height', 650);
 
     } else if (this.rightWidth <= 1280) {
-      $('.D1-iframe').css('height', 450);
+      $('.D1-iframe').css('height', 500);
       $('.A1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
       $('.Seasonal-iframe').css('height', 410);
 
     } else {
-      $('.D1-iframe').css('height', 410);
+      $('.D1-iframe').css('height', 500);
       $('.A1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
       $('.Seasonal-iframe').css('height', 410);
