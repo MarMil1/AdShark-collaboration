@@ -12,10 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PreviewA1Component } from './previews/preview-A1/preview-A1.component';
-import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
+
 import { PreviewEmailComponent } from './previews/preview-email/preview-email.component';
 import { PreviewSeasonalComponent } from './previews/preview-seasonal/preview-seasonal.component';
-import { FormD1Component } from './forms/form-D1/form-D1.component';
+
 import { FormA1Component } from './forms/form-A1/form-A1.component';
 import { FormSeasonalComponent } from './forms/form-seasonal/form-seasonal.component';
 import { FormEmailComponent } from './forms/form-email/form-email.component';
@@ -27,10 +27,8 @@ import { WorkfrontService } from './services/workfront.service';
       AppComponent,
       HomeComponent,
       PreviewA1Component,
-      PreviewD1Component,
       PreviewEmailComponent,
       PreviewSeasonalComponent,
-      FormD1Component,
       FormA1Component,
       FormSeasonalComponent,
       FormEmailComponent

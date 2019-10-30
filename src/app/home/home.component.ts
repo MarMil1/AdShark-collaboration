@@ -2,8 +2,6 @@ import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/cor
 import { ResizedEvent } from 'angular-resize-event';
 import { MatTabChangeEvent } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { throwError } from 'rxjs';
-import { D1Data } from '../models/D1Data';
 import { A1Data } from '../models/A1Data';
 import { SeasonalData } from '../models/SeasonalData';
 import { WorkfrontService } from '../services/workfront.service';
@@ -14,10 +12,9 @@ import { WorkfrontService } from '../services/workfront.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
-    device = ''; tabClick = 0;
+    device = ''; tabClick = 1;
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
@@ -28,7 +25,6 @@ export class HomeComponent implements OnInit {
     .subscribe(param => this.workfrontService.projID = param.get('id'));
     // console.log(this.workfrontService.projID);
 
-    this.d1Data = new D1Data();
     this.seasonalData = new SeasonalData();
     this.a1Data = new A1Data();
 
