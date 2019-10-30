@@ -5,6 +5,7 @@ import { ID1Iframe } from 'src/app/interfaces/ID1Iframe';
 import { D1Data } from 'src/app/models/D1Data';
 
 declare const download: any;
+declare const copy: any;
 declare var $: any;
 
 @Component({
@@ -173,26 +174,13 @@ export class PreviewD1Component implements ID1Iframe, DoCheck {
 
   /* Copy code */
   onCopy(codeType) {
-    let copyCode = '';
+    let code = '';
     if (codeType === 'plain') {
-      copyCode = this.outputCode;
-
+      code = this.outputCode;
     } else if (codeType === 'impex') {
-      copyCode = $('code#impex-code').text();
+      code = $('code#impex-code').text();
     }
-
-    let txtarea: any;
-    txtarea = document.createElement('textarea');
-    txtarea.style.position = 'fixed';
-    txtarea.style.left = '0';
-    txtarea.style.top = '0';
-    txtarea.style.opacity = '0';
-    txtarea.value = copyCode;
-    document.body.appendChild(txtarea);
-    txtarea.focus();
-    txtarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(txtarea);
+    copy(code);
   }
 
   onDownload(filename, type) {
