@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { Component, ViewEncapsulation, Input, DoCheck } from '@angular/core';
 import { D1Data } from 'src/app/models/D1Data';
 import { ID1Iframe } from 'src/app/interfaces/ID1Iframe';
 import { AppCss } from 'src/app/AppCss';
+import { MatSnackBar } from '@angular/material';
 
 declare const download: any;
 declare const copy: any;
@@ -9,7 +10,8 @@ declare const copy: any;
 @Component({
   selector: 'app-preview-D1',
   templateUrl: './preview-D1.component.html',
-  styleUrls: ['./preview-D1.component.css']
+  styleUrls: ['./preview-D1.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PreviewD1Component implements DoCheck, ID1Iframe {
   @Input() d1Data: D1Data;
@@ -18,7 +20,7 @@ export class PreviewD1Component implements DoCheck, ID1Iframe {
   outputCode: string;
   css = new AppCss();
 
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) { }
 
   ngDoCheck(): void {
     this.insertGlobalcss(this.css.getGlobalCSS());
@@ -26,15 +28,25 @@ export class PreviewD1Component implements DoCheck, ID1Iframe {
     this.generateCode();
   }
 
+  openSnackBar(msg: string, action: string, time: number) {
+    this.snackBar.open(msg, '', { duration: time });
+  }
+
+  openWindow(data, event) {
+    event.preventDefault();
+    window.open(this.d1Data.data.parameterValues['DE:CTA URL']);
+  }
+
   generateCode() {
     try {
-      let tmp = $('.D1-template').html();
+      const tmp = $('.D1-template').html();
+
       this.outputCode = tmp;
-  
-      this.D1iframeCode = $('.text-wrap').html();  
+
+      this.D1iframeCode = $('.text-wrap').html();
       this.insertCodeBlock(this.D1iframeCode);
 
-    } catch(err) {}
+    } catch (err) {}
   }
 
   insertGlobalcss(css: string): void {
@@ -44,7 +56,12 @@ export class PreviewD1Component implements DoCheck, ID1Iframe {
     $('.D1-iframe').contents().find('#D1HTML').html(code);
   }
   insertbg(img: string): void {
-    $('.D1-iframe').contents().find('#D1bg').attr('src', img);
+    const defaultImg = 'https://images.americanhotel.com/images/banners/D1-placeholder.jpg';
+    if (img !== '') {
+      $('.D1-iframe').contents().find('#D1bg').attr('src', img);
+    } else {
+      $('.D1-iframe').contents().find('#D1bg').attr('src', defaultImg);
+    }
   }
 
     /* Copy code */
@@ -57,7 +74,7 @@ export class PreviewD1Component implements DoCheck, ID1Iframe {
       }
       copy(code);
     }
-  
+
     onDownload(filename, type) {
       if (type === 'html') {
         download(filename, this.outputCode);
