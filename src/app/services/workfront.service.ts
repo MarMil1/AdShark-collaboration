@@ -26,6 +26,8 @@ export class WorkfrontService {
   }
 
   updateData(data: object) {
+    console.log(data);
+
     const updatedData = JSON.stringify(data);
     const params = new HttpParams()
     .append('apiKey', this.apiKey)
@@ -42,5 +44,5 @@ export class WorkfrontService {
       console.log('The PUT observable is now completed.');
     });
   }
-  
+
 }

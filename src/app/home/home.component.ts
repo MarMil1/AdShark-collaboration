@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
+    projectName = ''; receviedData: any;
     device = ''; tabClick = 0;
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
@@ -28,28 +29,32 @@ export class HomeComponent implements OnInit {
     // console.log(this.workfrontService.projID);
 
     this.seasonalData = new SeasonalData();
-    this.a1Data = new A1Data();
     this.d1Data = new D1Data();
+    this.a1Data = new A1Data();
 
     this.workfrontService.getData().subscribe((res) => {
+      this.projectName = res.data.name;
       if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
         this.a1Data = res;
+        this.receviedData = res;
       } else if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
         this.d1Data = res;
+        this.receviedData = res;
       }
     });
   }
 
   onSubmit() {
-    const res = confirm('Are you sure you want to update project?');
-    if (res === true && this.a1Data.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
+    const res = confirm('Are you sure you want to update "' + this.projectName + ' " project?');
+    if (res === true && this.a1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.a1Data.data);
-    } else if (res === true && this.d1Data.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
+    } else if (res === true && this.d1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.d1Data.data);
     }
   }
 
   onClickClear() {
+    this.d1Data = new D1Data();
     this.a1Data = new A1Data();
   }
 
