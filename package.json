@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href https://adshark.americanhotel.com/ && sudo ngh --dir=dist/AdShark"
+    "deploy": "ng build --prod --base-href https://adshark.americanhotel.com/ && echo 'adshark.americanhotel.com' > dist/AdShark/CNAME && sudo ngh --dir=dist/AdShark"
   },
   "private": true,
   "dependencies": {
