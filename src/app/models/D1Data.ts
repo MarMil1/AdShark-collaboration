@@ -1,29 +1,29 @@
 export class D1Data {
-  public headline: string;
-  public subline: string;
-  public imgURL: string;
-  public logoURL: string;
-  public logoWidth: number;
-  public whiteBGLogo: boolean;
-  public buttonTxt: string;
-  public buttonURL: string;
-  public buttonType: string;
-  public txtColor: any[];
-
-  constructor() {
-    this.headline = '';
-    this.subline = '';
-    this.imgURL = '';
-    this.logoURL = '';
-    this.logoWidth = 150;
-    this.whiteBGLogo = false;
-    this.buttonTxt = '';
-    this.buttonURL = '';
-    this.buttonType = '';
-    this.txtColor = [
-        { name: 'headline', color: 'blue'},
-        { name: 'subline', color: 'blue'},
-      ];
+    data: {
+      ID: string;
+      name: string;
+      objCode: string;
+      parameterValues: {
+        ['DE:Image path for 1/3 banner']: string;
+        ['DE:Sub-Headline']: string;
+        ['DE:CTA text']: string;
+        ['DE:CTA URL']: string;
+      };
+    };
+  
+    constructor() {
+      this.data = {
+        ID: '',
+        name: '',
+        objCode: '',
+        parameterValues: {
+            ['DE:Image path for 1/3 banner']: '',
+            ['DE:Sub-Headline']: '',
+            ['DE:CTA text']: '',
+            ['DE:CTA URL']: ''
+        }
+      };
+    }
+  
   }
-
-}
+  
