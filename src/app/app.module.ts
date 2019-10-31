@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule, MatTooltipModule, MatSlideToggleModule, MatRadioModule } from '@angular/material';
 import { MatButtonModule, MatSelectModule, MatCheckboxModule, MatSnackBarModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material';
 import { AngularSplitModule } from 'angular-split';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { TooltipModule } from 'ng2-tooltip-directive';
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WorkfrontService } from './services/workfront.service';
 import { FormD1Component } from './forms/form-D1/form-D1.component';
 import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 @NgModule({
    declarations: [
@@ -35,7 +37,8 @@ import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
       FormA1Component,
       FormD1Component,
       FormSeasonalComponent,
-      FormEmailComponent
+      FormEmailComponent,
+      LoadingScreenComponent
 
    ],
    imports: [
@@ -54,6 +57,7 @@ import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
       MatSelectModule,
       MatCheckboxModule,
       MatSnackBarModule,
+      MatProgressSpinnerModule,
       TooltipModule
    ],
    providers: [WorkfrontService],

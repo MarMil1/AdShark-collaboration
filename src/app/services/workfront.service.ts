@@ -25,24 +25,22 @@ export class WorkfrontService {
     return this.http.get<any>(this.cors + this.url + this.projID, { params });
   }
 
-  updateData(data: object) {
-    console.log(data);
-
+  updateData(data: object): Observable<any> {
     const updatedData = JSON.stringify(data);
     const params = new HttpParams()
     .append('apiKey', this.apiKey)
     .append('updates', updatedData);
 
-    this.http.put(this.cors + this.url + this.projID, null, { params })
-    .subscribe(val => {
-      console.log('PUT call successful value returned in body', val);
-      alert('sucess');
-    }, response => {
-      console.log('PUT call in error', response);
-      alert('fail');
-    }, () => {
-      console.log('The PUT observable is now completed.');
-    });
+    return this.http.put(this.cors + this.url + this.projID, null, { params });
+    // .subscribe(val => {
+    //   console.log('PUT call successful value returned in body', val);
+    //   alert('sucess');
+    // }, response => {
+    //   console.log('PUT call in error', response);
+    //   alert('fail');
+    // }, () => {
+    //   console.log('The PUT observable is now completed.');
+    // });
   }
 
 }
