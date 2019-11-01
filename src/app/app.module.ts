@@ -23,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { WorkfrontService } from './services/workfront.service';
 import { FormD1Component } from './forms/form-D1/form-D1.component';
 import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
+import { FormC1Component } from './forms/form-C1/form-C1.component';
+import { PreviewC1Component } from './previews/preview-C1/preview-C1.component';
 
 @NgModule({
    declarations: [
@@ -31,10 +33,12 @@ import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
       PreviewA1Component,
       PreviewD1Component,
       PreviewEmailComponent,
+      PreviewC1Component,
       PreviewSeasonalComponent,
       FormA1Component,
       FormD1Component,
       FormSeasonalComponent,
+      FormC1Component,
       FormEmailComponent
 
    ],

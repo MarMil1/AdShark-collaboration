@@ -6,6 +6,7 @@ import { A1Data } from '../models/A1Data';
 import { D1Data } from '../models/D1Data';
 import { SeasonalData } from '../models/SeasonalData';
 import { WorkfrontService } from '../services/workfront.service';
+import { C1Data } from '../models/C1Data';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
+    c1Data: C1Data;
     projectName = ''; receviedData: any;
     device = ''; tabClick = 0;
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
@@ -95,8 +97,17 @@ export class HomeComponent implements OnInit {
         console.log(e.index);
         break;
 
-      // Email tab
+         // C1 tab
       case 3:
+        $('iframe').css('width', this.rightWidth);
+        this.setIframeHeight();
+        this.tabClick = e.index;
+        console.log(e.index);
+        break;
+
+
+      // Email tab
+      case 4:
         $('iframe').css('width', this.rightWidth);
         // $('.email-iframe').css('height', 650);
         this.setIframeHeight();
