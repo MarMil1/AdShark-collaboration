@@ -115,8 +115,9 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
 
       if (this.isCommented($('.A1-template').find('.order-first'))) {
         this.uncomment($('.A1-template').find('.order-first'));
-        $('.A1-template').find('.order-first').find('.bg-white').attr('src', this.a1Data.data.parameterValues['DE:Image path for logo']);
       }
+
+      $('.A1-template').find('.a1-supplier-logo').find('.bg-white').attr('src', logo);
     }
   }
 

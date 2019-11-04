@@ -115,8 +115,9 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
 
       if (this.isCommented($('.C1-template').find('.order-first'))) {
         this.uncomment($('.C1-template').find('.order-first'));
-        $('.C1-template').find('.order-first').find('.bg-white').attr('src', this.c1Data.data.parameterValues['DE:Image path for logo']);
       }
+
+      $('.C1-template').find('.c1-supplier-logo').find('.bg-white').attr('src', logo);
     }
   }
 
