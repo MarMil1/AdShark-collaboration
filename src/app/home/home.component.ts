@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     projectName = ''; receviedData: any;
     device = ''; tabClick = 0;
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
+    c1LogoSize = 'large';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
   constructor(private workfrontService: WorkfrontService, private route: ActivatedRoute) {}
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
     this.seasonalData = new SeasonalData();
     this.d1Data = new D1Data();
     this.a1Data = new A1Data();
+    this.c1Data = new C1Data();
 
     this.workfrontService.getData().subscribe((res) => {
       this.projectName = res.data.name;
@@ -66,6 +68,9 @@ export class HomeComponent implements OnInit {
 
   receiveA1Logosize(size) {
     this.a1LogoSize = size;
+  }
+  receiveC1Logosize(size) {
+    this.c1LogoSize = size;
   }
 
   /* Check what tab is on */

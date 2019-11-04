@@ -69,7 +69,7 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
       }
 
       tmp = $('.C1-template').html();
-      this.outputCode = this.css.getA1CSS() + tmp;
+      this.outputCode = this.css.getC1CSS() + tmp;
 
       this.impexCode = tmp.replace(/"/g, '""');
 

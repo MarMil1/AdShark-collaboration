@@ -20,7 +20,7 @@
           <app-form-seasonal [seasonalData]="seasonalData" [altLogo]="altLogo" [altImg]="altImg"></app-form-seasonal>
         </div>
         <div *ngIf="tabClick==3">
-          <app-form-C1 [c1Data]="C1Data" (c1LogoSize)="receiveC1Logosize($event)"></app-form-C1>
+          <app-form-C1 [c1Data]="c1Data" (c1LogoSize)="receiveC1Logosize($event)"></app-form-C1>
         </div>
         <div *ngIf="tabClick==4">
           <app-form-email></app-form-email>
