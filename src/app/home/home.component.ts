@@ -6,6 +6,7 @@ import { A1Data } from '../models/A1Data';
 import { D1Data } from '../models/D1Data';
 import { SeasonalData } from '../models/SeasonalData';
 import { WorkfrontService } from '../services/workfront.service';
+import { C1Data } from '../models/C1Data';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,11 @@ export class HomeComponent implements OnInit {
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
+    c1Data: C1Data;
     projectName = ''; receviedData: any;
     device = ''; tabClick = 0;
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
+    c1LogoSize = 'large';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
   constructor(private workfrontService: WorkfrontService, private route: ActivatedRoute) {}
@@ -31,6 +34,7 @@ export class HomeComponent implements OnInit {
     this.seasonalData = new SeasonalData();
     this.d1Data = new D1Data();
     this.a1Data = new A1Data();
+    this.c1Data = new C1Data();
 
     this.workfrontService.getData().subscribe((res) => {
       this.projectName = res.data.name;
@@ -65,6 +69,9 @@ export class HomeComponent implements OnInit {
   receiveA1Logosize(size) {
     this.a1LogoSize = size;
   }
+  receiveC1Logosize(size) {
+    this.c1LogoSize = size;
+  }
 
   /* Check what tab is on */
   onTabClick(e: MatTabChangeEvent) {
@@ -95,8 +102,17 @@ export class HomeComponent implements OnInit {
         console.log(e.index);
         break;
 
-      // Email tab
+         // C1 tab
       case 3:
+        $('iframe').css('width', this.rightWidth);
+        this.setIframeHeight();
+        this.tabClick = e.index;
+        console.log(e.index);
+        break;
+
+
+      // Email tab
+      case 4:
         $('iframe').css('width', this.rightWidth);
         // $('.email-iframe').css('height', 650);
         this.setIframeHeight();

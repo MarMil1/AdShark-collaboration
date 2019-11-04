@@ -69,6 +69,41 @@ export class AppCss {
     return this.css;
   }
 
+  getC1CSS() {
+    this.css =
+      `<style type="text/css">
+      .c1-hero .c1-supplier-logo img { position: absolute; top: 20px; right: 0; } .c1-hero .c1-supplier-logo
+      img.bg-white { background-color: rgba(255, 255, 255, 0.9) !important; padding: 15px 25px; } .c1-hero
+      .c1-hero_primary { background-color: #FFF; } .c1-hero .c1-hero_text-wrap { min-height: 200px; } .c1-hero
+      .col-lg-8, .c1-hero .col-md-12 { padding-left: 0; padding-right: 0; } .c1-hero .c-hero__copy { max-width: 86%; }
+      .c1-hero .callout { text-transform: uppercase; font-size: 16px; line-height: 22px; } .c1-hero_primary .callout {
+      margin-bottom: 15px; } .c1-hero_primary .callout.sale { color: #eC1a3a; } .c1-hero_primary p.sub-headline,
+      .c1-hero_primary h2.headline, .c1-hero_primary a.hero-link:hover span { color: #000; } .c1-hero_secondary
+      p.sub-headline, .c1-hero_secondary h2.headline, .c1-hero_secondary a.hero-link:hover span { color: #FFF; }
+      .c1-hero_primary a:hover span.cta, .c1-hero_secondary a:hover span.cta { text-decoration: underline; }
+      .c1-hero_primary a span.cta, .c1-hero_secondary a span.cta { text-decoration: none; font-size: 16px;
+      font-weight: 600; } .c1-hero_primary a span.cta { color: #000; } .c1-hero_secondary a span.cta { color: #FFF; }
+      .c1-hero h2.headline { font-size: 35px; line-height: 38px; font-weight: 900; } .c1-hero p.sub-headline {
+      font-size: 18px; line-height: 25px; font-weight: 400; margin-bottom: 0; padding-bottom: 16px; margin-top: 10px;
+      } .c1-supplier-logo img.small { width: 100px; } .c1-supplier-logo img.medium { width: 150px; } .c1-supplier-logo
+      img.large { width: 200px; } .c-hero.c1-hero_image { height: 410px; } /********* QUERIES ********/ @media
+      (max-width: 1370px) { .c1-hero .c-hero__copy { max-width: 96%; } .c1-hero h2.headline { font-size: 34px;
+      line-height: 37px; } } @media (max-width: 1200px) { .c1-hero p.sub-headline { font-size: 16px; line-height:
+      22px; } } @media (max-width: 1090px) { .c1-hero .c-hero__copy { max-width: 80%; } .c1-hero .callout { font-size:
+      15px; } .c1-hero h2.headline { font-size: 32px; line-height: 35px; } .c1-hero p.sub-headline { font-size: 15px;
+      line-height: 21px; } .c1-hero a span.cta { font-size: 15px; } } @media (max-width: 1024.98px) { .c1-hero
+      p.sub-headline { margin-top: 5px; } .c1-hero_primary .callout.sale { margin-bottom: 8px; } } @media only screen
+      and (max-width: 600px) { .c1-hero .c-hero__copy { max-width: 92%; } .c1-hero h2.headline { font-size: 26px;
+      line-height: 30px; } .c1-hero p.sub-headline { padding-bottom: 8px; } .c1-supplier-logo img.small { width: 60px;
+      } .c1-supplier-logo img.medium { width: 80px; } .c1-supplier-logo img.large { width: 100px; } .c1-hero
+      .c1-supplier-logo img.bg-white { padding: 10px; } .c-hero.c1-hero_image { height: 205px; } .c1-hero
+      .c1-hero_text-wrap { min-height: 230px; } }
+      </style>`;
+
+    return this.css;
+  }
+
+
   getSeasonalCSS() {
     this.css =
     `<style type="text/css">
