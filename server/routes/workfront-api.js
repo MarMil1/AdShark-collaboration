@@ -5,6 +5,7 @@ const router = express.Router();
 const url = 'https://americanhotel.my.workfront.com/attask/api/v9.0/proj/';
 const API_KEY = '7qrv3g08cywv6hqmsmt6xei7xxdye4q1';
 
+/* GET data */
 router.get('/', (req, res) => {
     res.send("From API route!")
 })
@@ -30,6 +31,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
+/* PUT data */
 router.put('/:id/update', (req, res) => {
     const proID = req.params.id;
     const updatedData = JSON.stringify(req.body)
@@ -38,7 +40,7 @@ router.put('/:id/update', (req, res) => {
     axios.put(url + proID + '?apiKey=' + API_KEY, updatedData, { headers: { "Content-Type": "application/json;" } })
     .then(function (response) {
         //res.set('Content-Type', 'text/html');
-        res.send('Successfully updated the data!');
+        res.send('Successfully updated!');
         console.log('Successfully updated the data!');
     })
     .catch(function (err) {
