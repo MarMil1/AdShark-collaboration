@@ -17,8 +17,8 @@ export class HomeComponent implements OnInit {
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
+    projectName = ''; receviedData: any; loading = true;
     c1Data: C1Data;
-    projectName = ''; receviedData: any;
     device = ''; tabClick = 0;
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
     c1LogoSize = 'large';
@@ -36,19 +36,28 @@ export class HomeComponent implements OnInit {
     this.a1Data = new A1Data();
     this.c1Data = new C1Data();
 
-    this.workfrontService.getData().subscribe((res) => {
-      this.projectName = res.data.name;
-      if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
-        this.a1Data = res;
-        this.receviedData = res;
-      } else if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
-        this.d1Data = res;
-        this.receviedData = res;
+    this.route.params.subscribe(param => {
+      if (param.id) {
+        this.workfrontService.getData().subscribe((res) => {
+          this.projectName = res.data.name;
+          if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
+            this.a1Data = res;
+            this.receviedData = res;
+            this.loading = false;
+          } else if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
+            this.d1Data = res;
+            this.receviedData = res;
+            this.loading = false;
+          }
+        });
+      } else {
+        this.loading = false;
       }
     });
   }
 
   onSubmit() {
+    this.loading = true;
     const res = confirm('Are you sure you want to update "' + this.projectName + ' " project?');
     if (res === true && this.a1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.a1Data.data)

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule, MatTooltipModule, MatSlideToggleModule, MatRadioModule } from '@angular/material';
 import { MatButtonModule, MatSelectModule, MatCheckboxModule, MatSnackBarModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material';
 import { AngularSplitModule } from 'angular-split';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { TooltipModule } from 'ng2-tooltip-directive';
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WorkfrontService } from './services/workfront.service';
 import { FormD1Component } from './forms/form-D1/form-D1.component';
 import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { FormC1Component } from './forms/form-C1/form-C1.component';
 import { PreviewC1Component } from './previews/preview-C1/preview-C1.component';
 
@@ -37,9 +39,10 @@ import { PreviewC1Component } from './previews/preview-C1/preview-C1.component';
       PreviewSeasonalComponent,
       FormA1Component,
       FormD1Component,
-      FormSeasonalComponent,
       FormC1Component,
-      FormEmailComponent
+      FormSeasonalComponent,
+      FormEmailComponent,
+      LoadingScreenComponent
 
    ],
    imports: [
@@ -58,6 +61,7 @@ import { PreviewC1Component } from './previews/preview-C1/preview-C1.component';
       MatSelectModule,
       MatCheckboxModule,
       MatSnackBarModule,
+      MatProgressSpinnerModule,
       TooltipModule
    ],
    providers: [WorkfrontService],
