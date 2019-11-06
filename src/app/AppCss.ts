@@ -30,6 +30,9 @@ export class AppCss {
           background-color: rgba(255,255,255,0.9);
           padding: 10px;
         }
+        .cta-after::after {
+          content: "\\0020\\003E";
+      }
       </style>`;
 
     return this.css;
