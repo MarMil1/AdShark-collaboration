@@ -51,9 +51,19 @@ export class HomeComponent implements OnInit {
   onSubmit() {
     const res = confirm('Are you sure you want to update "' + this.projectName + ' " project?');
     if (res === true && this.a1Data.data.name === this.projectName) {
-      this.workfrontService.updateData(this.a1Data.data);
+      this.workfrontService.updateData(this.a1Data.data)
+      .subscribe(response => {
+        console.log(response);
+      }, err => {
+        console.log('PUT call in error', err);
+      });
     } else if (res === true && this.d1Data.data.name === this.projectName) {
-      this.workfrontService.updateData(this.d1Data.data);
+      this.workfrontService.updateData(this.d1Data.data)
+      .subscribe(response => {
+        console.log(response);
+      }, err => {
+        console.log('PUT call in error', err);
+      });
     }
   }
 
