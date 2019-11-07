@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
-import { MatTabChangeEvent } from '@angular/material';
+import { MatTabChangeEvent, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { A1Data } from '../models/A1Data';
 import { D1Data } from '../models/D1Data';
@@ -24,7 +24,9 @@ export class HomeComponent implements OnInit {
     c1LogoSize = 'large';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
-  constructor(private workfrontService: WorkfrontService, private route: ActivatedRoute) {}
+  constructor(private workfrontService: WorkfrontService,
+              private route: ActivatedRoute,
+              private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.route.paramMap
@@ -63,16 +65,34 @@ export class HomeComponent implements OnInit {
     const res = confirm('Are you sure you want to update "' + this.projectName + ' " project?');
     if (res === true && this.a1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.a1Data.data)
-      .subscribe( () => this.loading = false);
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar('Successfully updated!', 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+      });
     } else if (res === true && this.d1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.d1Data.data)
-      .subscribe( () => this.loading = false);
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar('Successfully updated!', 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+      });
+    } else {
+      this.loading = false;
     }
   }
 
   onClickClear() {
     this.d1Data = new D1Data();
     this.a1Data = new A1Data();
+  }
+
+  openSnackBar(msg: string, action: string, time?: number) {
+    this.snackBar.open(msg, action, { duration: time });
   }
 
   /* Listen when when typing */
