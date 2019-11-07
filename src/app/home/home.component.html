@@ -199,9 +199,9 @@
 </div> -->
 
         <nav class="">
-          <button class="btn btn-warning mr-2 mb-2" (click)="onClickClear()">Clear Form</button>
-          <button class="btn btn-secondary mr-2 mb-2">Restore Previous Data</button>
-          <button class="btn btn-primary mr-2 mb-2" (click)="onSubmit()">Push Data to Workfront</button>
+          <!-- <button class="btn btn-secondary mr-2 mb-2">Restore Previous Data</button> -->
+          <button class="btn btn-primary mr-2 mb-2" (click)="onSubmit()" tooltip="Update data in workfront" placement="bottom" hide-delay="0">Push Data to Workfront</button>
+          <button class="btn btn-warning mr-2 mb-2" (click)="onClickClear()" tooltip="Clear inputs. This won't affect data in workfront" placement="bottom" hide-delay="0">Clear Form</button>
           
         </nav>
       </div>

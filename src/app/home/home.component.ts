@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
-    projectName = ''; receviedData: any; loading = true;
+    projectName = ''; loading = true;
     c1Data: C1Data;
-    device = ''; tabClick = 0;
+    device = ''; tabClick = 0; tabName = '1/3 Banner';
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
     c1LogoSize = 'large';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
@@ -42,14 +42,13 @@ export class HomeComponent implements OnInit {
       if (param.id) {
         this.workfrontService.getData().subscribe((res) => {
           this.projectName = res.data.name;
+          this.tabName = res.data.parameterValues['DE:Select Ad Type'];
           if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
             this.d1Data = res;
-            this.receviedData = res;
             this.loading = false;
             this.tabClick = 0;
-          } else if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner' ) {
+          } else if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
             this.a1Data = res;
-            this.receviedData = res;
             this.loading = false;
             this.tabClick = 1;
           }
@@ -62,7 +61,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    const res = confirm('Are you sure you want to update "' + this.projectName + ' " project?');
+    const res = confirm(`Update "${this.projectName}" project?`);
     if (res === true && this.a1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.a1Data.data)
       .subscribe(response => {
@@ -88,8 +87,15 @@ export class HomeComponent implements OnInit {
   }
 
   onClickClear() {
-    this.d1Data = new D1Data();
-    this.a1Data = new A1Data();
+    const response = confirm(`Clear "${this.tabName}" form? This won\'t affect data in workfront`);
+    if (response === true) {
+      if (this.tabName === '1/3 Banner') {
+        this.d1Data = new D1Data();
+      } else if (this.tabName === 'A1 Hero Banner') {
+        this.a1Data = new A1Data();
+      }
+    }
+
   }
 
   openSnackBar(msg: string, action: string, time?: number) {
@@ -115,6 +121,7 @@ export class HomeComponent implements OnInit {
       case 0:
         $('iframe').css('width', this.rightWidth);
         this.tabClick = e.index;
+        this.tabName = '1/3 Banner';
         console.log(e.index);
         break;
 
@@ -124,6 +131,7 @@ export class HomeComponent implements OnInit {
         // $('.A1-iframe').css('height', 410);
         this.setIframeHeight();
         this.tabClick = e.index;
+        this.tabName = 'A1 Hero Banner';
         console.log(e.index);
         break;
 
