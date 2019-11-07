@@ -233,7 +233,7 @@
       </div>
 
       <div class="mat-app-background basic-container">
-        <mat-tab-group class="" (selectedTabChange)="onTabClick($event)" (click)="onTabClick($event)">
+        <mat-tab-group class="" (selectedTabChange)="onTabClick($event)" [selectedIndex]="tabClick">
           <mat-tab label="One-Third Banner">
             <app-preview-D1 [d1Data]="d1Data"></app-preview-D1>
           </mat-tab>

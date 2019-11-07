@@ -44,14 +44,16 @@ export class HomeComponent implements OnInit {
       if (param.id) {
         this.workfrontService.getData().subscribe((res) => {
           this.projectName = res.data.name;
-          if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
-            this.a1Data = res;
-            this.receviedData = res;
-            this.loading = false;
-          } else if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
+          if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
             this.d1Data = res;
             this.receviedData = res;
             this.loading = false;
+            this.tabClick = 0;
+          } else if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner' ) {
+            this.a1Data = res;
+            this.receviedData = res;
+            this.loading = false;
+            this.tabClick = 1;
           }
         });
       } else {
