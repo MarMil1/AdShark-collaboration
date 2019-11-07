@@ -24,17 +24,9 @@ export class HomeComponent implements OnInit {
     c1LogoSize = 'large';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
-<<<<<<< HEAD
-  constructor(
-    private workfrontService: WorkfrontService,
-    private route: ActivatedRoute,
-    private snackBar: MatSnackBar
-    ) {}
-=======
   constructor(private workfrontService: WorkfrontService,
               private route: ActivatedRoute,
               private snackBar: MatSnackBar) {}
->>>>>>> master
 
   ngOnInit(): void {
     this.route.paramMap
@@ -75,11 +67,7 @@ export class HomeComponent implements OnInit {
       this.workfrontService.updateData(this.a1Data.data)
       .subscribe(response => {
         this.loading = false;
-<<<<<<< HEAD
         this.openSnackBar(response.toString(), 'x', 5000);
-=======
-        this.openSnackBar('Successfully updated!', 'x', 5000);
->>>>>>> master
       }, err => {
         console.log('PUT call in error', err);
         this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
@@ -88,22 +76,14 @@ export class HomeComponent implements OnInit {
       this.workfrontService.updateData(this.d1Data.data)
       .subscribe(response => {
         this.loading = false;
-<<<<<<< HEAD
         this.openSnackBar(response.toString(), 'x', 5000);
       }, err => {
         console.log('PUT call in error', err);
         this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
 
       });
-=======
-        this.openSnackBar('Successfully updated!', 'x', 5000);
-      }, err => {
-        console.log('PUT call in error', err);
-        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
-      });
     } else {
       this.loading = false;
->>>>>>> master
     }
   }
 
