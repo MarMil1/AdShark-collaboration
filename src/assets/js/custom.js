@@ -112,11 +112,13 @@ $(document).ready(function () {
   });
 
   //gutter smoothness
-  $('.as-split-gutter-icon').mousedown(function () {
-    $('iframe').css("pointer-events", "none");
-  });
-  $('.as-split-gutter-icon').mouseup(function () {
-    $('iframe').css("pointer-events", "auto");
-  });
+  // $('.as-split-gutter-icon').mousedown(function () {
+  //   console.log("while dragging...");
+  //   $('iframe').css("pointer-events", "none");
+  // });
+  // $('.as-split-gutter-icon').mouseup(function () {
+  //   console.log("stopped dragging...");
+  //   $('iframe').css("pointer-events", "auto");
+  // });
   
 });
