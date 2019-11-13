@@ -19,6 +19,7 @@ declare var $: any;
 export class PreviewA1Component implements IA1Iframe, DoCheck {
   @Input() a1Data: A1Data;
   @Input() a1LogoSize: string;
+  @Input() altLogo: string;
 
   A1iframeCode: string;
   outputCode: string;
@@ -118,6 +119,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       }
 
       $('.A1-template').find('.a1-supplier-logo').find('.bg-white').attr('src', logo);
+      $('.A1-template').find('.a1-supplier-logo').attr('alt', this.altLogo);
     }
   }
 

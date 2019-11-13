@@ -200,8 +200,7 @@
 
         <nav class="">
           <!-- <button class="btn btn-secondary mr-2 mb-2">Restore Previous Data</button> -->
-          <button class="btn btn-primary mr-2 mb-2" (click)="onSubmit()" tooltip="Update data in workfront" placement="bottom" hide-delay="0">Push Data to Workfront</button>
-          <button class="btn btn-warning mr-2 mb-2" (click)="onClickClear()" tooltip="Clear inputs. This won't affect data in workfront" placement="bottom" hide-delay="0">Clear Form</button>
+          <button class="btn btn-primary mr-2 mb-2" (click)="onSubmit()" tooltip="Update data on the custom form in workfront" placement="bottom" hide-delay="0">Update Project Data</button>
           
         </nav>
       </div>
@@ -238,13 +237,13 @@
             <app-preview-D1 [d1Data]="d1Data"></app-preview-D1>
           </mat-tab>
           <mat-tab label="Hero Banner">
-            <app-preview-A1 [a1Data]="a1Data" [a1LogoSize]="a1LogoSize"></app-preview-A1>
+            <app-preview-A1 [a1Data]="a1Data" [a1LogoSize]="a1LogoSize" [altLogo]="altLogo"></app-preview-A1>
           </mat-tab>
           <mat-tab label="Seasonal Component">
             <app-preview-seasonal [seasonalData]="seasonalData" [altLogo]="altLogo"></app-preview-seasonal>
           </mat-tab>
           <mat-tab label="CLP C1">
-            <app-preview-C1 [c1Data]="c1Data" [c1LogoSize]="c1LogoSize"></app-preview-C1>
+            <app-preview-C1 [c1Data]="c1Data" [c1LogoSize]="c1LogoSize" [altLogo]="altLogo"></app-preview-C1>
           </mat-tab>
           <mat-tab label="Email">
             <!-- <app-preview-email [data]="data" [altLogo]="altLogo" [button]="button" [txtColor]="txtColor" [calloutBar]="calloutBar"></app-preview-email> -->

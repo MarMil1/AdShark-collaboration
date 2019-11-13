@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation, DoCheck } from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
 import { MatTabChangeEvent, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -13,13 +13,13 @@ import { C1Data } from '../models/C1Data';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, DoCheck {
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
     projectName = ''; loading = true;
     c1Data: C1Data;
-    device = ''; tabClick = 0; tabName = '1/3 Banner';
+    device = ''; tabClick = 0; adType = '1/3 Banner';
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
     c1LogoSize = 'large';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
@@ -42,12 +42,13 @@ export class HomeComponent implements OnInit {
       if (param.id) {
         this.workfrontService.getData().subscribe((res) => {
           this.projectName = res.data.name;
-          this.tabName = res.data.parameterValues['DE:Select Ad Type'];
+          this.adType = res.data.parameterValues['DE:Select Ad Type'];
           if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
             this.d1Data = res;
             this.loading = false;
             this.tabClick = 0;
           } else if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
+            this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
             this.a1Data = res;
             this.loading = false;
             this.tabClick = 1;
@@ -57,6 +58,15 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  ngDoCheck(): void {
+    if (this.adType === 'A1 Hero Banner') {
+      this.altLogo = this.a1Data.data.parameterValues['DE:Image path for logo'];
+    } else if (this.adType === 'CLP') {
+      this.altLogo = this.c1Data.data.parameterValues['DE:Image path for logo'];
+    }
+    this.getAlterLogo(this.altLogo);
   }
 
   onSubmit() {
@@ -86,25 +96,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  onClickClear() {
-    const response = confirm(`Clear "${this.tabName}" form? This won\'t affect data in workfront`);
-    if (response === true) {
-      if (this.tabName === '1/3 Banner') {
-        this.d1Data = new D1Data();
-      } else if (this.tabName === 'A1 Hero Banner') {
-        this.a1Data = new A1Data();
-      }
-    }
-
-  }
-
   openSnackBar(msg: string, action: string, time?: number) {
     this.snackBar.open(msg, action, { duration: time });
   }
 
   /* Listen when when typing */
   @HostListener('document:keyup', ['$event'])
-  keyEvent(event) {}
+  keyEvent(event) {
+  }
 
   receiveA1Logosize(size) {
     this.a1LogoSize = size;
@@ -121,7 +120,7 @@ export class HomeComponent implements OnInit {
       case 0:
         $('iframe').css('width', this.rightWidth);
         this.tabClick = e.index;
-        this.tabName = '1/3 Banner';
+        this.adType = '1/3 Banner';
         console.log(e.index);
         break;
 
@@ -131,7 +130,7 @@ export class HomeComponent implements OnInit {
         // $('.A1-iframe').css('height', 410);
         this.setIframeHeight();
         this.tabClick = e.index;
-        this.tabName = 'A1 Hero Banner';
+        this.adType = 'A1 Hero Banner';
         console.log(e.index);
         break;
 
@@ -265,23 +264,27 @@ export class HomeComponent implements OnInit {
   }
 
   /* Get an alternate logo name */
-  getAlterLogo(data) {
+  getAlterLogo(logoPath: string) {
     let lst: string[] = [];
-    let tmp = data.logoURL;
-    if (data.logoURL !== null) {
+    let tmpList: string[] = [];
+    let tmp = logoPath;
+    tmp = tmp.toLowerCase();
+    if (logoPath !== null) {
       lst = tmp.split('/');
       tmp = lst[lst.length - 1];
       const i = lst[lst.length - 1].indexOf('-logo');
       tmp = tmp.substring(0, i);
-      // console.log(tmp.slice(1));
-      // console.log(tmp.replace('-', ' '));
-      this.altLogo = tmp.charAt(0).toUpperCase() + tmp.slice(1);
-      this.altLogo = this.altLogo.replace('-', ' ');
+      tmpList = tmp.split('-');
+      for (let i = 0; i < tmpList.length; i++) {
+        tmpList[i] = tmpList[i].charAt(0).toUpperCase() + tmpList[i].slice(1);
+      }
+
+      this.altLogo = `${tmpList.join(' ')} Logo`;
     }
-    if (data.logoURL.includes('Registry')) {
+    if (logoPath.includes('Registry')) {
       this.altLogo = 'Registry';
     }
-    console.log('AltLogo: ', this.altLogo);
+    // console.log('AltLogo: ', this.altLogo);
   }
 
   /* Get an alternate img name */
