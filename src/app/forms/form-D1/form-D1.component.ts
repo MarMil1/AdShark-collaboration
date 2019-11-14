@@ -16,7 +16,7 @@ export class FormD1Component implements OnInit {
   }
 
   onClickImageSample() {
-    this.d1Data.data.parameterValues['DE:Image path for 1/3 banner'] = 'https://images.americanhotel.com/images/banners/D1_generic_foodservice.jpg';
+    this.d1Data.data.parameterValues['DE:Image - 450 x 350'] = 'https://images.americanhotel.com/images/banners/D1_generic_foodservice.jpg';
   }
 
 

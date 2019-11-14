@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, DoCheck {
     seasonalData: SeasonalData;
     projectName = ''; loading = true;
     c1Data: C1Data;
-    device = ''; tabClick = 0; adType = '1/3 Banner';
+    device = ''; tabClick = 0; adType = 'One-Third Banner';
     a1LogoSize = 'large'; altLogo = ''; altImg = '';
     c1LogoSize = 'large';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
@@ -42,16 +42,23 @@ export class HomeComponent implements OnInit, DoCheck {
       if (param.id) {
         this.workfrontService.getData().subscribe((res) => {
           this.projectName = res.data.name;
-          this.adType = res.data.parameterValues['DE:Select Ad Type'];
-          if (res.data.parameterValues['DE:Select Ad Type'] === '1/3 Banner') {
+          if (res.data.parameterValues['DE:One-Third Banner']) {
+            this.adType = res.data.parameterValues['DE:One-Third Banner'];
             this.d1Data = res;
             this.loading = false;
             this.tabClick = 0;
-          } else if (res.data.parameterValues['DE:Select Ad Type'] === 'A1 Hero Banner') {
+          } else if (res.data.parameterValues['DE:A1 Hero Banner']) {
             this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
+            this.adType = res.data.parameterValues['DE:A1 Hero Banner'];
             this.a1Data = res;
             this.loading = false;
             this.tabClick = 1;
+          } else if (res.data.parameterValues['DE:CLP Banner']) {
+            this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
+            this.adType = res.data.parameterValues['DE:CLP Banner'];
+            this.c1Data = res;
+            this.loading = false;
+            this.tabClick = 3;
           }
         });
       } else {
@@ -63,7 +70,7 @@ export class HomeComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     if (this.adType === 'A1 Hero Banner') {
       this.altLogo = this.a1Data.data.parameterValues['DE:Image path for logo'];
-    } else if (this.adType === 'CLP') {
+    } else if (this.adType === 'CLP Banner') {
       this.altLogo = this.c1Data.data.parameterValues['DE:Image path for logo'];
     }
     this.getAlterLogo(this.altLogo);
@@ -83,6 +90,16 @@ export class HomeComponent implements OnInit, DoCheck {
       });
     } else if (res === true && this.d1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.d1Data.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
+    } else if (res === true && this.c1Data.data.name === this.projectName) {
+      this.workfrontService.updateData(this.c1Data.data)
       .subscribe(response => {
         this.loading = false;
         this.openSnackBar(response.toString(), 'x', 5000);
@@ -120,7 +137,7 @@ export class HomeComponent implements OnInit, DoCheck {
       case 0:
         $('iframe').css('width', this.rightWidth);
         this.tabClick = e.index;
-        this.adType = '1/3 Banner';
+        this.adType = 'One-Third Banner';
         console.log(e.index);
         break;
 
@@ -148,6 +165,7 @@ export class HomeComponent implements OnInit, DoCheck {
         $('iframe').css('width', this.rightWidth);
         this.setIframeHeight();
         this.tabClick = e.index;
+        this.adType = 'CLP Banner';
         console.log(e.index);
         break;
 
@@ -230,25 +248,31 @@ export class HomeComponent implements OnInit, DoCheck {
     if (this.rightWidth <= 500) {
       $('.D1-iframe').css('height', 500);
       $('.A1-iframe').css('height', 410);
+      $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
 
     } else if (this.rightWidth <= 600) {
       $('.A1-iframe').css('height', 435);
+      $('.C1-iframe').css('height', 435);
+
 
     } else if (this.rightWidth <= 1024) {
       $('.D1-iframe').css('height', 500);
       $('.A1-iframe').css('height', 610);
+      $('.C1-iframe').css('height', 610);
       $('.email-iframe').css('height', 650);
 
     } else if (this.rightWidth <= 1280) {
       $('.D1-iframe').css('height', 500);
       $('.A1-iframe').css('height', 410);
+      $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
       $('.Seasonal-iframe').css('height', 410);
 
     } else {
       $('.D1-iframe').css('height', 500);
       $('.A1-iframe').css('height', 410);
+      $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
       $('.Seasonal-iframe').css('height', 410);
     }

@@ -1,57 +1,50 @@
 export class C1Data {
-    data: {
-      ID: string;
-      name: string;
-      objCode: string;
-      parameterValues: {
-        ['DE:Select Ad Type']: string;
-        ['DE:Image provided?']: string;
-        ['DE:Image needed']: string;
-        ['DE:Image type']: string;
-        ['DE:Image for desktop - 960px x 410px']: string;
-        ['DE:Image for mobile - 480px x 205px']: string;
-        ['DE:Logo required?']: string;
-        ['DE:Image path for logo']: string;
-        ['DE:Sale Call-Out']: string;
-        ['DE:Text for Sale Call-Out']: string;
-        ['DE:Background color behind text']: string;
-        ['DE:Hex #']: string;
-        ['DE:Headline']: string;
-        ['DE:Sub-Headline']: string;
-        ['DE:CTA text']: string;
-        ['DE:CTA URL']: string;
-        ['DE:Start Date']: string;
-        ['DE:End Date']: string
-      };
+  data: {
+    ID: string;
+    name: string;
+    objCode: string;
+    parameterValues: {
+      ['DE:CLP Banner']: string;
+      ['DE:Image provided?']: string;
+      ['DE:Image type']: string;
+      ['DE:Image for Desktop - 960 x 410']: string;
+      ['DE:Image for mobile - 480 x 205']: string;
+      ['DE:Logo required?']: string;
+      ['DE:Image path for logo']: string;
+      ['DE:Sale Call-Out']: string;
+      ['DE:Text for Sale Call-Out']: string;
+      ['DE:Background color behind text']: string;
+      ['DE:Hex #']: string;
+      ['DE:Cusom Headline']: string;
+      ['DE:Sub-Headline']: string;
+      ['DE:CTA Text']: string;
+      ['DE:CTA URL']: string;
     };
-  
-    constructor() {
-      this.data = {
-        ID: '',
-        name: '',
-        objCode: '',
-        parameterValues: {
-          ['DE:Select Ad Type']: 'A1 Hero Banner',
-          ['DE:Image provided?']: 'No',
-          ['DE:Image needed']: '',
-          ['DE:Image type']: '',
-          ['DE:Image for desktop - 960px x 410px']: '',
-          ['DE:Image for mobile - 480px x 205px']: '',
-          ['DE:Logo required?']: 'No',
-          ['DE:Image path for logo']: '',
-          ['DE:Sale Call-Out']: 'No',
-          ['DE:Text for Sale Call-Out']: '',
-          ['DE:Background color behind text']: 'White',
-          ['DE:Hex #']: '',
-          ['DE:Headline']: '',
-          ['DE:Sub-Headline']: '',
-          ['DE:CTA text']: '',
-          ['DE:CTA URL']: '',
-          ['DE:Start Date']: '',
-          ['DE:End Date']: ''
-        }
-      };
-    }
-  
+  };
+
+  constructor() {
+    this.data = {
+      ID: '',
+      name: '',
+      objCode: '',
+      parameterValues: {
+        ['DE:CLP Banner']: 'CLP Banner',
+        ['DE:Image provided?']: 'No',
+        ['DE:Image type']: '',
+        ['DE:Image for Desktop - 960 x 410']: '',
+        ['DE:Image for mobile - 480 x 205']: '',
+        ['DE:Logo required?']: 'No',
+        ['DE:Image path for logo']: '',
+        ['DE:Sale Call-Out']: 'No',
+        ['DE:Text for Sale Call-Out']: '',
+        ['DE:Background color behind text']: 'White',
+        ['DE:Hex #']: '',
+        ['DE:Cusom Headline']: '',
+        ['DE:Sub-Headline']: '',
+        ['DE:CTA Text']: '',
+        ['DE:CTA URL']: '',
+      }
+    };
   }
-  
+
+}

@@ -4,15 +4,10 @@ export class D1Data {
     name: string;
     objCode: string;
     parameterValues: {
-        ['DE:Select Ad Type:']: string;
-        ['DE:Sale Call-Out']: string;
-        ['DE:Logo required?']: string;
-        ['DE:Image provided?']: string;
-        ['DE:Image path for 1/3 banner']: string;
-        ['DE:Background color behind text']: string;
-        ['DE:Headline']: string;
-        ['DE:Sub-Headline']: string;
-        ['DE:CTA text']: string;
+        ['DE:One-Third Banner']: string;
+        ['DE:Image - 450 x 350']: string;
+        ['DE:Cusom Headline']: string;
+        ['DE:CTA Text']: string;
         ['DE:CTA URL']: string;
     };
   };
@@ -23,15 +18,10 @@ export class D1Data {
         name: '',
         objCode: '',
         parameterValues: {
-          ['DE:Select Ad Type:']: '',
-          ['DE:Sale Call-Out']: 'No',
-          ['DE:Logo required?']: 'No',
-          ['DE:Image provided?']: 'No',
-          ['DE:Image path for 1/3 banner']: '',
-          ['DE:Background color behind text']: 'White',
-          ['DE:Headline']: '',
-          ['DE:Sub-Headline']: '',
-          ['DE:CTA text']: '',
+          ['DE:One-Third Banner']: 'One-Third Banner',
+          ['DE:Image - 450 x 350']: '',
+          ['DE:Cusom Headline']: '',
+          ['DE:CTA Text']: '',
           ['DE:CTA URL']: ''
         }
       };

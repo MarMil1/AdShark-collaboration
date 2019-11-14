@@ -55,8 +55,8 @@ export class FormA1Component implements OnInit {
 
 
   onClickImageSample(){
-    this.a1Data.data.parameterValues['DE:Image for desktop - 960px x 410px'] = 'https://images.americanhotel.com/images/banners/8962k_Westpoint_A1_100919-960.jpg?123';
-    this.a1Data.data.parameterValues['DE:Image for mobile - 480px x 205px'] = 'https://images.americanhotel.com/images/banners/8962k_Westpoint_A1_100919-480.jpg?123';
+    this.a1Data.data.parameterValues['DE:Image for Desktop - 960 x 410'] = 'https://images.americanhotel.com/images/banners/8962k_Westpoint_A1_100919-960.jpg?123';
+    this.a1Data.data.parameterValues['DE:Image for mobile - 480 x 205'] = 'https://images.americanhotel.com/images/banners/8962k_Westpoint_A1_100919-480.jpg?123';
   }
 
   onClickLogoSample(ad) {
