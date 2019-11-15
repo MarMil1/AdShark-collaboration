@@ -1,38 +1,66 @@
 export class SeasonalData {
-  public callout: string;
-  public headline: string;
-  public subline: string;
-  public paragraph: string;
-  public logoURL: string;
-  public logoWidth: number;
-  public whiteBGLogo: boolean;
-  public buttonTxt: string;
-  public buttonURL: string;
   public headlineColor: string;
-  public products: {
-    prod1Link: string, prod1Name: string, prod1Img: string,
-    prod2Link: string, prod2Name: string, prod2Img: string ,
-    prod3Link: string, prod3Name: string, prod3Img: string ,
-    prod4Link: string, prod4Name: string, prod4Img: string
+  public logoWidth: number;
+  data: {
+    ID: string;
+    name: string;
+    objCode: string;
+    parameterValues: {
+        ['DE:Seasonal Component']: string;
+        ['DE:Bold headline above the Seasonal Component']: string;
+        ['DE:Logo required']: string;
+        ['DE:Image path for logo']: string;
+        ['DE:Add white background behind the logo?']: string;
+        ['DE:Sub-Headline']: string;
+        ['DE:CTA Button Text']: string;
+        ['DE:CTA Button URL']: string;
+        ['DE:CTA URL']: string;
+        ['DE:Enter product SKU to display C2 image']: string;
+        ['DE:Text to display for C2']: string;
+        ['DE:URL for C2']: string;
+        ['DE:Enter product SKU to display C3 image']: string;
+        ['DE:Text to display for C3']: string;
+        ['DE:URL for C3']: string;
+        ['DE:Enter product SKU to display C4 image']: string;
+        ['DE:Text to display for C4']: string;
+        ['DE:URL for C4']: string;
+        ['DE:Enter product SKU to display C5 image']: string;
+        ['DE:Text to display for C5']: string;
+        ['DE:URL for C5']: string;
+    };
   };
 
-  constructor() {
-    this.callout = '';
-    this.headline = '';
-    this.subline = '';
-    this.paragraph = '';
-    this.logoURL = '';
-    this.logoWidth = 150;
-    this.whiteBGLogo = false;
-    this.buttonTxt = '';
-    this.buttonURL = '';
-    this.headlineColor = 'black';
-    this.products = {
-      prod1Link: '', prod1Name: '', prod1Img: '',
-      prod2Link: '', prod2Name: '', prod2Img: '' ,
-      prod3Link: '', prod3Name: '', prod3Img: '' ,
-      prod4Link: '', prod4Name: '', prod4Img: ''
-    };
-  }
+    constructor() {
+      this.logoWidth = 150;
+      this.headlineColor = 'black';
+      this.data = {
+        ID: '',
+        name: '',
+        objCode: '',
+        parameterValues: {
+          ['DE:Seasonal Component']: 'Seasonal Component',
+          ['DE:Bold headline above the Seasonal Component']: '',
+          ['DE:Logo required']: 'No',
+          ['DE:Image path for logo']: '',
+          ['DE:Add white background behind the logo?']: '',
+          ['DE:Sub-Headline']: '',
+          ['DE:CTA Button Text']: '',
+          ['DE:CTA Button URL']: '',
+          ['DE:CTA URL']: '',
+          ['DE:Enter product SKU to display C2 image']: '',
+          ['DE:Text to display for C2']: '',
+          ['DE:URL for C2']: '',
+          ['DE:Enter product SKU to display C3 image']: '',
+          ['DE:Text to display for C3']: '',
+          ['DE:URL for C3']: '',
+          ['DE:Enter product SKU to display C4 image']: '',
+          ['DE:Text to display for C4']: '',
+          ['DE:URL for C4']: '',
+          ['DE:Enter product SKU to display C5 image']: '',
+          ['DE:Text to display for C5']: '',
+          ['DE:URL for C5']: ''
+        }
+      };
+    }
 
 }
