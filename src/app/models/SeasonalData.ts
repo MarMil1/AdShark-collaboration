@@ -10,7 +10,7 @@ export class SeasonalData {
         ['DE:Bold headline above the Seasonal Component']: string;
         ['DE:Logo required']: string;
         ['DE:Image path for logo']: string;
-        ['DE:Add white background behind the logo?']: string;
+        ['DE:Add white background behind the logo?']: boolean;
         ['DE:Sub-Headline']: string;
         ['DE:CTA Button Text']: string;
         ['DE:CTA Button URL']: string;
@@ -42,7 +42,7 @@ export class SeasonalData {
           ['DE:Bold headline above the Seasonal Component']: '',
           ['DE:Logo required']: 'No',
           ['DE:Image path for logo']: '',
-          ['DE:Add white background behind the logo?']: '',
+          ['DE:Add white background behind the logo?']: true,
           ['DE:Sub-Headline']: '',
           ['DE:CTA Button Text']: '',
           ['DE:CTA Button URL']: '',
