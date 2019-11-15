@@ -237,7 +237,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
       case 'widescreen':
         event.preventDefault();
-        this.paneSize = 1400; // 1350
+        this.paneSize = 1550; // 1350
         break;
 
       default:
@@ -246,7 +246,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
   setIframeHeight() {
     if (this.rightWidth <= 500) {
-      $('.D1-iframe').css('height', 500);
+      $('.D1-iframe').css('height', 525);
       $('.A1-iframe').css('height', 410);
       $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
@@ -257,20 +257,20 @@ export class HomeComponent implements OnInit, DoCheck {
 
 
     } else if (this.rightWidth <= 1024) {
-      $('.D1-iframe').css('height', 500);
+      $('.D1-iframe').css('height', 525);
       $('.A1-iframe').css('height', 610);
       $('.C1-iframe').css('height', 610);
       $('.email-iframe').css('height', 650);
 
     } else if (this.rightWidth <= 1280) {
-      $('.D1-iframe').css('height', 500);
+      $('.D1-iframe').css('height', 525);
       $('.A1-iframe').css('height', 410);
       $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
       $('.Seasonal-iframe').css('height', 410);
 
     } else {
-      $('.D1-iframe').css('height', 500);
+      $('.D1-iframe').css('height', 550);
       $('.A1-iframe').css('height', 410);
       $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
