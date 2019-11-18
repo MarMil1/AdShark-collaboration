@@ -59,6 +59,11 @@ export class HomeComponent implements OnInit, DoCheck {
             this.c1Data = res;
             this.loading = false;
             this.tabClick = 3;
+          } else if (res.data.parameterValues['DE:Seasonal Component']) {
+            this.adType = res.data.parameterValues['DE:Seasonal Component'];
+            this.seasonalData = res;
+            this.loading = false;
+            this.tabClick = 2;
           }
         });
       } else {

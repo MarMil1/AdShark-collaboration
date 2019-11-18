@@ -30,7 +30,7 @@ export class FormSeasonalComponent {
   }
 
   addWhiteBgLogo() {
-    this.seasonalData.whiteBGLogo = !this.seasonalData.whiteBGLogo;
+    this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = !this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'];
   }
 
 /* -------- Show and Hide Sample bg / logo / products  -----*/
@@ -38,25 +38,25 @@ onClickSample(field, ad) {
   if (field === 'logo') {
 
     if (ad === 1) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo-white.svg';
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo-white.svg';
 
     } else if (ad === 2) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/hunter-logo.svg';
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/hunter-logo.svg';
 
     } else if (ad === 3) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo.png';
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo.png';
 
     } else if (ad === 4) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/emails/logos/RegistryNoTag.png';
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/emails/logos/RegistryNoTag.png';
 
     } else if (ad === 5) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/GE bw.svg';
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/GE bw.svg';
 
     } else if (ad === 6) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/ForbesLogo.svg';
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/ForbesLogo.svg';
 
     } else if (ad === 7) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-aura-logo-white.svg';
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/1888-aura-logo-white.svg';
     }
   }
 }
@@ -98,7 +98,7 @@ logoBorder(ad) {
 
   }
 }
-/* ------------------------------------------------*/
+/* ------------------------------------------------
 
   onClickProductSample() {
     this.seasonalData.products = {
@@ -129,5 +129,5 @@ logoBorder(ad) {
       prod4Link: '', prod4Name: '', prod4Img: ''
     };
   }
-
+*/
 }
