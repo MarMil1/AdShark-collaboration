@@ -19,6 +19,7 @@ declare var $: any;
 export class PreviewC1Component implements IC1Iframe, DoCheck {
   @Input() c1Data: C1Data;
   @Input() c1LogoSize: string;
+  @Input() altLogo: string;
 
   C1iframeCode: string;
   outputCode: string;
@@ -30,7 +31,7 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
   ngDoCheck() {
     this.insertGlobalcss(this.css.getGlobalCSS());
     // tslint:disable-next-line: max-line-length
-    this.insertbg(this.c1Data.data.parameterValues['DE:Image for desktop - 960px x 410px'], this.c1Data.data.parameterValues['DE:Image for mobile - 480px x 205px']);
+    this.insertbg(this.c1Data.data.parameterValues['DE:Image for Desktop - 960 x 410'], this.c1Data.data.parameterValues['DE:Image for mobile - 480 x 205']);
     this.insertLogo(this.c1Data.data.parameterValues['DE:Image path for logo']);
     this.insertLogoSize(this.c1LogoSize);
     this.generateCode();
@@ -118,6 +119,7 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
       }
 
       $('.C1-template').find('.c1-supplier-logo').find('.bg-white').attr('src', logo);
+      $('.C1-template').find('.c1-supplier-logo').attr('alt', this.altLogo);
     }
   }
 

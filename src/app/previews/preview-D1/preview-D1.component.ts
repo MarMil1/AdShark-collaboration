@@ -25,7 +25,7 @@ export class PreviewD1Component implements DoCheck, ID1Iframe {
 
   ngDoCheck(): void {
     this.insertGlobalcss(this.css.getGlobalCSS());
-    this.insertbg(this.d1Data.data.parameterValues['DE:Image path for 1/3 banner']);
+    this.insertbg(this.d1Data.data.parameterValues['DE:Image - 450 x 350']);
     this.generateCode();
   }
 
