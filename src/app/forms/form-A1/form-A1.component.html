@@ -42,7 +42,7 @@
 
     <!-- Logo size -->
     <div class="logo-size">
-      <mat-radio-group [(ngModel)]="logoSize" (change)="onChangeLogoSize()">
+      <mat-radio-group [(ngModel)]="a1Data.logoSize" (change)="onChangeLogoSize()">
         <mat-radio-button *ngFor="let size of listofLogoSize" [value]="size">{{size | titlecase}}</mat-radio-button>
       </mat-radio-group>
     </div>

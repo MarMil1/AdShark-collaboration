@@ -10,11 +10,9 @@ export class SeasonalData {
         ['DE:Bold headline above the Seasonal Component']: string;
         ['DE:Logo required']: string;
         ['DE:Image path for logo']: string;
-        ['DE:Add white background behind the logo?']: boolean;
+        ['DE:Add white background behind the logo?']: string;
         ['DE:Sub-Headline']: string;
-        ['DE:CTA Button Text']: string;
-        ['DE:CTA Button URL']: string;
-        ['DE:CTA URL']: string;
+        ['DE:Paragraph']: string;
         ['DE:Enter product SKU to display C2 image']: string;
         ['DE:Text to display for C2']: string;
         ['DE:URL for C2']: string;
@@ -27,6 +25,8 @@ export class SeasonalData {
         ['DE:Enter product SKU to display C5 image']: string;
         ['DE:Text to display for C5']: string;
         ['DE:URL for C5']: string;
+        ['DE:CTA Button Text']: string;
+        ['DE:CTA Button URL']: string;
     };
   };
 
@@ -42,11 +42,9 @@ export class SeasonalData {
           ['DE:Bold headline above the Seasonal Component']: '',
           ['DE:Logo required']: 'No',
           ['DE:Image path for logo']: '',
-          ['DE:Add white background behind the logo?']: true,
+          ['DE:Add white background behind the logo?']: 'No',
           ['DE:Sub-Headline']: '',
-          ['DE:CTA Button Text']: '',
-          ['DE:CTA Button URL']: '',
-          ['DE:CTA URL']: '',
+          ['DE:Paragraph']: '',
           ['DE:Enter product SKU to display C2 image']: '',
           ['DE:Text to display for C2']: '',
           ['DE:URL for C2']: '',
@@ -58,7 +56,9 @@ export class SeasonalData {
           ['DE:URL for C4']: '',
           ['DE:Enter product SKU to display C5 image']: '',
           ['DE:Text to display for C5']: '',
-          ['DE:URL for C5']: ''
+          ['DE:URL for C5']: '',
+          ['DE:CTA Button Text']: '',
+          ['DE:CTA Button URL']: '',
         }
       };
     }

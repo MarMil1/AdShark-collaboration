@@ -55,24 +55,25 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
       let tmp: string;
  
       /* If headline color is black */
- if (this.seasonalData.headlineColor === 'black') {
-  $('h4').removeClass('c-carousel__headline c-carousel__headline--red');
-  $('.seasonal-iframe').contents().find('h4').removeClass('c-carousel__headline c-carousel__headline--red');
-} else if (this.seasonalData.headlineColor === 'red') {
-  $('h4').addClass('c-carousel__headline c-carousel__headline--red');
-  $('.seasonal-iframe').contents().find('h4').addClass('c-carousel__headline c-carousel__headline--red');
-}
+      if (this.seasonalData.headlineColor === 'black') {
+        $('h4').removeClass('c-carousel__headline c-carousel__headline--red');
+        $('.seasonal-iframe').contents().find('h4').removeClass('c-carousel__headline c-carousel__headline--red');
+      } else if (this.seasonalData.headlineColor === 'red') {
+        $('h4').addClass('c-carousel__headline c-carousel__headline--red');
+        $('.seasonal-iframe').contents().find('h4').addClass('c-carousel__headline c-carousel__headline--red');
+      }
 
-      tmp = $('.Seasonal-template').html();
+      tmp = $('.seasonal-template').html();
 
       this.outputCode = this.outputCode = this.css.getSeasonalCSS() + tmp;
 
       this.impexCode = tmp.replace(/"/g, '""');
 
       this.SeasonaliframeCode =
-      '<h5 class="text-center">' + this.seasonalData.data.parameterValues['DE:Sub-Headline'] + '</h5>' +
-      '<p class="text-white">' + this.seasonalData.data.parameterValues['DE:Paragraph'] + '</p>' +
-      '<a href="' + this.seasonalData.data.parameterValues['DE:CTA Button URL'] + '" class="btn btn--secondary">' + this.seasonalData.data.parameterValues['DE:CTA Button Text'] + '</a>';
+      `<h5 class="text-center">${this.seasonalData.data.parameterValues['DE:Sub-Headline']}</h5>
+      <p class="text-white">${this.seasonalData.data.parameterValues['DE:Paragraph']}</p>
+      <a href="${this.seasonalData.data.parameterValues['DE:CTA Button URL']}" class="btn btn--secondary">
+      ${this.seasonalData.data.parameterValues['DE:CTA Button Text']}</a>`;
 
       this.SeasonaliframeCode = this.getScript(this.SeasonaliframeCode);
       this.insertCodeBlock(this.SeasonaliframeCode);
@@ -97,8 +98,8 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
     $('.seasonal-iframe').contents().find('#Seasonallogo').attr('width', width);
   }
 
-  insertLogoWhiteBackground(white: boolean): void {
-    if (white) {
+  insertLogoWhiteBackground(white: string): void {
+    if (white === 'Yes') {
       $('.seasonal-iframe').contents().find('#Seasonallogo').addClass('bg-white-transparent');
       $('.seasonal-template').find('.mx-auto').addClass('bg-white-transparent');
     } else {
@@ -113,7 +114,6 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
 
 
   insertProductImages(): void {
-  
     $('.seasonal-iframe').contents().find('#Seasonal-prod1').find('img').attr('src', `${this.path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']}${this.size}`);
     $('.seasonal-iframe').contents().find('#Seasonal-prod2').find('img').attr('src', `${this.path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C3 image']}${this.size}`);
     $('.seasonal-iframe').contents().find('#Seasonal-prod3').find('img').attr('src', `${this.path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C4 image']}${this.size}`);
@@ -126,7 +126,6 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
     $('.seasonal-iframe').contents().find('#Seasonal-prod3').find('span').text(this.seasonalData.data.parameterValues['DE:Text to display for C4']);
     $('.seasonal-iframe').contents().find('#Seasonal-prod4').find('span').text(this.seasonalData.data.parameterValues['DE:Text to display for C5']);
   }
-  
 
   /* Prevent default from clicking iframe button */
   getScript(html) {

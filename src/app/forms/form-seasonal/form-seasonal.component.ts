@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SeasonalData } from 'src/app/models/SeasonalData';
 
 @Component({
@@ -6,13 +6,32 @@ import { SeasonalData } from 'src/app/models/SeasonalData';
   templateUrl: './form-seasonal.component.html',
   styleUrls: ['./form-seasonal.component.css']
 })
-export class FormSeasonalComponent {
+export class FormSeasonalComponent implements OnInit {
   @Input() seasonalData: SeasonalData;
   @Input() altLogo: string;
   @Input() altImg: string;
+  whitebg: boolean;
   listofColor = ['black', 'red'];
 
   constructor() { }
+
+  ngOnInit() {
+    this.seasonalData.logoWidth = 150;
+    this.seasonalData.headlineColor = 'black';
+    if (this.seasonalData.data.parameterValues['DE:Sub-Headline'] === undefined) {
+      this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
+    } else if (this.seasonalData.data.parameterValues['DE:Paragraph'] === undefined) {
+      this.seasonalData.data.parameterValues['DE:Paragraph'] = '';
+    } else if (this.seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component'] === undefined) {
+      this.seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component'] = '';
+    }
+
+    if (this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] === 'Yes') {
+      this.whitebg = true;
+    } else {
+     this.whitebg = false;
+    }
+  }
 
   /* Check the text color */
   changeColor(value) {
@@ -30,7 +49,12 @@ export class FormSeasonalComponent {
   }
 
   addWhiteBgLogo() {
-    this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = !this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'];
+    this.whitebg = !this.whitebg;
+    if (this.whitebg) {
+      this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = 'Yes';
+    } else {
+      this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = 'No';
+    }
   }
 
 /* -------- Show and Hide Sample bg / logo / products  -----*/

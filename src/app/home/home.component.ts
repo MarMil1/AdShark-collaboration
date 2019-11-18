@@ -20,8 +20,7 @@ export class HomeComponent implements OnInit, DoCheck {
     projectName = ''; loading = true;
     c1Data: C1Data;
     device = ''; tabClick = 0; adType = 'One-Third Banner';
-    a1LogoSize = 'large'; altLogo = ''; altImg = '';
-    c1LogoSize = 'large';
+    altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
   constructor(private workfrontService: WorkfrontService,
@@ -127,12 +126,12 @@ export class HomeComponent implements OnInit, DoCheck {
   keyEvent(event) {
   }
 
-  receiveA1Logosize(size) {
-    this.a1LogoSize = size;
-  }
-  receiveC1Logosize(size) {
-    this.c1LogoSize = size;
-  }
+  // receiveA1Logosize(size) {
+  //   this.a1LogoSize = size;
+  // }
+  // receiveC1Logosize(size) {
+  //   this.c1LogoSize = size;
+  // }
 
   /* Check what tab is on */
   onTabClick(e: MatTabChangeEvent) {

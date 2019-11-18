@@ -2,7 +2,7 @@
 <div class="headline-form mb-3">
   <label for="headline"><h5 class="text-primary">Headline</h5></label>
   <div class="headline-color">
-    <mat-radio-group (change)="changeColor($event)">
+    <mat-radio-group [(ngModel)]="seasonalData.headlineColor" (change)="changeColor($event)">
       <mat-radio-button *ngFor="let color of listofColor" [value]="color">{{color | titlecase}}</mat-radio-button>
     </mat-radio-group>
   </div>
@@ -47,7 +47,7 @@
     </div>
 
     <!-- White background logo -->
-    <mat-checkbox (change)="addWhiteBgLogo()" [checked]="seasonalData.data.parameterValues['DE:Add white background behind the logo?']">White background under logo</mat-checkbox>
+    <mat-checkbox (change)="addWhiteBgLogo()" [checked]="whitebg">White background under logo</mat-checkbox>
   </div>
 
 <!-- Sub-headline -->
