@@ -24,6 +24,8 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
   outputCode: string;
   impexCode: string;
   css = new AppCss();
+  path = 'https://images.americanhotel.com/images/products/';
+  size = '_1.jpg?width=140&amp;height=140';
 
   constructor(private snackBar: MatSnackBar) {}
 
@@ -33,10 +35,8 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
     this.insertHeadline(this.seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component']);
     this.insertLogoWidth(this.seasonalData.logoWidth);
     this.insertLogoWhiteBackground(this.seasonalData.data.parameterValues['DE:Add white background behind the logo?']);
-    if (this.seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image'] !== '') {
-      this.insertProductImages();
-    }
-    
+    this.insertProductImages();
+    this.insertProductNames();
     this.generateCode();
   }
 
@@ -113,22 +113,20 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
 
 
   insertProductImages(): void {
-    const path = 'https://images.americanhotel.com/images/products/';
-    const size = '_1.jpg?width=140&amp;height=140';
-    $('.seasonal-iframe').contents().find('#Seasonal-prod1').find('img').attr('src', `${path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']}${size}`);
-    $('.seasonal-iframe').contents().find('#Seasonal-prod2').find('img').attr('src', `${path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C3 image']}${size}`);
-    $('.seasonal-iframe').contents().find('#Seasonal-prod3').find('img').attr('src', `${path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C4 image']}${size}`);
-    $('.seasonal-iframe').contents().find('#Seasonal-prod4').find('img').attr('src', `${path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C5 image']}${size}`);
-    console.log(`${path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']}${size}`);
+  
+    $('.seasonal-iframe').contents().find('#Seasonal-prod1').find('img').attr('src', `${this.path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']}${this.size}`);
+    $('.seasonal-iframe').contents().find('#Seasonal-prod2').find('img').attr('src', `${this.path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C3 image']}${this.size}`);
+    $('.seasonal-iframe').contents().find('#Seasonal-prod3').find('img').attr('src', `${this.path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C4 image']}${this.size}`);
+    $('.seasonal-iframe').contents().find('#Seasonal-prod4').find('img').attr('src', `${this.path}${this.seasonalData.data.parameterValues['DE:Enter product SKU to display C5 image']}${this.size}`);
   }
 
-  insertProductNames(products): void {
-    $('.seasonal-iframe').contents().find('#Seasonal-prod1').find('span').text(products.prod1Name);
-    $('.seasonal-iframe').contents().find('#Seasonal-prod2').find('span').text(products.prod2Name);
-    $('.seasonal-iframe').contents().find('#Seasonal-prod3').find('span').text(products.prod3Name);
-    $('.seasonal-iframe').contents().find('#Seasonal-prod4').find('span').text(products.prod4Name);
+  insertProductNames(): void {
+    $('.seasonal-iframe').contents().find('#Seasonal-prod1').find('span').text(this.seasonalData.data.parameterValues['DE:Text to display for C2']);
+    $('.seasonal-iframe').contents().find('#Seasonal-prod2').find('span').text(this.seasonalData.data.parameterValues['DE:Text to display for C3']);
+    $('.seasonal-iframe').contents().find('#Seasonal-prod3').find('span').text(this.seasonalData.data.parameterValues['DE:Text to display for C4']);
+    $('.seasonal-iframe').contents().find('#Seasonal-prod4').find('span').text(this.seasonalData.data.parameterValues['DE:Text to display for C5']);
   }
- 
+  
 
   /* Prevent default from clicking iframe button */
   getScript(html) {
