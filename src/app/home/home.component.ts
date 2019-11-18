@@ -112,6 +112,16 @@ export class HomeComponent implements OnInit, DoCheck {
         this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
 
       });
+    } else if (res === true && this.seasonalData.data.name === this.projectName) {
+      this.workfrontService.updateData(this.seasonalData.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
     } else {
       this.loading = false;
     }
