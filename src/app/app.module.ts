@@ -27,6 +27,8 @@ import { PreviewD1Component } from './previews/preview-D1/preview-D1.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { FormC1Component } from './forms/form-C1/form-C1.component';
 import { PreviewC1Component } from './previews/preview-C1/preview-C1.component';
+import { FormSalecarouselComponent } from './forms/form-salecarousel/form-salecarousel.component';
+import { PreviewSaleCarouselComponent } from './previews/preview-salecarousel/preview-salecarousel.component';
 
 @NgModule({
    declarations: [
@@ -42,7 +44,9 @@ import { PreviewC1Component } from './previews/preview-C1/preview-C1.component';
       FormC1Component,
       FormSeasonalComponent,
       FormEmailComponent,
-      LoadingScreenComponent
+      LoadingScreenComponent,
+      FormSalecarouselComponent,
+      PreviewSaleCarouselComponent
 
    ],
    imports: [
