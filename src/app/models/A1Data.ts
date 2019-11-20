@@ -1,4 +1,6 @@
 export class A1Data {
+  public logoSize: string;
+
   data: {
     ID: string;
     name: string;
@@ -23,6 +25,8 @@ export class A1Data {
   };
 
   constructor() {
+    this.logoSize = 'large',
+
     this.data = {
       ID: '',
       name: '',

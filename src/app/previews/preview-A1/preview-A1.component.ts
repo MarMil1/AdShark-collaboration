@@ -18,7 +18,7 @@ declare var $: any;
 
 export class PreviewA1Component implements IA1Iframe, DoCheck {
   @Input() a1Data: A1Data;
-  @Input() a1LogoSize: string;
+  // @Input() a1LogoSize: string;
   @Input() altLogo: string;
 
   A1iframeCode: string;
@@ -33,7 +33,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
     // tslint:disable-next-line: max-line-length
     this.insertbg(this.a1Data.data.parameterValues['DE:Image for Desktop - 960 x 410'], this.a1Data.data.parameterValues['DE:Image for mobile - 480 x 205']);
     this.insertLogo(this.a1Data.data.parameterValues['DE:Image path for logo']);
-    this.insertLogoSize(this.a1LogoSize);
+    this.insertLogoSize(this.a1Data.logoSize);
     this.generateCode();
   }
 
@@ -125,7 +125,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
 
   insertLogoSize(size: string): void {
     $('.A1-iframe').contents().find('#A1logo').removeClass('small medium large').addClass(size);
-    $('.A1-template').find('.bg-white').removeClass('small medium large').addClass(this.a1LogoSize);
+    $('.A1-template').find('.bg-white').removeClass('small medium large').addClass(this.a1Data.logoSize);
   }
 
   insertHexColor(color: string): void {

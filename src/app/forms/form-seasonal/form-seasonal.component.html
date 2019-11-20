@@ -6,7 +6,7 @@
       <mat-radio-button *ngFor="let color of listofColor" [value]="color">{{color | titlecase}}</mat-radio-button>
     </mat-radio-group>
   </div>
-  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.headline" rows="2" placeholder="Text"></textarea>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component']" rows="2" placeholder="Text"></textarea>
 </div>
 
 <!-- Logo -->
@@ -28,7 +28,7 @@
       </div>
     </div>
   
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.logoURL" placeholder="URL" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Image path for logo']" placeholder="URL" />
     
     <!-- Button plus/minus -->
     <div class="plus-minus-logoWidth">
@@ -45,35 +45,35 @@
         </button>
       </span>
     </div>
-  
+
     <!-- White background logo -->
-    <mat-checkbox (change)="addWhiteBgLogo()" [checked]="seasonalData.whiteBGLogo">White background under logo</mat-checkbox>
+    <mat-checkbox (change)="addWhiteBgLogo()" [checked]="whitebg">White background under logo</mat-checkbox>
   </div>
 
 <!-- Sub-headline -->
 <div class="subheadline-form mb-3">
   <label for="subheadline"><h5 class="text-primary">Sub-Headline</h5></label><br>
-  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.subline" rows="2" placeholder="Text"></textarea>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Sub-Headline']" rows="2" placeholder="Text"></textarea>
 </div>
 
 <!-- Paragraph -->
 <div class="paragraph-form mb-3">
   <label for="para"><h5 class="text-primary">Paragraph</h5></label><br>
-  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.paragraph" rows="2" placeholder="Text"></textarea>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Paragraph']" rows="2" placeholder="Text"></textarea>
 </div>
 
 <!-- Button Link -->
 <div class="button-form mb-3">
   <div class="button-link-form mb-3">
     <label for="linkOption"><h5 class="text-primary">Button Link</h5></label> 
-    <input class="form-control ad-field" type="text" [(ngModel)]="seasonalData.buttonURL" placeholder="URL" />
+    <input class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:CTA Button URL']" placeholder="URL" />
   </div>
 
   <!-- <mat-checkbox (change)="disabledButton=!disabledButton" [checked]="disabledButton">No button</mat-checkbox> -->
   
   <!-- Button text -->
   <label for="Button"><h5 class="text-primary">Button Text</h5></label>
-  <input class="form-control" style="width:300px" type="text" [(ngModel)]="seasonalData.buttonTxt" placeholder="Text" /> 
+  <input class="form-control" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:CTA Button Text']" placeholder="Text" /> 
 </div>
 
 <!-- Product info for Seasonal Component  -->
@@ -83,26 +83,26 @@
     <label><h5 class="text-primary">Product Links</h5></label> 
     <button class="btn btn-outline-success ml-2" (click)="onClickProductSample()" tooltip="Click to genarate product sample" placement="top" hide-delay="0">Sample</button>
     <button class="btn btn-outline-danger ml-2" (click)="onClearProductSample()" tooltip="Click to clear product sample" placement="top" hide-delay="0">Clear</button>
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.products.prod1Link" placeholder="Product 1 URL" />
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.products.prod2Link" placeholder="Product 2 URL" />
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.products.prod3Link" placeholder="Product 3 URL" />
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.products.prod4Link" placeholder="Product 4 URL" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:URL for C2']" placeholder="C2 URL" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:URL for C3']" placeholder="C3 URL" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:URL for C4']" placeholder="C4 URL" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:URL for C5']" placeholder="C5 URL" />
   </div>
 
   <div class="seasonal-product-names-form mb-3">
     <label><h5 class="text-primary">Product Names</h5></label> 
-    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.products.prod1Name" placeholder="Product 1 Text" /> 
-    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.products.prod2Name" placeholder="Product 2 Text" /> 
-    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.products.prod3Name" placeholder="Product 3 Text" /> 
-    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.products.prod4Name" placeholder="Product 4 Text" /> 
+    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Text to display for C2']" placeholder="C2 Text" /> 
+    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Text to display for C3']" placeholder="C3 Text" /> 
+    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Text to display for C4']" placeholder="C4 Text" /> 
+    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Text to display for C5']" placeholder="C5 Text" /> 
   </div>
   
   <div class="seasonal-product-images-form mb-3">
-    <label><h5 class="text-primary">Product Images</h5></label> 
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.products.prod1Img" placeholder="Product 1 Image" />
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.products.prod2Img" placeholder="Product 2 Image" />
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.products.prod3Img" placeholder="Product 3 Image" />
-    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.products.prod4Img" placeholder="Product 4 Image" />
+    <label><h5 class="text-primary">Product SKUs</h5></label> 
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']" placeholder="C2 Image" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Enter product SKU to display C3 image']" placeholder="C3 Image" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Enter product SKU to display C4 image']" placeholder="C4 Image" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Enter product SKU to display C5 image']" placeholder="C5 Image" />
   </div>
 
 </div>

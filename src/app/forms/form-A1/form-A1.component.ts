@@ -9,19 +9,19 @@ import { A1Data } from 'src/app/models/A1Data';
 })
 export class FormA1Component implements OnInit {
   @Input() a1Data: A1Data;
-  @Output() a1LogoSize = new EventEmitter();
-  logoSize: string;
+  // @Output() a1LogoSize = new EventEmitter();
+  // logoSize: string;
   listofLogoSize = ['small', 'medium', 'large'];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.logoSize = 'large';
+    this.a1Data.logoSize = 'large';
   }
 
-  onChangeLogoSize() {
-    this.a1LogoSize.emit(this.logoSize);
-  }
+  // onChangeLogoSize() {
+  //   this.a1LogoSize.emit(this.logoSize);
+  // }
 
   onChangeLogo() {
     if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'No') {

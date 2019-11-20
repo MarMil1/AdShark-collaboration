@@ -22,8 +22,7 @@ export class HomeComponent implements OnInit, DoCheck {
     projectName = ''; loading = true;
     c1Data: C1Data;
     device = ''; tabClick = 0; adType = 'One-Third Banner';
-    a1LogoSize = 'large'; altLogo = ''; altImg = '';
-    c1LogoSize = 'large';
+    altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
   constructor(private workfrontService: WorkfrontService,
@@ -67,6 +66,11 @@ export class HomeComponent implements OnInit, DoCheck {
             this.c1Data = res;
             this.loading = false;
             this.tabClick = 3;
+          } else if (res.data.parameterValues['DE:Seasonal Component']) {
+            this.adType = res.data.parameterValues['DE:Seasonal Component'];
+            this.seasonalData = res;
+            this.loading = false;
+            this.tabClick = 2;
           }
         });
       } else {
@@ -126,6 +130,16 @@ export class HomeComponent implements OnInit, DoCheck {
         this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
 
       });
+    } else if (res === true && this.seasonalData.data.name === this.projectName) {
+      this.workfrontService.updateData(this.seasonalData.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
     } else {
       this.loading = false;
     }
@@ -140,12 +154,12 @@ export class HomeComponent implements OnInit, DoCheck {
   keyEvent(event) {
   }
 
-  receiveA1Logosize(size) {
-    this.a1LogoSize = size;
-  }
-  receiveC1Logosize(size) {
-    this.c1LogoSize = size;
-  }
+  // receiveA1Logosize(size) {
+  //   this.a1LogoSize = size;
+  // }
+  // receiveC1Logosize(size) {
+  //   this.c1LogoSize = size;
+  // }
 
   /* Check what tab is on */
   onTabClick(e: MatTabChangeEvent) {

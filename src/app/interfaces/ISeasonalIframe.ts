@@ -3,7 +3,7 @@ export interface ISeasonalIframe {
     insertCodeBlock(code: string): void;
     insertLogo(logo: string): void;
     insertLogoWidth(width: number): void;
-    insertLogoWhiteBackground(white: boolean): void;
+    insertLogoWhiteBackground(white: string): void;
     insertHeadline(headline: string): void;
     insertProductNames(products: any): void;
     insertProductImages(products: any): void;
