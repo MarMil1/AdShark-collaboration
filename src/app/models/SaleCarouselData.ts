@@ -8,7 +8,7 @@ export class SaleCarouselData {
           ['DE:Headline Color']: string;
           ['DE:SKUs']: string;
           ['DE:Custom headline?']: string;
-          ['DE:Cusom Headline']:string;
+          ['DE:Cusom Headline']: string;
       };
     };
   
@@ -19,10 +19,10 @@ export class SaleCarouselData {
           objCode: '',
           parameterValues: {
             ['DE:Sale Carousel']: 'Sale Carousel',
-            ['DE:Headline Color']: '',
+            ['DE:Headline Color']: 'Red',
             ['DE:SKUs']: '',
-            ['DE:Custom headline?']: '',
-            ['DE:Cusom Headline']: ''
+            ['DE:Custom headline?']: 'No',
+            ['DE:Cusom Headline']: 'Featured Sales'
           }
         };
       }

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PreviewSalecarouselComponent } from './preview-salecarousel.component';
+import { PreviewSaleCarouselComponent } from './preview-salecarousel.component';
 
-describe('PreviewSalecarouselComponent', () => {
-  let component: PreviewSalecarouselComponent;
-  let fixture: ComponentFixture<PreviewSalecarouselComponent>;
+describe('PreviewSaleCarouselComponent', () => {
+  let component: PreviewSaleCarouselComponent;
+  let fixture: ComponentFixture<PreviewSaleCarouselComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PreviewSalecarouselComponent ]
+      declarations: [ PreviewSaleCarouselComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PreviewSalecarouselComponent);
+    fixture = TestBed.createComponent(PreviewSaleCarouselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

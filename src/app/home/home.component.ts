@@ -190,10 +190,9 @@ export class HomeComponent implements OnInit, DoCheck {
 
       // Sale Carousel tab
       case 4:
-        $('iframe').css('width', this.rightWidth);
-        this.setIframeHeight();
         this.tabClick = e.index;
         console.log(e.index);
+        this.adType = 'Sale Carousel';
         break;
 
         // Email tab

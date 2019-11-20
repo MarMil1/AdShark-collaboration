@@ -14,61 +14,24 @@ declare const copy: any;
   styleUrls: ['./preview-salecarousel.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class PreviewSaleCarouselComponent implements DoCheck, ISaleCarouselIframe {
-  ngDoCheck(): void {
-    throw new Error("Method not implemented.");
-  }
+export class PreviewSaleCarouselComponent implements DoCheck {
   @Input() salecarouselData: SaleCarouselData;
-
-  SaleCarouseliframeCode: string;
-  outputCode: string;
-  css = new AppCss();
+  color = 'RED';
 
   constructor(private snackBar: MatSnackBar) { }
-
-
-  openSnackBar(msg: string, action: string, time: number) {
-    this.snackBar.open(msg, '', { duration: time });
+  ngDoCheck(): void {
+    this.color = this.salecarouselData.data.parameterValues['DE:Headline Color'].toUpperCase();
   }
-
-  generateCode() {
-    try {
-      const tmp = $('.SaleCarousel-template').html();
-
-      this.outputCode = tmp;
-
-      this.SaleCarouseliframeCode = $('.text-wrap').html();
-      this.insertCodeBlock(this.SaleCarouseliframeCode);
-
-    } catch (err) {}
-  }
-
-  insertGlobalcss(css: string): void {
-    $('.SaleCarousel-iframe').contents().find('#globalcss').html(css);
-  }
-  insertCodeBlock(code: string): void {
-    $('.SaleCarousel-iframe').contents().find('#SaleCarouselHTML').html(code);
-  }
-
-
-    /* Copy code */
+ 
+  /* Copy code */
     onCopy(codeType) {
-      let code = '';
-      if (codeType === 'plain') {
-        code = this.outputCode;
-      } else if (codeType === 'impex') {
-        code = $('code#impex-code').text();
-      }
+      const code = $('code#impex-code').text();
       copy(code);
     }
 
     onDownload(filename, type) {
-      if (type === 'html') {
-        download(filename, this.outputCode);
-      } else if (type === 'impex') {
         const impex = $('code#impex-code').text();
         download(filename, impex);
-      }
     }
 
 }

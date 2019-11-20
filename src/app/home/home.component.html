@@ -25,7 +25,7 @@
           <app-form-C1 [c1Data]="c1Data" (c1LogoSize)="receiveC1Logosize($event)"></app-form-C1>
         </div>
         <div *ngIf="tabClick==4">
-          <app-form-salecarousel></app-form-salecarousel>
+          <app-form-salecarousel [salecarouselData]="salecarouselData" ></app-form-salecarousel>
         </div>
         <div *ngIf="tabClick==5">
           <app-form-email></app-form-email>

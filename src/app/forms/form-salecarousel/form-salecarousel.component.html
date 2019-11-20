@@ -3,17 +3,18 @@
 <!-- Custom Headline? -->
 <div class="headline-form mb-3">
   <label for="CalloutBar"><h5 class="text-primary mr-3">Custom Headline?</h5></label>
-  <mat-radio-group [(ngModel)]="salecarouselData.data.parameterValues['DE:Custom headline?']">
+  <mat-radio-group [(ngModel)]="salecarouselData.data.parameterValues['DE:Custom headline?']" (change)="onChangeHeadline()">
+
     <mat-radio-button value="No">No</mat-radio-button>
     <mat-radio-button value="Yes">Yes</mat-radio-button>
   </mat-radio-group>
+  <!-- Custom Headline Conditional Input -->
+<div *ngIf="salecarouselData.data.parameterValues['DE:Custom headline?']=='Yes'">
+    <textarea class="form-control ad-field" type="text" [(ngModel)]="salecarouselData.data.parameterValues['DE:Cusom Headline']" rows="2" placeholder="Text"></textarea>
+  </div>
 </div>
 
-<!-- Custom Headline Conditional Input -->
-<div *ngIf="salecarouselData.data.parameterValues['DE:Custom headline?']=='Yes'">
-  <label for="headline"><h5 class="text-primary">Headline Text</h5></label><br>
-  <textarea class="form-control ad-field" type="text" [(ngModel)]="salecarouselData.data.parameterValues['DE:DE:Cusom Headline']" rows="2" placeholder="Text"></textarea>
-</div>
+
 
 <!-- Headline Color -->
 <div class="headline-form mb-3">
