@@ -7,6 +7,7 @@ import { D1Data } from '../models/D1Data';
 import { SeasonalData } from '../models/SeasonalData';
 import { WorkfrontService } from '../services/workfront.service';
 import { C1Data } from '../models/C1Data';
+import { SaleCarouselData } from '../models/SaleCarouselData';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit, DoCheck {
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
+    salecarouselData: SaleCarouselData;
     projectName = ''; loading = true;
     c1Data: C1Data;
     device = ''; tabClick = 0; adType = 'One-Third Banner';
@@ -36,6 +38,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.d1Data = new D1Data();
     this.a1Data = new A1Data();
     this.c1Data = new C1Data();
+    this.salecarouselData = new SaleCarouselData();
 
     this.route.params.subscribe(param => {
       if (param.id) {
@@ -46,6 +49,11 @@ export class HomeComponent implements OnInit, DoCheck {
             this.d1Data = res;
             this.loading = false;
             this.tabClick = 0;
+          } else if (res.data.parameterValues['DE:Sale Carousel']) {
+            this.adType = res.data.parameterValues['DE:Sale Carousel'];
+            this.salecarouselData = res;
+            this.loading = false;
+            this.tabClick = 4;
           } else if (res.data.parameterValues['DE:A1 Hero Banner']) {
             this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
             this.adType = res.data.parameterValues['DE:A1 Hero Banner'];
@@ -94,6 +102,16 @@ export class HomeComponent implements OnInit, DoCheck {
       });
     } else if (res === true && this.d1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.d1Data.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
+    } else if (res === true && this.salecarouselData.data.name === this.projectName) {
+      this.workfrontService.updateData(this.salecarouselData.data)
       .subscribe(response => {
         this.loading = false;
         this.openSnackBar(response.toString(), 'x', 5000);
@@ -184,8 +202,15 @@ export class HomeComponent implements OnInit, DoCheck {
         break;
 
 
-      // Email tab
+      // Sale Carousel tab
       case 4:
+        this.tabClick = e.index;
+        console.log(e.index);
+        this.adType = 'Sale Carousel';
+        break;
+
+        // Email tab
+      case 5:
         $('iframe').css('width', this.rightWidth);
         // $('.email-iframe').css('height', 650);
         this.setIframeHeight();

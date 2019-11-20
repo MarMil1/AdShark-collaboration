@@ -25,6 +25,9 @@
           <app-form-C1 [c1Data]="c1Data"></app-form-C1>
         </div>
         <div *ngIf="tabClick==4">
+          <app-form-salecarousel [salecarouselData]="salecarouselData" ></app-form-salecarousel>
+        </div>
+        <div *ngIf="tabClick==5">
           <app-form-email></app-form-email>
         </div>
        
@@ -244,6 +247,9 @@
           </mat-tab>
           <mat-tab label="CLP C1">
             <app-preview-C1 [c1Data]="c1Data" [altLogo]="altLogo"></app-preview-C1>
+          </mat-tab>
+          <mat-tab label="Sale Carousel">
+            <app-preview-SaleCarousel [salecarouselData]="salecarouselData"></app-preview-SaleCarousel>
           </mat-tab>
           <mat-tab label="Email">
             <!-- <app-preview-email [data]="data" [altLogo]="altLogo" [button]="button" [txtColor]="txtColor" [calloutBar]="calloutBar"></app-preview-email> -->
