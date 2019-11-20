@@ -18,7 +18,6 @@ declare var $: any;
 
 export class PreviewC1Component implements IC1Iframe, DoCheck {
   @Input() c1Data: C1Data;
-  @Input() c1LogoSize: string;
   @Input() altLogo: string;
 
   C1iframeCode: string;
@@ -33,7 +32,7 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
     // tslint:disable-next-line: max-line-length
     this.insertbg(this.c1Data.data.parameterValues['DE:Image for Desktop - 960 x 410'], this.c1Data.data.parameterValues['DE:Image for mobile - 480 x 205']);
     this.insertLogo(this.c1Data.data.parameterValues['DE:Image path for logo']);
-    this.insertLogoSize(this.c1LogoSize);
+    this.insertLogoSize(this.c1Data.logoSize);
     this.generateCode();
   }
 
@@ -125,7 +124,7 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
 
   insertLogoSize(size: string): void {
     $('.C1-iframe').contents().find('#C1logo').removeClass('small medium large').addClass(size);
-    $('.C1-template').find('.bg-white').removeClass('small medium large').addClass(this.c1LogoSize);
+    $('.C1-template').find('.bg-white').removeClass('small medium large').addClass(this.c1Data.logoSize);
   }
 
   insertHexColor(color: string): void {

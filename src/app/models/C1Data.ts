@@ -1,4 +1,5 @@
 export class C1Data {
+  public logoSize: string;
   data: {
     ID: string;
     name: string;
@@ -23,6 +24,7 @@ export class C1Data {
   };
 
   constructor() {
+    this.logoSize = 'large',
     this.data = {
       ID: '',
       name: '',
