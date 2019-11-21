@@ -18,7 +18,6 @@ declare var $: any;
 
 export class PreviewA1Component implements IA1Iframe, DoCheck {
   @Input() a1Data: A1Data;
-  // @Input() a1LogoSize: string;
   @Input() altLogo: string;
 
   A1iframeCode: string;
@@ -61,7 +60,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       || this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'No Sale') {
         this.uncomment($('.A1-template').find('.c-hero__copy'));
         $('.A1-template').find('.callout').html(this.a1Data.data.parameterValues['DE:Text for Sale Call-Out']);
-        $('.A1-template').find('.headline').html(this.a1Data.data.parameterValues['DE:Custom Headline']);
+        $('.A1-template').find('.headline').html(this.a1Data.data.parameterValues['DE:Headline']);
         $('.A1-template').find('.sub-headline').html(this.a1Data.data.parameterValues['DE:Sub-Headline']);
         $('.A1-template').find('.cta').html(this.a1Data.data.parameterValues['DE:CTA Text']);
 
