@@ -1,11 +1,11 @@
 <!-- Seasonal template -->
 <div class="seasonal-template" hidden>
   <div class="container mt-5">
-    <h4 class="">{{seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component']}}</h4>
+    <h4 class="">{{seasonalData.data.parameterValues['DE:Headline']}}</h4>
     <div class="seasonalComponent-block">
       <div class="seasonalComponent-callout text-center">
         <div class="seasonalComponent-callout-inner">
-          <img class="mx-auto mb-2" src="{{seasonalData.data.parameterValues['DE:Image path for logo']}}" alt="{{altLogo}}" width="{{seasonalData.logoWidth}}">
+          <img class="mx-auto mb-2" src="{{seasonalData.data.parameterValues['DE:Image path for logo']}}" alt="{{altLogo}}" width="{{seasonalData.data.parameterValues['DE:Logo Size Seasonal']}}">
           <h5 class="text-center">{{seasonalData.data.parameterValues['DE:Sub-Headline']}}</h5>
           <p class="text-white">{{seasonalData.data.parameterValues['DE:Paragraph']}}</p>
           <a href="{{seasonalData.data.parameterValues['DE:CTA Button URL']}}" class="btn btn--secondary">{{seasonalData.data.parameterValues['DE:CTA Button Text']}}</a>

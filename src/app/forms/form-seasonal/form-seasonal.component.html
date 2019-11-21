@@ -1,32 +1,22 @@
 <!-- Headline -->
 <div class="headline-form mb-3">
   <label for="headline"><h5 class="text-primary">Headline</h5></label>
-  <div class="headline-color">
-    <mat-radio-group [(ngModel)]="seasonalData.headlineColor" (change)="changeColor($event)">
-      <mat-radio-button *ngFor="let color of listofColor" [value]="color">{{color | titlecase}}</mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component']" rows="2" placeholder="Text"></textarea>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Headline']" rows="2" placeholder="Text"></textarea>
+</div>
+
+
+<div class="logo-required mb-3">
+  <label for="LogoRequired"><h5 class="text-primary mr-3">Logo required?</h5></label>
+  <mat-radio-group [(ngModel)]="seasonalData.data.parameterValues['DE:Logo required?']" (change)="onChangeLogo()">
+    <mat-radio-button value="No">No</mat-radio-button>
+    <mat-radio-button value="Yes">Yes</mat-radio-button>
+  </mat-radio-group>
 </div>
 
 <!-- Logo -->
+<div *ngIf="seasonalData.data.parameterValues['DE:Logo required?']=='Yes'">
 <div class="logo-form mb-3">
     <label for="Logo"><h5 class="text-primary">Logo</h5></label>
-  
-    <!-- Sample logo for D1/A1/email -->
-    <button class="btn btn-outline-success ml-2" data-toggle="collapse" data-target="#sampleLogo" tooltip="Click for of a list of logo samples" placement="right" hide-delay="0">Sample</button>
-    <div id="sampleLogo" class="collapse">
-      <div class="codeBox card card-body" style="border-color: #08a4ec; border-width: thin; width: 420px;">
-        <h6 style="color:#0393cc;"><u>Logo</u></h6>
-        <h6 class="text-dark sample-logo-1" (click)="onClickSample('logo', 1)" (mouseover)="logoBorder(1)"><b>1888 mills white:</b> https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo-white.svg</h6>
-        <h6 class="text-dark sample-logo-2" (click)="onClickSample('logo', 2)" (mouseover)="logoBorder(2)"><b>Hunter:</b> https://images.americanhotel.com/images/logos/suppliers/hunter-logo.svg</h6>
-        <h6 class="text-dark sample-logo-3" (click)="onClickSample('logo', 3)" (mouseover)="logoBorder(3)"><b>1888 mills gold:</b> https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo.png</h6>
-        <h6 class="text-dark sample-logo-4" (click)="onClickSample('logo', 4)" (mouseover)="logoBorder(4)"><b>RegistryNoTag:</b> https://images.americanhotel.com/images/emails/logos/RegistryNoTag.png</h6>
-        <h6 class="text-dark sample-logo-5" (click)="onClickSample('logo', 5)" (mouseover)="logoBorder(5)"><b>GE:</b> https://images.americanhotel.com/images/logos/suppliers/GE bw.svg</h6>
-        <h6 class="text-dark sample-logo-6" (click)="onClickSample('logo', 6)" (mouseover)="logoBorder(6)"><b>Forbes:</b> https://images.americanhotel.com/images/logos/suppliers/ForbesLogo.svg</h6>            
-        <h6 class="text-dark sample-logo-7" (click)="onClickSample('logo', 7)" (mouseover)="logoBorder(7)"><b>1888 aura:</b> https://images.americanhotel.com/images/logos/suppliers/1888-aura-logo-white.svg</h6>
-      </div>
-    </div>
   
     <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Image path for logo']" placeholder="URL" />
     
@@ -38,7 +28,7 @@
           <span><i class="fas fa-minus"></i></span>
         </button>
       </span>
-      <input class="input-number input-logo-width" type="text" [(ngModel)]="seasonalData.logoWidth"/>
+      <input class="input-number input-logo-width" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Logo Size Seasonal']"/>
       <span class="input-group-btn">
         <button type="button" class="btn btn-primary btn-sm btn-number" (click)="plusLogo($event)">
           <span><i class="fas fa-plus"></i></span>
@@ -49,11 +39,14 @@
     <!-- White background logo -->
     <mat-checkbox (change)="addWhiteBgLogo()" [checked]="whitebg">White background under logo</mat-checkbox>
   </div>
-
+</div>
+<!-- // Logo -->
 <!-- Sub-headline -->
+<div *ngIf="seasonalData.data.parameterValues['DE:Logo required?']=='No'">
 <div class="subheadline-form mb-3">
   <label for="subheadline"><h5 class="text-primary">Sub-Headline</h5></label><br>
   <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Sub-Headline']" rows="2" placeholder="Text"></textarea>
+</div>
 </div>
 
 <!-- Paragraph -->

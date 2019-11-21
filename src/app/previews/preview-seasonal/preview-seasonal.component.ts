@@ -32,8 +32,8 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
   ngDoCheck() {
     this.insertGlobalcss(this.css.getGlobalCSS());
     this.insertLogo(this.seasonalData.data.parameterValues['DE:Image path for logo']);
-    this.insertHeadline(this.seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component']);
-    this.insertLogoWidth(this.seasonalData.logoWidth);
+    this.insertHeadline(this.seasonalData.data.parameterValues['DE:Headline']);
+    this.insertLogoWidth(this.seasonalData.data.parameterValues['DE:Logo Size Seasonal']);
     this.insertLogoWhiteBackground(this.seasonalData.data.parameterValues['DE:Add white background behind the logo?']);
     this.insertProductImages();
     this.insertProductNames();
@@ -53,15 +53,6 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
 
     try {
       let tmp: string;
- 
-      /* If headline color is black */
-      if (this.seasonalData.headlineColor === 'black') {
-        $('h4').removeClass('c-carousel__headline c-carousel__headline--red');
-        $('.seasonal-iframe').contents().find('h4').removeClass('c-carousel__headline c-carousel__headline--red');
-      } else if (this.seasonalData.headlineColor === 'red') {
-        $('h4').addClass('c-carousel__headline c-carousel__headline--red');
-        $('.seasonal-iframe').contents().find('h4').addClass('c-carousel__headline c-carousel__headline--red');
-      }
 
       tmp = $('.seasonal-template').html();
 

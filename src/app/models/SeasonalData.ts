@@ -1,13 +1,11 @@
 export class SeasonalData {
-  public headlineColor: string;
-  public logoWidth: number;
   data: {
     ID: string;
     name: string;
     objCode: string;
     parameterValues: {
         ['DE:Seasonal Component']: string;
-        ['DE:Bold headline above the Seasonal Component']: string;
+        ['DE:Headline']: string;
         ['DE:Logo required']: string;
         ['DE:Image path for logo']: string;
         ['DE:Add white background behind the logo?']: string;
@@ -27,19 +25,18 @@ export class SeasonalData {
         ['DE:URL for C5']: string;
         ['DE:CTA Button Text']: string;
         ['DE:CTA Button URL']: string;
+        ['DE:Logo Size Seasonal']: number;
     };
   };
 
     constructor() {
-      this.logoWidth = 150;
-      this.headlineColor = 'black';
       this.data = {
         ID: '',
         name: '',
         objCode: '',
         parameterValues: {
           ['DE:Seasonal Component']: 'Seasonal Component',
-          ['DE:Bold headline above the Seasonal Component']: '',
+          ['DE:Headline']: '',
           ['DE:Logo required']: 'No',
           ['DE:Image path for logo']: '',
           ['DE:Add white background behind the logo?']: 'No',
@@ -59,6 +56,7 @@ export class SeasonalData {
           ['DE:URL for C5']: '',
           ['DE:CTA Button Text']: '',
           ['DE:CTA Button URL']: '',
+          ['DE:Logo Size Seasonal']: 150
         }
       };
     }

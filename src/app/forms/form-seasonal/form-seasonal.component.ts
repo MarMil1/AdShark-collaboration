@@ -16,14 +16,13 @@ export class FormSeasonalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.seasonalData.logoWidth = 150;
-    this.seasonalData.headlineColor = 'black';
+    //this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = 150;
     if (this.seasonalData.data.parameterValues['DE:Sub-Headline'] === undefined) {
       this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
     } else if (this.seasonalData.data.parameterValues['DE:Paragraph'] === undefined) {
       this.seasonalData.data.parameterValues['DE:Paragraph'] = '';
-    } else if (this.seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component'] === undefined) {
-      this.seasonalData.data.parameterValues['DE:Bold headline above the Seasonal Component'] = '';
+    } else if (this.seasonalData.data.parameterValues['DE:Headline'] === undefined) {
+      this.seasonalData.data.parameterValues['DE:Headline'] = '';
     }
 
     if (this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] === 'Yes') {
@@ -37,15 +36,23 @@ export class FormSeasonalComponent implements OnInit {
   changeColor(value) {
     // console.log(this.txtColor);
   }
+  onChangeLogo() {
+    if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'No') {
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = '';
+      this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = 'No';
+    } else if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+      this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
+    } 
+  }
 
   minusLogo(e) {
-    this.seasonalData.logoWidth = Number(this.seasonalData.logoWidth);
-    this.seasonalData.logoWidth -= 5;
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = Number(this.seasonalData.data.parameterValues['DE:Logo Size Seasonal']);
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] -= 5;
   }
 
   plusLogo(e) {
-    this.seasonalData.logoWidth = Number(this.seasonalData.logoWidth);
-    this.seasonalData.logoWidth += 5;
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = Number(this.seasonalData.data.parameterValues['DE:Logo Size Seasonal']);
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] += 5;
   }
 
   addWhiteBgLogo() {
@@ -57,33 +64,6 @@ export class FormSeasonalComponent implements OnInit {
     }
   }
 
-/* -------- Show and Hide Sample bg / logo / products  -----*/
-onClickSample(field, ad) {
-  if (field === 'logo') {
-
-    if (ad === 1) {
-      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo-white.svg';
-
-    } else if (ad === 2) {
-      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/hunter-logo.svg';
-
-    } else if (ad === 3) {
-      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo.png';
-
-    } else if (ad === 4) {
-      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/emails/logos/RegistryNoTag.png';
-
-    } else if (ad === 5) {
-      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/GE bw.svg';
-
-    } else if (ad === 6) {
-      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/ForbesLogo.svg';
-
-    } else if (ad === 7) {
-      this.seasonalData.data.parameterValues['DE:Image path for logo'] = 'https://images.americanhotel.com/images/logos/suppliers/1888-aura-logo-white.svg';
-    }
-  }
-}
 
 logoBorder(ad) {
   if (ad === 1) {
