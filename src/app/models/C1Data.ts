@@ -16,7 +16,7 @@ export class C1Data {
       ['DE:Text for Sale Call-Out']: string;
       ['DE:Background color behind text']: string;
       ['DE:Hex #']: string;
-      ['DE:Cusom Headline']: string;
+      ['DE:Headline']: string;
       ['DE:Sub-Headline']: string;
       ['DE:CTA Text']: string;
       ['DE:CTA URL']: string;
@@ -41,7 +41,7 @@ export class C1Data {
         ['DE:Text for Sale Call-Out']: '',
         ['DE:Background color behind text']: 'White',
         ['DE:Hex #']: '',
-        ['DE:Cusom Headline']: '',
+        ['DE:Headline']: '',
         ['DE:Sub-Headline']: '',
         ['DE:CTA Text']: '',
         ['DE:CTA URL']: '',

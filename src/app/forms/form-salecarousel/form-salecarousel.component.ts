@@ -13,12 +13,11 @@ export class FormSalecarouselComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
- 
   }
 
   onChangeHeadline() {
     if (this.salecarouselData.data.parameterValues['DE:Custom headline?'] === 'No') {
-      this.salecarouselData.data.parameterValues['DE:Cusom Headline'] = 'Featured Sales';
+      this.salecarouselData.data.parameterValues['DE:Custom Headline'] = 'Featured Sales';
     }
   }
 }
