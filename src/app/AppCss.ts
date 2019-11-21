@@ -50,6 +50,9 @@ export class AppCss {
         .a1-hero_primary h2.headline, .a1-hero_primary a.hero-link:hover span { color: #000; } .a1-hero_secondary
         p.sub-headline, .a1-hero_secondary h2.headline, .a1-hero_secondary a.hero-link:hover span { color: #FFF; }
         .a1-hero_primary a:hover span.cta, .a1-hero_secondary a:hover span.cta { text-decoration: underline; }
+        .a1-hero_secondary .callout, .a1-hero_secondary .callout.sale {
+          Color: #ffffff;
+        }
         .a1-hero_primary a span.cta, .a1-hero_secondary a span.cta { text-decoration: none; font-size: 16px;
         font-weight: 600; } .a1-hero_primary a span.cta { color: #000; } .a1-hero_secondary a span.cta { color: #FFF; }
         .a1-hero h2.headline { font-size: 35px; line-height: 38px; font-weight: 900; } .a1-hero p.sub-headline {
@@ -84,6 +87,9 @@ export class AppCss {
       .c1-hero_primary h2.headline, .c1-hero_primary a.hero-link:hover span { color: #000; } .c1-hero_secondary
       p.sub-headline, .c1-hero_secondary h2.headline, .c1-hero_secondary a.hero-link:hover span { color: #FFF; }
       .c1-hero_primary a:hover span.cta, .c1-hero_secondary a:hover span.cta { text-decoration: underline; }
+      .c1-hero_secondary .callout, .c1-hero_secondary .callout.sale {
+        Color: #ffffff;
+      }
       .c1-hero_primary a span.cta, .c1-hero_secondary a span.cta { text-decoration: none; font-size: 16px;
       font-weight: 600; } .c1-hero_primary a span.cta { color: #000; } .c1-hero_secondary a span.cta { color: #FFF; }
       .c1-hero h2.headline { font-size: 35px; line-height: 38px; font-weight: 900; } .c1-hero p.sub-headline {

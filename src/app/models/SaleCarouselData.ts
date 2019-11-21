@@ -8,7 +8,7 @@ export class SaleCarouselData {
           ['DE:Headline Color']: string;
           ['DE:SKUs']: string;
           ['DE:Custom headline?']: string;
-          ['DE:Cusom Headline']: string;
+          ['DE:Custom Headline']: string;
       };
     };
   
@@ -22,7 +22,7 @@ export class SaleCarouselData {
             ['DE:Headline Color']: 'Red',
             ['DE:SKUs']: '',
             ['DE:Custom headline?']: 'No',
-            ['DE:Cusom Headline']: 'Featured Sales'
+            ['DE:Custom Headline']: 'Featured Sales'
           }
         };
       }

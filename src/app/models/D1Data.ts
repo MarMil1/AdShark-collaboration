@@ -6,7 +6,7 @@ export class D1Data {
     parameterValues: {
         ['DE:One-Third Banner']: string;
         ['DE:Image - 450 x 350']: string;
-        ['DE:Cusom Headline']: string;
+        ['DE:Custom Headline']: string;
         ['DE:CTA Text']: string;
         ['DE:CTA URL']: string;
     };
@@ -20,7 +20,7 @@ export class D1Data {
         parameterValues: {
           ['DE:One-Third Banner']: 'One-Third Banner',
           ['DE:Image - 450 x 350']: '',
-          ['DE:Cusom Headline']: '',
+          ['DE:Custom Headline']: '',
           ['DE:CTA Text']: '',
           ['DE:CTA URL']: ''
         }

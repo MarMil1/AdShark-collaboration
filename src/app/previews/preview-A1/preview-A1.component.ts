@@ -33,7 +33,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
     // tslint:disable-next-line: max-line-length
     this.insertbg(this.a1Data.data.parameterValues['DE:Image for Desktop - 960 x 410'], this.a1Data.data.parameterValues['DE:Image for mobile - 480 x 205']);
     this.insertLogo(this.a1Data.data.parameterValues['DE:Image path for logo']);
-    this.insertLogoSize(this.a1Data.logoSize);
+    this.insertLogoSize(this.a1Data.data.parameterValues['DE:Logo Size A1/CLP'].toLocaleLowerCase());
     this.generateCode();
   }
 
@@ -50,6 +50,28 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
     let tmp: string;
 
     try {
+      /* add sale and no sale  */
+      if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'None') {
+        $('.A1-template').find('.callout').html('');
+        this.comment($('.A1-template').find('.callout')
+        , `<!--<h4 class="callout">`
+        , '</h4>-->');
+
+      } else if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'Sale'
+      || this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'No Sale') {
+        this.uncomment($('.A1-template').find('.c-hero__copy'));
+        $('.A1-template').find('.callout').html(this.a1Data.data.parameterValues['DE:Text for Sale Call-Out']);
+        $('.A1-template').find('.headline').html(this.a1Data.data.parameterValues['DE:Custom Headline']);
+        $('.A1-template').find('.sub-headline').html(this.a1Data.data.parameterValues['DE:Sub-Headline']);
+        $('.A1-template').find('.cta').html(this.a1Data.data.parameterValues['DE:CTA Text']);
+
+        if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'Sale') {
+          $('.A1-template').find('.callout').addClass('sale');
+        } else {
+          $('.A1-template').find('.callout').removeClass('sale');
+        }
+      }
+
       /* Give condition for changing background color and changing between primary and secondary */
       if (this.a1Data.data.parameterValues['DE:Background color behind text'] !== 'White'
           && this.a1Data.data.parameterValues['DE:Hex #'].length === 7) {
@@ -57,11 +79,13 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
         this.insertTextColor('a1-hero_secondary');
         $('.A1-template').find('.a1-hero').removeClass('a1-hero_primary').addClass('a1-hero_secondary');
         $('.a1-hero_text-wrap').attr('style', 'background-color:' + this.a1Data.data.parameterValues['DE:Hex #']);
+
       } else if (this.a1Data.data.parameterValues['DE:Hex #'] === '') {
           this.insertHexColor('#FFFFFF');
           this.insertTextColor('a1-hero_primary');
           $('.A1-template').find('.a1-hero').removeClass('a1-hero_secondary').addClass('a1-hero_primary');
           $('.a1-hero_text-wrap').attr('style', 'background-color:' + '#FFFFFF');
+
       } else {
         this.insertHexColor('#FFFFFF');
         this.insertTextColor('a1-hero_primary');
@@ -108,7 +132,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
   insertLogo(logo: string): void {
     if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'No') {
       $('.A1-iframe').contents().find('#A1logo').hide();
-      this.comment($('.A1-template').find('.a1-supplier-logo'));
+      this.comment($('.A1-template').find('.a1-supplier-logo'), '<!--<div alt="" class="a1-supplier-logo">', '</div>-->');
 
     } else if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
       $('.A1-iframe').contents().find('#A1logo').show();
@@ -125,7 +149,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
 
   insertLogoSize(size: string): void {
     $('.A1-iframe').contents().find('#A1logo').removeClass('small medium large').addClass(size);
-    $('.A1-template').find('.bg-white').removeClass('small medium large').addClass(this.a1Data.logoSize);
+    $('.A1-template').find('.bg-white').removeClass('small medium large').addClass(size);
   }
 
   insertHexColor(color: string): void {
@@ -137,9 +161,9 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
   }
 
   /* comment logo element */
-  comment(element) {
+  comment(element, front?, back?) {
     element.wrap(() => {
-      return '<!--<div alt="" class="a1-supplier-logo">' + element.html() + '</div>-->';
+      return front + element.html() + back;
     });
   }
 
