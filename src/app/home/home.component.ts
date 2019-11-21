@@ -285,7 +285,6 @@ export class HomeComponent implements OnInit, DoCheck {
 
   setIframeHeight() {
     if (this.rightWidth <= 500) {
-      $('.D1-iframe').css('height', 525);
       $('.A1-iframe').css('height', 410);
       $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
@@ -293,27 +292,28 @@ export class HomeComponent implements OnInit, DoCheck {
     } else if (this.rightWidth <= 600) {
       $('.A1-iframe').css('height', 435);
       $('.C1-iframe').css('height', 435);
-
-
-    } else if (this.rightWidth <= 1024) {
-      $('.D1-iframe').css('height', 525);
+    }
+    else if (this.rightWidth <= 770) {
+      $('.seasonal-iframe').css('height', 950);
+    }  else if (this.rightWidth <= 1024) {
       $('.A1-iframe').css('height', 610);
       $('.C1-iframe').css('height', 610);
       $('.email-iframe').css('height', 650);
+      $('.D1-iframe').css('height', 475);
 
     } else if (this.rightWidth <= 1280) {
-      $('.D1-iframe').css('height', 525);
       $('.A1-iframe').css('height', 410);
       $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
-      $('.Seasonal-iframe').css('height', 410);
-
-    } else {
-      $('.D1-iframe').css('height', 550);
+      $('.seasonal-iframe').css('height', 675);
+      $('.D1-iframe').css('height', 410);
+    } 
+    else {
+      $('.D1-iframe').css('height', 475);
       $('.A1-iframe').css('height', 410);
       $('.C1-iframe').css('height', 410);
       $('.email-iframe').css('height', 650);
-      $('.Seasonal-iframe').css('height', 410);
+      $('.seasonal-iframe').css('height', 410);
     }
 
     // for seasonal iframe height
