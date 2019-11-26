@@ -282,48 +282,35 @@ export class HomeComponent implements OnInit, DoCheck {
       default:
     }
   }
-
   setIframeHeight() {
-    if (this.rightWidth <= 500) {
-      $('.A1-iframe').css('height', 410);
-      $('.C1-iframe').css('height', 410);
-      $('.email-iframe').css('height', 650);
-
-    } else if (this.rightWidth <= 600) {
-      $('.A1-iframe').css('height', 435);
-      $('.C1-iframe').css('height', 435);
-    }
-    else if (this.rightWidth <= 770) {
-      $('.seasonal-iframe').css('height', 950);
-    }  else if (this.rightWidth <= 1024) {
-      $('.A1-iframe').css('height', 610);
-      $('.C1-iframe').css('height', 610);
-      $('.email-iframe').css('height', 650);
-      $('.D1-iframe').css('height', 475);
-
-    } else if (this.rightWidth <= 1280) {
-      $('.A1-iframe').css('height', 410);
-      $('.C1-iframe').css('height', 410);
-      $('.email-iframe').css('height', 650);
-      $('.seasonal-iframe').css('height', 675);
-      $('.D1-iframe').css('height', 410);
+    // Mobile
+    if (this.rightWidth <= 475) {
+      $('.A1-iframe').css('height', 525);
+      $('.C1-iframe').css('height', 525);
+      $('.D1-iframe').css('height', 500);
+      $('.seasonal-iframe').css('height', 800);
     } 
-    else {
-      $('.D1-iframe').css('height', 475);
-      $('.A1-iframe').css('height', 410);
-      $('.C1-iframe').css('height', 410);
-      $('.email-iframe').css('height', 650);
-      $('.seasonal-iframe').css('height', 410);
+    // Tablet 
+    else if (this.rightWidth <= 735) {
+      $('.A1-iframe').css('height', 750);
+      $('.C1-iframe').css('height', 750);
+      $('.D1-iframe').css('height', 600);
+      $('.seasonal-iframe').css('height', 800);
     }
-
-    // for seasonal iframe height
-    if (this.rightWidth <= 1200) {
-      $('.Seasonal-iframe').css('height', 700);
+    // Desktop
+    else if (this.rightWidth <= 1211) {
+      $('.A1-iframe').css('height', 450);
+      $('.C1-iframe').css('height', 450);
+      $('.D1-iframe').css('height', 600);
+      $('.seasonal-iframe').css('height', 400);
     }
-    if (this.rightWidth <= 768) {
-      $('.Seasonal-iframe').css('height', 950);
-    }
-
+     // Widescreen 
+     else if (this.rightWidth <= 1535) {
+      $('.A1-iframe').css('height', 450);
+      $('.C1-iframe').css('height', 450);
+      $('.D1-iframe').css('height', 600);
+      $('.seasonal-iframe').css('height', 400);
+    } 
   }
 
   /* Get an alternate logo name */

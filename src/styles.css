@@ -291,8 +291,12 @@ h6 {
 
 /* -------------------------------------------- */
 
-
-
+/* Form Field Instructional Text */
+legend {
+  font-size: .75rem;
+  font-style: italic;
+  padding-top: 5px;
+}
 
 
 
