@@ -1,36 +1,37 @@
 <!-- Seasonal template -->
-<div class="Seasonal-template" hidden>
+<div class="seasonal-template" hidden>
   <div class="container mt-5">
-    <h4 class="">{{seasonalData.headline}}</h4>
+    <h4 class="">{{seasonalData.data.parameterValues['DE:Headline']}}</h4>
     <div class="seasonalComponent-block">
       <div class="seasonalComponent-callout text-center">
         <div class="seasonalComponent-callout-inner">
-          <img class="mx-auto mb-2" src="{{seasonalData.logoURL}}" alt="{{altLogo}}" width="{{seasonalData.logoWidth}}">
-          <h5 class="text-center">{{seasonalData.subline}}</h5>
-          <p class="text-white">{{seasonalData.paragraph}}</p>
-          <a href="{{seasonalData.buttonURL}}" class="btn btn--secondary">{{seasonalData.buttonTxt}}</a>
+          <img class="mx-auto mb-2" src="{{seasonalData.data.parameterValues['DE:Image path for logo']}}" alt="{{altLogo}}" width="{{seasonalData.data.parameterValues['DE:Logo Size Seasonal']}}">
+          <h5 class="text-center">{{seasonalData.data.parameterValues['DE:Sub-Headline']}}</h5>
+          <p class="text-white">{{seasonalData.data.parameterValues['DE:Paragraph']}}</p>
+          <a href="{{seasonalData.data.parameterValues['DE:CTA Button URL']}}" class="btn btn--secondary">{{seasonalData.data.parameterValues['DE:CTA Button Text']}}</a>
         </div>
       </div>
 
-      <a href="{{seasonalData.products.prod1Link}}" class="seasonalComponent-item">
-        <img alt="{{seasonalData.products.prod1Name}}" 
-        src="{{seasonalData.products.prod1Img}}" width="140"
-        height="140"><span>{{seasonalData.products.prod1Name}}</span></a>
+      <a href="{{seasonalData.data.parameterValues['DE:URL for C2']}}" class="seasonalComponent-item">
+        <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C2']}}" 
+        src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']}}{{size}}" width="140"
+        height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C2']}}</span></a>
 
-      <a href="{{seasonalData.products.prod2Link}}" class="seasonalComponent-item">
-        <img alt="{{seasonalData.products.prod2Name}}"
-        src="{{seasonalData.products.prod2Img}}" width="140"
-        height="140"><span>{{seasonalData.products.prod2Name}}</span></a> 
+        <a href="{{seasonalData.data.parameterValues['DE:URL for C3']}}" class="seasonalComponent-item">
+          <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C3']}}" 
+          src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C3 image']}}{{size}}" width="140"
+          height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C3']}}</span></a>
 
-      <a href="{{seasonalData.products.prod3Link}}" class="seasonalComponent-item">
-        <img alt="{{seasonalData.products.prod3Name}}"
-        src="{{seasonalData.products.prod3Img}}" width="140"
-        height="140"><span>{{seasonalData.products.prod3Name}}</span></a> 
+          <a href="{{seasonalData.data.parameterValues['DE:URL for C4']}}" class="seasonalComponent-item">
+            <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C4']}}" 
+            src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C4 image']}}{{size}}" width="140"
+            height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C4']}}</span></a>
 
-      <a href="{{seasonalData.products.prod4Link}}" class="seasonalComponent-item">
-        <img alt="{{seasonalData.products.prod4Name}}"
-        src="{{seasonalData.products.prod4Img}}" width="140"
-        height="140"><span>{{seasonalData.products.prod4Name}}</span></a>
+            <a href="{{seasonalData.data.parameterValues['DE:URL for C5']}}" class="seasonalComponent-item">
+              <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C5']}}" 
+              src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C5 image']}}{{size}}" width="140"
+              height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C5']}}</span></a>
+
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SeasonalData } from 'src/app/models/SeasonalData';
 
 @Component({
@@ -6,60 +6,64 @@ import { SeasonalData } from 'src/app/models/SeasonalData';
   templateUrl: './form-seasonal.component.html',
   styleUrls: ['./form-seasonal.component.css']
 })
-export class FormSeasonalComponent {
+export class FormSeasonalComponent implements OnInit {
   @Input() seasonalData: SeasonalData;
   @Input() altLogo: string;
   @Input() altImg: string;
+  whitebg: boolean;
   listofColor = ['black', 'red'];
 
   constructor() { }
+
+  ngOnInit() {
+    //this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = 150;
+    if (this.seasonalData.data.parameterValues['DE:Sub-Headline'] === undefined) {
+      this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
+    } else if (this.seasonalData.data.parameterValues['DE:Paragraph'] === undefined) {
+      this.seasonalData.data.parameterValues['DE:Paragraph'] = '';
+    } else if (this.seasonalData.data.parameterValues['DE:Headline'] === undefined) {
+      this.seasonalData.data.parameterValues['DE:Headline'] = '';
+    }
+
+    if (this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] === 'Yes') {
+      this.whitebg = true;
+    } else {
+     this.whitebg = false;
+    }
+  }
 
   /* Check the text color */
   changeColor(value) {
     // console.log(this.txtColor);
   }
+  onChangeLogo() {
+    if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'No') {
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = '';
+      this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = 'No';
+    } else if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+      this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
+    } 
+  }
 
   minusLogo(e) {
-    this.seasonalData.logoWidth = Number(this.seasonalData.logoWidth);
-    this.seasonalData.logoWidth -= 5;
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = Number(this.seasonalData.data.parameterValues['DE:Logo Size Seasonal']);
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] -= 5;
   }
 
   plusLogo(e) {
-    this.seasonalData.logoWidth = Number(this.seasonalData.logoWidth);
-    this.seasonalData.logoWidth += 5;
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = Number(this.seasonalData.data.parameterValues['DE:Logo Size Seasonal']);
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] += 5;
   }
 
   addWhiteBgLogo() {
-    this.seasonalData.whiteBGLogo = !this.seasonalData.whiteBGLogo;
-  }
-
-/* -------- Show and Hide Sample bg / logo / products  -----*/
-onClickSample(field, ad) {
-  if (field === 'logo') {
-
-    if (ad === 1) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo-white.svg';
-
-    } else if (ad === 2) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/hunter-logo.svg';
-
-    } else if (ad === 3) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo.png';
-
-    } else if (ad === 4) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/emails/logos/RegistryNoTag.png';
-
-    } else if (ad === 5) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/GE bw.svg';
-
-    } else if (ad === 6) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/ForbesLogo.svg';
-
-    } else if (ad === 7) {
-      this.seasonalData.logoURL = 'https://images.americanhotel.com/images/logos/suppliers/1888-aura-logo-white.svg';
+    this.whitebg = !this.whitebg;
+    if (this.whitebg) {
+      this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = 'Yes';
+    } else {
+      this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = 'No';
     }
   }
-}
+
 
 logoBorder(ad) {
   if (ad === 1) {
@@ -98,7 +102,7 @@ logoBorder(ad) {
 
   }
 }
-/* ------------------------------------------------*/
+/* ------------------------------------------------
 
   onClickProductSample() {
     this.seasonalData.products = {
@@ -129,5 +133,5 @@ logoBorder(ad) {
       prod4Link: '', prod4Name: '', prod4Img: ''
     };
   }
-
+*/
 }

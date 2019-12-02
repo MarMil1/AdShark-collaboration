@@ -7,6 +7,7 @@ import { D1Data } from '../models/D1Data';
 import { SeasonalData } from '../models/SeasonalData';
 import { WorkfrontService } from '../services/workfront.service';
 import { C1Data } from '../models/C1Data';
+import { SaleCarouselData } from '../models/SaleCarouselData';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +18,11 @@ export class HomeComponent implements OnInit, DoCheck {
     d1Data: D1Data;
     a1Data: A1Data;
     seasonalData: SeasonalData;
+    salecarouselData: SaleCarouselData;
     projectName = ''; loading = true;
     c1Data: C1Data;
     device = ''; tabClick = 0; adType = 'One-Third Banner';
-    a1LogoSize = 'large'; altLogo = ''; altImg = '';
-    c1LogoSize = 'large';
+    altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
 
   constructor(private workfrontService: WorkfrontService,
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.d1Data = new D1Data();
     this.a1Data = new A1Data();
     this.c1Data = new C1Data();
+    this.salecarouselData = new SaleCarouselData();
 
     this.route.params.subscribe(param => {
       if (param.id) {
@@ -47,6 +49,11 @@ export class HomeComponent implements OnInit, DoCheck {
             this.d1Data = res;
             this.loading = false;
             this.tabClick = 0;
+          } else if (res.data.parameterValues['DE:Sale Carousel']) {
+            this.adType = res.data.parameterValues['DE:Sale Carousel'];
+            this.salecarouselData = res;
+            this.loading = false;
+            this.tabClick = 4;
           } else if (res.data.parameterValues['DE:A1 Hero Banner']) {
             this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
             this.adType = res.data.parameterValues['DE:A1 Hero Banner'];
@@ -59,6 +66,11 @@ export class HomeComponent implements OnInit, DoCheck {
             this.c1Data = res;
             this.loading = false;
             this.tabClick = 3;
+          } else if (res.data.parameterValues['DE:Seasonal Component']) {
+            this.adType = res.data.parameterValues['DE:Seasonal Component'];
+            this.seasonalData = res;
+            this.loading = false;
+            this.tabClick = 2;
           }
         });
       } else {
@@ -98,8 +110,28 @@ export class HomeComponent implements OnInit, DoCheck {
         this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
 
       });
+    } else if (res === true && this.salecarouselData.data.name === this.projectName) {
+      this.workfrontService.updateData(this.salecarouselData.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
     } else if (res === true && this.c1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.c1Data.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
+    } else if (res === true && this.seasonalData.data.name === this.projectName) {
+      this.workfrontService.updateData(this.seasonalData.data)
       .subscribe(response => {
         this.loading = false;
         this.openSnackBar(response.toString(), 'x', 5000);
@@ -122,12 +154,12 @@ export class HomeComponent implements OnInit, DoCheck {
   keyEvent(event) {
   }
 
-  receiveA1Logosize(size) {
-    this.a1LogoSize = size;
-  }
-  receiveC1Logosize(size) {
-    this.c1LogoSize = size;
-  }
+  // receiveA1Logosize(size) {
+  //   this.a1LogoSize = size;
+  // }
+  // receiveC1Logosize(size) {
+  //   this.c1LogoSize = size;
+  // }
 
   /* Check what tab is on */
   onTabClick(e: MatTabChangeEvent) {
@@ -170,8 +202,15 @@ export class HomeComponent implements OnInit, DoCheck {
         break;
 
 
-      // Email tab
+      // Sale Carousel tab
       case 4:
+        this.tabClick = e.index;
+        console.log(e.index);
+        this.adType = 'Sale Carousel';
+        break;
+
+        // Email tab
+      case 5:
         $('iframe').css('width', this.rightWidth);
         // $('.email-iframe').css('height', 650);
         this.setIframeHeight();
@@ -243,48 +282,35 @@ export class HomeComponent implements OnInit, DoCheck {
       default:
     }
   }
-
   setIframeHeight() {
-    if (this.rightWidth <= 500) {
-      $('.D1-iframe').css('height', 525);
-      $('.A1-iframe').css('height', 410);
-      $('.C1-iframe').css('height', 410);
-      $('.email-iframe').css('height', 650);
-
-    } else if (this.rightWidth <= 600) {
-      $('.A1-iframe').css('height', 435);
-      $('.C1-iframe').css('height', 435);
-
-
-    } else if (this.rightWidth <= 1024) {
-      $('.D1-iframe').css('height', 525);
-      $('.A1-iframe').css('height', 610);
-      $('.C1-iframe').css('height', 610);
-      $('.email-iframe').css('height', 650);
-
-    } else if (this.rightWidth <= 1280) {
-      $('.D1-iframe').css('height', 525);
-      $('.A1-iframe').css('height', 410);
-      $('.C1-iframe').css('height', 410);
-      $('.email-iframe').css('height', 650);
-      $('.Seasonal-iframe').css('height', 410);
-
-    } else {
-      $('.D1-iframe').css('height', 550);
-      $('.A1-iframe').css('height', 410);
-      $('.C1-iframe').css('height', 410);
-      $('.email-iframe').css('height', 650);
-      $('.Seasonal-iframe').css('height', 410);
+    // Mobile
+    if (this.rightWidth <= 475) {
+      $('.A1-iframe').css('height', 525);
+      $('.C1-iframe').css('height', 525);
+      $('.D1-iframe').css('height', 500);
+      $('.seasonal-iframe').css('height', 800);
+    } 
+    // Tablet 
+    else if (this.rightWidth <= 735) {
+      $('.A1-iframe').css('height', 750);
+      $('.C1-iframe').css('height', 750);
+      $('.D1-iframe').css('height', 600);
+      $('.seasonal-iframe').css('height', 800);
     }
-
-    // for seasonal iframe height
-    if (this.rightWidth <= 1200) {
-      $('.Seasonal-iframe').css('height', 700);
+    // Desktop
+    else if (this.rightWidth <= 1211) {
+      $('.A1-iframe').css('height', 450);
+      $('.C1-iframe').css('height', 450);
+      $('.D1-iframe').css('height', 600);
+      $('.seasonal-iframe').css('height', 400);
     }
-    if (this.rightWidth <= 768) {
-      $('.Seasonal-iframe').css('height', 950);
-    }
-
+     // Widescreen 
+     else if (this.rightWidth <= 1535) {
+      $('.A1-iframe').css('height', 450);
+      $('.C1-iframe').css('height', 450);
+      $('.D1-iframe').css('height', 600);
+      $('.seasonal-iframe').css('height', 400);
+    } 
   }
 
   /* Get an alternate logo name */
