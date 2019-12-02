@@ -47,7 +47,8 @@ textarea {
   border-color: #005da4;
 }
 .btn-primary:hover{
-  background-color: #013a6b;
+  background-color: #fff;
+  color: #005da4;;
 }
 .input-group-btn .btn-primary {
   color: #fff;
@@ -203,7 +204,7 @@ li#nav-icon .current {
 }
 .copy-button2 {
   background-color: white ;
-  color: #000;
+  color: #0378d1;
   border: .5px solid #0378d1 !important;
   margin-left: 10px !important;
 }
@@ -214,26 +215,26 @@ li#nav-icon .current {
 }
 /* Impex button */
 .impex-button1 {
-  background-color: #24aae2;
+  background-color: #0378d1;
   color: white;
-  border: .5px solid #24aae2 !important;
+  border: .5px solid #0378d1 !important;
   margin-left: 20px !important;
 }
 .impex-button1:hover {
-  background-color: #037db6;
-  color: white;
-  border: .5px solid #037db6 !important;
+  background-color: #fff;
+  color: #0378d1;
+  border: .5px solid #0378d1 !important;
 }
 .impex-button2 {
   background-color: white;
-  color: #24aae2;
-  border: .5px solid #24aae2 !important;
+  color: #0378d1;
+  border: .5px solid #0378d1 !important;
   margin-left: 10px !important;
 }
 .impex-button2:hover {
-  background-color: #24aae2;
-  color: white;
-  border: .5px solid #24aae2 !important;
+  background-color: #0378d1;
+  color: #fff;
+  border: .5px solid #0378d1 !important;
 }
 
 /* Silverpop button */
