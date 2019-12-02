@@ -37,15 +37,22 @@ textarea {
 /* AdShark UI Styles */
 
 .bg-primary {
-  background-color: #24aae2!important;
+  background-color: #000!important;
 }
 .leftPane >* label h5, .leftPane >* label h6 {
-  color: #24aae2!important;
+  color: #1e1e1e!important;
+}
+.btn-primary{
+  background-color: #005da4;
+  border-color: #005da4;
+}
+.btn-primary:hover{
+  background-color: #013a6b;
 }
 .input-group-btn .btn-primary {
   color: #fff;
-  background-color:  #005da3!important;
-  border-color:  none;
+  background-color:  #013a6b!important;
+  border-color:  none !important;
 }
 /* You can add global styles to this file, and also import other style files */
 .column {
@@ -124,7 +131,12 @@ li#nav-icon {
   padding: 10px;
   overflow-y: scroll;
 }
-
+.codeBox code{
+  color: #1e1e1e;
+}
+.codeBox code pre{
+  color: #1e1e1e;
+}
 /* breakpoint button styles */
 .iframe-widescreen {
   width: 1400px; /* 1350 */
@@ -161,38 +173,45 @@ iframe {
   opacity: .5;
 } 
 li#nav-icon .current {
-  color: #ff4081;
+  color: #005da4;
 }
 
 /* Space between radio */
 .mat-radio-button {
   margin-right: 10px;
 }
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  background-color: #fff;
+  color: #fff;
+  border-color: #005da4;
+}
 
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple{
+  background-color: #005da4;
+}
 /* Copy button */
 .copy-button1 {
-  background-color: hotpink;
-  color: white;
-  border: .5px solid hotpink !important;
+  background-color: #0378d1;
+  color: #fff;
+  border: .5px solid #0378d1 !important;
   margin-left: 20px !important;
 } 
 .copy-button1:hover {
-  background-color: #c04f88;
-  color: white;
-  border: .5px solid #c04f88 !important;
+  background-color: white;
+  color: #0378d1;
+  border: .5px solid #0378d1 !important;
 }
 .copy-button2 {
   background-color: white ;
-  color: hotpink;
-  border: .5px solid hotpink !important;
+  color: #000;
+  border: .5px solid #0378d1 !important;
   margin-left: 10px !important;
-} 
-.copy-button2:hover {
-  background-color: hotpink;
-  color: white ;
-  border: .5px solid hotpink !important;
 }
-
+.copy-button2:hover {
+  background-color: #0378d1;
+  color: white ;
+  border: .5px solid #0378d1 !important;
+}
 /* Impex button */
 .impex-button1 {
   background-color: #24aae2;
