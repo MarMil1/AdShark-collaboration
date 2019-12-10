@@ -43,12 +43,12 @@ textarea {
   color: #1e1e1e!important;
 }
 .btn-primary{
-  background-color: #005da4;
-  border-color: #005da4;
+  background-color: #005da3;
+  border-color: #005da3;
 }
 .btn-primary:hover{
   background-color: #fff;
-  color: #005da4;;
+  color: #005da3;;
 }
 .input-group-btn .btn-primary {
   color: #fff;
@@ -174,7 +174,7 @@ iframe {
   opacity: .5;
 } 
 li#nav-icon .current {
-  color: #005da4;
+  color: #005da3;
 }
 
 /* Space between radio */
@@ -184,57 +184,57 @@ li#nav-icon .current {
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
   background-color: #fff;
   color: #fff;
-  border-color: #005da4;
+  border-color: #005da3;
 }
 
 .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple{
-  background-color: #005da4;
+  background-color: #005da3;
 }
 /* Copy button */
 .copy-button1 {
-  background-color: #0378d1;
+  background-color: #005da3;
   color: #fff;
-  border: .5px solid #0378d1 !important;
+  border: .5px solid #005da3 !important;
   margin-left: 20px !important;
 } 
 .copy-button1:hover {
   background-color: white;
-  color: #0378d1;
-  border: .5px solid #0378d1 !important;
+  color: #005da3;
+  border: .5px solid #005da3 !important;
 }
 .copy-button2 {
   background-color: white ;
-  color: #0378d1;
-  border: .5px solid #0378d1 !important;
+  color: #005da3;
+  border: .5px solid #005da3 !important;
   margin-left: 10px !important;
 }
 .copy-button2:hover {
-  background-color: #0378d1;
+  background-color: #005da3;
   color: white ;
-  border: .5px solid #0378d1 !important;
+  border: .5px solid #005da3 !important;
 }
 /* Impex button */
 .impex-button1 {
-  background-color: #0378d1;
+  background-color: #005da3;
   color: white;
-  border: .5px solid #0378d1 !important;
+  border: .5px solid #005da3 !important;
   margin-left: 20px !important;
 }
 .impex-button1:hover {
   background-color: #fff;
-  color: #0378d1;
-  border: .5px solid #0378d1 !important;
+  color: #005da3;
+  border: .5px solid #005da3 !important;
 }
 .impex-button2 {
   background-color: white;
-  color: #0378d1;
-  border: .5px solid #0378d1 !important;
+  color: #005da3;
+  border: .5px solid #005da3 !important;
   margin-left: 10px !important;
 }
 .impex-button2:hover {
-  background-color: #0378d1;
+  background-color: #005da3;
   color: #fff;
-  border: .5px solid #0378d1 !important;
+  border: .5px solid #005da3 !important;
 }
 
 /* Silverpop button */

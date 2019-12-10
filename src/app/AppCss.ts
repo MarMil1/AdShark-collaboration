@@ -19,7 +19,7 @@ export class AppCss {
         .flyout a {padding-left:0!important}
         .flyout.col-md-4{ 	padding: 0 !important; }
         .flyout p{ 	color: #000000; font-family: proxima-nova,sans-serif; 	font-size: 14px !important;
-          line-height: 18px; 	font-weight: 500; 	} .flyout p:hover{ 	color: #005da4 !important; }
+          line-height: 18px; 	font-weight: 500; 	} .flyout p:hover{ 	color: #005da3 !important; }
         .flyout a:hover{ 	background-color: transparent !important; 	}
         .flyout .flyoutheader {      color: #ffffff;     font-size: 28px;     font-family: proxima-nova,sans-serif;     font-weight: 800;  }
         .flyout .flyoutsubheader {      font-weight: 600;     line-height: 20px;     font-size: 14px;     margin-top: 5px !important;  }
@@ -277,7 +277,7 @@ export class AppCss {
     this.css =
     `<style type="text/css">
       .seasonalComponent-block {display: flex;flex-wrap: nowrap;margin: 20px auto;}
-      .seasonalComponent-block a.seasonalComponent-item {background: #fff;border: 2px solid transparent;border-radius: 4px;display: block;min-height: 250px;padding: 21px;text-align: center;text-decoration: none;max-width: 198px;margin: 12px auto;color: #005da4;font-weight: 600;line-height: 1.2;}
+      .seasonalComponent-block a.seasonalComponent-item {background: #fff;border: 2px solid transparent;border-radius: 4px;display: block;min-height: 250px;padding: 21px;text-align: center;text-decoration: none;max-width: 198px;margin: 12px auto;color: #005da3;font-weight: 600;line-height: 1.2;}
       .seasonalComponent-block a.seasonalComponent-item:hover {border-color: #005da3;box-shadow: 0 0 7px rgba(0, 0, 0, 0.15);}
       .seasonalComponent-callout-inner p {font-size: 16px;line-height: 1.4;}
       .seasonalComponent-block div.seasonalComponent-callout {background-color: #004c86;background-image: -webkit-linear-gradient(-35deg, #013A6B 50%, #005da3 50%);background-image: linear-gradient(-60deg, #013A6B 50%, #005da3 50%);width: 330px;height: 275px;display: flex;align-items: center;justify-content: center;}
