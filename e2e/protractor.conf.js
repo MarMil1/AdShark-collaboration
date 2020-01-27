@@ -16,7 +16,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://adshark.americanhotel.com:3000',
+  baseUrl: 'http://10.10.19.192:3000',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,

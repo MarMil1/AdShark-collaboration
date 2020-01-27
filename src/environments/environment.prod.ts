@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://adshark.americanhotel.com:3000'
+  apiUrl: 'http://10.10.19.192:3000'
 };
