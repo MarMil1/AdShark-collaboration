@@ -3,7 +3,7 @@ const axios = require('axios');
 const router = express.Router();
 
 const url = 'https://americanhotel.my.workfront.com/attask/api/v9.0/proj/';
-const API_KEY = '7qrv3g08cywv6hqmsmt6xei7xxdye4q1';
+const API_KEY = '5visp9iur8gmjx3oxvm6drdiv38cdrst';
 
 /* GET data */
 router.get('/', (req, res) => {
