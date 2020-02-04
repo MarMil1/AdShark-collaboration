@@ -271,7 +271,14 @@ export class AppCss {
 
     return this.css;
   }
+  getC1ClippedCSS() {
+    this.css =
+      `<style type="text/css">
+      #clp-product-ad {   margin-bottom: 20px; } #clp-product-ad .row {   max-width: 1408px;   height: auto;   min-height: 410px;   margin: 0 auto;   background-color: #ffffff;   padding: 0px 80px; }  #clp-product-ad h3 {   color: #000000;   font-size: 46px;   line-height: 46px; }  #clp-product-ad h4 {   color: #ec1a3a; }  #clp-product-ad p {   font-size: 18px;   line-height: initial;   max-width: 75%; } #clp-product-ad p.xsmall {     font-size: 13px;     line-height: 15px; }  #clp-product-ad .logo {   max-width: 160px; } #clp-product-ad div.right img { max-height: 450px; }/**  * Queries */@media (max-width: 1200px) {   #clp-product-ad .logo {   }    #clp-product-ad h3 {     color: #000000;     font-size: 38px;     line-height: 38px;   }  #clp-product-ad p {     max-width: 75%;   } }  @media (max-width: 1024px) {   #clp-product-ad .btn {     margin-bottom: 10px;   }  #clp-product-ad p {      max-width: 95%;       font-size: 16px;   } }  @media (max-width: 992px) {   #clp-product-ad h3 {     color: #000000;     font-size: 32px;     line-height: 32px;   }    #clp-product-ad .right img {     max-width: 50%;   }    #clp-product-ad p {     max-width: 90%;   } }  @media (max-width: 768px) {  /*#clp-product-ad .logo { 		max-width: 100px; 	}*/    #clp-product-ad h3 {     color: #000000;     font-size: 30px;     line-height: 30px;   }    #clp-product-ad p {     font-size: 16px;     line-height: initial;   }    #clp-product-ad .right img {     max-width: 75%;   }    #clp-product-ad .row {     padding: 7%;   } }
+      </style>`;
 
+    return this.css;
+  }
 
   getSeasonalCSS() {
     this.css =

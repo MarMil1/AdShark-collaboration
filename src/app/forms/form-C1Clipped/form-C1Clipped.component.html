@@ -1,0 +1,57 @@
+<!-- Image -->
+<div class="background-form mb-3">
+  <label for="Background"><h5 class="text-primary background-label1">Image - 520 x 450</h5></label>  
+  <input class="form-control ad-field" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:Image - 520 x 450']" placeholder="URL" />
+</div>
+
+
+<div class="logo-required mb-3">
+    <label for="LogoRequired"><h5 class="text-primary mr-3">Logo required?</h5></label>
+    <mat-radio-group [(ngModel)]="c1clippedData.data.parameterValues['DE:Logo required?']" (change)="onChangeLogo()">
+      <mat-radio-button value="No">No</mat-radio-button>
+      <mat-radio-button value="Yes">Yes</mat-radio-button>
+    </mat-radio-group>
+</div>
+
+<!-- Logo -->
+<div *ngIf="c1clippedData.data.parameterValues['DE:Logo required?']=='Yes'">
+  <div class="logo-form mb-3">
+    <label for="Logo"><h5 class="text-primary">Logo</h5></label>
+
+
+
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:Image path for logo']" placeholder="URL" />
+  </div>
+</div>
+
+
+
+<!-- Headline -->
+<div class="headline-form mb-3">
+    <label for="headline"><h5 class="text-primary">Headline</h5></label>
+    <textarea class="form-control ad-field" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:Headline']" rows="2" placeholder="Text"></textarea>
+    <legend>Headline should have 34 characters max</legend>
+  </div>
+
+<!-- Subline -->
+<div class="subheadline-form mb-3">
+  <label for="subheadline"><h5 class="text-primary">Sub-Headline</h5></label><br>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:Sub-Headline']" rows="2" placeholder="Text"></textarea>
+  <legend>Sub-headline should have 75 characters max</legend>
+</div>
+
+<!-- CTA -->
+<div class="CTA-form mb-3">
+  <!-- CTA Link -->
+  <div class="CTA-link-form mb-3">
+    <label for="CTALink"><h5 class="text-primary">CTA Link</h5></label> 
+    <input class="form-control ad-field" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:CTA URL']" placeholder="URL" />
+  </div>
+  <!-- Button Text -->
+  <div>
+    <label for="CTAText"><h5 class="text-primary">CTA Text</h5></label> 
+      <input class="form-control" style="width:300px" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:CTA Text']" placeholder="Text" /> 
+  </div>
+</div>
+
+
