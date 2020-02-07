@@ -308,7 +308,7 @@ export class HomeComponent implements OnInit, DoCheck {
     if (this.rightWidth <= 475) {
       $('.A1-iframe').css('height', 525);
       $('.C1-iframe').css('height', 525);
-      $('.C1Clipped-iframe').css('height', 525);
+      $('.C1Clipped-iframe').css('height', 750);
       $('.D1-iframe').css('height', 500);
       $('.seasonal-iframe').css('height', 800);
     } 
@@ -324,7 +324,7 @@ export class HomeComponent implements OnInit, DoCheck {
     else if (this.rightWidth <= 1211) {
       $('.A1-iframe').css('height', 450);
       $('.C1-iframe').css('height', 450);
-      $('.C1Clipped-iframe').css('height', 450);
+      $('.C1Clipped-iframe').css('height', 650);
       $('.D1-iframe').css('height', 600);
       $('.seasonal-iframe').css('height', 400);
     }
@@ -332,7 +332,7 @@ export class HomeComponent implements OnInit, DoCheck {
      else if (this.rightWidth <= 1535) {
       $('.A1-iframe').css('height', 450);
       $('.C1-iframe').css('height', 450);
-      $('.C1Clipped-iframe').css('height', 450);
+      $('.C1Clipped-iframe').css('height', 500);
       $('.D1-iframe').css('height', 600);
       $('.seasonal-iframe').css('height', 400);
     } 
