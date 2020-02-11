@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset=" utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://use.typekit.net/tro4boa.css">
+  <link rel="stylesheet" href="https://www.americanhotel.com/_ui/responsive/theme-americanhotel/css/style.css">
+  <link rel="stylesheet" href="https://images.americanhotel.com/images/css/inline.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="content">
+    <!-- global css file -->
+    <div id="globalcss">
+
+    </div>
+
+    <!-- featured brands css -->
+    <style>
+      #featuredbrand .shopByBrand-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px auto;
+      }
+
+      #featuredbrand .shopByBrand-block a.shopByBrand-item {
+        background: #fff;
+        border: 2px solid transparent;
+        border-radius: 4px;
+        display: block;
+        height: 150px;
+        padding: 21px;
+        text-decoration: none;
+        width: 19%;
+        margin: 20px auto;
+        color: #005da4;
+        font-weight: 600;
+        line-height: 1.2;
+        position: relative;
+      }
+
+      #featuredbrand .shopByBrand-block a.shopByBrand-item:hover {
+        border-color: #005da4;
+        box-shadow: 0 0 7px rgba(0, 0, 0, 0.15);
+      }
+
+      #featuredbrand .shopByBrand-block a.shopByBrand-item img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0px !important;
+        max-height: 125px;
+        padding: 15px 0px;
+        max-width: 120px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      #featuredbrand .shopByBrand-block a.shopByBrand-item span {
+        position: absolute;
+        width: 100%;
+        margin: 0 0 15px 0;
+        padding: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      @media (max-width: 968px) {
+        #featuredbrand .shopByBrand-block a.shopByBrand-item img {
+          max-width: 100px;
+        }
+      }
+
+      /* mobile breakpoint */
+
+      @media (max-width: 768px) {
+        #featuredbrand .shopByBrand-block a.shopByBrand-item {
+          margin: 20px 10px;
+        }
+
+        #featuredbrand .shopByBrand-block {
+          display: block;
+        }
+
+        #featuredbrand .slick-initialized {
+          height: 100%;
+          width: 100% !important;
+        }
+
+        #featuredbrand .slick-track {
+          /* width: 100% !important; */
+        }
+
+        #featuredbrand .shopByBrand-block a.shopByBrand-item img {
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 0px !important;
+          max-height: 100x;
+          padding: 15px 0px;
+          max-width: 375px;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          max-width: 250px;
+        }
+
+        #featuredbrand .shopByBrand-block a.shopByBrand-item {}
+
+        #featuredbrand .shopByBrand-block {
+          margin: inherit;
+        }
+      }
+
+      @media (max-width: 470px) {
+        #featuredbrand .shopByBrand-block a.shopByBrand-item img {
+          width: 140px;
+        }
+      }
+    </style>
+
+  <!-- component HTML -->
+    <div class="container-fluid c-carousel__wrapper">
+      <div class="container">
+        <h4 class="pt-5"></h4>
+        <div id="featuredbrand">
+          <div>
+            <div class="shopByBrand-block">
+              <a href="#" class="shopByBrand-item" id="featured-img1"> <img src="" alt=""></a>
+              <a href="#" class="shopByBrand-item" id="featured-img2"> <img src="" alt=""></a>
+              <a href="#" class="shopByBrand-item" id="featured-img3"> <img src="" alt=""></a>
+              <a href="#" class="shopByBrand-item" id="featured-img4"> <img src="" alt=""></a>
+              <a href="#" class="shopByBrand-item" id="featured-img5"> <img src="" alt=""></a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- //component HTML -->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function(event) {
+        $(document).ready(function() {
+          (function initShopByBrandSlider() {
+            //brands slider init fired
+            var $brandsSlider = $('.shopByBrand-block');
+            var $div = $('<div>');
+
+            if ($brandsSlider.length < 1) return;
+
+            var $brandsSliderParent = $brandsSlider.parent();
+            var $brandsSliderCopy = $brandsSlider.detach();
+            var $carouselItems = $brandsSliderCopy.find('.shopByBrand-item');
+
+            $brandsSliderParent.append($div.append($brandsSliderCopy));
+
+            Respond.to({
+              'media': 'screen and (max-width: 768px)',
+              'namespace': 'responsive_brandsSlider',
+              'fallback': 'else',
+              'if': function() {
+                $brandsSliderCopy.addClass('c-carousel__carousel c-carousel__carousel_brandsSlider').parent('div').addClass('c-carousel__container c-carousel__container_brandsSlider');
+                $carouselItems.addClass('c-carousel__item c-carousel__item_brandsSlider');
+
+                $brandsSliderCopy.slick({
+                  infinite: false,
+                  speed: 300,
+                  slidesToShow: 1,
+                  focusOnSelect: false,
+                  centerMode: false,
+                  draggable: true
+                });
+              },
+              'else': function() {
+                if ($brandsSliderCopy.hasClass('c-carousel__carousel c-carousel__carousel_brandsSlider')) {
+                  $brandsSliderCopy.removeClass('c-carousel__carousel c-carousel__carousel_brandsSlider').parent('div').removeClass('c-carousel__container c-carousel__container_brandsSlider');
+                  $carouselItems.removeClass('c-carousel__item c-carousel__item_brandsSlider');
+                  $brandsSliderCopy.slick('unslick');
+                }
+              }
+            });
+          }());
+
+        });
+      });
+    </script>
+
+
+  </div>
+
+</body>

@@ -8,6 +8,9 @@ import { SeasonalData } from '../models/SeasonalData';
 import { WorkfrontService } from '../services/workfront.service';
 import { C1Data } from '../models/C1Data';
 import { SaleCarouselData } from '../models/SaleCarouselData';
+import { FeaturedBrandsData } from '../models/FeaturedBrandsData';
+
+
 
 @Component({
   selector: 'app-home',
@@ -19,6 +22,7 @@ export class HomeComponent implements OnInit, DoCheck {
     a1Data: A1Data;
     seasonalData: SeasonalData;
     salecarouselData: SaleCarouselData;
+    featuredBrandsData: FeaturedBrandsData;
     projectName = ''; loading = true;
     c1Data: C1Data;
     device = ''; tabClick = 0; adType = 'One-Third Banner';
@@ -39,6 +43,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.a1Data = new A1Data();
     this.c1Data = new C1Data();
     this.salecarouselData = new SaleCarouselData();
+    this.featuredBrandsData = new FeaturedBrandsData();
 
     this.route.params.subscribe(param => {
       if (param.id) {
@@ -71,6 +76,11 @@ export class HomeComponent implements OnInit, DoCheck {
             this.seasonalData = res;
             this.loading = false;
             this.tabClick = 2;
+          } else if (res.data.parameterValues['DE:Featured Brand Carousel']) {
+            this.adType = res.data.parameterValues['DE:Featured Brand Carousel'];
+            this.featuredBrandsData = res;
+            this.loading = false;
+            this.tabClick = 5;
           }
         });
       } else {
@@ -210,12 +220,20 @@ export class HomeComponent implements OnInit, DoCheck {
         break;
 
         // Email tab
+      // case 5:
+      //   $('iframe').css('width', this.rightWidth);
+      //   // $('.email-iframe').css('height', 650);
+      //   this.setIframeHeight();
+      //   this.tabClick = e.index;
+      //   console.log(e.index);
+      //   break;
+
       case 5:
-        $('iframe').css('width', this.rightWidth);
-        // $('.email-iframe').css('height', 650);
+        // $('iframe').css('width', this.rightWidth);
         this.setIframeHeight();
         this.tabClick = e.index;
         console.log(e.index);
+        this.adType = 'Featured Brand Carousel';
         break;
 
       default:
@@ -289,13 +307,15 @@ export class HomeComponent implements OnInit, DoCheck {
       $('.C1-iframe').css('height', 525);
       $('.D1-iframe').css('height', 500);
       $('.seasonal-iframe').css('height', 800);
-    } 
-    // Tablet 
+      $('.featuredBrands-iframe').css('height', 400);
+    }
+    // Tablet
     else if (this.rightWidth <= 735) {
       $('.A1-iframe').css('height', 750);
       $('.C1-iframe').css('height', 750);
       $('.D1-iframe').css('height', 600);
       $('.seasonal-iframe').css('height', 800);
+      $('.featuredBrands-iframe').css('height', 400);
     }
     // Desktop
     else if (this.rightWidth <= 1211) {
@@ -303,14 +323,16 @@ export class HomeComponent implements OnInit, DoCheck {
       $('.C1-iframe').css('height', 450);
       $('.D1-iframe').css('height', 600);
       $('.seasonal-iframe').css('height', 400);
+      $('.featuredBrands-iframe').css('height', 400);
     }
-     // Widescreen 
+     // Widescreen
      else if (this.rightWidth <= 1535) {
       $('.A1-iframe').css('height', 450);
       $('.C1-iframe').css('height', 450);
       $('.D1-iframe').css('height', 600);
       $('.seasonal-iframe').css('height', 400);
-    } 
+      $('.featuredBrands-iframe').css('height', 400);
+    }
   }
 
   /* Get an alternate logo name */
