@@ -11,6 +11,7 @@ import { SaleCarouselData } from '../models/SaleCarouselData';
 import { FeaturedBrandsData } from '../models/FeaturedBrandsData';
 
 
+import { C1ClippedData } from '../models/C1ClippedData';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit, DoCheck {
     featuredBrandsData: FeaturedBrandsData;
     projectName = ''; loading = true;
     c1Data: C1Data;
+    c1clippedData: C1ClippedData;
     device = ''; tabClick = 0; adType = 'One-Third Banner';
     altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.d1Data = new D1Data();
     this.a1Data = new A1Data();
     this.c1Data = new C1Data();
+    this.c1clippedData = new C1ClippedData();
     this.salecarouselData = new SaleCarouselData();
     this.featuredBrandsData = new FeaturedBrandsData();
 
@@ -71,6 +74,12 @@ export class HomeComponent implements OnInit, DoCheck {
             this.c1Data = res;
             this.loading = false;
             this.tabClick = 3;
+          }  else if (res.data.parameterValues['DE:CLP Banner Clipped']) {
+            this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
+            this.adType = res.data.parameterValues['DE:CLP Banner'];
+            this.c1clippedData = res;
+            this.loading = false;
+            this.tabClick = 5;
           } else if (res.data.parameterValues['DE:Seasonal Component']) {
             this.adType = res.data.parameterValues['DE:Seasonal Component'];
             this.seasonalData = res;
@@ -94,6 +103,8 @@ export class HomeComponent implements OnInit, DoCheck {
       this.altLogo = this.a1Data.data.parameterValues['DE:Image path for logo'];
     } else if (this.adType === 'CLP Banner') {
       this.altLogo = this.c1Data.data.parameterValues['DE:Image path for logo'];
+    } else if (this.adType === 'CLP Banner Clipped') {
+      this.altLogo = this.c1clippedData.data.parameterValues['DE:Image path for logo'];
     }
     this.getAlterLogo(this.altLogo);
   }
@@ -132,6 +143,16 @@ export class HomeComponent implements OnInit, DoCheck {
       });
     } else if (res === true && this.c1Data.data.name === this.projectName) {
       this.workfrontService.updateData(this.c1Data.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
+    } else if (res === true && this.c1clippedData.data.name === this.projectName) {
+      this.workfrontService.updateData(this.c1clippedData.data)
       .subscribe(response => {
         this.loading = false;
         this.openSnackBar(response.toString(), 'x', 5000);
@@ -228,13 +249,23 @@ export class HomeComponent implements OnInit, DoCheck {
       //   console.log(e.index);
       //   break;
 
-      case 5:
-        // $('iframe').css('width', this.rightWidth);
-        this.setIframeHeight();
-        this.tabClick = e.index;
-        console.log(e.index);
-        this.adType = 'Featured Brand Carousel';
-        break;
+
+        // CLP Clipped Tab
+          case 5:
+            $('iframe').css('width', this.rightWidth);
+            this.setIframeHeight();
+            this.tabClick = e.index;
+            this.adType = 'CLP Clipped Banner';
+            console.log(e.index);
+            break;
+
+          case 6:
+            // $('iframe').css('width', this.rightWidth);
+            this.setIframeHeight();
+            this.tabClick = e.index;
+            console.log(e.index);
+            this.adType = 'Featured Brand Carousel';
+            break;
 
       default:
       }
@@ -305,6 +336,7 @@ export class HomeComponent implements OnInit, DoCheck {
     if (this.rightWidth <= 475) {
       $('.A1-iframe').css('height', 525);
       $('.C1-iframe').css('height', 525);
+      $('.C1Clipped-iframe').css('height', 750);
       $('.D1-iframe').css('height', 500);
       $('.seasonal-iframe').css('height', 800);
       $('.featuredBrands-iframe').css('height', 400);
@@ -313,6 +345,7 @@ export class HomeComponent implements OnInit, DoCheck {
     else if (this.rightWidth <= 735) {
       $('.A1-iframe').css('height', 750);
       $('.C1-iframe').css('height', 750);
+      $('.C1Clipped-iframe').css('height', 750);
       $('.D1-iframe').css('height', 600);
       $('.seasonal-iframe').css('height', 800);
       $('.featuredBrands-iframe').css('height', 400);
@@ -321,6 +354,7 @@ export class HomeComponent implements OnInit, DoCheck {
     else if (this.rightWidth <= 1211) {
       $('.A1-iframe').css('height', 450);
       $('.C1-iframe').css('height', 450);
+      $('.C1Clipped-iframe').css('height', 650);
       $('.D1-iframe').css('height', 600);
       $('.seasonal-iframe').css('height', 400);
       $('.featuredBrands-iframe').css('height', 400);
@@ -329,6 +363,7 @@ export class HomeComponent implements OnInit, DoCheck {
      else if (this.rightWidth <= 1535) {
       $('.A1-iframe').css('height', 450);
       $('.C1-iframe').css('height', 450);
+      $('.C1Clipped-iframe').css('height', 500);
       $('.D1-iframe').css('height', 600);
       $('.seasonal-iframe').css('height', 400);
       $('.featuredBrands-iframe').css('height', 400);

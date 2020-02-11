@@ -31,7 +31,8 @@ import { FormSalecarouselComponent } from './forms/form-salecarousel/form-saleca
 import { PreviewSaleCarouselComponent } from './previews/preview-salecarousel/preview-salecarousel.component';
 import { FormFeaturedBrandsComponent } from './forms/form-featuredBrands/form-featuredBrands.component';
 import { PreviewFeaturedBrandsComponent } from './previews/preview-featuredBrands/preview-featuredBrands.component';
-
+import { FormC1ClippedComponent } from './forms/form-C1Clipped/form-C1Clipped.component';
+import { PreviewC1ClippedComponent } from './previews/preview-C1Clipped/preview-C1Clipped.component';
 
 @NgModule({
    declarations: [
@@ -41,10 +42,12 @@ import { PreviewFeaturedBrandsComponent } from './previews/preview-featuredBrand
       PreviewD1Component,
       PreviewEmailComponent,
       PreviewC1Component,
+      PreviewC1ClippedComponent,
       PreviewSeasonalComponent,
       FormA1Component,
       FormD1Component,
       FormC1Component,
+      FormC1ClippedComponent,
       FormSeasonalComponent,
       FormEmailComponent,
       LoadingScreenComponent,
