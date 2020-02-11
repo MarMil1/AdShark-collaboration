@@ -171,6 +171,16 @@ export class HomeComponent implements OnInit, DoCheck {
         this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
 
       });
+    } else if (res === true && this.featuredBrandsData.data.name === this.projectName) {
+      this.workfrontService.updateData(this.featuredBrandsData.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
     } else {
       this.loading = false;
     }
@@ -259,6 +269,7 @@ export class HomeComponent implements OnInit, DoCheck {
             console.log(e.index);
             break;
 
+        // Featured Brands Tab
           case 6:
             // $('iframe').css('width', this.rightWidth);
             this.setIframeHeight();

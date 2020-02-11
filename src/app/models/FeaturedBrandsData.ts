@@ -6,7 +6,6 @@ export class FeaturedBrandsData {
     parameterValues: {
         ['DE:Featured Brand Carousel']: string;
         ['DE:Go-Live Date']: string;
-        ['DE:Headline Color']: string;
         ['DE:Custom headline?']: string;
         ['DE:Custom Headline']: string;
         ['DE:Requested Due Date']: string;
@@ -30,7 +29,6 @@ export class FeaturedBrandsData {
         parameterValues: {
           ['DE:Featured Brand Carousel']: 'Featured Brand Carousel',
           ['DE:Go-Live Date']: '',
-          ['DE:Headline Color']: 'Black',
           ['DE:Custom headline?']: 'No',
           ['DE:Custom Headline']: '',
           ['DE:Requested Due Date']: '',
