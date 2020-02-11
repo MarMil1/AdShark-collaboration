@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit, DoCheck {
             this.adType = res.data.parameterValues['DE:Featured Brand Carousel'];
             this.featuredBrandsData = res;
             this.loading = false;
-            this.tabClick = 5;
+            this.tabClick = 6;
           }
         });
       } else {

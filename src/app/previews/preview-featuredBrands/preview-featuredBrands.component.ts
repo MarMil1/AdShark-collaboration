@@ -40,7 +40,7 @@ export class PreviewFeaturedBrandsComponent implements IFeaturedBrandsIframe, Do
     try {
       let tmp: string;
       tmp = $('.featuredBrands-template').html();
-      this.outputCode = this.outputCode = this.css.getSeasonalCSS() + tmp;
+      this.outputCode = this.outputCode = this.css.getFeaturedBrandsCSS() + tmp;
       this.impexCode = tmp.replace(/"/g, '""');
 
     } catch (err) {}
