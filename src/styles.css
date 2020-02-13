@@ -52,8 +52,8 @@ textarea {
 }
 .input-group-btn .btn-primary {
   color: #fff;
-  background-color:  #013a6b!important;
-  border-color:  none !important;
+  background-color:  #005da3!important;
+  border: none !important;
 }
 /* You can add global styles to this file, and also import other style files */
 .column {
@@ -318,10 +318,19 @@ legend {
   padding-top: 5px;
 }
 
+/* fix vertical scroll on impex preview */
+.mat-tab-body-content {
+  height: auto!important;
+  overflow: hidden!important;
+}
 
-
-
-
+/* nav tab styles */
+.mat-app-background {
+  background-color: #ffffff;
+}
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #005da3;
+}
 
 
 

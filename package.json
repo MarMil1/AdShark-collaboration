@@ -11,7 +11,7 @@
     "client": "npm start",
     "server": "cd server && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "deploy": "ng build --prod --base-href https://adshark.americanhotel.com/ && echo 'adshark.americanhotel.com' > dist/AdShark/CNAME && sudo ngh --dir=dist/AdShark"
+    "deploy": "ng build --prod --base-href http://10.10.19.192/ && echo '10.10.19.192' > dist/AdShark/CNAME && sudo ngh --dir=dist/AdShark"
   },
   "private": true,
   "dependencies": {
