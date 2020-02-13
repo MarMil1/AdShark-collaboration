@@ -39,9 +39,11 @@ export class PreviewFeaturedBrandsComponent implements IFeaturedBrandsIframe, Do
   generateCode() {
     try {
       let tmp: string;
+      let script: string;
       tmp = $('.featuredBrands-template').html();
-      this.outputCode = this.outputCode = this.css.getFeaturedBrandsCSS() + tmp;
-      this.impexCode = tmp.replace(/"/g, '""');
+      script = this.css.getFeaturedBrandsScript();
+      this.outputCode = this.css.getFeaturedBrandsCSS() + tmp + script;
+      this.impexCode = tmp.replace(/"/g, '""') + '\n' + script;
 
     } catch (err) {}
   }

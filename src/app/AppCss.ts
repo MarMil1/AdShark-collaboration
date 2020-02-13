@@ -1,5 +1,6 @@
 export class AppCss {
   public css: string;
+  public script: string;
 
   getGlobalCSS() {
     this.css =
@@ -412,6 +413,57 @@ export class AppCss {
     }
    </style>`;
     return this.css;
+  }
+
+  getFeaturedBrandsScript() {
+    this.script =
+    `<script>
+    document.addEventListener('DOMContentLoaded', function(event) {
+      $(document).ready(function() {
+        (function initShopByBrandSlider() {
+          //brands slider init fired
+          var $brandsSlider = $('.shopByBrand-block');
+          var $div = $('<div>');
+
+          if ($brandsSlider.length < 1) return;
+
+          var $brandsSliderParent = $brandsSlider.parent();
+          var $brandsSliderCopy = $brandsSlider.detach();
+          var $carouselItems = $brandsSliderCopy.find('.shopByBrand-item');
+
+          $brandsSliderParent.append($div.append($brandsSliderCopy));
+
+          Respond.to({
+            'media': 'screen and (max-width: 768px)',
+            'namespace': 'responsive_brandsSlider',
+            'fallback': 'else',
+            'if': function() {
+              $brandsSliderCopy.addClass('c-carousel__carousel c-carousel__carousel_brandsSlider').parent('div').addClass('c-carousel__container c-carousel__container_brandsSlider');
+              $carouselItems.addClass('c-carousel__item c-carousel__item_brandsSlider');
+
+              $brandsSliderCopy.slick({
+                infinite: false,
+                speed: 300,
+                slidesToShow: 1,
+                focusOnSelect: false,
+                centerMode: false,
+                draggable: true
+              });
+            },
+            'else': function() {
+              if ($brandsSliderCopy.hasClass('c-carousel__carousel c-carousel__carousel_brandsSlider')) {
+                $brandsSliderCopy.removeClass('c-carousel__carousel c-carousel__carousel_brandsSlider').parent('div').removeClass('c-carousel__container c-carousel__container_brandsSlider');
+                $carouselItems.removeClass('c-carousel__item c-carousel__item_brandsSlider');
+                $brandsSliderCopy.slick('unslick');
+              }
+            }
+          });
+        }());
+
+      });
+    });
+    </script>`;
+    return this.script;
   }
 
 }
