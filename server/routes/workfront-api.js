@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
     axios.get(url + proID, { params: {
         fields: 'parameterValues',
         apiKey: API_KEY
-        }, headers: {'Content-Type': 'application/json'}
+        }, headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin' :'*'}
         // , transformResponse: [function(data) {}]
     })
     .then(function (response) {
