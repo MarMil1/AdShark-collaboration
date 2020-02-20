@@ -1,0 +1,12 @@
+.seasonal-iframe.iframe-mobile {
+    height: 975px;
+}
+.seasonal-iframe.iframe-tablet {
+    height: 950px;
+}
+.seasonal-iframe.iframe-desktop {
+    height: 425px;
+}
+.seasonal-iframe.iframe-widescreen {
+    height: 425px;
+}

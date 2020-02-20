@@ -198,7 +198,6 @@ export class HomeComponent implements OnInit, DoCheck {
       case 1:
         $('iframe').css('width', this.rightWidth);
         // $('.A1-iframe').css('height', 410);
-        this.setIframeHeight();
         this.tabClick = e.index;
         this.adType = 'A1 Hero Banner';
         console.log(e.index);
@@ -208,7 +207,6 @@ export class HomeComponent implements OnInit, DoCheck {
       case 2:
         $('iframe').css('width', this.rightWidth);
       // $('.Seasonal-iframe').css('height', 410);
-        this.setIframeHeight();
         this.tabClick = e.index;
         console.log(e.index);
         break;
@@ -216,7 +214,6 @@ export class HomeComponent implements OnInit, DoCheck {
          // C1 tab
       case 3:
         $('iframe').css('width', this.rightWidth);
-        this.setIframeHeight();
         this.tabClick = e.index;
         this.adType = 'CLP Banner';
         console.log(e.index);
@@ -233,7 +230,6 @@ export class HomeComponent implements OnInit, DoCheck {
         // CLP Clipped Tab
           case 5:
             $('iframe').css('width', this.rightWidth);
-            this.setIframeHeight();
             this.tabClick = e.index;
             this.adType = 'CLP Clipped Banner';
             console.log(e.index);
@@ -269,7 +265,6 @@ export class HomeComponent implements OnInit, DoCheck {
       $('.btn-tablet,.btn-desktop,.btn-mobile').removeClass('current');
     }
 
-    this.setIframeHeight();
 
   }
 
@@ -303,40 +298,7 @@ export class HomeComponent implements OnInit, DoCheck {
       default:
     }
   }
-  setIframeHeight() {
-    // Mobile
-    if (this.rightWidth <= 475) {
-      $('.A1-iframe').css('height', 525);
-      $('.C1-iframe').css('height', 525);
-      $('.C1Clipped-iframe').css('height', 750);
-      $('.D1-iframe').css('height', 500);
-      $('.seasonal-iframe').css('height', 800);
-    } 
-    // Tablet 
-    else if (this.rightWidth <= 735) {
-      $('.A1-iframe').css('height', 750);
-      $('.C1-iframe').css('height', 750);
-      $('.C1Clipped-iframe').css('height', 750);
-      $('.D1-iframe').css('height', 600);
-      $('.seasonal-iframe').css('height', 800);
-    }
-    // Desktop
-    else if (this.rightWidth <= 1211) {
-      $('.A1-iframe').css('height', 450);
-      $('.C1-iframe').css('height', 450);
-      $('.C1Clipped-iframe').css('height', 650);
-      $('.D1-iframe').css('height', 600);
-      $('.seasonal-iframe').css('height', 400);
-    }
-     // Widescreen 
-     else if (this.rightWidth <= 1535) {
-      $('.A1-iframe').css('height', 450);
-      $('.C1-iframe').css('height', 450);
-      $('.C1Clipped-iframe').css('height', 500);
-      $('.D1-iframe').css('height', 600);
-      $('.seasonal-iframe').css('height', 400);
-    } 
-  }
+ 
 
   /* Get an alternate logo name */
   getAlterLogo(logoPath: string) {
