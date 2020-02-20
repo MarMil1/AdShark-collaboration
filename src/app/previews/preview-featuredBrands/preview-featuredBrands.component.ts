@@ -22,6 +22,11 @@ export class PreviewFeaturedBrandsComponent implements IFeaturedBrandsIframe, Do
   outputCode: string;
   impexCode: string;
   css = new AppCss();
+  altLogo1 = '';
+  altLogo2 = '';
+  altLogo3 = '';
+  altLogo4 = '';
+  altLogo5 = '';
 
   constructor(private snackBar: MatSnackBar) { }
 
@@ -30,6 +35,11 @@ export class PreviewFeaturedBrandsComponent implements IFeaturedBrandsIframe, Do
     this.insertHeadline(this.featuredBrandsData.data.parameterValues['DE:Custom Headline']);
     this.insertProductImages();
     this.generateCode();
+    this.altLogo1 = this.getAlterLogo(this.featuredBrandsData.data.parameterValues['DE:Logo 1 Image Path']);
+    this.altLogo2 = this.getAlterLogo(this.featuredBrandsData.data.parameterValues['DE:Logo 2 Image Path']);
+    this.altLogo3 = this.getAlterLogo(this.featuredBrandsData.data.parameterValues['DE:Logo 3 Image Path']);
+    this.altLogo4 = this.getAlterLogo(this.featuredBrandsData.data.parameterValues['DE:Logo 4 Image Path']);
+    this.altLogo5 = this.getAlterLogo(this.featuredBrandsData.data.parameterValues['DE:Logo 5 Image Path']);
   }
 
   openSnackBar(msg: string, action: string, time: number) {
@@ -92,6 +102,31 @@ export class PreviewFeaturedBrandsComponent implements IFeaturedBrandsIframe, Do
       const impex = $('code#impex-code').text();
       download(filename, impex);
     }
+  }
+
+  getAlterLogo(logoPath: string) {
+    let result = '';
+    let lst: string[] = [];
+    const words: string[] = [];
+    let tmp = logoPath.toLowerCase();
+    if (logoPath !== null) {
+      lst = tmp.split('/');
+      tmp = lst[lst.length - 1];
+      const i = lst[lst.length - 1].indexOf('logo');
+      tmp = tmp.substring(0, i);
+      tmp = tmp.replace(/[_-]/g, ' ');
+      const listOfWords = tmp.split(' ');
+      for (let index = 0; index < listOfWords.length; index++) {
+        words[index] = listOfWords[index].charAt(0).toUpperCase() + listOfWords[index].slice(1);
+      }
+      // tmp = tmp.charAt(0).toUpperCase() + tmp.slice(1).trim();
+      tmp = `${words.join(' ')}`;
+      result = tmp.trim();
+    }
+    // if (logoPath.includes('Registry')) {
+    //   result = 'Registry';
+    // }
+    return result;
   }
 
 }
