@@ -27,10 +27,16 @@
         <div *ngIf="tabClick==4">
           <app-form-salecarousel [salecarouselData]="salecarouselData" ></app-form-salecarousel>
         </div>
+        <!-- <div *ngIf="tabClick==5">
+          <app-form-email></app-form-email>
+        </div> -->
         <div *ngIf="tabClick==5">
           <app-form-C1Clipped [c1clippedData]="c1clippedData"></app-form-C1Clipped>
         </div>
-       
+        <div *ngIf="tabClick==6">
+          <app-form-featuredBrands [featuredBrandsData]="featuredBrandsData"></app-form-featuredBrands>
+        </div>
+
 <!-- Callout bar -->
 <!-- <div class="callout-bar mb-3">
 <label for="CalloutBar"><h5 class="text-primary mr-3">Callout Bar:</h5></label>
@@ -122,7 +128,7 @@
     <h6 class="text-dark sample-logo-3" (click)="onClickSample('logo', 3)" (mouseover)="logoBorder(3)"><b>1888 mills gold:</b> https://images.americanhotel.com/images/logos/suppliers/1888-mills-logo.png</h6>
     <h6 class="text-dark sample-logo-4" (click)="onClickSample('logo', 4)" (mouseover)="logoBorder(4)"><b>RegistryNoTag:</b> https://images.americanhotel.com/images/emails/logos/RegistryNoTag.png</h6>
     <h6 class="text-dark sample-logo-5" (click)="onClickSample('logo', 5)" (mouseover)="logoBorder(5)"><b>GE:</b> https://images.americanhotel.com/images/logos/suppliers/GE bw.svg</h6>
-    <h6 class="text-dark sample-logo-6" (click)="onClickSample('logo', 6)" (mouseover)="logoBorder(6)"><b>Forbes:</b> https://images.americanhotel.com/images/logos/suppliers/ForbesLogo.svg</h6>            
+    <h6 class="text-dark sample-logo-6" (click)="onClickSample('logo', 6)" (mouseover)="logoBorder(6)"><b>Forbes:</b> https://images.americanhotel.com/images/logos/suppliers/ForbesLogo.svg</h6>
     <h6 class="text-dark sample-logo-7" (click)="onClickSample('logo', 7)" (mouseover)="logoBorder(7)"><b>1888 aura:</b> https://images.americanhotel.com/images/logos/suppliers/1888-aura-logo-white.svg</h6>
   </div>
 </div> -->
@@ -171,7 +177,7 @@
 <!-- Button -->
 <!-- <div class="button-form mb-3">
 <div class="button-link-form mb-3">
-  <label for="linkOption"><h5 class="text-primary">Button Link</h5></label> 
+  <label for="linkOption"><h5 class="text-primary">Button Link</h5></label>
   <input [disabled]="disabledButton" class="form-control ad-field" type="text" [(ngModel)]="data.buttonURL" placeholder="URL" />
 </div> -->
 
@@ -198,13 +204,13 @@
 </div> -->
 <!-- <mat-checkbox (change)="disabledButton=!disabledButton" [checked]="disabledButton">No button</mat-checkbox> -->
 <!-- Button text -->
-<!-- <input [disabled]="disabledButton" class="form-control" style="width:300px" type="text" [(ngModel)]="data.buttonTxt" placeholder="Text" /> 
+<!-- <input [disabled]="disabledButton" class="form-control" style="width:300px" type="text" [(ngModel)]="data.buttonTxt" placeholder="Text" />
 </div> -->
 
         <nav class="">
           <!-- <button class="btn btn-secondary mr-2 mb-2">Restore Previous Data</button> -->
           <button class="btn btn-primary mr-2 mb-2" (click)="onSubmit()" tooltip="Update data on the custom form in workfront" placement="bottom" hide-delay="0">Update Project Data</button>
-          
+
         </nav>
       </div>
     </as-split-area>
@@ -253,6 +259,9 @@
           </mat-tab>
           <mat-tab label="CLP C1 Clipped">
             <app-preview-C1Clipped [c1clippedData]="c1clippedData"></app-preview-C1Clipped>
+          </mat-tab>
+          <mat-tab label="Featured Brand H1-H5">
+            <app-preview-featuredBrands [featuredBrandsData]="featuredBrandsData"></app-preview-featuredBrands>
           </mat-tab>
          <!--  <mat-tab label="Email">
           </mat-tab> -->

@@ -1,5 +1,6 @@
 export class AppCss {
   public css: string;
+  public script: string;
 
   getGlobalCSS() {
     this.css =
@@ -378,6 +379,164 @@ export class AppCss {
 
     </style>`;
     return this.css;
+  }
+
+  getFeaturedBrandsCSS() {
+    this.css =
+    `  <style type="text/css">
+    #featuredbrand .shopByBrand-block {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px auto;
+    }
+
+    #featuredbrand .shopByBrand-block a.shopByBrand-item {
+      background: #fff;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      display: block;
+      height: 150px;
+      padding: 21px;
+      text-decoration: none;
+      width: 19%;
+      margin: 20px auto;
+      color: #005da4;
+      font-weight: 600;
+      line-height: 1.2;
+      position: relative;
+    }
+
+    #featuredbrand .shopByBrand-block a.shopByBrand-item:hover {
+      border-color: #005da4;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.15);
+    }
+
+    #featuredbrand .shopByBrand-block a.shopByBrand-item img {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 0px !important;
+      max-height: 125px;
+      padding: 15px 0px;
+      max-width: 120px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    #featuredbrand .shopByBrand-block a.shopByBrand-item span {
+      position: absolute;
+      width: 100%;
+      margin: 0 0 15px 0;
+      padding: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    @media (max-width: 968px) {
+      #featuredbrand .shopByBrand-block a.shopByBrand-item img {
+        max-width: 100px;
+      }
+    }
+
+    /* mobile breakpoint */
+
+    @media (max-width: 768px) {
+      #featuredbrand .shopByBrand-block a.shopByBrand-item {
+        margin: 20px 10px;
+      }
+
+      #featuredbrand .shopByBrand-block {
+        display: block;
+      }
+
+      #featuredbrand .slick-initialized {
+        height: 100%;
+        width: 100% !important;
+      }
+
+      #featuredbrand .slick-track {
+        /* width: 100% !important; */
+      }
+
+      #featuredbrand .shopByBrand-block a.shopByBrand-item img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0px !important;
+        max-height: 100x;
+        padding: 15px 0px;
+        max-width: 375px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: 250px;
+      }
+
+      #featuredbrand .shopByBrand-block a.shopByBrand-item {}
+
+      #featuredbrand .shopByBrand-block {
+        margin: inherit;
+      }
+    }
+
+    @media (max-width: 470px) {
+      #featuredbrand .shopByBrand-block a.shopByBrand-item img {
+        width: 140px;
+      }
+    }
+   </style>`;
+    return this.css;
+  }
+
+  getFeaturedBrandsScript() {
+    this.script =
+    `<script>
+    document.addEventListener('DOMContentLoaded', function(event) {
+      $(document).ready(function() {
+        (function initShopByBrandSlider() {
+          //brands slider init fired
+          var $brandsSlider = $('.shopByBrand-block');
+          var $div = $('<div>');
+
+          if ($brandsSlider.length < 1) return;
+
+          var $brandsSliderParent = $brandsSlider.parent();
+          var $brandsSliderCopy = $brandsSlider.detach();
+          var $carouselItems = $brandsSliderCopy.find('.shopByBrand-item');
+
+          $brandsSliderParent.append($div.append($brandsSliderCopy));
+
+          Respond.to({
+            'media': 'screen and (max-width: 768px)',
+            'namespace': 'responsive_brandsSlider',
+            'fallback': 'else',
+            'if': function() {
+              $brandsSliderCopy.addClass('c-carousel__carousel c-carousel__carousel_brandsSlider').parent('div').addClass('c-carousel__container c-carousel__container_brandsSlider');
+              $carouselItems.addClass('c-carousel__item c-carousel__item_brandsSlider');
+
+              $brandsSliderCopy.slick({
+                infinite: false,
+                speed: 300,
+                slidesToShow: 1,
+                focusOnSelect: false,
+                centerMode: false,
+                draggable: true
+              });
+            },
+            'else': function() {
+              if ($brandsSliderCopy.hasClass('c-carousel__carousel c-carousel__carousel_brandsSlider')) {
+                $brandsSliderCopy.removeClass('c-carousel__carousel c-carousel__carousel_brandsSlider').parent('div').removeClass('c-carousel__container c-carousel__container_brandsSlider');
+                $carouselItems.removeClass('c-carousel__item c-carousel__item_brandsSlider');
+                $brandsSliderCopy.slick('unslick');
+              }
+            }
+          });
+        }());
+
+      });
+    });
+    </script>`;
+    return this.script;
   }
 
 }
