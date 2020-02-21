@@ -1,0 +1,38 @@
+
+
+<!-- Custom Headline? -->
+<div class="headline-form mb-3">
+  <label for="CalloutBar"><h5 class="text-primary mr-3">Custom Headline?</h5></label>
+  <mat-radio-group [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Custom headline?']" (change)="onChangeHeadline()">
+
+    <mat-radio-button value="No">No</mat-radio-button>
+    <mat-radio-button value="Yes">Yes</mat-radio-button>
+  </mat-radio-group>
+    <!-- Custom Headline Conditional Input -->
+    <div *ngIf="featuredBrandsData.data.parameterValues['DE:Custom headline?']=='Yes'">
+      <textarea class="form-control ad-field" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Custom Headline']" rows="2" placeholder="Text"></textarea>
+    </div>
+  </div>
+
+<!-- Product info for Feature Brand Component  -->
+<div class="featurebrand-products-form">
+
+  <div class="featurebrand-product-names-form mb-3">
+    <label><h5 class="text-primary">Logo Images</h5></label>
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 1 Image Path']" placeholder="Image 1 Link" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 2 Image Path']" placeholder="Image 2 Link" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 3 Image Path']" placeholder="Image 3 Link" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 4 Image Path']" placeholder="Image 4 Link" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 5 Image Path']" placeholder="Image 5 Link" />
+  </div>
+
+  <div class="featurebrand-product-links-form mb-3">
+    <label><h5 class="text-primary">Logo Links</h5></label>
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 1 Link']" placeholder="Logo 1 link" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 2 Link']" placeholder="Logo 2 link" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 3 Link']" placeholder="Logo 3 link" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 4 Link']" placeholder="Logo 4 link" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="featuredBrandsData.data.parameterValues['DE:Logo 5 Link']" placeholder="Logo 5 link" />
+  </div>
+
+</div>

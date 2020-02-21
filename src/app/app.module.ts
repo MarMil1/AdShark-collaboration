@@ -29,6 +29,8 @@ import { FormC1Component } from './forms/form-C1/form-C1.component';
 import { PreviewC1Component } from './previews/preview-C1/preview-C1.component';
 import { FormSalecarouselComponent } from './forms/form-salecarousel/form-salecarousel.component';
 import { PreviewSaleCarouselComponent } from './previews/preview-salecarousel/preview-salecarousel.component';
+import { FormFeaturedBrandsComponent } from './forms/form-featuredBrands/form-featuredBrands.component';
+import { PreviewFeaturedBrandsComponent } from './previews/preview-featuredBrands/preview-featuredBrands.component';
 import { FormC1ClippedComponent } from './forms/form-C1Clipped/form-C1Clipped.component';
 import { PreviewC1ClippedComponent } from './previews/preview-C1Clipped/preview-C1Clipped.component';
 
@@ -50,7 +52,10 @@ import { PreviewC1ClippedComponent } from './previews/preview-C1Clipped/preview-
       FormEmailComponent,
       LoadingScreenComponent,
       FormSalecarouselComponent,
-      PreviewSaleCarouselComponent
+      PreviewSaleCarouselComponent,
+      FormFeaturedBrandsComponent,
+      PreviewFeaturedBrandsComponent
+
    ],
    imports: [
       BrowserModule,
