@@ -78,14 +78,14 @@ function download(filename, text) {
   document.body.removeChild(element);
 }
 
-$(document).ready(function () {
+/* $(document).ready(function () {
   //mobile
   $('.btn-mobile').on('click', function (e) {
     $('iframe').removeClass('iframe-widescreen iframe-desktop iframe-tablet').addClass("iframe-mobile");
     $(this).addClass("current");
     $('.btn-tablet,.btn-desktop,.btn-widescreen').removeClass('current');
     e.preventDefault();
-  });
+  }); 
 
   //tablet
   $('.btn-tablet').on('click', function (e) {
@@ -121,4 +121,4 @@ $(document).ready(function () {
   //   $('iframe').css("pointer-events", "auto");
   // });
   
-});
+});*/

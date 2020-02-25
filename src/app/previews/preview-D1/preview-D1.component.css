@@ -1,12 +1,12 @@
-.iframe-mobile {
-    height: 475px;
-}
-.iframe-tablet {
+.D1-iframe.iframe-mobile {
     height: 500px;
 }
-.iframe-desktop {
-    height: 450px;
+.D1-iframe.iframe-tablet {
+    height: 500px;
 }
-.iframe-widescreen {
-    height: 450px;
+.D1-iframe.iframe-desktop {
+    height: 500px;
+}
+.D1-iframe.iframe-widescreen {
+    height: 500px;
 }

@@ -248,21 +248,29 @@ export class HomeComponent implements OnInit, DoCheck {
       this.device = 'Mobile';
       $('.btn-mobile').addClass('current');
       $('.btn-tablet,.btn-desktop,.btn-widescreen').removeClass('current');
+      $('iframe').addClass('iframe-mobile');
+      $('iframe').removeClass('iframe-desktop iframe-tablet iframe-widescreen');
 
     } else if (this.rightWidth <= 1024) {
       this.device = 'Tablet';
       $('.btn-tablet').addClass('current');
       $('.btn-mobile,.btn-desktop,.btn-widescreen').removeClass('current');
+      $('iframe').addClass('iframe-tablet');
+      $('iframe').removeClass('iframe-desktop iframe-mobile iframe-widescreen');
 
     } else if (this.rightWidth <= 1280) {
       this.device = 'Desktop';
       $('.btn-desktop').addClass('current');
       $('.btn-tablet,.btn-mobile,.btn-widescreen').removeClass('current');
+      $('iframe').addClass('iframe-desktop');
+      $('iframe').removeClass('iframe-mobile iframe-tablet iframe-widescreen');
 
     } else {
       this.device = 'Wide Screen';
       $('.btn-widescreen').addClass('current');
       $('.btn-tablet,.btn-desktop,.btn-mobile').removeClass('current');
+      $('iframe').addClass('iframe-widescreen');
+      $('iframe').removeClass('iframe-desktop iframe-tablet iframe-mobile');
     }
 
 
