@@ -47,36 +47,36 @@ export class AppCss {
         top: 20px;
         right: 0;
       }
-  
+
       .a1-hero .a1-supplier-logo img.bg-white {
         background-color: rgba(255, 255, 255, 0.9) !important;
         padding: 15px 25px;
       }
-  
+
       .a1-hero .a1-hero_primary {
         background-color: #FFF;
       }
-  
+
       .a1-hero .a1-hero_text-wrap {
         min-height: 200px;
       }
-  
+
       .a1-hero .col-lg-8,
       .a1-hero .col-md-12 {
         padding-left: 0;
         padding-right: 0;
       }
-  
+
       .a1-hero .c-hero__copy {
         max-width: 87%;
       }
-  
+
       .a1-hero .callout {
         text-transform: uppercase;
         font-size: 16px;
         line-height: 22px;
       }
-  
+
       .a1-hero_primary .callout {
         margin-bottom: 15px;
       }
@@ -91,39 +91,39 @@ export class AppCss {
       .a1-hero_primary a.hero-link:hover span {
         color: #000;
       }
-  
+
       .a1-hero_secondary p.sub-headline,
       .a1-hero_secondary h2.headline,
       .a1-hero_secondary a.hero-link:hover span {
         color: #FFF;
       }
-  
+
       .a1-hero_primary a:hover span.cta,
       .a1-hero_secondary a:hover span.cta {
         text-decoration: underline;
       }
-  
+
       .a1-hero_primary a span.cta,
       .a1-hero_secondary a span.cta {
         text-decoration: none;
         font-size: 16px;
         font-weight: 600;
       }
-  
+
       .a1-hero_primary a span.cta {
         color: #000;
       }
-  
+
       .a1-hero_secondary a span.cta {
         color: #FFF;
       }
-  
+
       .a1-hero h2.headline {
         font-size: 35px;
         line-height: 38px;
         font-weight: 900;
       }
-  
+
       .a1-hero p.sub-headline {
         font-size: 18px;
         line-height: 25px;
@@ -132,15 +132,15 @@ export class AppCss {
         padding-bottom: 16px;
         margin-top: 10px;
       }
-  
+
       .a1-supplier-logo img.small {
         width: 100px;
       }
-  
+
       .a1-supplier-logo img.medium {
         width: 150px;
       }
-  
+
       .a1-supplier-logo img.large {
         width: 200px;
       }
@@ -152,89 +152,89 @@ export class AppCss {
         .a1-hero .c-hero__copy {
           max-width: 96%;
         }
-  
+
         .a1-hero h2.headline {
           font-size: 34px;
           line-height: 37px;
         }
       }
-  
+
       @media (max-width: 1200px) {
         .a1-hero p.sub-headline {
           font-size: 16px;
           line-height: 22px;
         }
       }
-  
+
       @media (max-width: 1090px) {
         .a1-hero .c-hero__copy {
           max-width: 80%;
         }
-  
+
         .a1-hero .callout {
           font-size: 15px;
         }
-  
+
         .a1-hero h2.headline {
           font-size: 32px;
           line-height: 35px;
         }
-  
+
         .a1-hero p.sub-headline {
           font-size: 15px;
           line-height: 21px;
         }
-  
+
         .a1-hero a span.cta {
           font-size: 15px;
         }
       }
-  
+
       @media (max-width: 1024.98px) {
         .a1-hero p.sub-headline {
           margin-top: 5px;
         }
-  
+
         .a1-hero_primary .callout.sale {
           margin-bottom: 8px;
         }
       }
-  
-  
+
+
       @media only screen and (max-width: 600px) {
         .a1-hero .c-hero__copy {
           max-width: 92%;
         }
-  
+
         .a1-hero h2.headline {
           font-size: 26px;
           line-height: 30px;
         }
-  
+
         .a1-hero p.sub-headline {
           padding-bottom: 8px;
         }
-  
+
         .a1-supplier-logo img.small {
           width: 60px;
         }
-  
+
         .a1-supplier-logo img.medium {
           width: 80px;
         }
-  
+
         .a1-supplier-logo img.large {
           width: 100px;
         }
-  
+
         .a1-hero .a1-supplier-logo img.bg-white {
           padding: 10px;
         }
-  
+
         .c-hero.a1-hero_image {
           height: 205px;
         }
-  
+
         .a1-hero .a1-hero_text-wrap {
           min-height: 230px;
         }
@@ -319,9 +319,6 @@ export class AppCss {
   .seasonalComponent-callout-inner p {
       font-size: 16px;
       line-height: 1.4;
-  }
-  .seasonalComponent-callout-inner img {
-      width: 100px;
   }
   .seasonalComponent-block div.seasonalComponent-callout {
       background-color: #004c86;

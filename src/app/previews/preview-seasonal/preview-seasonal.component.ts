@@ -26,6 +26,7 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
   css = new AppCss();
   path = 'https://images.americanhotel.com/images/products/';
   size = '_1.jpg?width=140&amp;height=140';
+  ctaButton = '';
 
   constructor(private snackBar: MatSnackBar) {}
 
@@ -60,11 +61,17 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
 
       this.impexCode = tmp.replace(/"/g, '""');
 
-      this.SeasonaliframeCode =
-      `<h5 class="text-center">${this.seasonalData.data.parameterValues['DE:Sub-Headline']}</h5>
-      <p class="text-white">${this.seasonalData.data.parameterValues['DE:Paragraph']}</p>
-      <a href="${this.seasonalData.data.parameterValues['DE:CTA Button URL']}" class="btn btn--secondary">
-      ${this.seasonalData.data.parameterValues['DE:CTA Button Text']}</a>`;
+      if (this.seasonalData.data.parameterValues['DE:CTA Button Text'] === '') {
+        this.SeasonaliframeCode =
+        `<h5 class="text-center">${this.seasonalData.data.parameterValues['DE:Sub-Headline']}</h5>
+        <p class="text-white">${this.seasonalData.data.parameterValues['DE:Paragraph']}</p>`;
+      } else {
+        this.SeasonaliframeCode =
+        `<h5 class="text-center">${this.seasonalData.data.parameterValues['DE:Sub-Headline']}</h5>
+        <p class="text-white">${this.seasonalData.data.parameterValues['DE:Paragraph']}</p>
+        <a href="${this.seasonalData.data.parameterValues['DE:CTA Button URL']}" class="btn btn--secondary">
+        ${this.seasonalData.data.parameterValues['DE:CTA Button Text']}</a>`;
+      }
 
       this.SeasonaliframeCode = this.getScript(this.SeasonaliframeCode);
       this.insertCodeBlock(this.SeasonaliframeCode);
