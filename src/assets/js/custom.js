@@ -78,40 +78,35 @@ function download(filename, text) {
   document.body.removeChild(element);
 }
 
-/* $(document).ready(function () {
+//Get breakpoint size on initial load, assign appropriate iframe class
+$("body").one("DOMNodeInserted", function() {
+  //wait half a second 
+  setTimeout(function(){
   //mobile
-  $('.btn-mobile').on('click', function (e) {
-    $('iframe').removeClass('iframe-widescreen iframe-desktop iframe-tablet').addClass("iframe-mobile");
-    $(this).addClass("current");
-    $('.btn-tablet,.btn-desktop,.btn-widescreen').removeClass('current');
-    e.preventDefault();
-  }); 
-
+  if ($('.btn-mobile').hasClass('current')){
+    $('iframe').addClass('iframe-mobile');
+    $('iframe').removeClass('iframe-desktop iframe-tablet iframe-widescreen');
+  }
   //tablet
-  $('.btn-tablet').on('click', function (e) {
-    $('iframe').removeClass('iframe-widescreen iframe-desktop iframe-mobile').addClass("iframe-tablet");
-    $(this).addClass("current");
-    $('.btn-mobile,.btn-desktop,.btn-widescreen').removeClass('current');
-    e.preventDefault();
-  });
-
-  //dekstop
-  $('.btn-desktop').on('click', function (e) {
-    $('iframe').removeClass('iframe-widescreen iframe-mobile iframe-tablet').addClass("iframe-desktop");
-    $(this).addClass("current");
-    $('.btn-tablet,.btn-mobile,.btn-widescreen').removeClass('current');
-    e.preventDefault();
-  });
-
+  if ($('.btn-tablet').hasClass('current')){
+    $('iframe').addClass('iframe-tablet');
+    $('iframe').removeClass('iframe-desktop iframe-mobile iframe-widescreen');
+  }
+  //desktop
+  if ($('.btn-desktop').hasClass('current')){
+    $('iframe').addClass('iframe-desktop');
+    $('iframe').removeClass('iframe-mobile iframe-tablet iframe-widescreen');
+  }
   //widescreen
-  $('.btn-widescreen').on('click', function (e) {
-    $('iframe').removeClass('iframe-mobile iframe-desktop iframe-tablet').addClass("iframe-widescreen");
-    $(this).addClass("current");
-    $('.btn-tablet,.btn-desktop,.btn-mobile').removeClass('current');
-    e.preventDefault();
+  if ($('.btn-widescreen').hasClass('current')){
+    $('iframe').addClass('iframe-widescreen');
+    $('iframe').removeClass('iframe-desktop iframe-tablet iframe-mobile');
+  }
+  }, 1000);
   });
+ //END Get breakpoint size on initial load, assign appropriate iframe class
 
-  //gutter smoothness
+//gutter smoothness
   // $('.as-split-gutter-icon').mousedown(function () {
   //   console.log("while dragging...");
   //   $('iframe').css("pointer-events", "none");
@@ -121,4 +116,4 @@ function download(filename, text) {
   //   $('iframe').css("pointer-events", "auto");
   // });
   
-});*/
+
