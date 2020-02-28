@@ -218,7 +218,6 @@ export class HomeComponent implements OnInit, DoCheck {
       case 1:
         $('iframe').css('width', this.rightWidth);
         // $('.A1-iframe').css('height', 410);
-        this.setIframeHeight();
         this.tabClick = e.index;
         this.adType = 'A1 Hero Banner';
         console.log(e.index);
@@ -228,7 +227,6 @@ export class HomeComponent implements OnInit, DoCheck {
       case 2:
         $('iframe').css('width', this.rightWidth);
       // $('.Seasonal-iframe').css('height', 410);
-        this.setIframeHeight();
         this.tabClick = e.index;
         console.log(e.index);
         break;
@@ -236,7 +234,6 @@ export class HomeComponent implements OnInit, DoCheck {
          // C1 tab
       case 3:
         $('iframe').css('width', this.rightWidth);
-        this.setIframeHeight();
         this.tabClick = e.index;
         this.adType = 'CLP Banner';
         console.log(e.index);
@@ -254,7 +251,6 @@ export class HomeComponent implements OnInit, DoCheck {
       // case 5:
       //   $('iframe').css('width', this.rightWidth);
       //   // $('.email-iframe').css('height', 650);
-      //   this.setIframeHeight();
       //   this.tabClick = e.index;
       //   console.log(e.index);
       //   break;
@@ -263,7 +259,6 @@ export class HomeComponent implements OnInit, DoCheck {
         // CLP Clipped Tab
           case 5:
             $('iframe').css('width', this.rightWidth);
-            this.setIframeHeight();
             this.tabClick = e.index;
             this.adType = 'CLP Clipped Banner';
             console.log(e.index);
@@ -271,8 +266,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
         // Featured Brands Tab
           case 6:
-            // $('iframe').css('width', this.rightWidth);
-            this.setIframeHeight();
+            $('iframe').css('width', this.rightWidth);
             this.tabClick = e.index;
             console.log(e.index);
             this.adType = 'Featured Brand Carousel';
@@ -289,27 +283,31 @@ export class HomeComponent implements OnInit, DoCheck {
 
     if (this.rightWidth <= 500) {
       this.device = 'Mobile';
+      //setTimeout(function(){
       $('.btn-mobile').addClass('current');
       $('.btn-tablet,.btn-desktop,.btn-widescreen').removeClass('current');
-
+      $('iframe').addClass('iframe-mobile');
+      $('iframe').removeClass('iframe-desktop iframe-tablet iframe-widescreen');
+      //}, 300);
     } else if (this.rightWidth <= 1024) {
       this.device = 'Tablet';
       $('.btn-tablet').addClass('current');
       $('.btn-mobile,.btn-desktop,.btn-widescreen').removeClass('current');
-
+      $('iframe').addClass('iframe-tablet');
+      $('iframe').removeClass('iframe-desktop iframe-mobile iframe-widescreen');
     } else if (this.rightWidth <= 1280) {
       this.device = 'Desktop';
       $('.btn-desktop').addClass('current');
       $('.btn-tablet,.btn-mobile,.btn-widescreen').removeClass('current');
-
+      $('iframe').addClass('iframe-desktop');
+      $('iframe').removeClass('iframe-mobile iframe-tablet iframe-widescreen');
     } else {
       this.device = 'Wide Screen';
       $('.btn-widescreen').addClass('current');
       $('.btn-tablet,.btn-desktop,.btn-mobile').removeClass('current');
+      $('iframe').addClass('iframe-widescreen');
+      $('iframe').removeClass('iframe-desktop iframe-tablet iframe-mobile');
     }
-
-    this.setIframeHeight();
-
   }
 
   /* Size left pane */
@@ -340,44 +338,6 @@ export class HomeComponent implements OnInit, DoCheck {
         break;
 
       default:
-    }
-  }
-  setIframeHeight() {
-    // Mobile
-    if (this.rightWidth <= 475) {
-      $('.A1-iframe').css('height', 525);
-      $('.C1-iframe').css('height', 525);
-      $('.C1Clipped-iframe').css('height', 750);
-      $('.D1-iframe').css('height', 500);
-      $('.seasonal-iframe').css('height', 800);
-      $('.featuredBrands-iframe').css('height', 400);
-    }
-    // Tablet
-    else if (this.rightWidth <= 735) {
-      $('.A1-iframe').css('height', 750);
-      $('.C1-iframe').css('height', 750);
-      $('.C1Clipped-iframe').css('height', 750);
-      $('.D1-iframe').css('height', 600);
-      $('.seasonal-iframe').css('height', 800);
-      $('.featuredBrands-iframe').css('height', 400);
-    }
-    // Desktop
-    else if (this.rightWidth <= 1211) {
-      $('.A1-iframe').css('height', 450);
-      $('.C1-iframe').css('height', 450);
-      $('.C1Clipped-iframe').css('height', 650);
-      $('.D1-iframe').css('height', 600);
-      $('.seasonal-iframe').css('height', 400);
-      $('.featuredBrands-iframe').css('height', 400);
-    }
-     // Widescreen
-     else if (this.rightWidth <= 1535) {
-      $('.A1-iframe').css('height', 450);
-      $('.C1-iframe').css('height', 450);
-      $('.C1Clipped-iframe').css('height', 500);
-      $('.D1-iframe').css('height', 600);
-      $('.seasonal-iframe').css('height', 400);
-      $('.featuredBrands-iframe').css('height', 400);
     }
   }
 

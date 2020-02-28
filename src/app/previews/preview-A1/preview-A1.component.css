@@ -1,0 +1,12 @@
+.A1-iframe.iframe-mobile {
+    height: 450px;
+}
+.A1-iframe.iframe-tablet {
+    height: 620px;
+}
+.A1-iframe.iframe-desktop {
+    height: 450px;
+}
+.A1-iframe.iframe-widescreen {
+    height: 450px;
+}
