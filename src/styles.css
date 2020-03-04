@@ -138,23 +138,6 @@ li#nav-icon {
 .codeBox code pre{
   color: #1e1e1e;
 }
-/* breakpoint button styles */
-.iframe-widescreen {
-  width: 1400px; /* 1350 */
-  height: 400px;
-}
-.iframe-desktop {
-  width: 1250px; /* 1150 */
-  height: 400px;
-}
-.iframe-tablet {
-  width: 750px; /* 700 */
-  height: 1150px;
-}
-.iframe-mobile {
-  width: 475px; /* 500 */
-  height: 1150px;
-}
 iframe {
   border: none;
   align-items: left;
