@@ -319,6 +319,14 @@ export class AppCss {
   .seasonalComponent-callout-inner p {
       font-size: 16px;
       line-height: 1.4;
+      margin-bottom: 0;
+      margin-top: .5rem;
+  }
+  .seasonalComponent-callout-inner a.btn.btn--secondary {
+       margin-top: 1rem;
+  }
+  .seasonalComponent-callout-inner h5 {
+       margin: 0;
   }
   .seasonalComponent-block div.seasonalComponent-callout {
       background-color: #004c86;
