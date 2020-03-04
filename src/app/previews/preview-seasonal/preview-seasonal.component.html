@@ -8,27 +8,27 @@
           <img class="mx-auto mb-2" src="{{seasonalData.data.parameterValues['DE:Image path for logo']}}" alt="{{altLogo}}" width="{{seasonalData.data.parameterValues['DE:Logo Size Seasonal']}}">
           <h5 class="text-center">{{seasonalData.data.parameterValues['DE:Sub-Headline']}}</h5>
           <p class="text-white">{{seasonalData.data.parameterValues['DE:Paragraph']}}</p>
-          <a href="{{seasonalData.data.parameterValues['DE:CTA Button URL']}}" class="btn btn--secondary">{{seasonalData.data.parameterValues['DE:CTA Button Text']}}</a>
+          <a href="{{seasonalData.data.parameterValues['DE:CTA Button URL']}}" class="btn btn--secondary" id="button">{{seasonalData.data.parameterValues['DE:CTA Button Text']}}</a>
         </div>
       </div>
 
       <a href="{{seasonalData.data.parameterValues['DE:URL for C2']}}" class="seasonalComponent-item">
-        <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C2']}}" 
+        <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C2']}}"
         src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']}}{{size}}" width="140"
         height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C2']}}</span></a>
 
         <a href="{{seasonalData.data.parameterValues['DE:URL for C3']}}" class="seasonalComponent-item">
-          <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C3']}}" 
+          <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C3']}}"
           src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C3 image']}}{{size}}" width="140"
           height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C3']}}</span></a>
 
           <a href="{{seasonalData.data.parameterValues['DE:URL for C4']}}" class="seasonalComponent-item">
-            <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C4']}}" 
+            <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C4']}}"
             src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C4 image']}}{{size}}" width="140"
             height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C4']}}</span></a>
 
             <a href="{{seasonalData.data.parameterValues['DE:URL for C5']}}" class="seasonalComponent-item">
-              <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C5']}}" 
+              <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C5']}}"
               src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C5 image']}}{{size}}" width="140"
               height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C5']}}</span></a>
 
@@ -70,19 +70,19 @@ $productCatalog = americanhotelProductCatalog
 $productCV = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
 $siteResource = jar:com.americanhotel.hybris.initialdata.constants.AmericanhotelInitialDataConstants&/americanhotelinitialdata/import/sampledata/contentCatalogs/$contentCatalog
 $lang = en
-          
+
 UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
 $jarResourceCms = $config-jarResourceCmsValue
-          
-          
-          
-          
-          
+
+
+
+
+
 INSERT_UPDATE CMSParagraphComponent ; $contentCV[unique = true] ; uid[unique = true] ; onlyOneRestrictionMustApply[default='false'] ; name                          ; &componentRef    ; content[lang = $lang]
 
                               ;                           ; componentid   ;                                              ; component name ; componentid ; "
                               {{impexCode}}
-          
+
 "</pre>
     </code>
   </div>

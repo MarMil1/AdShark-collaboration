@@ -10,6 +10,7 @@ import { C1Data } from 'src/app/models/C1Data';
 export class FormC1Component implements OnInit {
   @Input() c1Data: C1Data;
   listofLogoSize = ['Small', 'Medium', 'Large'];
+  tempLogo = '';
 
   constructor() { }
 
@@ -22,7 +23,10 @@ export class FormC1Component implements OnInit {
 
   onChangeLogo() {
     if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'No') {
+      this.tempLogo = this.c1Data.data.parameterValues['DE:Image path for logo'];
       this.c1Data.data.parameterValues['DE:Image path for logo'] = '';
+    } else if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
+      this.c1Data.data.parameterValues['DE:Image path for logo'] = this.tempLogo;
     }
   }
 

@@ -9,6 +9,7 @@ import { C1ClippedData } from 'src/app/models/C1ClippedData';
 })
 export class FormC1ClippedComponent implements OnInit {
   @Input() c1clippedData: C1ClippedData;
+  tempLogo = '';
 
   constructor() { }
 
@@ -17,12 +18,11 @@ export class FormC1ClippedComponent implements OnInit {
 
   onChangeLogo() {
     if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'No') {
+      this.tempLogo = this.c1clippedData.data.parameterValues['DE:Image path for logo'];
       this.c1clippedData.data.parameterValues['DE:Image path for logo'] = '';
+    } else if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+      this.c1clippedData.data.parameterValues['DE:Image path for logo'] = this.tempLogo;
     }
   }
-
- 
-
-
 
 }

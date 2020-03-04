@@ -8,20 +8,15 @@ import { SeasonalData } from 'src/app/models/SeasonalData';
 })
 export class FormSeasonalComponent implements OnInit {
   @Input() seasonalData: SeasonalData;
-  @Input() altLogo: string;
-  @Input() altImg: string;
   whitebg: boolean;
   listofColor = ['black', 'red'];
   tempLogo = '';
-  ctaValue = '';
   tempCtaUrl = '';
   tempCtaText = '';
 
   constructor() { }
 
   ngOnInit() {
-    this.ctaValue = 'Yes';
-    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = 180;
     if (this.seasonalData.data.parameterValues['DE:Sub-Headline'] === undefined) {
       this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
     } else if (this.seasonalData.data.parameterValues['DE:Paragraph'] === undefined) {
@@ -54,12 +49,12 @@ export class FormSeasonalComponent implements OnInit {
   }
 
   onChangeCta() {
-    if (this.ctaValue === 'No') {
+    if (this.seasonalData.data.parameterValues['DE:CTA Button Required?'] === 'No') {
       this.tempCtaUrl = this.seasonalData.data.parameterValues['DE:CTA Button URL'];
       this.tempCtaText = this.seasonalData.data.parameterValues['DE:CTA Button Text'];
       this.seasonalData.data.parameterValues['DE:CTA Button URL'] = '';
       this.seasonalData.data.parameterValues['DE:CTA Button Text'] = '';
-    } else if (this.ctaValue === 'Yes') {
+    } else if (this.seasonalData.data.parameterValues['DE:CTA Button Required?'] === 'Yes') {
       this.seasonalData.data.parameterValues['DE:CTA Button URL'] = this.tempCtaUrl;
       this.seasonalData.data.parameterValues['DE:CTA Button Text'] = this.tempCtaText;
     }

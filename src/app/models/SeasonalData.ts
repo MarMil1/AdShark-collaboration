@@ -6,7 +6,7 @@ export class SeasonalData {
     parameterValues: {
         ['DE:Seasonal Component']: string;
         ['DE:Headline']: string;
-        ['DE:Logo required']: string;
+        ['DE:Logo required?']: string;
         ['DE:Image path for logo']: string;
         ['DE:Add white background behind the logo?']: string;
         ['DE:Sub-Headline']: string;
@@ -26,6 +26,7 @@ export class SeasonalData {
         ['DE:CTA Button Text']: string;
         ['DE:CTA Button URL']: string;
         ['DE:Logo Size Seasonal']: number;
+        ['DE:CTA Button Required?']: string;
     };
   };
 
@@ -37,7 +38,7 @@ export class SeasonalData {
         parameterValues: {
           ['DE:Seasonal Component']: 'Seasonal Component',
           ['DE:Headline']: '',
-          ['DE:Logo required']: 'No',
+          ['DE:Logo required?']: 'No',
           ['DE:Image path for logo']: '',
           ['DE:Add white background behind the logo?']: 'No',
           ['DE:Sub-Headline']: '',
@@ -56,7 +57,8 @@ export class SeasonalData {
           ['DE:URL for C5']: '',
           ['DE:CTA Button Text']: '',
           ['DE:CTA Button URL']: '',
-          ['DE:Logo Size Seasonal']: 150
+          ['DE:Logo Size Seasonal']: 150,
+          ['DE:CTA Button Required?']: 'No'
         }
       };
     }

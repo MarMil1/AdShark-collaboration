@@ -55,17 +55,17 @@
   <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Paragraph']" rows="2" placeholder="Text"></textarea>
 </div>
 
-<!-- CTA Required -->
+<!-- CTA Required ============================================================-->
 <div class="cta-required mb-3">
-  <mat-radio-group [(ngModel)]="ctaValue" (change)="onChangeCta()">
-  <label for="CTARequired"><h5 class="text-primary mr-3">CTA Text and Logo required?</h5></label>
+  <mat-radio-group [(ngModel)]="seasonalData.data.parameterValues['DE:CTA Button Required?']" (change)="onChangeCta()">
+  <label for="CTARequired"><h5 class="text-primary mr-3">CTA Button Required?</h5></label>
     <mat-radio-button value="No">No</mat-radio-button>
     <mat-radio-button value="Yes">Yes</mat-radio-button>
   </mat-radio-group>
 </div>
 
 <!-- Button Link -->
-<div *ngIf="ctaValue=='Yes'">
+<div *ngIf="seasonalData.data.parameterValues['DE:CTA Button Required?'] == 'Yes'">
 <div class="button-form mb-3">
   <div class="button-link-form mb-3">
     <label for="linkOption"><h5 class="text-primary">Button Link</h5></label>
@@ -79,8 +79,9 @@
   <label for="Button"><h5 class="text-primary">Button Text</h5></label>
   <input class="form-control" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:CTA Button Text']" placeholder="Text" />
 </div>
-
 <br>
+<div *ngIf="seasonalData.data.parameterValues['DE:CTA Button Required?'] == 'No'"></div>
+
 <!-- Product info for Seasonal Component  -->
 <div class="seasonal-products-form">
 

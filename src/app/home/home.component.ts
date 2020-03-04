@@ -383,26 +383,24 @@ export class HomeComponent implements OnInit, DoCheck {
 
   /* Get an alternate logo name */
   getAlterLogo(logoPath: string) {
-    let lst: string[] = [];
-    let tmpList: string[] = [];
-    let tmp = logoPath;
-    tmp = tmp.toLowerCase();
-    if (logoPath !== null) {
+    let result = '';
+    if (logoPath !== undefined) {
+      let lst: string[] = [];
+      const words: string[] = [];
+      let tmp = logoPath.toLowerCase();
       lst = tmp.split('/');
       tmp = lst[lst.length - 1];
-      const i = lst[lst.length - 1].indexOf('-logo');
+      const i = lst[lst.length - 1].indexOf('.');
       tmp = tmp.substring(0, i);
-      tmpList = tmp.split('-');
-      for (let i = 0; i < tmpList.length; i++) {
-        tmpList[i] = tmpList[i].charAt(0).toUpperCase() + tmpList[i].slice(1);
+      tmp = tmp.replace(/[_-]/g, ' ');
+      const listOfWords = tmp.split(' ');
+      for (let index = 0; index < listOfWords.length; index++) {
+        words[index] = listOfWords[index].charAt(0).toUpperCase() + listOfWords[index].slice(1);
       }
-
-      this.altLogo = `${tmpList.join(' ')} Logo`;
+      tmp = `${words.join(' ')}`;
+      result = tmp.trim();
     }
-    if (logoPath.includes('Registry')) {
-      this.altLogo = 'Registry';
-    }
-    // console.log('AltLogo: ', this.altLogo);
+    return result;
   }
 
   /* Get an alternate img name */
