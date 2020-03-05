@@ -45,6 +45,7 @@ export class FormSeasonalComponent implements OnInit {
     } else if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'Yes') {
       this.seasonalData.data.parameterValues['DE:Image path for logo'] = this.tempLogo;
       this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
+      this.whitebg = false;
     }
   }
 

@@ -55,6 +55,23 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
 
       this.impexCode = tmp.replace(/"/g, '""');
 
+      let btnElement = document.getElementById('logoElement').style.display = 'inline';
+
+      if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'No') {
+        btnElement = document.getElementById('logoElement').style.display = 'none';
+        // this.C1ClippediframeCode = `
+        // <h3 class="pb-1">${this.c1clippedData.data.parameterValues['DE:Headline']}</h3>
+        // <p class="pb-2">${this.c1clippedData.data.parameterValues['DE:Sub-Headline']}</p>`;
+        // console.log('this is iframecode: ' + this.C1ClippediframeCode );
+
+      } else if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+        btnElement = document.getElementById('logoElement').style.display = 'inline';
+        // this.C1ClippediframeCode = `
+        // <h3 class="pb-1">${this.c1clippedData.data.parameterValues['DE:Headline']}</h3>
+        // <p class="pb-2">${this.c1clippedData.data.parameterValues['DE:Sub-Headline']}</p>
+        // <a href="${this.c1clippedData.data.parameterValues['DE:CTA URL']}" class="btn btn--default">${this.c1clippedData.data.parameterValues['DE:CTA Text']}</a>`;
+      }
+
       this.C1ClippediframeCode = $('#clp-product-ad').parent().html();
       this.C1ClippediframeCode = this.getScript(this.C1ClippediframeCode);
 
@@ -87,14 +104,15 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
   } */
 
   insertLogo(logo: string): void {
-    if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'No') {
-      $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').hide();
-      this.comment($('.C1Clipped-template').find('.logo'), '<!--<div alt="" class="c1clipped-supplier-logo">', '</div>-->');
+    $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').attr('src', logo);
+    // if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'No') {
+    //   $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').hide();
+    //   this.comment($('.C1Clipped-template').find('.logo'), '<!--<div alt="" class="c1clipped-supplier-logo">', '</div>-->');
 
-    } else if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'Yes') {
-      $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').show();
-      $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').attr('src', logo);
-    }
+    // } else if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+    //   $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').show();
+    //   $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').attr('src', logo);
+    // }
   }
 
   /* comment logo element */
