@@ -19,12 +19,13 @@ declare var $: any;
 
 export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
   @Input() c1clippedData: C1ClippedData;
-  @Input() altLogo: string;
+  // @Input() altLogo: string;
 
   C1ClippediframeCode: string;
   outputCode: string;
   impexCode: string;
   css = new AppCss();
+  altLogo = '';
 
   constructor(private snackBar: MatSnackBar) {}
 
@@ -33,6 +34,7 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
     // tslint:disable-next-line: max-line-length
     // this.insertbg(this.c1clippedData.data.parameterValues['DE:Image - 520 x 450']);
     this.insertLogo(this.c1clippedData.data.parameterValues['DE:Image path for logo']);
+    this.altLogo = this.getAlterLogo(this.c1clippedData.data.parameterValues['DE:Image path for logo']);
     this.generateCode();
   }
 
@@ -158,6 +160,27 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
       const impex = $('code#impex-code').text();
       download(filename, impex);
     }
+  }
+
+  getAlterLogo(logoPath: string) {
+    let result = '';
+    if (logoPath !== undefined) {
+      let lst: string[] = [];
+      const words: string[] = [];
+      let tmp = logoPath.toLowerCase();
+      lst = tmp.split('/');
+      tmp = lst[lst.length - 1];
+      const i = lst[lst.length - 1].indexOf('.');
+      tmp = tmp.substring(0, i);
+      tmp = tmp.replace(/[_-]/g, ' ');
+      const listOfWords = tmp.split(' ');
+      for (let index = 0; index < listOfWords.length; index++) {
+        words[index] = listOfWords[index].charAt(0).toUpperCase() + listOfWords[index].slice(1);
+      }
+      tmp = `${words.join(' ')}`;
+      result = tmp.trim();
+    }
+    return result;
   }
 
 }

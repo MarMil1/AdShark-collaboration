@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit, DoCheck {
             this.loading = false;
             this.tabClick = 3;
           }  else if (res.data.parameterValues['DE:CLP Banner Clipped']) {
-            this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
+            // this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
             this.adType = res.data.parameterValues['DE:CLP Banner'];
             this.c1clippedData = res;
             this.loading = false;
@@ -103,8 +103,6 @@ export class HomeComponent implements OnInit, DoCheck {
       this.altLogo = this.a1Data.data.parameterValues['DE:Image path for logo'];
     } else if (this.adType === 'CLP Banner') {
       this.altLogo = this.c1Data.data.parameterValues['DE:Image path for logo'];
-    } else if (this.adType === 'CLP Banner Clipped') {
-      this.altLogo = this.c1clippedData.data.parameterValues['DE:Image path for logo'];
     }
     this.getAlterLogo(this.altLogo);
   }
