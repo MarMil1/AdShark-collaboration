@@ -18,12 +18,13 @@ declare var $: any;
 
 export class PreviewA1Component implements IA1Iframe, DoCheck {
   @Input() a1Data: A1Data;
-  @Input() altLogo: string;
+  // @Input() altLogo: string;
 
   A1iframeCode: string;
   outputCode: string;
   impexCode: string;
   css = new AppCss();
+  altLogo = '';
 
   constructor(private snackBar: MatSnackBar) {}
 
@@ -33,6 +34,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
     this.insertbg(this.a1Data.data.parameterValues['DE:Image for Desktop - 960 x 410'], this.a1Data.data.parameterValues['DE:Image for mobile - 480 x 205']);
     this.insertLogo(this.a1Data.data.parameterValues['DE:Image path for logo']);
     this.insertLogoSize(this.a1Data.data.parameterValues['DE:Logo Size A1/CLP'].toLocaleLowerCase());
+    this.altLogo = this.getAlterLogo(this.a1Data.data.parameterValues['DE:Image path for logo']);
     this.generateCode();
   }
 
@@ -129,21 +131,22 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
   }
 
   insertLogo(logo: string): void {
-    if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'No') {
-      $('.A1-iframe').contents().find('#A1logo').hide();
-      this.comment($('.A1-template').find('.a1-supplier-logo'), '<!--<div alt="" class="a1-supplier-logo">', '</div>-->');
+    $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
+    // if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'No') {
+    //   $('.A1-iframe').contents().find('#A1logo').hide();
+    //   this.comment($('.A1-template').find('.a1-supplier-logo'), '<!--<div alt="" class="a1-supplier-logo">', '</div>-->');
 
-    } else if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
-      $('.A1-iframe').contents().find('#A1logo').show();
-      $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
+    // } else if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
+    //   $('.A1-iframe').contents().find('#A1logo').show();
+    //   $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
 
-      if (this.isCommented($('.A1-template').find('.order-first'))) {
-        this.uncomment($('.A1-template').find('.order-first'));
-      }
+    //   if (this.isCommented($('.A1-template').find('.order-first'))) {
+    //     this.uncomment($('.A1-template').find('.order-first'));
+    //   }
 
-      $('.A1-template').find('.a1-supplier-logo').find('.bg-white').attr('src', logo);
-      $('.A1-template').find('.a1-supplier-logo').attr('alt', this.altLogo);
-    }
+    //   $('.A1-template').find('.a1-supplier-logo').find('.bg-white').attr('src', logo);
+    //   $('.A1-template').find('.a1-supplier-logo').attr('alt', this.altLogo);
+    // }
   }
 
   insertLogoSize(size: string): void {
@@ -202,6 +205,27 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       const impex = $('code#impex-code').text();
       download(filename, impex);
     }
+  }
+
+  getAlterLogo(logoPath: string) {
+    let result = '';
+    if (logoPath !== undefined) {
+      let lst: string[] = [];
+      const words: string[] = [];
+      let tmp = logoPath.toLowerCase();
+      lst = tmp.split('/');
+      tmp = lst[lst.length - 1];
+      const i = lst[lst.length - 1].indexOf('.');
+      tmp = tmp.substring(0, i);
+      tmp = tmp.replace(/[_-]/g, ' ');
+      const listOfWords = tmp.split(' ');
+      for (let index = 0; index < listOfWords.length; index++) {
+        words[index] = listOfWords[index].charAt(0).toUpperCase() + listOfWords[index].slice(1);
+      }
+      tmp = `${words.join(' ')}`;
+      result = tmp.trim();
+    }
+    return result;
   }
 
 }
