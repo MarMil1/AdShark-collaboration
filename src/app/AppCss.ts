@@ -347,7 +347,6 @@ export class AppCss {
       max-width: 90%;
   }
   .seasonalComponent-callout-inner img {
-      max-width: 180px;
       display: block;
   }
   a.seasonalComponent-item img {
