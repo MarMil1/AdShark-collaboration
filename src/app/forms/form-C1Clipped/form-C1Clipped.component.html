@@ -1,6 +1,6 @@
 <!-- Image -->
 <div class="background-form mb-3">
-  <label for="Background"><h5 class="text-primary background-label1">Image - 520 x 450</h5></label>  
+  <label for="Background"><h5 class="text-primary background-label1">Image - 520 x 450</h5></label>
   <input class="form-control ad-field" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:Image - 520 x 450']" placeholder="URL" />
 </div>
 
@@ -23,6 +23,7 @@
     <input class="form-control ad-field mb-2" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:Image path for logo']" placeholder="URL" />
   </div>
 </div>
+<div *ngIf="c1clippedData.data.parameterValues['DE:Logo required?']=='No'"></div>
 
 
 
@@ -44,13 +45,13 @@
 <div class="CTA-form mb-3">
   <!-- CTA Link -->
   <div class="CTA-link-form mb-3">
-    <label for="CTALink"><h5 class="text-primary">CTA Link</h5></label> 
+    <label for="CTALink"><h5 class="text-primary">CTA Link</h5></label>
     <input class="form-control ad-field" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:CTA URL']" placeholder="URL" />
   </div>
   <!-- Button Text -->
   <div>
-    <label for="CTAText"><h5 class="text-primary">CTA Text</h5></label> 
-      <input class="form-control" style="width:300px" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:CTA Text']" placeholder="Text" /> 
+    <label for="CTAText"><h5 class="text-primary">CTA Text</h5></label>
+      <input class="form-control" style="width:300px" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:CTA Text']" placeholder="Text" />
   </div>
 </div>
 

@@ -8,15 +8,15 @@ import { SeasonalData } from 'src/app/models/SeasonalData';
 })
 export class FormSeasonalComponent implements OnInit {
   @Input() seasonalData: SeasonalData;
-  @Input() altLogo: string;
-  @Input() altImg: string;
   whitebg: boolean;
   listofColor = ['black', 'red'];
+  tempLogo = '';
+  tempCtaUrl = '';
+  tempCtaText = '';
 
   constructor() { }
 
   ngOnInit() {
-    //this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = 150;
     if (this.seasonalData.data.parameterValues['DE:Sub-Headline'] === undefined) {
       this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
     } else if (this.seasonalData.data.parameterValues['DE:Paragraph'] === undefined) {
@@ -38,21 +38,52 @@ export class FormSeasonalComponent implements OnInit {
   }
   onChangeLogo() {
     if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'No') {
+      this.tempLogo = this.seasonalData.data.parameterValues['DE:Image path for logo'];
       this.seasonalData.data.parameterValues['DE:Image path for logo'] = '';
       this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] = 'No';
+
     } else if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+      this.seasonalData.data.parameterValues['DE:Image path for logo'] = this.tempLogo;
       this.seasonalData.data.parameterValues['DE:Sub-Headline'] = '';
-    } 
+      this.whitebg = false;
+    }
+  }
+
+  onChangeCta() {
+    if (this.seasonalData.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+      this.tempCtaUrl = this.seasonalData.data.parameterValues['DE:CTA Button URL'];
+      this.tempCtaText = this.seasonalData.data.parameterValues['DE:CTA Button Text'];
+      this.seasonalData.data.parameterValues['DE:CTA Button URL'] = '';
+      this.seasonalData.data.parameterValues['DE:CTA Button Text'] = '';
+    } else if (this.seasonalData.data.parameterValues['DE:CTA Button Required?'] === 'Yes') {
+      this.seasonalData.data.parameterValues['DE:CTA Button URL'] = this.tempCtaUrl;
+      this.seasonalData.data.parameterValues['DE:CTA Button Text'] = this.tempCtaText;
+    }
+
   }
 
   minusLogo(e) {
+    // tslint:disable-next-line: max-line-length
     this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = Number(this.seasonalData.data.parameterValues['DE:Logo Size Seasonal']);
-    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] -= 5;
+    if (this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] > 100) {
+      this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] -= 5;
+    }
+    if (this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] < 100 ||
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] > 220) {
+      this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = 100;
+    }
   }
 
   plusLogo(e) {
+    // tslint:disable-next-line: max-line-length
     this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = Number(this.seasonalData.data.parameterValues['DE:Logo Size Seasonal']);
-    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] += 5;
+    if (this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] < 220) {
+      this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] += 5;
+    }
+    if (this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] > 220 ||
+    this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] < 100) {
+      this.seasonalData.data.parameterValues['DE:Logo Size Seasonal'] = 220;
+    }
   }
 
   addWhiteBgLogo() {

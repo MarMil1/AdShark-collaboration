@@ -18,7 +18,7 @@ declare var $: any;
 
 export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
   @Input() seasonalData: SeasonalData;
-  @Input() altLogo: string;
+  // @Input() altLogo: string;
   buttonLink: string;
   SeasonaliframeCode: string;
   outputCode: string;
@@ -26,6 +26,8 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
   css = new AppCss();
   path = 'https://images.americanhotel.com/images/products/';
   size = '_1.jpg?width=140&amp;height=140';
+  ctaButton = '';
+  altLogo = '';
 
   constructor(private snackBar: MatSnackBar) {}
 
@@ -35,6 +37,7 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
     this.insertHeadline(this.seasonalData.data.parameterValues['DE:Headline']);
     this.insertLogoWidth(this.seasonalData.data.parameterValues['DE:Logo Size Seasonal']);
     this.insertLogoWhiteBackground(this.seasonalData.data.parameterValues['DE:Add white background behind the logo?']);
+    this.altLogo = this.getAlterLogo(this.seasonalData.data.parameterValues['DE:Image path for logo']);
     this.insertProductImages();
     this.insertProductNames();
     this.generateCode();
@@ -56,15 +59,25 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
 
       tmp = $('.seasonal-template').html();
 
-      this.outputCode = this.outputCode = this.css.getSeasonalCSS() + tmp;
+      let btnElement = document.getElementById('button').style.display = 'inline-block';
+
+      this.outputCode = this.css.getSeasonalCSS() + tmp;
 
       this.impexCode = tmp.replace(/"/g, '""');
 
-      this.SeasonaliframeCode =
-      `<h5 class="text-center">${this.seasonalData.data.parameterValues['DE:Sub-Headline']}</h5>
-      <p class="text-white">${this.seasonalData.data.parameterValues['DE:Paragraph']}</p>
-      <a href="${this.seasonalData.data.parameterValues['DE:CTA Button URL']}" class="btn btn--secondary">
-      ${this.seasonalData.data.parameterValues['DE:CTA Button Text']}</a>`;
+      if (this.seasonalData.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+        btnElement = document.getElementById('button').style.display = 'none';
+        this.SeasonaliframeCode =
+        `<h5 class="text-center">${this.seasonalData.data.parameterValues['DE:Sub-Headline']}</h5>
+        <p class="text-white">${this.seasonalData.data.parameterValues['DE:Paragraph']}</p>`;
+      } else {
+        btnElement = document.getElementById('button').style.display = 'inline-block';
+        this.SeasonaliframeCode =
+        `<h5 class="text-center">${this.seasonalData.data.parameterValues['DE:Sub-Headline']}</h5>
+        <p class="text-white">${this.seasonalData.data.parameterValues['DE:Paragraph']}</p>
+        <a href="${this.seasonalData.data.parameterValues['DE:CTA Button URL']}" class="btn btn--secondary">
+        ${this.seasonalData.data.parameterValues['DE:CTA Button Text']}</a>`;
+      }
 
       this.SeasonaliframeCode = this.getScript(this.SeasonaliframeCode);
       this.insertCodeBlock(this.SeasonaliframeCode);
@@ -141,6 +154,27 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
       const impex = $('code#impex-code').text();
       download(filename, impex);
     }
+  }
+
+  getAlterLogo(logoPath: string) {
+    let result = '';
+    if (logoPath !== undefined) {
+      let lst: string[] = [];
+      const words: string[] = [];
+      let tmp = logoPath.toLowerCase();
+      lst = tmp.split('/');
+      tmp = lst[lst.length - 1];
+      const i = lst[lst.length - 1].indexOf('.');
+      tmp = tmp.substring(0, i);
+      tmp = tmp.replace(/[_-]/g, ' ');
+      const listOfWords = tmp.split(' ');
+      for (let index = 0; index < listOfWords.length; index++) {
+        words[index] = listOfWords[index].charAt(0).toUpperCase() + listOfWords[index].slice(1);
+      }
+      tmp = `${words.join(' ')}`;
+      result = tmp.trim();
+    }
+    return result;
   }
 
 }

@@ -63,19 +63,19 @@ export class HomeComponent implements OnInit, DoCheck {
             this.loading = false;
             this.tabClick = 4;
           } else if (res.data.parameterValues['DE:A1 Hero Banner']) {
-            this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
+            // this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
             this.adType = res.data.parameterValues['DE:A1 Hero Banner'];
             this.a1Data = res;
             this.loading = false;
             this.tabClick = 1;
           } else if (res.data.parameterValues['DE:CLP Banner']) {
-            this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
+            // this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
             this.adType = res.data.parameterValues['DE:CLP Banner'];
             this.c1Data = res;
             this.loading = false;
             this.tabClick = 3;
           }  else if (res.data.parameterValues['DE:CLP Banner Clipped']) {
-            this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
+            // this.getAlterLogo(res.data.parameterValues['DE:Image path for logo']);
             this.adType = res.data.parameterValues['DE:CLP Banner'];
             this.c1clippedData = res;
             this.loading = false;
@@ -99,14 +99,14 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    if (this.adType === 'A1 Hero Banner') {
-      this.altLogo = this.a1Data.data.parameterValues['DE:Image path for logo'];
-    } else if (this.adType === 'CLP Banner') {
-      this.altLogo = this.c1Data.data.parameterValues['DE:Image path for logo'];
-    } else if (this.adType === 'CLP Banner Clipped') {
-      this.altLogo = this.c1clippedData.data.parameterValues['DE:Image path for logo'];
-    }
-    this.getAlterLogo(this.altLogo);
+    // if (this.adType === 'A1 Hero Banner') {
+    //   this.altLogo = this.a1Data.data.parameterValues['DE:Image path for logo'];
+    // } else if (this.adType === 'CLP Banner') {
+    //   this.altLogo = this.c1Data.data.parameterValues['DE:Image path for logo'];
+    // } else if (this.adType === 'CLP Banner Clipped') {
+    //   this.altLogo = this.c1clippedData.data.parameterValues['DE:Image path for logo'];
+    // }
+    // this.getAlterLogo(this.altLogo);
   }
 
   onSubmit() {
@@ -342,39 +342,37 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   /* Get an alternate logo name */
-  getAlterLogo(logoPath: string) {
-    let lst: string[] = [];
-    let tmpList: string[] = [];
-    let tmp = logoPath;
-    tmp = tmp.toLowerCase();
-    if (logoPath !== null) {
-      lst = tmp.split('/');
-      tmp = lst[lst.length - 1];
-      const i = lst[lst.length - 1].indexOf('-logo');
-      tmp = tmp.substring(0, i);
-      tmpList = tmp.split('-');
-      for (let i = 0; i < tmpList.length; i++) {
-        tmpList[i] = tmpList[i].charAt(0).toUpperCase() + tmpList[i].slice(1);
-      }
-
-      this.altLogo = `${tmpList.join(' ')} Logo`;
-    }
-    if (logoPath.includes('Registry')) {
-      this.altLogo = 'Registry';
-    }
-    // console.log('AltLogo: ', this.altLogo);
-  }
+  // getAlterLogo(logoPath: string) {
+  //   let result = '';
+  //   if (logoPath !== undefined) {
+  //     let lst: string[] = [];
+  //     const words: string[] = [];
+  //     let tmp = logoPath.toLowerCase();
+  //     lst = tmp.split('/');
+  //     tmp = lst[lst.length - 1];
+  //     const i = lst[lst.length - 1].indexOf('.');
+  //     tmp = tmp.substring(0, i);
+  //     tmp = tmp.replace(/[_-]/g, ' ');
+  //     const listOfWords = tmp.split(' ');
+  //     for (let index = 0; index < listOfWords.length; index++) {
+  //       words[index] = listOfWords[index].charAt(0).toUpperCase() + listOfWords[index].slice(1);
+  //     }
+  //     tmp = `${words.join(' ')}`;
+  //     result = tmp.trim();
+  //   }
+  //   return result;
+  // }
 
   /* Get an alternate img name */
-  getAlterImg(data) {
-    let lst: string[] = [];
-    let tmp = data.bgURL;
-    if (data.bgURL !== null) {
-      lst = tmp.split('/');
-      tmp = lst[lst.length - 1];
-      tmp = tmp.substring(0, tmp.search('.jpg'));
-      this.altImg = tmp;
-    }
-  }
+  // getAlterImg(data) {
+  //   let lst: string[] = [];
+  //   let tmp = data.bgURL;
+  //   if (data.bgURL !== null) {
+  //     lst = tmp.split('/');
+  //     tmp = lst[lst.length - 1];
+  //     tmp = tmp.substring(0, tmp.search('.jpg'));
+  //     this.altImg = tmp;
+  //   }
+  // }
 
 }

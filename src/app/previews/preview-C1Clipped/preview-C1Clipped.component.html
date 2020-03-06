@@ -9,7 +9,7 @@
   <div class="container">
     <div id="clp-product-ad">
       <div class="row align-items-center pt-4 pb-4">
-        <div class="col-lg-7 col-md-12 col-sm-12 left"> <img alt="" src="{{c1clippedData.data.parameterValues['DE:Image path for logo']}}" class="logo pb-3">
+        <div class="col-lg-7 col-md-12 col-sm-12 left"> <img id="logoElement" alt="{{altLogo}}" src="{{c1clippedData.data.parameterValues['DE:Image path for logo']}}" class="logo pb-3">
           <h3 class="pb-1">{{c1clippedData.data.parameterValues['DE:Headline']}}</h3>
           <p class="pb-2">{{c1clippedData.data.parameterValues['DE:Sub-Headline']}}</p>
           <a href="{{c1clippedData.data.parameterValues['DE:CTA URL']}}" class="btn btn--default">{{c1clippedData.data.parameterValues['DE:CTA Text']}}</a>
@@ -36,7 +36,7 @@
     <span><i class="fas fa-download"></i></span>
     <span class="copy-btn-txt"> Download Code</span>
   </button>
-</div>  
+</div>
 
 <div class="impex-file">
   <h4 class="mt-4 ml-4">Impex File</h4>
@@ -52,19 +52,19 @@ $productCatalog = americanhotelProductCatalog
 $productCV = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
 $siteResource = jar:com.americanhotel.hybris.initialdata.constants.AmericanhotelInitialDataConstants&/americanhotelinitialdata/import/sampledata/contentCatalogs/$contentCatalog
 $lang = en
-          
+
 UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
 $jarResourceCms = $config-jarResourceCmsValue
-          
-          
-          
-          
-          
+
+
+
+
+
 INSERT_UPDATE CMSParagraphComponent ; $contentCV[unique = true] ; uid[unique = true] ; onlyOneRestrictionMustApply[default='false'] ; name                          ; &componentRef    ; content[lang = $lang]
 
                               ;                           ; componentid   ;                                              ; component name ; componentid ; "
                               {{impexCode}}
-          
+
 "</pre>
     </code>
   </div>

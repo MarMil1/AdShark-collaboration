@@ -2,7 +2,7 @@
   padding-bottom: 50px;
 }
 
-/* Gutter size */ 
+/* Gutter size */
 .as-split-gutter {
   flex-basis: 7px !important;
 }
@@ -155,7 +155,7 @@ iframe {
   box-shadow: 0 0 0 4px #ffffff;
   transition: background 0.2s, color 0.2s;
   opacity: .5;
-} 
+}
 li#nav-icon .current {
   color: #005da3;
 }
@@ -179,7 +179,7 @@ li#nav-icon .current {
   color: #fff;
   border: .5px solid #005da3 !important;
   margin-left: 20px !important;
-} 
+}
 .copy-button1:hover {
   background-color: white;
   color: #005da3;

@@ -19,12 +19,13 @@ declare var $: any;
 
 export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
   @Input() c1clippedData: C1ClippedData;
-  @Input() altLogo: string;
+  // @Input() altLogo: string;
 
   C1ClippediframeCode: string;
   outputCode: string;
   impexCode: string;
   css = new AppCss();
+  altLogo = '';
 
   constructor(private snackBar: MatSnackBar) {}
 
@@ -33,6 +34,7 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
     // tslint:disable-next-line: max-line-length
     // this.insertbg(this.c1clippedData.data.parameterValues['DE:Image - 520 x 450']);
     this.insertLogo(this.c1clippedData.data.parameterValues['DE:Image path for logo']);
+    this.altLogo = this.getAlterLogo(this.c1clippedData.data.parameterValues['DE:Image path for logo']);
     this.generateCode();
   }
 
@@ -54,6 +56,23 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
       this.outputCode = this.css.getC1ClippedCSS() + tmp;
 
       this.impexCode = tmp.replace(/"/g, '""');
+
+      let btnElement = document.getElementById('logoElement').style.display = 'inline';
+
+      if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'No') {
+        btnElement = document.getElementById('logoElement').style.display = 'none';
+        // this.C1ClippediframeCode = `
+        // <h3 class="pb-1">${this.c1clippedData.data.parameterValues['DE:Headline']}</h3>
+        // <p class="pb-2">${this.c1clippedData.data.parameterValues['DE:Sub-Headline']}</p>`;
+        // console.log('this is iframecode: ' + this.C1ClippediframeCode );
+
+      } else if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+        btnElement = document.getElementById('logoElement').style.display = 'inline';
+        // this.C1ClippediframeCode = `
+        // <h3 class="pb-1">${this.c1clippedData.data.parameterValues['DE:Headline']}</h3>
+        // <p class="pb-2">${this.c1clippedData.data.parameterValues['DE:Sub-Headline']}</p>
+        // <a href="${this.c1clippedData.data.parameterValues['DE:CTA URL']}" class="btn btn--default">${this.c1clippedData.data.parameterValues['DE:CTA Text']}</a>`;
+      }
 
       this.C1ClippediframeCode = $('#clp-product-ad').parent().html();
       this.C1ClippediframeCode = this.getScript(this.C1ClippediframeCode);
@@ -87,14 +106,15 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
   } */
 
   insertLogo(logo: string): void {
-    if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'No') {
-      $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').hide();
-      this.comment($('.C1Clipped-template').find('.logo'), '<!--<div alt="" class="c1clipped-supplier-logo">', '</div>-->');
+    $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').attr('src', logo);
+    // if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'No') {
+    //   $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').hide();
+    //   this.comment($('.C1Clipped-template').find('.logo'), '<!--<div alt="" class="c1clipped-supplier-logo">', '</div>-->');
 
-    } else if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'Yes') {
-      $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').show();
-      $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').attr('src', logo);
-    }
+    // } else if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+    //   $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').show();
+    //   $('.C1Clipped-iframe').contents().find('#C1Clippedlogo').attr('src', logo);
+    // }
   }
 
   /* comment logo element */
@@ -140,6 +160,27 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
       const impex = $('code#impex-code').text();
       download(filename, impex);
     }
+  }
+
+  getAlterLogo(logoPath: string) {
+    let result = '';
+    if (logoPath !== undefined) {
+      let lst: string[] = [];
+      const words: string[] = [];
+      let tmp = logoPath.toLowerCase();
+      lst = tmp.split('/');
+      tmp = lst[lst.length - 1];
+      const i = lst[lst.length - 1].indexOf('.');
+      tmp = tmp.substring(0, i);
+      tmp = tmp.replace(/[_-]/g, ' ');
+      const listOfWords = tmp.split(' ');
+      for (let index = 0; index < listOfWords.length; index++) {
+        words[index] = listOfWords[index].charAt(0).toUpperCase() + listOfWords[index].slice(1);
+      }
+      tmp = `${words.join(' ')}`;
+      result = tmp.trim();
+    }
+    return result;
   }
 
 }
