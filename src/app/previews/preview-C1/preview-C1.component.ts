@@ -99,6 +99,15 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
 
       this.impexCode = tmp.replace(/"/g, '""');
 
+      let btnElement = document.getElementById('logoElement').style.display = 'inline';
+      console.log('this is btn element: ' + btnElement);
+
+      if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'No') {
+        btnElement = document.getElementById('logoElement').style.display = 'none';
+      } else if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
+        btnElement = document.getElementById('logoElement').style.display = 'inline';
+      }
+
       this.C1iframeCode = $('div.c1-hero_text-wrap').html();
       this.C1iframeCode = this.getScript(this.C1iframeCode);
 
@@ -134,7 +143,7 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
     // $('.C1-iframe').contents().find('#C1logo').attr('src', logo);
     if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'No') {
       $('.C1-iframe').contents().find('#C1logo').hide();
-      this.comment($('.C1-template').find('.c1-supplier-logo'), '<!--<div alt="" class="c1-supplier-logo">', '</div>-->');
+    //  this.comment($('.C1-template').find('.c1-supplier-logo'), '<!--<div alt="" class="c1-supplier-logo">', '</div>-->');
 
     } else if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
       $('.C1-iframe').contents().find('#C1logo').show();
@@ -145,7 +154,7 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
       }
 
       $('.C1-template').find('.c1-supplier-logo').find('.bg-white').attr('src', logo);
-      $('.C1-template').find('.c1-supplier-logo').attr('alt', this.altLogo);
+    //  $('.C1-template').find('.c1-supplier-logo').attr('alt', this.altLogo);
     }
   }
 

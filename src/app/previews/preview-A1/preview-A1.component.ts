@@ -99,6 +99,15 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
 
       this.impexCode = tmp.replace(/"/g, '""');
 
+      let btnElement = document.getElementById('logoElement').style.display = 'inline';
+      console.log('this is btn element: ' + btnElement);
+
+      if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'No') {
+        btnElement = document.getElementById('logoElement').style.display = 'none';
+      } else if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
+        btnElement = document.getElementById('logoElement').style.display = 'inline';
+      }
+
       this.A1iframeCode = $('div.a1-hero_text-wrap').html();
       this.A1iframeCode = this.getScript(this.A1iframeCode);
 
@@ -134,7 +143,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
     // $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
     if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'No') {
       $('.A1-iframe').contents().find('#A1logo').hide();
-      this.comment($('.A1-template').find('.a1-supplier-logo'), '<!--<div alt="" class="a1-supplier-logo">', '</div>-->');
+      // this.comment($('.A1-template').find('.a1-supplier-logo'), '<!--<div alt="" class="a1-supplier-logo">', '</div>-->');
 
     } else if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
       $('.A1-iframe').contents().find('#A1logo').show();
@@ -145,7 +154,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       }
 
       $('.A1-template').find('.a1-supplier-logo').find('.bg-white').attr('src', logo);
-      $('.A1-template').find('.a1-supplier-logo').attr('alt', this.altLogo);
+     // $('.A1-template').find('.a1-supplier-logo').attr('alt', this.altLogo);
     }
   }
 
