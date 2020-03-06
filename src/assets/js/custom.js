@@ -80,7 +80,7 @@ function download(filename, text) {
 
 //Get breakpoint size on initial load, assign appropriate iframe class
 $("body").one("DOMNodeInserted", function() {
-  //wait half a second 
+  //wait a second 
   setTimeout(function(){
   //mobile
   if ($('.btn-mobile').hasClass('current')){
@@ -105,6 +105,35 @@ $("body").one("DOMNodeInserted", function() {
   }, 1000);
   });
  //END Get breakpoint size on initial load, assign appropriate iframe class
+
+ //Get breakpoint size on tab click, assign appropriate iframe class
+ $(document).ready(function() {
+$("div.mat-tab-label").on("click", function() {
+  console.log("tab click function running");
+    console.log("tab click timeout function running");
+  //mobile
+  if ($('.btn-mobile').hasClass('current')){
+    $('iframe').addClass('iframe-mobile');
+    $('iframe').removeClass('iframe-desktop iframe-tablet iframe-widescreen');
+  }
+  //tablet
+  if ($('.btn-tablet').hasClass('current')){
+    $('iframe').addClass('iframe-tablet');
+    $('iframe').removeClass('iframe-desktop iframe-mobile iframe-widescreen');
+  }
+  //desktop
+  if ($('.btn-desktop').hasClass('current')){
+    $('iframe').addClass('iframe-desktop');
+    $('iframe').removeClass('iframe-mobile iframe-tablet iframe-widescreen');
+  }
+  //widescreen
+  if ($('.btn-widescreen').hasClass('current')){
+    $('iframe').addClass('iframe-widescreen');
+    $('iframe').removeClass('iframe-desktop iframe-tablet iframe-mobile');
+  }
+  });
+});
+ //END Get breakpoint size on tab click, assign appropriate iframe class
 
 //gutter smoothness
   // $('.as-split-gutter-icon').mousedown(function () {
