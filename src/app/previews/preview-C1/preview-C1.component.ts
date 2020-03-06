@@ -131,22 +131,22 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
   }
 
   insertLogo(logo: string): void {
-    $('.C1-iframe').contents().find('#C1logo').attr('src', logo);
-    // if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'No') {
-    //   $('.C1-iframe').contents().find('#C1logo').hide();
-    //   this.comment($('.C1-template').find('.c1-supplier-logo'), '<!--<div alt="" class="c1-supplier-logo">', '</div>-->');
+    // $('.C1-iframe').contents().find('#C1logo').attr('src', logo);
+    if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'No') {
+      $('.C1-iframe').contents().find('#C1logo').hide();
+     // this.comment($('.C1-template').find('.c1-supplier-logo'), '<!--<div alt="" class="c1-supplier-logo">', '</div>-->');
 
-    // } else if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
-    //   $('.C1-iframe').contents().find('#C1logo').show();
-    //   $('.C1-iframe').contents().find('#C1logo').attr('src', logo);
+    } else if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
+      $('.C1-iframe').contents().find('#C1logo').show();
+      $('.C1-iframe').contents().find('#C1logo').attr('src', logo);
 
-    //   if (this.isCommented($('.C1-template').find('.order-first'))) {
-    //     this.uncomment($('.C1-template').find('.order-first'));
-    //   }
+      if (this.isCommented($('.C1-template').find('.order-first'))) {
+        this.uncomment($('.C1-template').find('.order-first'));
+      }
 
-    //   $('.C1-template').find('.c1-supplier-logo').find('.bg-white').attr('src', logo);
-    //   $('.C1-template').find('.c1-supplier-logo').attr('alt', this.altLogo);
-    // }
+     // $('.C1-template').find('.c1-supplier-logo').find('.bg-white').attr('src', logo);
+     // $('.C1-template').find('.c1-supplier-logo').attr('alt', this.altLogo);
+    }
   }
 
   insertLogoSize(size: string): void {
