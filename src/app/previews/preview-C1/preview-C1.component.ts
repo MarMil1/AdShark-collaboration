@@ -134,7 +134,7 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
     // $('.C1-iframe').contents().find('#C1logo').attr('src', logo);
     if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'No') {
       $('.C1-iframe').contents().find('#C1logo').hide();
-     // this.comment($('.C1-template').find('.c1-supplier-logo'), '<!--<div alt="" class="c1-supplier-logo">', '</div>-->');
+      this.comment($('.C1-template').find('.c1-supplier-logo'), '<!--<div alt="" class="c1-supplier-logo">', '</div>-->');
 
     } else if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
       $('.C1-iframe').contents().find('#C1logo').show();
@@ -144,8 +144,8 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
         this.uncomment($('.C1-template').find('.order-first'));
       }
 
-     // $('.C1-template').find('.c1-supplier-logo').find('.bg-white').attr('src', logo);
-     // $('.C1-template').find('.c1-supplier-logo').attr('alt', this.altLogo);
+      $('.C1-template').find('.c1-supplier-logo').find('.bg-white').attr('src', logo);
+      $('.C1-template').find('.c1-supplier-logo').attr('alt', this.altLogo);
     }
   }
 

@@ -134,7 +134,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
     // $('.A1-iframe').contents().find('#A1logo').attr('src', logo);
     if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'No') {
       $('.A1-iframe').contents().find('#A1logo').hide();
-     // this.comment($('.A1-template').find('.a1-supplier-logo'), '<!--<div alt="" class="a1-supplier-logo">', '</div>-->');
+      this.comment($('.A1-template').find('.a1-supplier-logo'), '<!--<div alt="" class="a1-supplier-logo">', '</div>-->');
 
     } else if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
       $('.A1-iframe').contents().find('#A1logo').show();
@@ -144,8 +144,8 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
         this.uncomment($('.A1-template').find('.order-first'));
       }
 
-     // $('.A1-template').find('.a1-supplier-logo').find('.bg-white').attr('src', logo);
-     // $('.A1-template').find('.a1-supplier-logo').attr('alt', this.altLogo);
+      $('.A1-template').find('.a1-supplier-logo').find('.bg-white').attr('src', logo);
+      $('.A1-template').find('.a1-supplier-logo').attr('alt', this.altLogo);
     }
   }
 
