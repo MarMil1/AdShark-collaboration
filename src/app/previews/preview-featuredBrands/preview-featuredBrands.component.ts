@@ -106,26 +106,22 @@ export class PreviewFeaturedBrandsComponent implements IFeaturedBrandsIframe, Do
 
   getAlterLogo(logoPath: string) {
     let result = '';
-    let lst: string[] = [];
-    const words: string[] = [];
-    let tmp = logoPath.toLowerCase();
-    if (logoPath !== null) {
+    if (logoPath !== undefined) {
+      let lst: string[] = [];
+      const words: string[] = [];
+      let tmp = logoPath.toLowerCase();
       lst = tmp.split('/');
       tmp = lst[lst.length - 1];
-      const i = lst[lst.length - 1].indexOf('logo');
+      const i = lst[lst.length - 1].indexOf('.');
       tmp = tmp.substring(0, i);
       tmp = tmp.replace(/[_-]/g, ' ');
       const listOfWords = tmp.split(' ');
       for (let index = 0; index < listOfWords.length; index++) {
         words[index] = listOfWords[index].charAt(0).toUpperCase() + listOfWords[index].slice(1);
       }
-      // tmp = tmp.charAt(0).toUpperCase() + tmp.slice(1).trim();
       tmp = `${words.join(' ')}`;
       result = tmp.trim();
     }
-    // if (logoPath.includes('Registry')) {
-    //   result = 'Registry';
-    // }
     return result;
   }
 
