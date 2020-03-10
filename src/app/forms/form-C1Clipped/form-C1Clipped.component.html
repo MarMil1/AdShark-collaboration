@@ -41,7 +41,17 @@
   <legend>Sub-headline should have 75 characters max</legend>
 </div>
 
+<!-- CTA Required ============================================================-->
+<div class="cta-required mb-3">
+  <mat-radio-group [(ngModel)]="c1clippedData.data.parameterValues['DE:CTA Button Required?']" (change)="onChangeCta()">
+  <label for="CTARequired"><h5 class="text-primary mr-3">CTA Button Required?</h5></label>
+    <mat-radio-button value="No">No</mat-radio-button>
+    <mat-radio-button value="Yes">Yes</mat-radio-button>
+  </mat-radio-group>
+</div>
+
 <!-- CTA -->
+<div *ngIf="c1clippedData.data.parameterValues['DE:CTA Button Required?'] == 'Yes'">
 <div class="CTA-form mb-3">
   <!-- CTA Link -->
   <div class="CTA-link-form mb-3">
@@ -54,5 +64,7 @@
       <input class="form-control" style="width:300px" type="text" [(ngModel)]="c1clippedData.data.parameterValues['DE:CTA Text']" placeholder="Text" />
   </div>
 </div>
+
+<div *ngIf="c1clippedData.data.parameterValues['DE:CTA Button Required?'] == 'No'"></div>
 
 

@@ -100,12 +100,19 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
       this.impexCode = tmp.replace(/"/g, '""');
 
       let btnElement = document.getElementById('logoElement').style.display = 'inline';
-      console.log('this is btn element: ' + btnElement);
 
       if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'No') {
         btnElement = document.getElementById('logoElement').style.display = 'none';
       } else if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
         btnElement = document.getElementById('logoElement').style.display = 'inline';
+      }
+
+      let ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
+
+      if (this.c1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+        ctaAfter = document.getElementById('ctaAfter').style.display = 'none';
+      } else {
+        ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
       }
 
       this.C1iframeCode = $('div.c1-hero_text-wrap').html();

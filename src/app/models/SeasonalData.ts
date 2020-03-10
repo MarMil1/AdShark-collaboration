@@ -58,7 +58,7 @@ export class SeasonalData {
           ['DE:CTA Button Text']: '',
           ['DE:CTA Button URL']: '',
           ['DE:Logo Size Seasonal']: 150,
-          ['DE:CTA Button Required?']: 'No'
+          ['DE:CTA Button Required?']: 'Yes'
         }
       };
     }

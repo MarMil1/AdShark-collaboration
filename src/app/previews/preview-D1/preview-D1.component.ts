@@ -44,6 +44,24 @@ export class PreviewD1Component implements DoCheck, ID1Iframe {
 
       this.outputCode = tmp;
 
+      /* heroLink below stops whole
+      image from being clickable
+      using pointerEvents = 'none'*/
+
+      let heroLink = document.getElementById('heroLink').style.pointerEvents = 'auto';
+      // let heroLink = document.getElementById('heroLink').style.visibility = 'visible';
+      let ctaAfter = document.getElementById('ctaAfter').style.visibility = 'visible';
+
+      if (this.d1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+        heroLink = document.getElementById('heroLink').style.pointerEvents = 'none';
+       // heroLink = document.getElementById('heroLink').style.visibility = 'hidden';
+        ctaAfter = document.getElementById('ctaAfter').style.visibility = 'hidden';
+      } else {
+        heroLink = document.getElementById('heroLink').style.pointerEvents = 'auto';
+       // heroLink = document.getElementById('heroLink').style.visibility = 'visible';
+        ctaAfter = document.getElementById('ctaAfter').style.visibility = 'visible';
+      }
+
       this.D1iframeCode = $('.text-wrap').html();
       this.insertCodeBlock(this.D1iframeCode);
 

@@ -10,6 +10,8 @@ import { C1ClippedData } from 'src/app/models/C1ClippedData';
 export class FormC1ClippedComponent implements OnInit {
   @Input() c1clippedData: C1ClippedData;
   tempLogo = '';
+  tempCtaUrl = '';
+  tempCtaText = '';
 
   constructor() { }
 
@@ -23,6 +25,19 @@ export class FormC1ClippedComponent implements OnInit {
     } else if (this.c1clippedData.data.parameterValues['DE:Logo required?'] === 'Yes') {
       this.c1clippedData.data.parameterValues['DE:Image path for logo'] = this.tempLogo;
     }
+  }
+
+  onChangeCta() {
+    if (this.c1clippedData.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+      this.tempCtaUrl = this.c1clippedData.data.parameterValues['DE:CTA URL'];
+      this.tempCtaText = this.c1clippedData.data.parameterValues['DE:CTA Text'];
+      this.c1clippedData.data.parameterValues['DE:CTA URL'] = '';
+      this.c1clippedData.data.parameterValues['DE:CTA Text'] = '';
+    } else if (this.c1clippedData.data.parameterValues['DE:CTA Button Required?'] === 'Yes') {
+      this.c1clippedData.data.parameterValues['DE:CTA URL'] = this.tempCtaUrl;
+      this.c1clippedData.data.parameterValues['DE:CTA Text'] = this.tempCtaText;
+    }
+
   }
 
 }

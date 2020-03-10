@@ -108,6 +108,14 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
         btnElement = document.getElementById('logoElement').style.display = 'inline';
       }
 
+      let ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
+
+      if (this.a1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+        ctaAfter = document.getElementById('ctaAfter').style.display = 'none';
+      } else {
+        ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
+      }
+
       this.A1iframeCode = $('div.a1-hero_text-wrap').html();
       this.A1iframeCode = this.getScript(this.A1iframeCode);
 

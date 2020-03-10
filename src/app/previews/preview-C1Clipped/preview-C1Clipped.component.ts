@@ -74,6 +74,14 @@ export class PreviewC1ClippedComponent implements IC1ClippedIframe, DoCheck {
         // <a href="${this.c1clippedData.data.parameterValues['DE:CTA URL']}" class="btn btn--default">${this.c1clippedData.data.parameterValues['DE:CTA Text']}</a>`;
       }
 
+      let ctaButton = document.getElementById('ctaButton').style.display = 'inline';
+
+      if (this.c1clippedData.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+        ctaButton = document.getElementById('ctaButton').style.display = 'none';
+      } else {
+        ctaButton = document.getElementById('ctaButton').style.display = 'inline';
+      }
+
       this.C1ClippediframeCode = $('#clp-product-ad').parent().html();
       this.C1ClippediframeCode = this.getScript(this.C1ClippediframeCode);
 

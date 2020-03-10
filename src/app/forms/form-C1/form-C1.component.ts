@@ -11,6 +11,8 @@ export class FormC1Component implements OnInit {
   @Input() c1Data: C1Data;
   listofLogoSize = ['Small', 'Medium', 'Large'];
   tempLogo = '';
+  tempCtaUrl = '';
+  tempCtaText = '';
 
   constructor() { }
 
@@ -44,6 +46,19 @@ export class FormC1Component implements OnInit {
     } else {
       this.c1Data.data.parameterValues['DE:Hex #'] = '#9e876b';
     }
+  }
+
+  onChangeCta() {
+    if (this.c1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+      this.tempCtaUrl = this.c1Data.data.parameterValues['DE:CTA URL'];
+      this.tempCtaText = this.c1Data.data.parameterValues['DE:CTA Text'];
+      this.c1Data.data.parameterValues['DE:CTA URL'] = '';
+      this.c1Data.data.parameterValues['DE:CTA Text'] = '';
+    } else if (this.c1Data.data.parameterValues['DE:CTA Button Required?'] === 'Yes') {
+      this.c1Data.data.parameterValues['DE:CTA URL'] = this.tempCtaUrl;
+      this.c1Data.data.parameterValues['DE:CTA Text'] = this.tempCtaText;
+    }
+
   }
 
 }

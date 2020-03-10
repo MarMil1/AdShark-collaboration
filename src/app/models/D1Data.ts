@@ -9,6 +9,7 @@ export class D1Data {
         ['DE:Headline']: string;
         ['DE:CTA Text']: string;
         ['DE:CTA URL']: string;
+        ['DE:CTA Button Required?']: string;
     };
   };
 
@@ -22,7 +23,8 @@ export class D1Data {
           ['DE:Image - 450 x 350']: '',
           ['DE:Headline']: '',
           ['DE:CTA Text']: '',
-          ['DE:CTA URL']: ''
+          ['DE:CTA URL']: '',
+          ['DE:CTA Button Required?']: 'Yes'
         }
       };
     }

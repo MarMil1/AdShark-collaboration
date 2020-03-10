@@ -79,6 +79,12 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
         ${this.seasonalData.data.parameterValues['DE:CTA Button Text']}</a>`;
       }
 
+      if (this.seasonalData.data.parameterValues['DE:Paragraph'] === undefined &&
+        this.seasonalData.data.parameterValues['DE:CTA Button Text'] === undefined) {
+        this.seasonalData.data.parameterValues['DE:Paragraph'] = '';
+        this.seasonalData.data.parameterValues['DE:CTA Button Text'] = '';
+      }
+
       this.SeasonaliframeCode = this.getScript(this.SeasonaliframeCode);
       this.insertCodeBlock(this.SeasonaliframeCode);
 

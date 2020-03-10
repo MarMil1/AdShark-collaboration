@@ -14,9 +14,10 @@ export class C1ClippedData {
         ['DE:Sub-Headline']: string;
         ['DE:CTA Text']: string;
         ['DE:CTA URL']: string;
+        ['DE:CTA Button Required?']: string;
       };
     };
-  
+
     constructor() {
       this.data = {
         ID: '',
@@ -33,9 +34,9 @@ export class C1ClippedData {
           ['DE:Sub-Headline']: '',
           ['DE:CTA Text']: '',
           ['DE:CTA URL']: '',
+          ['DE:CTA Button Required?']: 'Yes'
         }
       };
     }
-  
+
   }
-  
