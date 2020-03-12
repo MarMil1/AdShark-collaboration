@@ -114,6 +114,8 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
 
       if (this.a1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
         ctaAfter = document.getElementById('ctaAfter').style.display = 'none';
+        // removes href from the <a> tag with hero-link class
+        $('.hero-link').removeAttr('href');
       } else {
         ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
       }
