@@ -54,6 +54,8 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
       /* add sale and no sale  */
       if (this.c1Data.data.parameterValues['DE:Sale Call-Out'] === 'None') {
         $('.C1-template').find('.callout').html('');
+        $('.C1-template').find('.headline').html(this.c1Data.data.parameterValues['DE:Headline']);
+        $('.C1-template').find('.sub-headline').html(this.c1Data.data.parameterValues['DE:Sub-Headline']);
         this.comment($('.C1-template').find('.callout')
         , `<!--<h4 class="callout">`
         , '</h4>-->');

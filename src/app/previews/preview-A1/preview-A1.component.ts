@@ -54,6 +54,8 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       /* add sale and no sale  */
       if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'None') {
         $('.A1-template').find('.callout').html('');
+        $('.A1-template').find('.headline').html(this.a1Data.data.parameterValues['DE:Headline']);
+        $('.A1-template').find('.sub-headline').html(this.a1Data.data.parameterValues['DE:Sub-Headline']);
         this.comment($('.A1-template').find('.callout')
         , `<!--<h4 class="callout">`
         , '</h4>-->');
