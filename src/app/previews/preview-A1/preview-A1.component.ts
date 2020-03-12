@@ -54,8 +54,10 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       /* add sale and no sale  */
       if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'None') {
         $('.A1-template').find('.callout').html('');
+        // added three lines below to be able to edit headline, Sub-Headline and CTA Text
         $('.A1-template').find('.headline').html(this.a1Data.data.parameterValues['DE:Headline']);
         $('.A1-template').find('.sub-headline').html(this.a1Data.data.parameterValues['DE:Sub-Headline']);
+        $('.A1-template').find('.cta').html(this.a1Data.data.parameterValues['DE:CTA Text']);
         this.comment($('.A1-template').find('.callout')
         , `<!--<h4 class="callout">`
         , '</h4>-->');
