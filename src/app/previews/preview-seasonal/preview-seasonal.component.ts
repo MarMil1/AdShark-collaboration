@@ -85,6 +85,13 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
         this.seasonalData.data.parameterValues['DE:CTA Button Text'] = '';
       }
 
+      if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'Yes') {
+        $('.seasonalComponent-callout-inner img').removeClass('d-none');
+      } else if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'No') {
+        $('.seasonalComponent-callout-inner img').addClass('d-none');
+      }
+
+
       this.SeasonaliframeCode = this.getScript(this.SeasonaliframeCode);
       this.insertCodeBlock(this.SeasonaliframeCode);
 
