@@ -20,6 +20,7 @@ export class A1Data {
       ['DE:Sub-Headline']: string;
       ['DE:CTA Text']: string;
       ['DE:CTA URL']: string;
+      ['DE:CTA Button Required?']: string;
     };
   };
 
@@ -45,6 +46,7 @@ export class A1Data {
         ['DE:Sub-Headline']: '',
         ['DE:CTA Text']: '',
         ['DE:CTA URL']: '',
+        ['DE:CTA Button Required?']: 'Yes',
       }
     };
   }

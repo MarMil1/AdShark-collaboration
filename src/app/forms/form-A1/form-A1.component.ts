@@ -11,6 +11,8 @@ export class FormA1Component implements OnInit {
   @Input() a1Data: A1Data;
   listofLogoSize = ['Small', 'Medium', 'Large'];
   tempLogo = '';
+  tempCtaUrl = '';
+  tempCtaText = '';
 
   constructor() { }
 
@@ -19,6 +21,19 @@ export class FormA1Component implements OnInit {
 
   onChangeLogoSize() {
     console.log(`A1 Logo size: ${this.a1Data.data.parameterValues['DE:Logo Size A1/CLP']}`);
+  }
+
+  onChangeCta() {
+    if (this.a1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+      this.tempCtaUrl = this.a1Data.data.parameterValues['DE:CTA URL'];
+      this.tempCtaText = this.a1Data.data.parameterValues['DE:CTA Text'];
+      this.a1Data.data.parameterValues['DE:CTA URL'] = '';
+      this.a1Data.data.parameterValues['DE:CTA Text'] = '';
+    } else if (this.a1Data.data.parameterValues['DE:CTA Button Required?'] === 'Yes') {
+      this.a1Data.data.parameterValues['DE:CTA URL'] = this.tempCtaUrl;
+      this.a1Data.data.parameterValues['DE:CTA Text'] = this.tempCtaText;
+    }
+
   }
 
   onChangeLogo() {

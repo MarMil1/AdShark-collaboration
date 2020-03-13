@@ -9,6 +9,8 @@ import { D1Data } from 'src/app/models/D1Data';
 })
 export class FormD1Component implements OnInit {
   @Input() d1Data: D1Data;
+  tempCtaUrl = '';
+  tempCtaText = '';
 
   constructor() { }
 
@@ -17,6 +19,19 @@ export class FormD1Component implements OnInit {
 
   onClickImageSample() {
     this.d1Data.data.parameterValues['DE:Image - 450 x 350'] = 'https://images.americanhotel.com/images/banners/D1_generic_foodservice.jpg';
+  }
+
+  onChangeCta() {
+    if (this.d1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+      this.tempCtaUrl = this.d1Data.data.parameterValues['DE:CTA URL'];
+      this.tempCtaText = this.d1Data.data.parameterValues['DE:CTA Text'];
+      this.d1Data.data.parameterValues['DE:CTA URL'] = '';
+      this.d1Data.data.parameterValues['DE:CTA Text'] = '';
+    } else if (this.d1Data.data.parameterValues['DE:CTA Button Required?'] === 'Yes') {
+      this.d1Data.data.parameterValues['DE:CTA URL'] = this.tempCtaUrl;
+      this.d1Data.data.parameterValues['DE:CTA Text'] = this.tempCtaText;
+    }
+
   }
 
 

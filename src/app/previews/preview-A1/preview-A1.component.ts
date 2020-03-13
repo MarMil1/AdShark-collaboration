@@ -54,6 +54,10 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       /* add sale and no sale  */
       if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'None') {
         $('.A1-template').find('.callout').html('');
+        // added three lines below to be able to edit headline, Sub-Headline and CTA Text
+        $('.A1-template').find('.headline').html(this.a1Data.data.parameterValues['DE:Headline']);
+        $('.A1-template').find('.sub-headline').html(this.a1Data.data.parameterValues['DE:Sub-Headline']);
+        $('.A1-template').find('.cta').html(this.a1Data.data.parameterValues['DE:CTA Text']);
         this.comment($('.A1-template').find('.callout')
         , `<!--<h4 class="callout">`
         , '</h4>-->');
@@ -106,6 +110,16 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
         btnElement = document.getElementById('logoElement').style.display = 'none';
       } else if (this.a1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
         btnElement = document.getElementById('logoElement').style.display = 'inline';
+      }
+
+      let ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
+
+      if (this.a1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+        ctaAfter = document.getElementById('ctaAfter').style.display = 'none';
+        // removes href from the <a> tag with hero-link class
+        $('.hero-link').removeAttr('href');
+      } else {
+        ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
       }
 
       this.A1iframeCode = $('div.a1-hero_text-wrap').html();

@@ -44,6 +44,16 @@ export class PreviewD1Component implements DoCheck, ID1Iframe {
 
       this.outputCode = tmp;
 
+      let ctaAfter = document.getElementById('ctaAfter').style.visibility = 'visible';
+
+      if (this.d1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+        ctaAfter = document.getElementById('ctaAfter').style.visibility = 'hidden';
+        // removes href from the <a> tag with hero-link class
+        $('.hero-link').removeAttr('href');
+      } else {
+        ctaAfter = document.getElementById('ctaAfter').style.visibility = 'visible';
+      }
+
       this.D1iframeCode = $('.text-wrap').html();
       this.insertCodeBlock(this.D1iframeCode);
 

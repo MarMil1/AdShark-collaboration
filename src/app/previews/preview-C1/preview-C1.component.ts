@@ -54,6 +54,10 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
       /* add sale and no sale  */
       if (this.c1Data.data.parameterValues['DE:Sale Call-Out'] === 'None') {
         $('.C1-template').find('.callout').html('');
+        // added three lines below to be able to edit headline, Sub-Headline and CTA Text
+        $('.C1-template').find('.headline').html(this.c1Data.data.parameterValues['DE:Headline']);
+        $('.C1-template').find('.sub-headline').html(this.c1Data.data.parameterValues['DE:Sub-Headline']);
+        $('.C1-template').find('.cta').html(this.c1Data.data.parameterValues['DE:CTA Text']);
         this.comment($('.C1-template').find('.callout')
         , `<!--<h4 class="callout">`
         , '</h4>-->');
@@ -100,12 +104,21 @@ export class PreviewC1Component implements IC1Iframe, DoCheck {
       this.impexCode = tmp.replace(/"/g, '""');
 
       let btnElement = document.getElementById('logoElement').style.display = 'inline';
-      console.log('this is btn element: ' + btnElement);
 
       if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'No') {
         btnElement = document.getElementById('logoElement').style.display = 'none';
       } else if (this.c1Data.data.parameterValues['DE:Logo required?'] === 'Yes') {
         btnElement = document.getElementById('logoElement').style.display = 'inline';
+      }
+
+      let ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
+
+      if (this.c1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
+        ctaAfter = document.getElementById('ctaAfter').style.display = 'none';
+        // removes href from the <a> tag with hero-link class
+        $('.hero-link').removeAttr('href');
+      } else {
+        ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
       }
 
       this.C1iframeCode = $('div.c1-hero_text-wrap').html();
