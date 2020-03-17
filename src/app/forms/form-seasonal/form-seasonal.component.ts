@@ -24,7 +24,7 @@ export class FormSeasonalComponent implements OnInit {
     } else if (this.seasonalData.data.parameterValues['DE:Headline'] === undefined) {
       this.seasonalData.data.parameterValues['DE:Headline'] = '';
     }
-
+    // This if and else statement fixed logo background when using the checkbox
     if (this.seasonalData.data.parameterValues['DE:Add white background behind the logo?'] === 'Yes') {
       this.whitebg = true;
     } else {

@@ -78,13 +78,13 @@ export class PreviewSeasonalComponent implements ISeasonalIframe, DoCheck {
         <a href="${this.seasonalData.data.parameterValues['DE:CTA Button URL']}" class="btn btn--secondary">
         ${this.seasonalData.data.parameterValues['DE:CTA Button Text']}</a>`;
       }
-
+      // this is a fix for undefined paragraph and CTA button text
       if (this.seasonalData.data.parameterValues['DE:Paragraph'] === undefined &&
         this.seasonalData.data.parameterValues['DE:CTA Button Text'] === undefined) {
         this.seasonalData.data.parameterValues['DE:Paragraph'] = '';
         this.seasonalData.data.parameterValues['DE:CTA Button Text'] = '';
       }
-
+      // Adding and removing d-none class from html
       if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'Yes') {
         $('.seasonalComponent-callout-inner img').removeClass('d-none');
       } else if (this.seasonalData.data.parameterValues['DE:Logo required?'] === 'No') {

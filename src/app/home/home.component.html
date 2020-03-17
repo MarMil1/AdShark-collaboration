@@ -36,6 +36,9 @@
         <div *ngIf="tabClick==6">
           <app-form-featuredBrands [featuredBrandsData]="featuredBrandsData"></app-form-featuredBrands>
         </div>
+        <div *ngIf="tabClick==7">
+          <app-form-CLPDFeatured [clpDFeaturedData]="clpDFeaturedData"></app-form-CLPDFeatured>
+        </div>
 
 <!-- Callout bar -->
 <!-- <div class="callout-bar mb-3">
@@ -262,6 +265,9 @@
           </mat-tab>
           <mat-tab label="Featured Brand H1-H5">
             <app-preview-featuredBrands [featuredBrandsData]="featuredBrandsData"></app-preview-featuredBrands>
+          </mat-tab>
+          <mat-tab label="CLP D Featured Items">
+            <app-preview-CLPDFeatured [clpDFeaturedData]="clpDFeaturedData"></app-preview-CLPDFeatured>
           </mat-tab>
          <!--  <mat-tab label="Email">
           </mat-tab> -->
