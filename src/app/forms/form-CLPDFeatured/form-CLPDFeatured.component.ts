@@ -13,6 +13,7 @@ export class FormCLPDFeaturedComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.clpDFeaturedData.data.parameterValues['DE:Custom Headline'] = 'Featured Items';
   }
 
   onChangeHeadline() {
