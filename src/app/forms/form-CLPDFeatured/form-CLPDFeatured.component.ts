@@ -18,6 +18,8 @@ export class FormCLPDFeaturedComponent implements OnInit {
   onChangeHeadline() {
     if (this.clpDFeaturedData.data.parameterValues['DE:Custom headline?'] === 'No') {
       this.clpDFeaturedData.data.parameterValues['DE:Custom Headline'] = 'Featured Items';
+    } else {
+      this.clpDFeaturedData.data.parameterValues['DE:Custom Headline'] = 'Featured Items';
     }
   }
 
