@@ -19,7 +19,7 @@ $jarResourceCms = $config-jarResourceCmsValue
 
 
 INSERT_UPDATE ProductCarouselComponent ; $contentCV[unique = true] ; uid[unique = true] ; name                                 ; products(code, $productCV)                                                                                                                        ; scroll(code) ; popup ; &componentRef   ; title[lang = $lang] ; htmlBlock ; fontColor(code) ;  onlyOneRestrictionMustApply[default='false']
-                                        ;                           ; homepage-sale-carousel ; homepage sale carousel ; {{salecarouselData.data.parameterValues['DE:SKUs']}} ; allVisible   ; false ; homepage-sale-carousel ; "{{salecarouselData.data.parameterValues['DE:Custom Headline']}}"    ;           ; {{color}}           ;                ;
+                                        ;                           ; componentid ; component name ; {{clpDFeaturedData.data.parameterValues['DE:SKUs']}} ; allVisible   ; false ; componentid ; "{{clpDFeaturedData.data.parameterValues['DE:Custom Headline']}}"    ;           ; {{color}}           ;                ;
       </pre>
     </code>
   </div>
@@ -28,7 +28,7 @@ INSERT_UPDATE ProductCarouselComponent ; $contentCV[unique = true] ; uid[unique 
     <span class="fas fa-code"></span>
     <span class="impex-btn-txt"> Copy Impex</span>
   </button>
-  <button mat-flat-button class="impex-button2" (click)="onDownload('Sale.impex', 'impex')" tooltip="Download impex file" placement="bottom" hide-delay="0">
+  <button mat-flat-button class="impex-button2" (click)="onDownload('CLP_D.impex', 'impex')" tooltip="Download impex file" placement="bottom" hide-delay="0">
     <span class="fas fa-download"></span>
     <span class="impex-btn-txt"> Download Impex</span>
   </button>

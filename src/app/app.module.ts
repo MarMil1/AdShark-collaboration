@@ -33,6 +33,8 @@ import { FormFeaturedBrandsComponent } from './forms/form-featuredBrands/form-fe
 import { PreviewFeaturedBrandsComponent } from './previews/preview-featuredBrands/preview-featuredBrands.component';
 import { FormC1ClippedComponent } from './forms/form-C1Clipped/form-C1Clipped.component';
 import { PreviewC1ClippedComponent } from './previews/preview-C1Clipped/preview-C1Clipped.component';
+import { FormCLPDFeaturedComponent } from './forms/form-CLPDFeatured/form-CLPDFeatured.component';
+import { PreviewCLPDFeaturedComponent } from './previews/preview-CLPDFeatured/preview-CLPDFeatured.component';
 
 @NgModule({
    declarations: [
@@ -54,7 +56,9 @@ import { PreviewC1ClippedComponent } from './previews/preview-C1Clipped/preview-
       FormSalecarouselComponent,
       PreviewSaleCarouselComponent,
       FormFeaturedBrandsComponent,
-      PreviewFeaturedBrandsComponent
+      PreviewFeaturedBrandsComponent,
+      FormCLPDFeaturedComponent,
+      PreviewCLPDFeaturedComponent
 
    ],
    imports: [

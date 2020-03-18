@@ -12,6 +12,7 @@ import { FeaturedBrandsData } from '../models/FeaturedBrandsData';
 
 
 import { C1ClippedData } from '../models/C1ClippedData';
+import { CLPDFeaturedData } from '../models/CLPDFeaturedData';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit, DoCheck {
     projectName = ''; loading = true;
     c1Data: C1Data;
     c1clippedData: C1ClippedData;
+    clpDFeaturedData: CLPDFeaturedData;
     device = ''; tabClick = 0; adType = 'One-Third Banner';
     altLogo = ''; altImg = '';
     paneSize: number; rightWidth: number; leftWidth: number; logoWidth: number;
@@ -47,6 +49,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.c1clippedData = new C1ClippedData();
     this.salecarouselData = new SaleCarouselData();
     this.featuredBrandsData = new FeaturedBrandsData();
+    this.clpDFeaturedData = new CLPDFeaturedData();
 
     this.route.params.subscribe(param => {
       if (param.id) {
@@ -90,6 +93,11 @@ export class HomeComponent implements OnInit, DoCheck {
             this.featuredBrandsData = res;
             this.loading = false;
             this.tabClick = 6;
+          } else if (res.data.parameterValues['DE:Featured Items Carousel']) {
+            this.adType = res.data.parameterValues['DE:Featured Items Carousel'];
+            this.clpDFeaturedData = res;
+            this.loading = false;
+            this.tabClick = 7;
           }
         });
       } else {
@@ -173,6 +181,16 @@ export class HomeComponent implements OnInit, DoCheck {
       });
     } else if (res === true && this.featuredBrandsData.data.name === this.projectName) {
       this.workfrontService.updateData(this.featuredBrandsData.data)
+      .subscribe(response => {
+        this.loading = false;
+        this.openSnackBar(response.toString(), 'x', 5000);
+      }, err => {
+        console.log('PUT call in error', err);
+        this.openSnackBar('Error: cannot push to workfront', 'x', 5000);
+
+      });
+    } else if (res === true && this.clpDFeaturedData.data.name === this.projectName) {
+      this.workfrontService.updateData(this.clpDFeaturedData.data)
       .subscribe(response => {
         this.loading = false;
         this.openSnackBar(response.toString(), 'x', 5000);
@@ -270,6 +288,13 @@ export class HomeComponent implements OnInit, DoCheck {
             this.tabClick = e.index;
             console.log(e.index);
             this.adType = 'Featured Brand Carousel';
+            break;
+        // Featured Items Tab
+          case 7:
+            $('iframe').css('width', this.rightWidth);
+            this.tabClick = e.index;
+            console.log(e.index);
+            this.adType = 'Featured Items Carousel';
             break;
 
       default:

@@ -54,7 +54,9 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       /* add sale and no sale  */
       if (this.a1Data.data.parameterValues['DE:Sale Call-Out'] === 'None') {
         $('.A1-template').find('.callout').html('');
-        // added three lines below to be able to edit headline, Sub-Headline and CTA Text
+        /* added three lines below to be able to edit headline, Sub-Headline and CTA Text.
+        We want these to match with else if statement below and leave out ['DE:Text for Sale Call-Out']
+        since we don't need it. */
         $('.A1-template').find('.headline').html(this.a1Data.data.parameterValues['DE:Headline']);
         $('.A1-template').find('.sub-headline').html(this.a1Data.data.parameterValues['DE:Sub-Headline']);
         $('.A1-template').find('.cta').html(this.a1Data.data.parameterValues['DE:CTA Text']);
@@ -103,6 +105,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
 
       this.impexCode = tmp.replace(/"/g, '""');
 
+      // btnElement block of code will find logoElement in html file and change display css from none to inline
       let btnElement = document.getElementById('logoElement').style.display = 'inline';
       console.log('this is btn element: ' + btnElement);
 
@@ -112,6 +115,7 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
         btnElement = document.getElementById('logoElement').style.display = 'inline';
       }
 
+      // ctaAfter block of code will find ctaAfter in html file and cange display css from none to inline
       let ctaAfter = document.getElementById('ctaAfter').style.display = 'inline';
 
       if (this.a1Data.data.parameterValues['DE:CTA Button Required?'] === 'No') {
@@ -229,7 +233,10 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       download(filename, impex);
     }
   }
-
+/* getAlterLogo function finds logoPath link and parses it by
+   looking for the last element in the link that is before the fullstop.
+   After fullstop ( or a dot .) we usually have and file format
+   such as .svg, .png or .jpg so we don't want to display those in alt attributes. */
   getAlterLogo(logoPath: string) {
     let result = '';
     if (logoPath !== undefined) {
@@ -238,8 +245,12 @@ export class PreviewA1Component implements IA1Iframe, DoCheck {
       let tmp = logoPath.toLowerCase();
       lst = tmp.split('/');
       tmp = lst[lst.length - 1];
+      /* const i below will look for the dot. we can
+      change this as needed to logo, .png or anything we
+      want to avoid in when displaying the alternative name */
       const i = lst[lst.length - 1].indexOf('.');
       tmp = tmp.substring(0, i);
+      // tmp below will replace underscore and dash for an empty space
       tmp = tmp.replace(/[_-]/g, ' ');
       const listOfWords = tmp.split(' ');
       for (let index = 0; index < listOfWords.length; index++) {
