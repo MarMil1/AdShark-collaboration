@@ -1,0 +1,38 @@
+<!-- Image -->
+<div class="background-form mb-3">
+  <label for="Background"><h5 class="text-primary background-label1">Image - 450px x 350px</h5></label>
+  <input class="form-control ad-field" type="text" [(ngModel)]="d1Data.data.parameterValues['DE:Image - 450 x 350']" placeholder="URL" />
+</div>
+
+<!-- Subheadline -->
+<div class="headline-form mb-3">
+  <label for="headline"><h5 class="text-primary">Headline</h5></label><br>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="d1Data.data.parameterValues['DE:Headline']" rows="2" placeholder="Text"></textarea>
+  <legend>Headline should have 34 characters max</legend>
+</div>
+
+<!-- CTA Required ============================================================-->
+<div class="cta-required mb-3">
+  <mat-radio-group [(ngModel)]="d1Data.data.parameterValues['DE:CTA Button Required?']" (change)="onChangeCta()">
+  <label for="CTARequired"><h5 class="text-primary mr-3">CTA Button Required?</h5></label>
+    <mat-radio-button value="No">No</mat-radio-button>
+    <mat-radio-button value="Yes">Yes</mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<!-- CTA -->
+<div *ngIf="d1Data.data.parameterValues['DE:CTA Button Required?'] == 'Yes'">
+<div class="CTA-form mb-3">
+  <!-- CTA Link -->
+  <div class="CTA-link-form mb-3">
+    <label for="CTALink"><h5 class="text-primary">CTA Link</h5></label>
+    <input class="form-control ad-field" type="text" [(ngModel)]="d1Data.data.parameterValues['DE:CTA URL']" placeholder="URL" />
+  </div>
+  <!-- CTA Text -->
+  <div>
+    <label for="CTAText"><h5 class="text-primary">CTA Text</h5></label>
+      <input class="form-control" style="width:300px" type="text" [(ngModel)]="d1Data.data.parameterValues['DE:CTA Text']" placeholder="Text" />
+  </div>
+</div>
+
+<div *ngIf="d1Data.data.parameterValues['DE:CTA Button Required?'] == 'No'"></div>

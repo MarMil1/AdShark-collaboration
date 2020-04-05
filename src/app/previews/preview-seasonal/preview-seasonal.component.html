@@ -1,0 +1,97 @@
+<!-- Seasonal template -->
+<div class="seasonal-template" hidden>
+  <div class="container mt-5">
+    <h4 class="">{{seasonalData.data.parameterValues['DE:Headline']}}</h4>
+    <div class="seasonalComponent-block">
+      <div class="seasonalComponent-callout text-center">
+        <div class="seasonalComponent-callout-inner">
+          <img class="mx-auto mb-2 d-none" src="{{seasonalData.data.parameterValues['DE:Image path for logo']}}" alt="{{altLogo}}" width="{{seasonalData.data.parameterValues['DE:Logo Size Seasonal']}}">
+          <h5 class="text-center">{{seasonalData.data.parameterValues['DE:Sub-Headline']}}</h5>
+          <p class="text-white">{{seasonalData.data.parameterValues['DE:Paragraph']}}</p>
+          <a href="{{seasonalData.data.parameterValues['DE:CTA Button URL']}}" class="btn btn--secondary" id="button">{{seasonalData.data.parameterValues['DE:CTA Button Text']}}</a>
+        </div>
+      </div>
+
+      <a href="{{seasonalData.data.parameterValues['DE:URL for C2']}}" class="seasonalComponent-item">
+        <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C2']}}"
+        src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']}}{{size}}" width="140"
+        height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C2']}}</span></a>
+
+        <a href="{{seasonalData.data.parameterValues['DE:URL for C3']}}" class="seasonalComponent-item">
+          <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C3']}}"
+          src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C3 image']}}{{size}}" width="140"
+          height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C3']}}</span></a>
+
+          <a href="{{seasonalData.data.parameterValues['DE:URL for C4']}}" class="seasonalComponent-item">
+            <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C4']}}"
+            src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C4 image']}}{{size}}" width="140"
+            height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C4']}}</span></a>
+
+            <a href="{{seasonalData.data.parameterValues['DE:URL for C5']}}" class="seasonalComponent-item">
+              <img alt="{{seasonalData.data.parameterValues['DE:Text to display for C5']}}"
+              src="{{path}}{{seasonalData.data.parameterValues['DE:Enter product SKU to display C5 image']}}{{size}}" width="140"
+              height="140"><span>{{seasonalData.data.parameterValues['DE:Text to display for C5']}}</span></a>
+
+    </div>
+  </div>
+</div>
+
+
+<iframe class="seasonal-iframe" src="assets/html/Seasonal.html"></iframe>
+
+<div class="plain-text">
+  <h4 class="mt-4 ml-4">Plain Text</h4>
+  <div class="codeBox card card-body">
+    <code>{{outputCode}}</code>
+  </div>
+  <button mat-flat-button class="copy-button1" (click)="onCopy('plain')"
+    (click)="openSnackBar('Copied code!', '', 2000)" tooltip="Copy to clipboard" placement="bottom" hide-delay="0">
+    <span><i class="fas fa-code"></i></span>
+    <span class="copy-btn-txt"> Copy Code</span>
+  </button>
+  <button mat-flat-button class="copy-button2" (click)="onDownload('Seasonal.html', 'html')" tooltip="Download html file"
+    placement="bottom" hide-delay="0">
+    <span><i class="fas fa-download"></i></span>
+    <span class="copy-btn-txt"> Download Code</span>
+  </button>
+</div>
+
+<div class="impex-file">
+  <h4 class="mt-4 ml-4">Impex File</h4>
+  <div class="codeBox card card-body">
+    <code id="impex-code">
+      <pre>
+$contentCatalog = americanhotelContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Staged])[default = $contentCatalog:Staged]
+$mediaContainer = media(qualifier, $contentCV);
+$medias = medias(code, $contentCV);
+$media = media(code, $contentCV);
+$productCatalog = americanhotelProductCatalog
+$productCV = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$siteResource = jar:com.americanhotel.hybris.initialdata.constants.AmericanhotelInitialDataConstants&/americanhotelinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$lang = en
+
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+$jarResourceCms = $config-jarResourceCmsValue
+
+
+
+
+
+INSERT_UPDATE CMSParagraphComponent ; $contentCV[unique = true] ; uid[unique = true] ; onlyOneRestrictionMustApply[default='false'] ; name                          ; &componentRef    ; content[lang = $lang]
+
+                              ;                           ; componentid   ;                                              ; component name ; componentid ; "
+                              {{impexCode}}
+
+"</pre>
+    </code>
+  </div>
+  <button mat-flat-button class="impex-button1" (click)="onCopy('impex')" (click)="openSnackBar('Copied impex!', '', 2000)" tooltip="Copy to clipboard" placement="bottom" hide-delay="0">
+    <span class="fas fa-code"></span>
+    <span class="impex-btn-txt"> Copy Impex</span>
+  </button>
+  <button mat-flat-button class="impex-button2" (click)="onDownload('Seasonal.impex', 'impex')" tooltip="Download impex file" placement="bottom" hide-delay="0">
+    <span class="fas fa-download"></span>
+    <span class="impex-btn-txt"> Download Impex</span>
+  </button>
+</div>

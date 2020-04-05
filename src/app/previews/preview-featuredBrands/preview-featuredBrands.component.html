@@ -1,0 +1,78 @@
+<!-- Featured Brands template -->
+<div class="featuredBrands-template" hidden>
+  <div class="container-fluid c-carousel__wrapper">
+    <div class="container">
+      <h4 class="pt-5">{{featuredBrandsData.data.parameterValues['DE:Custom Headline']}}</h4>
+      <div id="featuredbrand">
+        <div>
+          <div class="shopByBrand-block">
+            <a href="{{featuredBrandsData.data.parameterValues['DE:Logo 1 Link']}}" class="shopByBrand-item"> <img src="{{featuredBrandsData.data.parameterValues['DE:Logo 1 Image Path']}}" alt="{{altLogo1}}"></a>
+            <a href="{{featuredBrandsData.data.parameterValues['DE:Logo 2 Link']}}" class="shopByBrand-item"> <img src="{{featuredBrandsData.data.parameterValues['DE:Logo 2 Image Path']}}" alt="{{altLogo2}}"></a>
+            <a href="{{featuredBrandsData.data.parameterValues['DE:Logo 3 Link']}}" class="shopByBrand-item"> <img src="{{featuredBrandsData.data.parameterValues['DE:Logo 3 Image Path']}}" alt="{{altLogo3}}"></a>
+            <a href="{{featuredBrandsData.data.parameterValues['DE:Logo 4 Link']}}" class="shopByBrand-item"> <img src="{{featuredBrandsData.data.parameterValues['DE:Logo 4 Image Path']}}" alt="{{altLogo4}}"></a>
+            <a href="{{featuredBrandsData.data.parameterValues['DE:Logo 5 Link']}}" class="shopByBrand-item"> <img src="{{featuredBrandsData.data.parameterValues['DE:Logo 5 Image Path']}}" alt="{{altLogo5}}"></a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<iframe class="featuredBrands-iframe" src="assets/html/FeaturedBrands.html"></iframe>
+
+<div class="plain-text">
+  <h4 class="mt-4 ml-4">Plain Text</h4>
+  <div class="codeBox card card-body">
+    <code>{{outputCode}}</code>
+  </div>
+  <button mat-flat-button class="copy-button1" (click)="onCopy('plain')"
+    (click)="openSnackBar('Copied code!', '', 2000)" tooltip="Copy to clipboard" placement="bottom" hide-delay="0">
+    <span><i class="fas fa-code"></i></span>
+    <span class="copy-btn-txt"> Copy Code</span>
+  </button>
+  <button mat-flat-button class="copy-button2" (click)="onDownload('FeaturedBrands.html', 'html')" tooltip="Download html file"
+    placement="bottom" hide-delay="0">
+    <span><i class="fas fa-download"></i></span>
+    <span class="copy-btn-txt"> Download Code</span>
+  </button>
+</div>
+
+<div class="impex-file">
+  <h4 class="mt-4 ml-4">Impex File</h4>
+  <div class="codeBox card card-body">
+    <code id="impex-code">
+      <pre>
+$contentCatalog = americanhotelContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Staged])[default = $contentCatalog:Staged]
+$mediaContainer = media(qualifier, $contentCV);
+$medias = medias(code, $contentCV);
+$media = media(code, $contentCV);
+$productCatalog = americanhotelProductCatalog
+$productCV = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$siteResource = jar:com.americanhotel.hybris.initialdata.constants.AmericanhotelInitialDataConstants&/americanhotelinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$lang = en
+
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+$jarResourceCms = $config-jarResourceCmsValue
+
+
+
+
+
+INSERT_UPDATE CMSParagraphComponent ; $contentCV[unique = true] ; uid[unique = true] ; onlyOneRestrictionMustApply[default='false'] ; name                          ; &componentRef    ; content[lang = $lang]
+
+                              ;                           ; FeaturedBrandCarousel2020   ;                                              ; FeaturedBrandCarousel2020 ; FeaturedBrandCarousel2020 ; "
+                              {{impexCode}}
+
+"</pre>
+    </code>
+  </div>
+  <button mat-flat-button class="impex-button1" (click)="onCopy('impex')" (click)="openSnackBar('Copied impex!', '', 2000)" tooltip="Copy to clipboard" placement="bottom" hide-delay="0">
+    <span class="fas fa-code"></span>
+    <span class="impex-btn-txt"> Copy Impex</span>
+  </button>
+  <button mat-flat-button class="impex-button2" (click)="onDownload('FeaturedBrands.impex', 'impex')" tooltip="Download impex file" placement="bottom" hide-delay="0">
+    <span class="fas fa-download"></span>
+    <span class="impex-btn-txt"> Download Impex</span>
+  </button>
+</div>

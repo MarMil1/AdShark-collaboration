@@ -1,0 +1,113 @@
+<!-- Headline -->
+<div class="headline-form mb-3">
+  <label for="headline"><h5 class="text-primary">Headline</h5></label>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Headline']" rows="2" placeholder="Text"></textarea>
+</div>
+
+
+<div class="logo-required mb-3">
+  <label for="LogoRequired"><h5 class="text-primary mr-3">Logo required?</h5></label>
+  <mat-radio-group [(ngModel)]="seasonalData.data.parameterValues['DE:Logo required?']" (change)="onChangeLogo()">
+    <mat-radio-button value="No">No</mat-radio-button>
+    <mat-radio-button value="Yes">Yes</mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<!-- Logo -->
+<div *ngIf="seasonalData.data.parameterValues['DE:Logo required?']=='Yes'">
+<div class="logo-form mb-3">
+    <label for="Logo"><h5 class="text-primary">Logo</h5></label>
+
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Image path for logo']" placeholder="URL" />
+
+    <!-- Button plus/minus -->
+    <div class="plus-minus-logoWidth">
+      <label for="plus-minus-logoWidth" id="logo-width-label"><h6 class="text-primary">Width:</h6></label>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-primary btn-sm btn-number" (click)="minusLogo($event)" tooltip="Minimum 100px" placement="bottom">
+          <span><i class="fas fa-minus"></i></span>
+        </button>
+      </span>
+      <input class="input-number input-logo-width" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Logo Size Seasonal']"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-primary btn-sm btn-number" (click)="plusLogo($event)" tooltip="Maximum 220px" placement="bottom">
+          <span><i class="fas fa-plus"></i></span>
+        </button>
+      </span>
+    </div>
+
+    <!-- White background logo -->
+    <mat-checkbox (change)="addWhiteBgLogo()" [checked]="whitebg">White background under logo</mat-checkbox>
+  </div>
+</div>
+<!-- // Logo -->
+<!-- Sub-headline -->
+<div *ngIf="seasonalData.data.parameterValues['DE:Logo required?']=='No'">
+<div class="subheadline-form mb-3">
+  <label for="subheadline"><h5 class="text-primary">Sub-Headline</h5></label><br>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Sub-Headline']" rows="2" placeholder="Text"></textarea>
+</div>
+</div>
+
+<!-- Paragraph -->
+<div class="paragraph-form mb-3">
+  <label for="para"><h5 class="text-primary">Paragraph</h5></label><br>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Paragraph']" rows="2" placeholder="Text"></textarea>
+</div>
+
+<!-- CTA Required ============================================================-->
+<div class="cta-required mb-3">
+  <mat-radio-group [(ngModel)]="seasonalData.data.parameterValues['DE:CTA Button Required?']" (change)="onChangeCta()">
+  <label for="CTARequired"><h5 class="text-primary mr-3">CTA Button Required?</h5></label>
+    <mat-radio-button value="No">No</mat-radio-button>
+    <mat-radio-button value="Yes">Yes</mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<!-- Button Link -->
+<div *ngIf="seasonalData.data.parameterValues['DE:CTA Button Required?'] == 'Yes'">
+<div class="button-form mb-3">
+  <div class="button-link-form mb-3">
+    <label for="linkOption"><h5 class="text-primary">Button Link</h5></label>
+    <input class="form-control ad-field" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:CTA Button URL']" placeholder="URL" />
+  </div>
+  </div>
+
+  <!-- <mat-checkbox (change)="disabledButton=!disabledButton" [checked]="disabledButton">No button</mat-checkbox> -->
+
+  <!-- Button text -->
+  <label for="Button"><h5 class="text-primary">Button Text</h5></label>
+  <input class="form-control" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:CTA Button Text']" placeholder="Text" />
+</div>
+<br>
+<div *ngIf="seasonalData.data.parameterValues['DE:CTA Button Required?'] == 'No'"></div>
+
+<!-- Product info for Seasonal Component  -->
+<div class="seasonal-products-form">
+
+  <div class="seasonal-product-links-form mb-3">
+    <label><h5 class="text-primary">Product Links</h5></label>
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:URL for C2']" placeholder="C2 URL" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:URL for C3']" placeholder="C3 URL" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:URL for C4']" placeholder="C4 URL" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:URL for C5']" placeholder="C5 URL" />
+  </div>
+
+  <div class="seasonal-product-names-form mb-3">
+    <label><h5 class="text-primary">Product Names</h5></label>
+    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Text to display for C2']" placeholder="C2 Text" />
+    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Text to display for C3']" placeholder="C3 Text" />
+    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Text to display for C4']" placeholder="C4 Text" />
+    <input class="form-control mb-2" style="width:300px" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Text to display for C5']" placeholder="C5 Text" />
+  </div>
+
+  <div class="seasonal-product-images-form mb-3">
+    <label><h5 class="text-primary">Product SKUs</h5></label>
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Enter product SKU to display C2 image']" placeholder="C2 Image" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Enter product SKU to display C3 image']" placeholder="C3 Image" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Enter product SKU to display C4 image']" placeholder="C4 Image" />
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="seasonalData.data.parameterValues['DE:Enter product SKU to display C5 image']" placeholder="C5 Image" />
+  </div>
+
+</div>
+<!-- Product info for Seasonal Component -->

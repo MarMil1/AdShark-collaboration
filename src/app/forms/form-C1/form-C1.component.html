@@ -1,0 +1,117 @@
+<!-- Image for desktop -->
+<div class="background-form mb-3">
+  <label for="Background"><h5 class="text-primary background-label1">Image for Desktop - 960px x 410px</h5></label>
+  <input class="form-control ad-field" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:Image for Desktop - 960 x 410']" placeholder="URL" />
+</div>
+
+<!-- Image for mobile -->
+<div class="background-form mb-3">
+    <label for="Background"><h5 class="text-primary background-label2">Image for mobile - 480px x 205px</h5></label>
+    <input class="form-control ad-field" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:Image for mobile - 480 x 205']" placeholder="URL" />
+</div>
+
+<div class="logo-required mb-3">
+    <label for="LogoRequired"><h5 class="text-primary mr-3">Logo required?</h5></label>
+    <mat-radio-group [(ngModel)]="c1Data.data.parameterValues['DE:Logo required?']" (change)="onChangeLogo()">
+      <mat-radio-button value="No">No</mat-radio-button>
+      <mat-radio-button value="Yes">Yes</mat-radio-button>
+    </mat-radio-group>
+</div>
+
+<!-- Logo -->
+<div *ngIf="c1Data.data.parameterValues['DE:Logo required?']=='Yes'">
+  <div class="logo-form mb-3">
+    <label for="Logo"><h5 class="text-primary">Logo</h5></label>
+
+<!-- Logo size -->
+    <div class="logo-size">
+      <mat-radio-group [(ngModel)]="c1Data.data.parameterValues['DE:Logo Size A1/CLP']" (change)="onChangeLogoSize()">
+      <mat-radio-button *ngFor="let size of listofLogoSize" [value]="size">{{size}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <input class="form-control ad-field mb-2" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:Image path for logo']" placeholder="URL" />
+  </div>
+
+<!-- Logo position -->
+    <div class="logo-position mb-3">
+      <label for="LogoPosition"><h5 class="text-primary mr-3">Logo position</h5></label>
+      <mat-radio-group [(ngModel)]="c1Data.data.parameterValues['DE:Logo position']" (change)="onChangeLogoPosition()">
+        <mat-radio-button value="Top">Top</mat-radio-button>
+        <mat-radio-button value="Bottom">Bottom</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+</div>
+
+<!-- Callout bar -->
+<div class="callout-bar mb-3">
+  <label for="CalloutBar"><h5 class="text-primary mr-3">Call-out</h5></label>
+  <mat-radio-group [(ngModel)]="c1Data.data.parameterValues['DE:Sale Call-Out']" (change)="onChangeCallout()">
+    <mat-radio-button value="None">None</mat-radio-button>
+    <mat-radio-button value="Sale">Sale</mat-radio-button>
+    <mat-radio-button value="No Sale">No Sale</mat-radio-button>
+  </mat-radio-group>
+
+  <!-- Callout sale -->
+  <div class="callout-text">
+    <input class="form-control ad-field" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:Text for Sale Call-Out']"
+    [disabled]="c1Data.data.parameterValues['DE:Sale Call-Out']=='None'"
+    placeholder="Ex. sale 99%!" />
+  </div>
+</div>
+
+<!-- Background color behind text -->
+<div class="background-color mb-3" >
+  <label for="Nosale"><h5 class="text-primary mr-3">Background color behind text</h5></label>
+  <mat-radio-group [(ngModel)]="c1Data.data.parameterValues['DE:Background color behind text']" (change)="getBackgroundColor()">
+    <mat-radio-button value="White">White</mat-radio-button>
+    <mat-radio-button value="Color">Hex Color</mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="c1Data.data.parameterValues['DE:Background color behind text']=='Color'" class="background-hexcolor">
+    <label for="Sale"><h5 class="text-primary mr-3">Background Hex Color</h5></label>
+    <input class="form-control" style="width: 255px" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:Hex #']" placeholder="Ex. #9e876b" />
+  </div>
+</div>
+
+<!-- Headline -->
+<div class="headline-form mb-3">
+    <label for="headline"><h5 class="text-primary">Headline</h5></label>
+    <textarea class="form-control ad-field" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:Headline']" rows="2" placeholder="Text"></textarea>
+    <legend>Headline should have 34 characters max</legend>
+  </div>
+
+<!-- Subline -->
+<div class="subheadline-form mb-3">
+  <label for="subheadline"><h5 class="text-primary">Sub-Headline</h5></label><br>
+  <textarea class="form-control ad-field" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:Sub-Headline']" rows="2" placeholder="Text"></textarea>
+  <legend>Sub-headline should have 75 characters max</legend>
+</div>
+
+<!-- CTA Required ============================================================-->
+<div class="cta-required mb-3">
+  <mat-radio-group [(ngModel)]="c1Data.data.parameterValues['DE:CTA Button Required?']" (change)="onChangeCta()">
+  <label for="CTARequired"><h5 class="text-primary mr-3">CTA Button Required?</h5></label>
+    <mat-radio-button value="No">No</mat-radio-button>
+    <mat-radio-button value="Yes">Yes</mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<!-- CTA -->
+<div *ngIf="c1Data.data.parameterValues['DE:CTA Button Required?'] == 'Yes'">
+<div class="CTA-form mb-3">
+  <!-- CTA Link -->
+  <div class="CTA-link-form mb-3">
+    <label for="CTALink"><h5 class="text-primary">CTA Link</h5></label>
+    <input class="form-control ad-field" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:CTA URL']" placeholder="URL" />
+  </div>
+  <!-- Button Text -->
+  <div>
+    <label for="CTAText"><h5 class="text-primary">CTA Text</h5></label>
+      <input class="form-control" style="width:300px" type="text" [(ngModel)]="c1Data.data.parameterValues['DE:CTA Text']" placeholder="Text" />
+  </div>
+</div>
+
+<div *ngIf="c1Data.data.parameterValues['DE:CTA Button Required?'] == 'No'"></div>
+
+
