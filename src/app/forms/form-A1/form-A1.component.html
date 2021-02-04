@@ -1,6 +1,7 @@
 <!-- Image for desktop -->
 <div class="background-form mb-3">
   <label for="Background"><h5 class="text-primary background-label1">Image for Desktop - 960px x 410px</h5></label>
+  <button class="btn btn-primary ml-2 mr-2 mb-2" (click)="onClickImageSample()" tooltip="Click to genarate A1 images" placement="top" hide-delay="0">Sample URL</button>
   <input class="form-control ad-field" type="text" [(ngModel)]="a1Data.data.parameterValues['DE:Image for Desktop - 960 x 410']" placeholder="URL" />
 </div>
 
@@ -32,7 +33,7 @@
 
     <input class="form-control ad-field mb-2" type="text" [(ngModel)]="a1Data.data.parameterValues['DE:Image path for logo']" placeholder="URL" />
   </div>
-    
+
   <!-- Logo position -->
   <div class="logo-position mb-3">
     <label for="LogoPosition"><h5 class="text-primary mr-3">Logo position</h5></label>

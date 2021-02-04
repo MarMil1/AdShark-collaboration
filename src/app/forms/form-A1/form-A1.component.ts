@@ -19,6 +19,11 @@ export class FormA1Component implements OnInit {
   ngOnInit(): void {
   }
 
+  onClickImageSample(){
+    this.a1Data.data.parameterValues['DE:Image for Desktop - 960 x 410'] = 'https://images.americanhotel.com/images/banners/8962k_Westpoint_A1_100919-960.jpg?123';
+    this.a1Data.data.parameterValues['DE:Image for mobile - 480 x 205'] = 'https://images.americanhotel.com/images/banners/8962k_Westpoint_A1_100919-480.jpg?123';
+  }
+
   onChangeLogoPosition() {
     console.log('A1 logo position changed');
     if (this.a1Data.data.parameterValues['DE:Logo position'] === 'Top') {
